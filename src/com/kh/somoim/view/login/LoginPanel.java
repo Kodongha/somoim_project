@@ -94,7 +94,7 @@ this.setLayout(new BorderLayout());
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				if(loginController.checkAccount(idTextField.getText(), pwdLabel.getText())) {
+				if(loginController.checkAccount(idTextField.getText(), pwdTextField.getText())) {
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new MainPanel(mainFrame));
 				}
 			}
