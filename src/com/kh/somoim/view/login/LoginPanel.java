@@ -19,78 +19,78 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 import com.kh.somoim.view.signup.SignupPage;
 
 public class LoginPanel extends JPanel {
-
+	
 	private JPanel thisPanel;
-
+	
 	public LoginPanel(MainFrame mainFrame) {
 		LoginController loginController = new LoginController();
-
+		
 		this.thisPanel = this;
-
-		this.setLayout(new BorderLayout());
-
+		
+this.setLayout(new BorderLayout());
+		
 		JPanel loginPanel = new JPanel();
 
 		JLabel backgroundImage = new JLabel(new ImageIcon(new ImageIcon("images/backgroundImage.PNG").getImage().getScaledInstance(500, 800, 0)));
 		backgroundImage.setBounds(0, 0, 500, 800);
-
+		
 		JLabel idLabel = new JLabel("ID :");
-		idLabel.setLocation(110, 390); // ï¿½ï¿½ ï¿½Ä¡ï¿½ï¿½
+		idLabel.setLocation(110, 390); // ¶óº§ À§Ä¡Á¶Á¤
 		idLabel.setSize(150, 50);
-
+		
 		JTextField idTextField = new JTextField(15); 
 		idTextField.setLocation(150, 400);
 		idTextField.setSize(220, 30);
-
+		
 		JLabel pwdLabel = new JLabel("Pw : ");
 		pwdLabel.setLocation(110, 488);
 		pwdLabel.setSize(150, 50);
-
+		
 		JLabel label = new JLabel(" ");
-
+		
 		JTextField pwdTextField = new JTextField(15);
 		pwdTextField.setLocation(150, 500);
 		pwdTextField.setSize(220, 30);
-
-		JButton loginButton = new JButton("ï¿½Î±ï¿½ï¿½ï¿½"); //ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
+		
+		JButton loginButton = new JButton("·Î±×ÀÎ"); //·Î±×ÀÎ ¹öÆ°
 		//loginbutton.setBounds(160, 80, 100, 25);
 		loginButton.setLocation(150, 550);
 		loginButton.setSize(200, 40);
 		loginButton.setBackground(Color.ORANGE);
-
-		JButton newCreateButton = new JButton("ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½"); // È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
+		
+		JButton newCreateButton = new JButton("»õ °èÁ¤ ¸¸µé±â"); // È¸¿ø°¡ÀÔ ¹öÆ°
 		//newcreatebutton.setBounds(160, 80, 100, 25);
 		newCreateButton.setLocation(150, 650);
 		newCreateButton.setSize(200, 40);
 		newCreateButton.setBackground(Color.red);
-
-
-		JButton findIdPassword = new JButton("ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½?"); // È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
+		
+		
+		JButton findIdPassword = new JButton("ºñ¹Ð¹øÈ£¸¦ ÀØÀ¸¼Ì³ª¿ä?"); // È¸¿ø°¡ÀÔ ¹öÆ°
 		//newcreatebutton.setBounds(160, 80, 100, 25);
 		findIdPassword.setLocation(150, 600);
 		findIdPassword.setSize(200, 40);
 		//findIdPassword.setBackground(Color.gray);
 		findIdPassword.setBorderPainted(false);
 		findIdPassword.setContentAreaFilled(false);
-
-		this.add(idLabel); //ï¿½ï¿½
+		
+		this.add(idLabel); //¶óº§
 		this.add(pwdLabel);
-
-		this.add(idTextField); //ï¿½Ø½ï¿½Æ® ï¿½Êµï¿½
+		
+		this.add(idTextField); //ÅØ½ºÆ® ÇÊµå
 		this.add(pwdTextField);
-
+		
 		this.add(loginButton);
 		this.add(newCreateButton);
 		this.add(findIdPassword);
-
-
+		
+		
 		mainFrame.add(this);
 
 		this.add(loginPanel, "Center");
 		this.add(backgroundImage);
-
+		
 		loginButton.addActionListener(new ActionListener() {
-
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -100,7 +100,7 @@ public class LoginPanel extends JPanel {
 				}
 			}
 		});
- 
+		
 		newCreateButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -108,6 +108,6 @@ public class LoginPanel extends JPanel {
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SignupPage(mainFrame));
 			}
 		});
-
+		
 	}
 }
