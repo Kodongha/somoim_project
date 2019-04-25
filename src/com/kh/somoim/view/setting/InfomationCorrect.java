@@ -17,10 +17,15 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
+import com.kh.somoim.view.main.CenterPanel;
+import com.kh.somoim.view.mainFrame.MainFrame;
+
 public class InfomationCorrect extends JPanel {
 	
 	
-	public InfomationCorrect() {
+	
+	
+	public InfomationCorrect(CenterPanel center) {
 		
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
@@ -31,9 +36,9 @@ public class InfomationCorrect extends JPanel {
 		result.setLayout(new GridLayout(8, 2));
 		result.setBounds(50,100,350,400);
 		result.setBackground(Color.WHITE);
+		     
 		
-		
-		
+		  
 		
 		
 		JLabel email =new JLabel();
@@ -175,7 +180,7 @@ public class InfomationCorrect extends JPanel {
 		JPanel result3= new JPanel();
 		result3.setBounds(50,550,350,50);
 		result3.setBackground(Color.WHITE);
-		JButton next = new JButton("다음");
+		JButton next = new JButton("확인");
 		next.setBackground(Color.ORANGE);
 		result3.add(next);
 
@@ -204,6 +209,11 @@ public class InfomationCorrect extends JPanel {
 	
 
 }
+
+
+
+
+
 
 
 
