@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.kh.somoim.login.controller.LoginController;
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
@@ -34,7 +35,7 @@ this.setLayout(new BorderLayout());
 		backgroundImage.setBounds(0, 0, 500, 800);
 		
 		JLabel idLabel = new JLabel("ID :");
-		idLabel.setLocation(110, 390); // ¶óº§ À§Ä¡Á¶Á¤
+		idLabel.setLocation(110, 390); // ë¼ë²¨ ìœ„ì¹˜ì¡°ì •
 		idLabel.setSize(150, 50);
 		
 		JTextField idTextField = new JTextField(15); 
@@ -51,20 +52,20 @@ this.setLayout(new BorderLayout());
 		pwdTextField.setLocation(150, 500);
 		pwdTextField.setSize(220, 30);
 		
-		JButton loginButton = new JButton("·Î±×ÀÎ"); //·Î±×ÀÎ ¹öÆ°
+		JButton loginButton = new JButton("ë¡œê·¸ì¸"); //ë¡œê·¸ì¸ ë²„íŠ¼
 		//loginbutton.setBounds(160, 80, 100, 25);
 		loginButton.setLocation(150, 550);
 		loginButton.setSize(200, 40);
 		loginButton.setBackground(Color.ORANGE);
 		
-		JButton newCreateButton = new JButton("»õ °èÁ¤ ¸¸µé±â"); // È¸¿ø°¡ÀÔ ¹öÆ°
+		JButton newCreateButton = new JButton("ìƒˆ ê³„ì • ë§Œë“¤ê¸°"); // íšŒì›ê°€ì… ë²„íŠ¼
 		//newcreatebutton.setBounds(160, 80, 100, 25);
 		newCreateButton.setLocation(150, 650);
 		newCreateButton.setSize(200, 40);
 		newCreateButton.setBackground(Color.red);
 		
 		
-		JButton findIdPassword = new JButton("ºñ¹Ğ¹øÈ£¸¦ ÀØÀ¸¼Ì³ª¿ä?"); // È¸¿ø°¡ÀÔ ¹öÆ°
+		JButton findIdPassword = new JButton("ë¹„ë°€ë²ˆí˜¸ë¥¼ ìŠìœ¼ì…¨ë‚˜ìš”?"); // íšŒì›ê°€ì… ë²„íŠ¼
 		//newcreatebutton.setBounds(160, 80, 100, 25);
 		findIdPassword.setLocation(150, 600);
 		findIdPassword.setSize(200, 40);
@@ -72,10 +73,10 @@ this.setLayout(new BorderLayout());
 		findIdPassword.setBorderPainted(false);
 		findIdPassword.setContentAreaFilled(false);
 		
-		this.add(idLabel); //¶óº§
+		this.add(idLabel); //ë¼ë²¨
 		this.add(pwdLabel);
 		
-		this.add(idTextField); //ÅØ½ºÆ® ÇÊµå
+		this.add(idTextField); //í…ìŠ¤íŠ¸ í•„ë“œ
 		this.add(pwdTextField);
 		
 		this.add(loginButton);
@@ -93,9 +94,11 @@ this.setLayout(new BorderLayout());
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+
 				
 				if(loginController.checkAccount(idTextField.getText(), pwdTextField.getText())) {
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new MainPanel(mainFrame));
+
 				}
 			}
 		});

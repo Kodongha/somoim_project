@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class MainPanel extends JPanel{
@@ -12,10 +13,9 @@ public class MainPanel extends JPanel{
 	CenterPanel centerPanel;
 	BottomPanel bottomPanel;
 
-	public MainPanel(MainFrame mainFrame) {
+	public MainPanel(MainFrame mainFrame, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
 		
-		mainFrame.setTitle("aaa");
 		this.setLayout(new BorderLayout());
 		System.out.println("mainPanel in");
 		
@@ -23,7 +23,7 @@ public class MainPanel extends JPanel{
 		System.out.println("aaa");
 		
 		// 상단/중단/하단 패널 생성
-		topPanel = new TopPanel();
+		topPanel = new TopPanel(this, memberVO);
 		centerPanel = new CenterPanel();
 		bottomPanel = new BottomPanel(this);
 
