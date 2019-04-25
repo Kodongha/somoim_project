@@ -35,7 +35,7 @@ public class LoginPanel extends JPanel {
 		backgroundImage.setBounds(0, 0, 500, 800);
 
 		JLabel idLabel = new JLabel("ID :");
-		idLabel.setLocation(110, 390); // ¶óº§ À§Ä¡Á¶Á¤
+		idLabel.setLocation(110, 390); // ï¿½ï¿½ ï¿½Ä¡ï¿½ï¿½
 		idLabel.setSize(150, 50);
 
 		JTextField idTextField = new JTextField(15); 
@@ -52,20 +52,20 @@ public class LoginPanel extends JPanel {
 		pwdTextField.setLocation(150, 500);
 		pwdTextField.setSize(220, 30);
 
-		JButton loginButton = new JButton("·Î±×ÀÎ"); //·Î±×ÀÎ ¹öÆ°
+		JButton loginButton = new JButton("ï¿½Î±ï¿½ï¿½ï¿½"); //ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
 		//loginbutton.setBounds(160, 80, 100, 25);
 		loginButton.setLocation(150, 550);
 		loginButton.setSize(200, 40);
 		loginButton.setBackground(Color.ORANGE);
 
-		JButton newCreateButton = new JButton("»õ °èÁ¤ ¸¸µé±â"); // È¸¿ø°¡ÀÔ ¹öÆ°
+		JButton newCreateButton = new JButton("ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½"); // È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
 		//newcreatebutton.setBounds(160, 80, 100, 25);
 		newCreateButton.setLocation(150, 650);
 		newCreateButton.setSize(200, 40);
 		newCreateButton.setBackground(Color.red);
 
 
-		JButton findIdPassword = new JButton("ºñ¹Ð¹øÈ£¸¦ ÀØÀ¸¼Ì³ª¿ä?"); // È¸¿ø°¡ÀÔ ¹öÆ°
+		JButton findIdPassword = new JButton("ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì³ï¿½ï¿½ï¿½?"); // È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
 		//newcreatebutton.setBounds(160, 80, 100, 25);
 		findIdPassword.setLocation(150, 600);
 		findIdPassword.setSize(200, 40);
@@ -73,10 +73,10 @@ public class LoginPanel extends JPanel {
 		findIdPassword.setBorderPainted(false);
 		findIdPassword.setContentAreaFilled(false);
 
-		this.add(idLabel); //¶óº§
+		this.add(idLabel); //ï¿½ï¿½
 		this.add(pwdLabel);
 
-		this.add(idTextField); //ÅØ½ºÆ® ÇÊµå
+		this.add(idTextField); //ï¿½Ø½ï¿½Æ® ï¿½Êµï¿½
 		this.add(pwdTextField);
 
 		this.add(loginButton);

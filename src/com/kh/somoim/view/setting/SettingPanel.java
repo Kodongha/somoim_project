@@ -93,8 +93,15 @@ public class SettingPanel extends JPanel {
 				String result = JOptionPane.showInputDialog(null, inputemail +  "\n비밀번호 입력", "개인정보 수정",JOptionPane.INFORMATION_MESSAGE);
 
 
+				if(result.equals("abc")) {
 
-				System.out.println(result);
+						
+					new ChangePanel();
+					
+					
+					
+
+				}
 
 
 			}
