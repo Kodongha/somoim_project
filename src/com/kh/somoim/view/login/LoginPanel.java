@@ -1,5 +1,6 @@
 package com.kh.somoim.view.login;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -19,12 +20,12 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 import com.kh.somoim.view.signup.SignupPage;
 
 public class LoginPanel extends JPanel {
-	
+	private MainFrame mainFrame;
 	private JPanel thisPanel;
 	
 	public LoginPanel(MainFrame mainFrame) {
 		LoginController loginController = new LoginController();
-		
+		this.mainFrame = mainFrame;
 		this.thisPanel = this; 
 		
 this.setLayout(new BorderLayout());
@@ -108,6 +109,16 @@ this.setLayout(new BorderLayout());
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SignupPage(mainFrame));
 			}
 		});
+		
+		findIdPassword.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new InformationFindPanel(mainFrame));
+				
+			}
+		});
+		
 		
 	}
 }
