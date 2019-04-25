@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.kh.somoim.login.controller.LoginController;
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
@@ -93,9 +94,9 @@ this.setLayout(new BorderLayout());
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
-				if(loginController.checkAccount(idTextField.getText(), pwdLabel.getText())) {
-					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new MainPanel(mainFrame));
+				MemberVO memberVO = loginController.checkAccount(idTextField.getText(), pwdTextField.getText());
+				if(memberVO != null) {
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new MainPanel(mainFrame, memberVO));
 				}
 			}
 		});
