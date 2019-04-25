@@ -10,11 +10,11 @@ public class LoginController {
 	public MemberVO checkAccount(String id, String password) {
 		System.out.println("LoginController.checkAccount in!");
 		
-		MemberVO memberVO = new MemberVO();
-		memberVO.setId(id);
-		memberVO.setPassword(password);
+		MemberVO requestMemberVO = new MemberVO();
+		requestMemberVO.setId(id);
+		requestMemberVO.setPassword(password);
 		
-		MemberVO responseMemberVO = loginDAO.checkAccount(memberVO);
+		MemberVO responseMemberVO = loginDAO.checkAccount(requestMemberVO);
 		
 		return responseMemberVO;
 	}
