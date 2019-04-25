@@ -20,17 +20,19 @@ public class CenterPanel extends JPanel{
 	private SearchPanel searchPanel;
 	private SettingPanel settingPanel;
 	private InfomationCorrect infomationCorrect;
-
-	public CenterPanel(MainFrame mainFrame, MainPanel mainPanel, MemberVO memberVO) {
+	
+	 
+	public CenterPanel(MainFrame mainFrame,MainPanel mainpanel,MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
 		cardLayout = new CardLayout();
 		this.setLayout(cardLayout);
-
+  
+		
+		
 		homePanel = new HomePanel(memberVO);
-
 		recommendPanel = new RecommendPanel();
 		searchPanel = new SearchPanel();
-		settingPanel = new SettingPanel(this);
+		settingPanel = new SettingPanel(mainFrame, this, mainpanel, memberVO);
 		infomationCorrect = new InfomationCorrect(this);    
 		
 		this.add(homePanel, "home");

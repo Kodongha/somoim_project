@@ -13,9 +13,12 @@ public class MainPanel extends JPanel{
 	CenterPanel centerPanel;
 	BottomPanel bottomPanel;
 
+	
+	
 	public MainPanel(MainFrame mainFrame, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
-		
+		       
+		mainFrame.setTitle("aaa");
 		this.setLayout(new BorderLayout());
 		System.out.println("mainPanel in");
 		
@@ -23,8 +26,8 @@ public class MainPanel extends JPanel{
 		System.out.println("aaa");
 		
 		// 상단/중단/하단 패널 생성
-		topPanel = new TopPanel(mainFrame, memberVO);
-		centerPanel = new CenterPanel(mainFrame, this, memberVO);
+		topPanel = new TopPanel(mainFrame,memberVO);
+		centerPanel = new CenterPanel(mainFrame, this,memberVO);
 		bottomPanel = new BottomPanel(this);
 
 		// 상단,중앙,하단 프레임에 추가
