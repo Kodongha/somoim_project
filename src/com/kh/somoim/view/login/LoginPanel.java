@@ -25,7 +25,7 @@ public class LoginPanel extends JPanel {
 	public LoginPanel(MainFrame mainFrame) {
 		LoginController loginController = new LoginController();
 		
-		this.thisPanel = this;
+		this.thisPanel = this; 
 		
 this.setLayout(new BorderLayout());
 		
