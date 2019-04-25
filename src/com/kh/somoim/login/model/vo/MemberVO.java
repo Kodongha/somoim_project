@@ -8,7 +8,7 @@ public class MemberVO implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 273915039175507437L;
+	private static final long serialVersionUID = -870701766909770273L;
 	private String id;          // id
 	private String birth;       // birth(yyyyMMdd)
 	private String phoneNumber; // phoneNumber(010-xxxx-xxxx) 
@@ -17,6 +17,7 @@ public class MemberVO implements Serializable{
 	private String name;        // name
 	private String gender;      // gender(남/여)
 	private String address;     // address(서울,경기도...)
+	private int point;     // address(서울,경기도...)
 	private ArrayList<String> favorite; // favorite(관심사)
 
 	public MemberVO() {
@@ -24,7 +25,7 @@ public class MemberVO implements Serializable{
 	}
 
 	public MemberVO(String id, String birth, String phoneNumber, String email, String password, String name,
-			String gender, String address, ArrayList<String> favorite) {
+			String gender, String address, int point, ArrayList<String> favorite) {
 		super();
 		this.id = id;
 		this.birth = birth;
@@ -34,6 +35,7 @@ public class MemberVO implements Serializable{
 		this.name = name;
 		this.gender = gender;
 		this.address = address;
+		this.point = point;
 		this.favorite = favorite;
 	}
 
@@ -101,6 +103,14 @@ public class MemberVO implements Serializable{
 		this.address = address;
 	}
 
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
 	public ArrayList<String> getFavorite() {
 		return favorite;
 	}
@@ -111,9 +121,9 @@ public class MemberVO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "UserVO [id=" + id + ", birth=" + birth + ", phoneNumber=" + phoneNumber + ", email=" + email
+		return "MemberVO [id=" + id + ", birth=" + birth + ", phoneNumber=" + phoneNumber + ", email=" + email
 				+ ", password=" + password + ", name=" + name + ", gender=" + gender + ", address=" + address
-				+ ", favorite=" + favorite + "]";
+				+ ", point=" + point + ", favorite=" + favorite + "]";
 	}
 
 }

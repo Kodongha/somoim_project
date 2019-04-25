@@ -7,7 +7,7 @@ public class LoginController {
 
 	LoginDAO loginDAO = new LoginDAO();
 
-	public boolean checkAccount(String id, String password) {
+	public MemberVO checkAccount(String id, String password) {
 		System.out.println("LoginController.checkAccount in!");
 		
 		boolean flag = true;
@@ -17,11 +17,8 @@ public class LoginController {
 		memberVO.setPassword(password);
 		
 		MemberVO responseMemberVO = loginDAO.checkAccount(memberVO);
-		if(responseMemberVO == null) {
-			flag = false;
-		}
 		
-		return flag;
+		return responseMemberVO;
 	}
 	
 }
