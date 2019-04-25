@@ -5,6 +5,7 @@ import com.kh.somoim.login.model.vo.MemberVO;
 
 public class HomeController {
 
+
 	HomeDAO homeDAO = new HomeDAO(); 
 	
 	public HomeController() {
@@ -17,5 +18,4 @@ public class HomeController {
 		
 		homeDAO.getMyClubList(memberVO);
 	}
-
 }
