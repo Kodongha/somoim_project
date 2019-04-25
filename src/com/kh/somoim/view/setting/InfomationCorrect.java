@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -17,15 +19,21 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
+import com.kh.somoim.util.event.CenterPanelChangeEventUtil;
+import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.main.CenterPanel;
+import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class InfomationCorrect extends JPanel {
 	
-	
-	
-	
-	public InfomationCorrect(CenterPanel center) {
+	private MainPanel mainpanel;
+	private MainFrame mainframe;
+	private CenterPanel centerPanel;
+
+	public InfomationCorrect(CenterPanel centerPanel) {
+		this.centerPanel = centerPanel;
+		
 		
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
@@ -184,6 +192,32 @@ public class InfomationCorrect extends JPanel {
 		next.setBackground(Color.ORANGE);
 		result3.add(next);
 
+		
+		
+		
+		next.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+		
+			
+				centerPanel.getCardLayout().show(centerPanel.getSettingPanel().getParent(), "setting");
+				
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		this.add(result);
 		this.add(result3);
 		
@@ -209,9 +243,6 @@ public class InfomationCorrect extends JPanel {
 	
 
 }
-
-
-
 
 
 

@@ -12,19 +12,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.login.LoginPanel;
 import com.kh.somoim.view.main.CenterPanel;
+import com.kh.somoim.view.main.MainPanel;
+import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class SettingPanel extends JPanel {
 	
 	private JPanel thisPanel;
-	private LoginPanel logionpanel;
 	
-	public SettingPanel(CenterPanel panel) {
-		
-		
-      
+	
+  	public SettingPanel(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,MemberVO memberVO) {
 		
 		this.thisPanel = this;
 
@@ -45,20 +45,20 @@ public class SettingPanel extends JPanel {
 		JLabel labelgroup= new JLabel();
 
 
-		String inputname= "차은우";
-		String inputemail= "dmsdn@gmail.com";
-		String inputbirth= "1992.05.06";
-		String inputphone= "010-1234-5678";
-
+		 
+		 
+	
 
 		labelgroup.setLayout(new GridLayout(4, 1));
-		JLabel name= new JLabel("   이름:  "+inputname);
+		
+		
+		JLabel name= new JLabel("   이름:  "+ memberVO.getName());
 
-		JLabel email= new JLabel("   이메일:  "+inputemail);
+		JLabel email= new JLabel("   이메일:  "+memberVO.getEmail());
 
-		JLabel birth= new JLabel("   생년월일:  "+inputbirth);
+		JLabel birth= new JLabel("   생년월일:  "+memberVO.getBirth());
 
-		JLabel phone= new JLabel("   휴대폰 번호:  "+inputphone);
+		JLabel phone= new JLabel("   휴대폰 번호:  "+memberVO.getPhoneNumber());
 
 
 		labelgroup.add(name);
@@ -103,12 +103,12 @@ public class SettingPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 
-				String result = JOptionPane.showInputDialog(null, inputemail +  "\n비밀번호 입력", "개인정보 수정",JOptionPane.INFORMATION_MESSAGE);
+				String result = JOptionPane.showInputDialog(null, memberVO.getEmail() +  "\n비밀번호 입력", "개인정보 수정",JOptionPane.INFORMATION_MESSAGE);
 
 
-				if(result.equals("abc")) {
+				if(result.equals(memberVO.getPassword())) {
 					
-					panel.getCardLayout().show(panel.getInfomationCorrect().getParent(), "infomationCorrect");
+					centerPanel.getCardLayout().show(centerPanel.getInfomationCorrect().getParent(), "infomationCorrect");
  
 					
 					
@@ -121,7 +121,8 @@ public class SettingPanel extends JPanel {
 		});
 
 	
-		JButton ok= new JButton("확인");
+	
+		
 		
 		
 		button.addActionListener(new  ActionListener() {
@@ -130,13 +131,15 @@ public class SettingPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 
-				String warning= "탈퇴 후에는 "+inputemail+"로 다시 가입할 수 없으며\n 이메일과 데이터는 복구할 수 없습니다.\n 정말로 탈퇴 하시겠습니까?";
+				String warning= "탈퇴 후에는 "+memberVO.getEmail()+"로 다시 가입할 수 없으며\n 이메일과 데이터는 복구할 수 없습니다.\n 정말로 탈퇴 하시겠습니까?";
 
 			int result=	JOptionPane.showConfirmDialog(null, warning, "탈퇴할고얌?", JOptionPane.YES_NO_OPTION);
 
-				
+//			                       ChangPanelUtil cp= new ChangPanelUtil(null, out);	
+			
+			
 				if(result==JOptionPane.YES_OPTION) {
-				//	new CHANGE_PANEL(mainframe,thisPanel,logionpanel );
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, mainpanel,new LoginPanel(mainFrame) );
 					
 				}
 				
