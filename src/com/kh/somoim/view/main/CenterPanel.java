@@ -4,6 +4,7 @@ import java.awt.CardLayout;
 
 import javax.swing.JPanel;
 
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.view.home.HomePanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 import com.kh.somoim.view.recommend.RecommendPanel;
@@ -19,13 +20,14 @@ public class CenterPanel extends JPanel{
 	private SearchPanel searchPanel;
 	private SettingPanel settingPanel;
 	private InfomationCorrect infomationCorrect;
-	 
-	public CenterPanel(MainFrame mainFrame) {
+
+	public CenterPanel(MainFrame mainFrame, MainPanel mainPanel, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
 		cardLayout = new CardLayout();
 		this.setLayout(cardLayout);
-  
-		homePanel = new HomePanel();
+
+		homePanel = new HomePanel(memberVO);
+
 		recommendPanel = new RecommendPanel();
 		searchPanel = new SearchPanel();
 		settingPanel = new SettingPanel(this);
