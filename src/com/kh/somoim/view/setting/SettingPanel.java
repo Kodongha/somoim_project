@@ -12,9 +12,22 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.login.LoginPanel;
+import com.kh.somoim.view.main.CenterPanel;
+
 public class SettingPanel extends JPanel {
-	public SettingPanel() {
-		// TODO Auto-generated constructor stub
+	
+	private JPanel thisPanel;
+	private LoginPanel logionpanel;
+	
+	public SettingPanel(CenterPanel panel) {
+		
+		
+      
+		
+		this.thisPanel = this;
+
 		this.setLayout(new GridLayout(3, 1));
 
 		this.setBackground(Color.WHITE);
@@ -25,7 +38,7 @@ public class SettingPanel extends JPanel {
 
 		info.setLayout(new GridLayout(1,2));
 
-		Image profilepic = new ImageIcon("images/프로필이미지.PNG").getImage().getScaledInstance(150, 150, 0);
+		Image profilepic = new ImageIcon("images/으누profile.PNG").getImage().getScaledInstance(150, 150, 0);
 		JLabel profile = new JLabel(new ImageIcon(profilepic));
 
 
@@ -94,9 +107,9 @@ public class SettingPanel extends JPanel {
 
 
 				if(result.equals("abc")) {
-
-						
-					new ChangePanel();
+					
+					panel.getCardLayout().show(panel.getInfomationCorrect().getParent(), "infomationCorrect");
+ 
 					
 					
 					
@@ -107,18 +120,28 @@ public class SettingPanel extends JPanel {
 			}
 		});
 
-
-
+	
+		JButton ok= new JButton("확인");
+		
+		
 		button.addActionListener(new  ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
 
-				String warning= "탈퇴 후에는 "+inputemail+"로 다시 가입할 수 없으며\n 이메일과 데이터는 복구할 수 없습니다.";
+				String warning= "탈퇴 후에는 "+inputemail+"로 다시 가입할 수 없으며\n 이메일과 데이터는 복구할 수 없습니다.\n 정말로 탈퇴 하시겠습니까?";
 
-				JOptionPane.showConfirmDialog(null, warning,"경고", JOptionPane.INFORMATION_MESSAGE);
+			int result=	JOptionPane.showConfirmDialog(null, warning, "탈퇴할고얌?", JOptionPane.YES_NO_OPTION);
 
+				
+				if(result==JOptionPane.YES_OPTION) {
+				//	new CHANGE_PANEL(mainframe,thisPanel,logionpanel );
+					
+				}
+				
+				
+				
 
 			}
 		});
@@ -131,10 +154,15 @@ public class SettingPanel extends JPanel {
 
 		info.add(profile);
 		info.add(labelgroup);
-
+	
 
 		this.add(info);
 		this.add(list);
 		this.add(out);
 	}
+	
+	
+
+		
+
 }

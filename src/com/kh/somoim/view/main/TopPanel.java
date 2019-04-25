@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import com.kh.somoim.login.model.vo.MemberVO;
+import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class TopPanel extends JPanel {
 
@@ -21,7 +22,7 @@ public class TopPanel extends JPanel {
 	private JLabel profilePointLabel;
 	private JLabel messengerLabel;
 	
-	public TopPanel(JPanel mainPanel, MemberVO memberVO) {
+	public TopPanel(MainFrame mainFrame, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
 		
 		System.out.println(memberVO);

@@ -15,21 +15,22 @@ public class MainPanel extends JPanel{
 
 	public MainPanel(MainFrame mainFrame, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
-		
+		       
+		mainFrame.setTitle("aaa");
 		this.setLayout(new BorderLayout());
 		System.out.println("mainPanel in");
 		
-		// ¾ÆÀÌÄÜ ³Ö±â!
+		// ì•„ì´ì½˜ ë„£ê¸°!
 		
-		// »ó´Ü/Áß´Ü/ÇÏ´Ü ÆĞ³Î »ı¼º
+		// ìƒë‹¨/ì¤‘ë‹¨/í•˜ë‹¨ íŒ¨ë„ ìƒì„±
 		topPanel = new TopPanel(this, memberVO);
 		centerPanel = new CenterPanel(mainFrame, this, memberVO);
 		bottomPanel = new BottomPanel(this);
 
-		// »ó´Ü,Áß¾Ó,ÇÏ´Ü ÇÁ·¹ÀÓ¿¡ Ãß°¡
-		this.add(topPanel, BorderLayout.NORTH);		// »ó´Ü ÆĞ³Î
-		this.add(centerPanel, BorderLayout.CENTER);	// Áß¾Ó ÆĞ³Î
-		this.add(bottomPanel, BorderLayout.SOUTH);	// ÇÏ´Ü ÆĞ³Î
+		// ìƒë‹¨,ì¤‘ì•™,í•˜ë‹¨ í”„ë ˆì„ì— ì¶”ê°€
+		this.add(topPanel, BorderLayout.NORTH);		// ìƒë‹¨ íŒ¨ë„
+		this.add(centerPanel, BorderLayout.CENTER);	// ì¤‘ì•™ íŒ¨ë„
+		this.add(bottomPanel, BorderLayout.SOUTH);	// í•˜ë‹¨ íŒ¨ë„
 		
 	}
 

@@ -9,6 +9,7 @@ import com.kh.somoim.view.home.HomePanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 import com.kh.somoim.view.recommend.RecommendPanel;
 import com.kh.somoim.view.search.SearchPanel;
+import com.kh.somoim.view.setting.InfomationCorrect;
 import com.kh.somoim.view.setting.SettingPanel;
 
 public class CenterPanel extends JPanel{
@@ -18,23 +19,25 @@ public class CenterPanel extends JPanel{
 	private RecommendPanel recommendPanel;
 	private SearchPanel searchPanel;
 	private SettingPanel settingPanel;
-	
-	
-	
+	private InfomationCorrect infomationCorrect;
+
 	public CenterPanel(MainFrame mainFrame, MainPanel mainPanel, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
 		cardLayout = new CardLayout();
 		this.setLayout(cardLayout);
 
 		homePanel = new HomePanel(memberVO);
+
 		recommendPanel = new RecommendPanel();
 		searchPanel = new SearchPanel();
-		settingPanel = new SettingPanel();
+		settingPanel = new SettingPanel(this);
+		infomationCorrect = new InfomationCorrect(this);    
 		
 		this.add(homePanel, "home");
 		this.add(recommendPanel, "recommend");
 		this.add(searchPanel, "search");
 		this.add(settingPanel, "setting");
+		this.add(infomationCorrect, "infomationCorrect");
 		
 	}
 
@@ -107,4 +110,13 @@ public class CenterPanel extends JPanel{
 	public void setSettingPanel(SettingPanel settingPanel) {
 		this.settingPanel = settingPanel;
 	}
+
+	public InfomationCorrect getInfomationCorrect() {
+		return infomationCorrect;
+	}
+
+	public void setInfomationCorrect(InfomationCorrect infomationCorrect) {
+		this.infomationCorrect = infomationCorrect;
+	}
+	
 }

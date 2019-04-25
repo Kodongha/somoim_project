@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.view.login.LoginPanel;
+import com.kh.somoim.view.main.MainPanel;
 
 public class MainFrame extends JFrame {
 	
@@ -15,10 +17,12 @@ public class MainFrame extends JFrame {
 		this.setBounds(200, 30, 500, 800);
 		this.setLayout(new BorderLayout());
 
-		this.add(new LoginPanel(this));
+		
+//		this.add(new LoginPanel(this));
 //		this.add(new TermsOfServicePanel());
 //		this.add(new signupPage(this));
-//		this.add(new MainPanel(this));
+		MemberVO memberVO = new MemberVO();
+		this.add(new MainPanel(this, memberVO));
 		
 		// Frame ¼³Á¤
 		this.setResizable(false);
