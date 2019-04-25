@@ -1,15 +1,24 @@
 package com.kh.somoim.home.model.dao;
 
+import java.util.ArrayList;
+
+import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.util.network.ClientConnector;
 
 public class HomeDAO {
 
-	public void getMyClubList(MemberVO memberVO) {
+	public ArrayList<ClubVO> getMyClubList(MemberVO memberVO) {
 		// TODO Auto-generated method stub
 		System.out.println("HomeDAO.getMyClubList in!");
 		
-		new ClientConnector().sendServer("HomeDAO.getMyClubList", memberVO);
+		ArrayList<ClubVO> myClubList = (ArrayList<ClubVO>) new ClientConnector().sendServer("HomeDAO.getMyClubList", memberVO);
+		System.out.println(myClubList);
+		for(ClubVO clubVO : myClubList) {
+			System.out.println(clubVO);
+		}
+		
+		return myClubList;
 	}
 
 }

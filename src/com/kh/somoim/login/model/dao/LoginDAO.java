@@ -7,8 +7,7 @@ public class LoginDAO {
 
 	public MemberVO checkAccount(MemberVO memberVO) {
 		System.out.println("LoginDAO.checkAccount in!");
-		MemberVO responseMemberVO; 
-		responseMemberVO = (MemberVO)new ClientConnector().sendServer("LoginDAO.checkAccount", memberVO);
+		MemberVO responseMemberVO = (MemberVO)new ClientConnector().sendServer("LoginDAO.checkAccount", memberVO);
 		
 		return responseMemberVO; 
 	}
