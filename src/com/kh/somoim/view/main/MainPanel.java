@@ -20,11 +20,10 @@ public class MainPanel extends JPanel{
 		System.out.println("mainPanel in");
 		
 		// 아이콘 넣기!
-		System.out.println("aaa");
 		
 		// 상단/중단/하단 패널 생성
 		topPanel = new TopPanel(this, memberVO);
-		centerPanel = new CenterPanel();
+		centerPanel = new CenterPanel(mainFrame, this, memberVO);
 		bottomPanel = new BottomPanel(this);
 
 		// 상단,중앙,하단 프레임에 추가

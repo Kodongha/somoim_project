@@ -10,8 +10,6 @@ public class LoginController {
 	public MemberVO checkAccount(String id, String password) {
 		System.out.println("LoginController.checkAccount in!");
 		
-		boolean flag = true;
-		
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId(id);
 		memberVO.setPassword(password);
