@@ -18,11 +18,11 @@ public class MainFrame extends JFrame {
 		this.setLayout(new BorderLayout());
 
 		
-//		this.add(new LoginPanel(this));
+		this.add(new LoginPanel(this));
 //		this.add(new TermsOfServicePanel());
 //		this.add(new signupPage(this));
-		MemberVO memberVO = new MemberVO();
-		this.add(new MainPanel(this, memberVO));
+//		MemberVO memberVO = new MemberVO();
+//		this.add(new MainPanel(this, memberVO));
 		
 		// Frame ¼³Á¤
 		this.setResizable(false);

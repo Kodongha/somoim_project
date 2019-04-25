@@ -98,6 +98,8 @@ this.setLayout(new BorderLayout());
 				MemberVO memberVO = loginController.checkAccount(idTextField.getText(), pwdTextField.getText());
 				if(memberVO != null) {
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new MainPanel(mainFrame, memberVO));
+				} else {
+					System.out.println("로그인 실패");
 				}
 			}
 		});
