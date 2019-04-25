@@ -44,7 +44,7 @@ public class TopPanel extends JPanel {
 		
 		profilePointLabel = new JLabel(String.valueOf(memberVO.getPoint()));
 		profilePointLabel.setBounds(360, 25, 50, 15);
-		
+		 
 		messengerLabel = new JLabel("ยสม๖วิ");
 		messengerLabel.setBounds(360, 40, 50, 18);
 		messengerLabel.setBorder(new BevelBorder(BevelBorder.RAISED));
