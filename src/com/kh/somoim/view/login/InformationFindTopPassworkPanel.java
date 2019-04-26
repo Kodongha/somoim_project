@@ -6,9 +6,9 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class InformationFindTopPanel extends JPanel {
+public class InformationFindTopPassworkPanel extends JPanel {
 	
-	public InformationFindTopPanel() {
+	public InformationFindTopPassworkPanel() {
 		
 		this.setLayout(null);
 		this.setBackground(Color.orange);
@@ -16,7 +16,7 @@ public class InformationFindTopPanel extends JPanel {
 		
 		
 		
-		JLabel informationFindTopPanelLabel = new JLabel(" < 정보 찾기");
+		JLabel informationFindTopPanelLabel = new JLabel(" < 비밀번호 찾기");
 		informationFindTopPanelLabel.setForeground(Color.WHITE); //라벨 글씨색변경
 		informationFindTopPanelLabel.setFont(informationFindTopPanelLabel  //라벨 글씨 크기 조절
 											.getFont().deriveFont(15.0f));
