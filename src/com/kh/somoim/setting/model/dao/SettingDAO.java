@@ -16,7 +16,7 @@ public class SettingDAO {
 	public void setInformation(MemberVO memberVO) {
 		
 
-	new ClientConnector().sendServer("SettingDAO.setInformation", memberVO);
+	//new ClientConnector().sendServer("SettingDAO.setInformation", memberVO);
 		
 		
 		

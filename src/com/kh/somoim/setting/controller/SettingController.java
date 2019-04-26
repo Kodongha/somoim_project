@@ -14,7 +14,9 @@ public class SettingController {
 			int day,String text4,String text5,String locallist,String gender) {
 
 		memberVO.setEmail(text);
-		memberVO.setPassword(text2);
+		if(text2 != null) {
+			memberVO.setPassword(text2);
+		}
 		memberVO.setName(text4);
 		memberVO.setPhoneNumber(text5);
 		String year1 = String.valueOf(year);
