@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import com.kh.somoim.login.model.vo.MemberVO;
+import com.kh.somoim.setting.controller.SettingController;
 import com.kh.somoim.view.main.CenterPanel;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
@@ -27,10 +28,11 @@ public class InfomationCorrect extends JPanel {
 	private MainPanel mainpanel;
 	private MainFrame mainframe;
 	private CenterPanel centerPanel;
-
+	//private String passwordStr;
+	
 	public InfomationCorrect(CenterPanel centerPanel, MemberVO memberVO) {
 		this.centerPanel = centerPanel;
-		
+		SettingController settingController = new SettingController();
 		
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
@@ -68,7 +70,13 @@ public class InfomationCorrect extends JPanel {
 		result.add(new JLabel("                비밀번호 변경:"));
 		
 		JPasswordField text2 = new JPasswordField(15);
-
+	/*	
+		
+		char[] pass = text2.getPassword();
+		for(int i=0; i<pass.length; i++) {
+			passwordStr += pass[i];
+		}
+		*/
 		result.add(text2);
 		
 		JLabel passwordcheck =new JLabel();
@@ -89,6 +97,9 @@ public class InfomationCorrect extends JPanel {
 
 		text4.setText(memberVO.getName());
 		
+		String newname;
+		
+		
 		result.add(text4);
 		
 		
@@ -105,7 +116,10 @@ public class InfomationCorrect extends JPanel {
 
 		SpinnerNumberModel numberModel1 = new SpinnerNumberModel(year1, 1930, 2010, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner1 = new JSpinner(numberModel1);
-	
+		
+		
+		
+		
 		
 		String month= memberVO.getBirth().substring(4, 6);
 		int month1=Integer.parseInt(month);
@@ -198,12 +212,12 @@ public class InfomationCorrect extends JPanel {
 		
 		String[] cities = {"서울", "대잔", "대구", "부산", "경기", "강원", "인천", "제주"};
 		
-		JComboBox animalList = new JComboBox<>(cities);
+		JComboBox locallist = new JComboBox<>(cities);
 	
-		animalList.setBackground(Color.white);
+		locallist.setBackground(Color.white);
 		
-		animalList.setSelectedItem(memberVO.getAddress());
-		result.add(animalList);
+		locallist.setSelectedItem(memberVO.getAddress());
+		result.add(locallist);
 
 	
 		
@@ -218,16 +232,40 @@ public class InfomationCorrect extends JPanel {
 		next.setBackground(Color.ORANGE);
 		result3.add(next);
 
-		
-		
-		
+	
 		next.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-		
 			
+				
+				int year=(int)numberModel1.getValue();
+				int month=(int)numberModel2.getValue();
+				int day=(int)numberModel3.getValue();
+				
+				String gender = null;
+				
+				
+					  if(man.isSelected()){
+						 gender=man.getText();
+				        }
+					 if(woman.isSelected()) {
+						  
+						  gender=woman.getText();
+						  
+					  }
+				String passwordStr="";
+						
+						char[] pass = text2.getPassword();
+						for(int i=0; i<pass.length; i++) {
+							passwordStr += pass[i];
+						}
+					 
+				
+				settingController.setInformation(memberVO,text.getText(),  passwordStr ,year,month,day,text4.getText(),
+						text5.getText(),locallist.getSelectedItem().toString(),gender);
 				centerPanel.getCardLayout().show(centerPanel.getSettingPanel().getParent(), "setting");
+				
 				
 			}
 		});

@@ -135,10 +135,7 @@ public class SettingPanel extends JPanel {
 
 			int result=	JOptionPane.showConfirmDialog(null, warning, "Å»ÅðÇÒ°í¾ä?", JOptionPane.YES_NO_OPTION);
 
-//			                       ChangPanelUtil cp= new ChangPanelUtil(null, out);	
-			
-			
-				if(result==JOptionPane.YES_OPTION) {
+		if(result==JOptionPane.YES_OPTION) {
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, mainpanel,new LoginPanel(mainFrame) );
 					
 				}
