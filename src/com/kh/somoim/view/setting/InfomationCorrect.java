@@ -1,14 +1,12 @@
 package com.kh.somoim.view.setting;
 
-import javax.swing.JPanel;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -19,8 +17,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
-import com.kh.somoim.util.event.CenterPanelChangeEventUtil;
-import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.view.main.CenterPanel;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
@@ -31,7 +28,7 @@ public class InfomationCorrect extends JPanel {
 	private MainFrame mainframe;
 	private CenterPanel centerPanel;
 
-	public InfomationCorrect(CenterPanel centerPanel) {
+	public InfomationCorrect(CenterPanel centerPanel, MemberVO memberVO) {
 		this.centerPanel = centerPanel;
 		
 		
@@ -56,8 +53,9 @@ public class InfomationCorrect extends JPanel {
 		result.add(new JLabel("                이메일: "));
 		
 		JTextField text = new JTextField(15);
-		text.setLocation(20,70);
-		text.setSize(100, 100);
+
+		text.setText(memberVO.getEmail());
+		
 	
 		result.add(text);
 
@@ -67,23 +65,19 @@ public class InfomationCorrect extends JPanel {
 		JLabel password =new JLabel();
 		password.setLocation(10,80);
 		password.setSize(100,100);
-		result.add(new JLabel("                비밀번호:"));
+		result.add(new JLabel("                비밀번호 변경:"));
 		
 		JPasswordField text2 = new JPasswordField(15);
-		text.setLocation(20,900);
-		text.setSize(100, 100);
-		
+
 		result.add(text2);
 		
 		JLabel passwordcheck =new JLabel();
 		passwordcheck.setLocation(10,80);
 		passwordcheck.setSize(100,100);
-		result.add(new JLabel("                비밀번호 확인:"));
+		result.add(new JLabel("                비밀번호 변경확인:"));
 		
 		JPasswordField text3 = new JPasswordField(15);
-		text.setLocation(20,900);
-		text.setSize(100, 100);
-		
+
 		result.add(text3);
 		
 		
@@ -92,8 +86,8 @@ public class InfomationCorrect extends JPanel {
 		name.setSize(100,100);
 		result.add(new JLabel("                이름:"));
 		JTextField text4 = new JTextField(15);
-		text.setLocation(20,900);
-		text.setSize(100, 100);
+
+		text4.setText(memberVO.getName());
 		
 		result.add(text4);
 		
@@ -103,14 +97,32 @@ public class InfomationCorrect extends JPanel {
 		birth.setLocation(10,80);
 		birth.setSize(100,100);
 		result.add(new JLabel("                생년월일:"));
+		
+		String year= memberVO.getBirth().substring(0, 4);
+		int year1=Integer.parseInt(year);
+		
+		
 
-		SpinnerNumberModel numberModel1 = new SpinnerNumberModel(1990, 1930, 2010, 1);	// 시작할 값, 최소값, 최대값, 증가값
+		SpinnerNumberModel numberModel1 = new SpinnerNumberModel(year1, 1930, 2010, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner1 = new JSpinner(numberModel1);
 	
-		SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1, 1, 12, 1);	// 시작할 값, 최소값, 최대값, 증가값
+		
+		String month= memberVO.getBirth().substring(4, 6);
+		int month1=Integer.parseInt(month);
+		
+		
+		
+		SpinnerNumberModel numberModel2 = new SpinnerNumberModel(month1, 1, 12, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner2 = new JSpinner(numberModel2);
+		
+		
+		
+		String day= memberVO.getBirth().substring(6, 8);
+		int day1=Integer.parseInt(day);
+		
+		
 
-		SpinnerNumberModel numberModel3 = new SpinnerNumberModel(1, 1, 31, 1);	// 시작할 값, 최소값, 최대값, 증가값
+		SpinnerNumberModel numberModel3 = new SpinnerNumberModel(day1, 1, 31, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner3 = new JSpinner(numberModel3);
 	
 		
@@ -132,12 +144,25 @@ public class InfomationCorrect extends JPanel {
 		
 		JRadioButton man = new JRadioButton("남");
 		man.setBackground(Color.WHITE);
+		ButtonModel model = man.getModel();
 		JRadioButton woman = new JRadioButton("여");
 		woman.setBackground(Color.WHITE);
+		ButtonModel model2 = woman.getModel();
 		ButtonGroup group= new ButtonGroup();
 		group.add(man);
 		group.add(woman);
+		String manstr="남";
+		String womanstr="여";
 		
+		
+		
+		if(memberVO.getGender().equals(manstr)){
+		man.setSelected(true);
+		}
+		else {
+			
+			woman.setSelected(true);
+		}
 		
 		
 		JPanel groupPanel = new JPanel();
@@ -158,9 +183,8 @@ public class InfomationCorrect extends JPanel {
 		result.add(new JLabel("                핸드폰 번호:"));
 		
 		JTextField text5 = new JTextField(15);
-		text.setLocation(20,900);
-		text.setSize(100, 100);
-		
+	
+		text5.setText(memberVO.getPhoneNumber());
 		result.add(text5);
 		
 		
@@ -177,6 +201,8 @@ public class InfomationCorrect extends JPanel {
 		JComboBox animalList = new JComboBox<>(cities);
 	
 		animalList.setBackground(Color.white);
+		
+		animalList.setSelectedItem(memberVO.getAddress());
 		result.add(animalList);
 
 	
