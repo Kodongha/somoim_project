@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.view.main.BottomPanel;
 import com.kh.somoim.view.main.CenterPanel;
 import com.kh.somoim.view.main.TopPanel;
@@ -14,7 +15,7 @@ public class ClubMainPanel extends JPanel{
 	ClubTopPanel clubtopPanel;
 	ClubCenterPanel clubcenterPanel;
 
-	public ClubMainPanel(MainFrame mainFrame) {
+	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO) {
 		
 		mainFrame.setTitle("club");
 		this.setLayout(new BorderLayout());
