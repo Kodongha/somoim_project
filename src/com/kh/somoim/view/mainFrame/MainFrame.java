@@ -14,7 +14,7 @@ public class MainFrame extends JFrame {
 		// TODO Auto-generated constructor stub
 		// BorderLayout 설정
 		super("소확행");
-		this.setBounds(200, 30, 500, 800);
+		this.setBounds(512, 50, 500, 800);
 		this.setLayout(new BorderLayout());
 
 		

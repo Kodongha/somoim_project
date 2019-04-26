@@ -14,9 +14,6 @@ public class HomeDAO {
 		
 		ArrayList<ClubVO> myClubList = (ArrayList<ClubVO>) new ClientConnector().sendServer("HomeDAO.getMyClubList", memberVO);
 		System.out.println(myClubList);
-		for(ClubVO clubVO : myClubList) {
-			System.out.println(clubVO);
-		}
 		
 		return myClubList;
 	}

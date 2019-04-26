@@ -17,13 +17,10 @@ public class MainPanel extends JPanel{
 	
 	public MainPanel(MainFrame mainFrame, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
-		       
-		mainFrame.setTitle("aaa");
 		this.setLayout(new BorderLayout());
 		System.out.println("mainPanel in");
 		
 		// 아이콘 넣기!
-		System.out.println("aaa");
 		
 		// 상단/중단/하단 패널 생성
 		topPanel = new TopPanel(mainFrame,memberVO);

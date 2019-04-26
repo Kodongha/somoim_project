@@ -20,7 +20,7 @@ public class ClientConnector {
 		
 		final String SERVER_IP = "127.0.0.1";
 		final int PORT = 7777;
-		Socket socket;
+		Socket socket = null;
 		ObjectOutputStream oos = null;
 		ObjectInputStream ois = null;
 		Object responseObj = null;
@@ -41,6 +41,7 @@ public class ClientConnector {
 			
 			/* 3. 서버에서 처리완료하여 전달한 값을 받아온다. */
 			responseObj = ois.readObject();
+	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -55,6 +56,10 @@ public class ClientConnector {
 				
 				if(ois != null) {
 					ois.close();
+				}
+				
+				if(socket != null) {
+					socket.close();
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
