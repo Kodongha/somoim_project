@@ -15,22 +15,15 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class InformationFindPanel extends JPanel {
 	
-	private MainFrame mainFrame;
-	private JPanel informationFindPanel;
-	private JPanel informationFindTopPanel; 
-	
-	
 	public InformationFindPanel(MainFrame mainFrame ) {
-		
-	
 		
 		this.setLayout(null);
 		this.setBackground(Color.white);
 		
 		
 		
-		JLabel informationFind = new JLabel("< 정보 찾기");
-		informationFind.setBounds(160, 80, 100,25);
+		/*JLabel informationFind = new JLabel("< 정보 찾기");
+		informationFind.setBounds(180, 30, 100,25);*/
 		
 		JLabel idImage = new JLabel(new ImageIcon(new ImageIcon("images/id.PNG").getImage().getScaledInstance(75, 60, 0)));
 		idImage.setBounds(100, 440, 100, 200);
@@ -76,13 +69,13 @@ public class InformationFindPanel extends JPanel {
 		
 		
 		InformationFindTopPanel  informationFindTopPanel = new InformationFindTopPanel();
-		informationFindTopPanel.setBounds(0, 0, 500, 50);
+		informationFindTopPanel.setBounds(0, 0, 500, 35);
 		//informationFindTopPanel.setPreferredSize(new Dimension(500, 60)); //상단 패널조절
 		this.add(informationFindTopPanel);
 		
+		
+		
 
 	}
-	
-	
 
 }
