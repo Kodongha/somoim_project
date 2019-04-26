@@ -53,8 +53,7 @@ public class InfomationCorrect extends JPanel {
 		result.add(new JLabel("                이메일: "));
 		
 		JTextField text = new JTextField(15);
-	/*	text.setLocation(20,70);
-		text.setSize(100, 100);*/
+
 		text.setText(memberVO.getEmail());
 		
 	
@@ -69,9 +68,7 @@ public class InfomationCorrect extends JPanel {
 		result.add(new JLabel("                비밀번호 변경:"));
 		
 		JPasswordField text2 = new JPasswordField(15);
-	/*	text.setLocation(20,900);
-		text.setSize(100, 100);
-		*/
+
 		result.add(text2);
 		
 		JLabel passwordcheck =new JLabel();
@@ -80,9 +77,7 @@ public class InfomationCorrect extends JPanel {
 		result.add(new JLabel("                비밀번호 변경확인:"));
 		
 		JPasswordField text3 = new JPasswordField(15);
-		/*text.setLocation(20,900);
-		text.setSize(100, 100);
-		*/
+
 		result.add(text3);
 		
 		
@@ -91,8 +86,7 @@ public class InfomationCorrect extends JPanel {
 		name.setSize(100,100);
 		result.add(new JLabel("                이름:"));
 		JTextField text4 = new JTextField(15);
-		/*text.setLocation(20,900);
-		text.setSize(100, 100);*/
+
 		text4.setText(memberVO.getName());
 		
 		result.add(text4);
@@ -159,12 +153,15 @@ public class InfomationCorrect extends JPanel {
 		group.add(woman);
 		String manstr="남";
 		String womanstr="여";
+		
+		
+		
 		if(memberVO.getGender().equals(manstr)){
 		man.setSelected(true);
 		}
 		else {
 			
-			woman.setSelected( true);
+			woman.setSelected(true);
 		}
 		
 		
@@ -186,9 +183,7 @@ public class InfomationCorrect extends JPanel {
 		result.add(new JLabel("                핸드폰 번호:"));
 		
 		JTextField text5 = new JTextField(15);
-		/*text.setLocation(20,900);
-		text.setSize(100, 100);
-		*/
+	
 		text5.setText(memberVO.getPhoneNumber());
 		result.add(text5);
 		
