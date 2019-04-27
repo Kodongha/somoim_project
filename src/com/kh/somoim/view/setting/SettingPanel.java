@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.kh.somoim.login.model.vo.MemberVO;
+import com.kh.somoim.setting.controller.SettingController;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.login.LoginPanel;
 import com.kh.somoim.view.main.CenterPanel;
@@ -20,12 +21,11 @@ import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class SettingPanel extends JPanel {
-	
+
 	private JPanel thisPanel;
-	
-	
-  	public SettingPanel(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,MemberVO memberVO) {
-		
+
+	public SettingPanel(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,MemberVO memberVO) {
+		SettingController settingController = new SettingController();
 		this.thisPanel = this;
 
 		this.setLayout(new GridLayout(3, 1));
@@ -41,34 +41,19 @@ public class SettingPanel extends JPanel {
 		Image profilepic = new ImageIcon("images/으누profile.PNG").getImage().getScaledInstance(150, 150, 0);
 		JLabel profile = new JLabel(new ImageIcon(profilepic));
 
-
 		JLabel labelgroup= new JLabel();
 
-
-		 
-		 
-	
-
 		labelgroup.setLayout(new GridLayout(4, 1));
-		
-		
+
 		JLabel name= new JLabel("   이름:  "+ memberVO.getName());
-
 		JLabel email= new JLabel("   이메일:  "+memberVO.getEmail());
-
 		JLabel birth= new JLabel("   생년월일:  "+memberVO.getBirth());
-
 		JLabel phone= new JLabel("   휴대폰 번호:  "+memberVO.getPhoneNumber());
-
 
 		labelgroup.add(name);
 		labelgroup.add(email);
 		labelgroup.add(birth);
 		labelgroup.add(phone);
-
-
-
-
 
 		JPanel list = new JPanel();
 		list.setLayout(new GridLayout(3, 1));
@@ -85,84 +70,53 @@ public class SettingPanel extends JPanel {
 		JPanel out= new JPanel();
 		out.setBackground(Color.white);
 
-
-
 		JButton button= new JButton("회원탈퇴");
 		button.setBackground(Color.orange);
-
 
 		out.add(button);
 
 		button.setBounds(70, 100, 150, 150);
 
-
-
 		infocorrect.addActionListener(new  ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-
 				String result = JOptionPane.showInputDialog(null, memberVO.getEmail() +  "\n비밀번호 입력", "개인정보 수정",JOptionPane.INFORMATION_MESSAGE);
-
-
 				if(result.equals(memberVO.getPassword())) {
-					
 					centerPanel.getCardLayout().show(centerPanel.getInfomationCorrect().getParent(), "infomationCorrect");
- 
-					
-					
-					
-
 				}
-
-
 			}
 		});
 
-	
-	
-		
-		
-		
 		button.addActionListener(new  ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-
 				String warning= "탈퇴 후에는 "+memberVO.getEmail()+"로 다시 가입할 수 없으며\n 이메일과 데이터는 복구할 수 없습니다.\n 정말로 탈퇴 하시겠습니까?";
+				int result=	JOptionPane.showConfirmDialog(null, warning, "탈퇴할고얌?", JOptionPane.YES_NO_OPTION);
 
-			int result=	JOptionPane.showConfirmDialog(null, warning, "탈퇴할고얌?", JOptionPane.YES_NO_OPTION);
-
-		if(result==JOptionPane.YES_OPTION) {
+				if(result==JOptionPane.YES_OPTION) {
+					settingController.removeMember(memberVO);
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, mainpanel,new LoginPanel(mainFrame) );
-					
 				}
-				
-				
-				
-
 			}
 		});
-
 
 		list.add(infocorrect);
 		list.add(notify);
 		list.add(version);
 
-
 		info.add(profile);
 		info.add(labelgroup);
-	
 
 		this.add(info);
 		this.add(list);
 		this.add(out);
 	}
-	
-	
 
-		
+
+
+
 
 }

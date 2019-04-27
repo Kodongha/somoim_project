@@ -28,7 +28,6 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 public class HomePanel extends JPanel {
 
 	JLabel[] clubDetailLabel = null;
-	int i = 0;
 
 	public HomePanel(MainFrame mainFrame, MainPanel mainpanel, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub

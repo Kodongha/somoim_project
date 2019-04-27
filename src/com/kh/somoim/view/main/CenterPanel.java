@@ -28,7 +28,7 @@ public class CenterPanel extends JPanel{
 		this.setLayout(cardLayout);
 		
 		homePanel = new HomePanel(mainFrame, mainpanel, memberVO);
-		recommendPanel = new RecommendPanel();
+		recommendPanel = new RecommendPanel(mainFrame, mainpanel, memberVO);
 		searchPanel = new SearchPanel();
 		settingPanel = new SettingPanel(mainFrame, this, mainpanel, memberVO);
 		infomationCorrect = new InfomationCorrect(this, memberVO);    
