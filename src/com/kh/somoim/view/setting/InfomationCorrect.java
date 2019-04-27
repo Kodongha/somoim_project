@@ -45,10 +45,6 @@ public class InfomationCorrect extends JPanel {
 		result.setBounds(50,100,350,400);
 		result.setBackground(Color.WHITE);
 
-
-
-
-
 		JLabel email =new JLabel();
 		email.setLocation(10,50);
 		email.setSize(200,100);
@@ -59,11 +55,7 @@ public class InfomationCorrect extends JPanel {
 
 		text.setText(memberVO.getEmail());
 
-
 		result.add(text);
-
-
-
 
 		JLabel password =new JLabel();
 		password.setLocation(10,80);
@@ -97,8 +89,6 @@ public class InfomationCorrect extends JPanel {
 
 		result.add(text4);
 
-
-
 		JLabel birth =new JLabel();
 		birth.setLocation(10,80);
 		birth.setSize(100,100);
@@ -107,35 +97,20 @@ public class InfomationCorrect extends JPanel {
 		String year= memberVO.getBirth().substring(0, 4);
 		int year1=Integer.parseInt(year);
 
-
-
 		SpinnerNumberModel numberModel1 = new SpinnerNumberModel(year1, 1930, 2010, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner1 = new JSpinner(numberModel1);
-
-
-
-
 
 		String month= memberVO.getBirth().substring(4, 6);
 		int month1=Integer.parseInt(month);
 
-
-
 		SpinnerNumberModel numberModel2 = new SpinnerNumberModel(month1, 1, 12, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner2 = new JSpinner(numberModel2);
-
-
 
 		String day= memberVO.getBirth().substring(6, 8);
 		int day1=Integer.parseInt(day);
 
-
-
 		SpinnerNumberModel numberModel3 = new SpinnerNumberModel(day1, 1, 31, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner3 = new JSpinner(numberModel3);
-
-
-
 
 		JPanel groupPanel2 = new JPanel();
 		groupPanel2.add(spinner1);
@@ -163,8 +138,6 @@ public class InfomationCorrect extends JPanel {
 		String manstr="남";
 		String womanstr="여";
 
-
-
 		if(memberVO.getGender().equals(manstr)){
 			man.setSelected(true);
 		}
@@ -173,18 +146,12 @@ public class InfomationCorrect extends JPanel {
 			woman.setSelected(true);
 		}
 
-
 		JPanel groupPanel = new JPanel();
 		groupPanel.add(man);
 		groupPanel.add(woman);
 		groupPanel.setBackground(Color.WHITE);
 
-
 		result.add(groupPanel);
-
-
-
-
 
 		JLabel phonenumber =new JLabel();
 		passwordcheck.setLocation(10,80);
@@ -196,14 +163,10 @@ public class InfomationCorrect extends JPanel {
 		text5.setText(memberVO.getPhoneNumber());
 		result.add(text5);
 
-
-
 		JLabel city =new JLabel();
 		birth.setLocation(10,80);
 		birth.setSize(100,100);
 		result.add(new JLabel("                지역:"));
-
-
 
 		String[] cities = {"서울", "대잔", "대구", "부산", "경기", "강원", "인천", "제주"};
 
@@ -214,12 +177,6 @@ public class InfomationCorrect extends JPanel {
 		locallist.setSelectedItem(memberVO.getAddress());
 		result.add(locallist);
 
-
-
-
-
-
-
 		JPanel result3= new JPanel();
 		result3.setBounds(50,550,350,50);
 		result3.setBackground(Color.WHITE);
@@ -227,39 +184,27 @@ public class InfomationCorrect extends JPanel {
 		next.setBackground(Color.ORANGE);
 		result3.add(next);
 
-
 		next.addActionListener(new ActionListener() {
-
-
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-
-
 
 				char[] pass = text2.getPassword();
 				for(int i=0; i<pass.length; i++) {
 					passwordStr += pass[i];
 				}
 
-
 				char[] pass2 = text3.getPassword();
 				for(int i=0; i<pass2.length; i++) {
 					passwordStr2 += pass2[i];
 				}
 
-
-
 				if(passwordStr.equals(passwordStr2)) {
-
 
 					int year=(int)numberModel1.getValue();
 					int month=(int)numberModel2.getValue();
 					int day=(int)numberModel3.getValue();
 
 					String gender = null;
-
 
 					if(man.isSelected()){
 						gender=man.getText();
@@ -270,98 +215,22 @@ public class InfomationCorrect extends JPanel {
 
 					}
 
-
-
-
-
-
-
-
-
-
-
 					settingController.setInformation(memberVO,text.getText(),  passwordStr ,year,month,day,text4.getText(),
 							text5.getText(),locallist.getSelectedItem().toString(),gender);
 
 					centerPanel.getCardLayout().show(centerPanel.getSettingPanel().getParent(), "setting");
 
-
-
-
 					System.out.println(memberVO);
-
 				}
-
-
 				else {
-
-
 					String nono= "비밀번호와 비밀번호 확인이 일치하지 않습니다 \n 다시 입력해주세요";
-
 					JOptionPane.showMessageDialog(null, nono);
-
-
 				}
-
-
-
-
 			}
-
-
-
-
-
-
-
 		});
-
-
-
-
-
-
-
-
-
-
-
-
 
 		this.add(result);
 		this.add(result3);
-
-
-
-
-
-
-
-
-
-
-
 	}
 
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
