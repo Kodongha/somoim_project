@@ -2,6 +2,8 @@ package com.kh.somoim.view.signup;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -13,8 +15,15 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerListModel;
 
+import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.mainFrame.MainFrame;
+
 public class UserAuthentication extends JPanel {
-	public UserAuthentication() {
+	private JPanel thisPanel;
+	
+	public UserAuthentication(MainFrame mainFrame) {
+		this.thisPanel = this;
+		
 		//레이아웃변경
 		this.setLayout(null);
 		//컬러 화이트로 변경 
@@ -141,23 +150,17 @@ public class UserAuthentication extends JPanel {
 		//다음 버튼 만들기	
 		JButton nextbutton = new JButton("다음");
 		//다음버튼 사이즈 조정 
-		nextbutton.setLocation(190,500); //위치지정
-		nextbutton.setSize(100,50); //크기지정
+		nextbutton.setLocation(136,600); //위치지정 
+		nextbutton.setSize(230,50); //크기지정  
 		//버튼 컬러 변경
 		nextbutton.setBackground(Color.ORANGE);
 		//버튼 외곽선 없애기
 		nextbutton.setBorderPainted(false);
-
-
-
-
-
-
-
-
-
-
-
+		
+		UserAuthenticationTopPanel userAuthenticationTopPanel = new UserAuthenticationTopPanel();
+		userAuthenticationTopPanel.setBounds(0, 0, 500, 35);
+		this.add(userAuthenticationTopPanel);
+	
 		this.add(name);
 		this.add(nametext);
 		this.add(birth);
@@ -172,9 +175,13 @@ public class UserAuthentication extends JPanel {
 		this.add(resultbutton);
 		this.add(nextbutton);
 		this.add(internationalnumber);
-
-
-
+		
+		nextbutton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SubscriptionInformationPanel(mainFrame));
+			}
+		});
 	}
-
 }

@@ -51,7 +51,7 @@ public class SignupPage extends JPanel{
 		JLabel so2 = new JLabel("간단한 단계를 통해 새 계정을 만들 수 있습니다 ");	
 		//하단문구 라벨 사이즈 조정 
 		so2.setLocation(100, 400); // 위치지정 
-		so2.setSize(300,150); //크기지정
+		so2.setSize(350,150); //크기지정
 		//폰트 설정 
 		so2.setFont(new Font("나눔고딕",Font.BOLD, 15)); //폰트변경 및 굵게,사이즈조정 
 		so2.setForeground(Color.GRAY); //글꼴 컬러조정
@@ -59,23 +59,12 @@ public class SignupPage extends JPanel{
 		//다음 버튼 만들기	
 		JButton nextbutton = new JButton("다음");
 		//다음버튼 사이즈 조정 
-		nextbutton.setLocation(190,500); //위치지정
+		nextbutton.setLocation(190,500); //위치지정 
 		nextbutton.setSize(100,50); //크기지정
 		//버튼 컬러 변경
 		nextbutton.setBackground(Color.ORANGE);
 		//버튼 외곽선 없애기
 		nextbutton.setBorderPainted(false);
-		
-
-
-
-
-
-
-
-
-
-
 
 		//라벨을 팬넬에 넣음 
 		this.add(signuppagelabel); //이미지
@@ -83,12 +72,11 @@ public class SignupPage extends JPanel{
 		this.add(so2);//소확행 하단 문구
 		this.add(nextbutton);//다음버튼
 
-
-
-
-
-
 		nextbutton.addActionListener(new MyMounseAdapter());
+		
+		SignupPageTopPanel signupPageTopPanel = new SignupPageTopPanel();
+		signupPageTopPanel.setBounds(0, 0, 500, 35);
+		this.add(signupPageTopPanel);
 
 /*
 		nextbutton.addActionListener(new ActionListener() {
@@ -102,7 +90,6 @@ public class SignupPage extends JPanel{
 */
 
 	}
-	
 	class MyMounseAdapter implements ActionListener{
 
 		@Override
@@ -112,6 +99,4 @@ public class SignupPage extends JPanel{
 		}
 		
 	}
-	
-
 }
