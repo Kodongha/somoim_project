@@ -4,9 +4,8 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-import com.kh.somoim.login.model.vo.MemberVO;
+import com.kh.somoim.view.club.clubMain.ClubMainPanel;
 import com.kh.somoim.view.login.LoginPanel;
-import com.kh.somoim.view.main.MainPanel;
 
 public class MainFrame extends JFrame {
 	
@@ -23,6 +22,7 @@ public class MainFrame extends JFrame {
 //		this.add(new signupPage(this));
 //		MemberVO memberVO = new MemberVO();
 //		this.add(new MainPanel(this, memberVO));
+		this.add(new ClubMainPanel(this));
 		
 		// Frame ¼³Á¤
 		this.setResizable(false);
