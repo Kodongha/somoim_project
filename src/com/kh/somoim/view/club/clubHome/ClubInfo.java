@@ -8,13 +8,18 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
+import org.omg.Messaging.SyncScopeHelper;
+
+import com.kh.somoim.home.model.vo.ClubVO;
+
 public class ClubInfo extends JPanel{
 	JLabel infoLabel;
 	JLabel memberLabel;
 	JButton joinButton;
 	JScrollPane infoScroll;
+	private String membersNumberList = "";
 		
-	public ClubInfo() {
+	public ClubInfo(ClubVO clubVO) {
 		
 		this.setLayout(null);
 		this.setBackground(Color.white);
@@ -24,7 +29,7 @@ public class ClubInfo extends JPanel{
 		this.setBorder(labelBorder);
 		
 		// 모임 정보 출력용 라벨
-		infoLabel = new JLabel("Asdads");
+		infoLabel = new JLabel(clubVO.getInformation());
 		infoLabel.setBackground(Color.gray);
 		infoLabel.setBounds(25, 20, 440, 280);
 		
@@ -38,8 +43,13 @@ public class ClubInfo extends JPanel{
 		LineBorder infoBorder = new LineBorder(Color.BLACK);
 		infoLabel.setBorder(infoBorder);
 		
-		// 모임 멤버 출력용 라벨
-		memberLabel = new JLabel("Asdads");
+		// 모임 멤버 출력용 라벨   
+		
+		for(int i = 0; i < clubVO.getMembersNumber().size(); i++) {
+			membersNumberList += Integer.toString(clubVO.getMembersNumber().get(i)) + "\r\n";
+		}
+		
+		memberLabel = new JLabel(membersNumberList);
 		memberLabel .setBackground(Color.white);
 		memberLabel .setBounds(25, 310, 440, 280);
 		

@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.view.club.clubHome.ClubInfo;
 
 public class ClubCenterPanel extends JPanel{
