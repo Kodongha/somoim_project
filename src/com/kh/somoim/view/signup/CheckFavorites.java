@@ -2,16 +2,28 @@ package com.kh.somoim.view.signup;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 
 import com.kh.somoim.view.mainFrame.MainFrame;
+import com.kh.somoim.view.signup.SignupPage.MyMounseAdapter;
 
 public class CheckFavorites extends JPanel{
 	
 	private JPanel thisPanel;
+	
+	
+	
 
 	/*private JLabel gamelabel; //게임
 	private JLabel travellabel; //여행
@@ -99,7 +111,102 @@ public class CheckFavorites extends JPanel{
 		nextButton.setBounds(137, 663, 230, 50);
 		nextButton.setBackground(Color.ORANGE);
 		this.add(nextButton);
-	  
-	}
+		
+		exerciseButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				exerciseButton.setBorder(border);
+				
+			}
+		});;
+		
+		gameButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				gameButton.setBorder(border);
+			}
+		});;		
 	
+		travelButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				travelButton.setBorder(border);
+			}
+		});;		
+	
+		petButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				petButton.setBorder(border);
+			}
+		});;		
+	
+		craftsButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				craftsButton.setBorder(border);
+			}
+		});;		
+	
+		societyButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				societyButton.setBorder(border);
+			}
+		});;		
+	
+		parentingButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				parentingButton.setBorder(border);
+			}
+		});;		
+	
+		volunteerButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				volunteerButton.setBorder(border);
+			}
+		});;		
+	
+		cookingButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				cookingButton.setBorder(border);
+			}
+		});;		
+	
+		carMotorcycleButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				carMotorcycleButton.setBorder(border);
+			}
+		});;		
+		
+		musicButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				musicButton.setBorder(border);
+			}
+		});;		
+		
+		danceButton.addMouseListener(new MouseAdapter() {
+			@Override
+				public void mouseClicked(MouseEvent e) {
+				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+				danceButton.setBorder(border);
+			}
+		});;
+	}
 }
