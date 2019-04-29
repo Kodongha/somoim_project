@@ -31,12 +31,12 @@ public class TopPanel extends JPanel {
 		this.setBackground(Color.ORANGE);
 		this.setPreferredSize(new Dimension(500,60));
 		
-		Image logo = new ImageIcon("images/logo.png").getImage().getScaledInstance(50, 50, 0);
+		Image logo = new ImageIcon("images/logo.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		logoLabel = new JLabel(new ImageIcon(logo));
 		logoLabel.setBounds(5, 5, 50, 50);
 		
 		
-		Image profilePhoto = new ImageIcon("images/myprofile.png").getImage().getScaledInstance(50, 50, 0);
+		Image profilePhoto = new ImageIcon(memberVO.getProfilePhotoPath()).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		profileLabel = new JLabel(new ImageIcon(profilePhoto));
 		profileLabel.setBounds(300, 5, 50, 50);
 		
