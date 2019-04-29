@@ -1,18 +1,25 @@
 package com.kh.somoim.view.search;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.main.CenterPanel;
+import com.kh.somoim.view.main.MainPanel;
+import com.kh.somoim.view.mainFrame.MainFrame;
+
 public class SearchAllFavorite extends JPanel{
-	public SearchAllFavorite() {
+	public SearchAllFavorite(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel) {
 		this.setLayout(null);
 		this.setLocation(100, 100); //위치
 		this.setSize(465,390); //크기
@@ -331,7 +338,22 @@ public class SearchAllFavorite extends JPanel{
 		this.add(AllFavoriteLabel);
 		this.add(AllFavoriteLabel2);
 
+	/*	exerciseJLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				if(e.getSource() == exerciseJLabel) {
 
+					FavoriteSearchClubList favoriteSearchClubPanel = new FavoriteSearchClubList(mainFrame, centerPanel, mainpanel, "");
+					favoriteSearchClubPanel.setPreferredSize(new Dimension(500, 650));
+
+					1ChangPanelUtil.CHANGE_PANEL(mainFrame, centerPanel, mainpanel, favorite);
+
+				}
+			}
+
+		});*/
 	}
 
 }
+
