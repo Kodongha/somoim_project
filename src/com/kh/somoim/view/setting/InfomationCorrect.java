@@ -20,18 +20,20 @@ import javax.swing.SpinnerNumberModel;
 
 import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.setting.controller.SettingController;
+import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.main.CenterPanel;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class InfomationCorrect extends JPanel {
 
-	private MainPanel mainpanel;
-	private MainFrame mainframe;
+	private MainPanel mainPanel;
+private MainFrame mainFrame;
 	private CenterPanel centerPanel;
-	private String passwordStr="";
-	private String passwordStr2="";
-	public InfomationCorrect(CenterPanel centerPanel, MemberVO memberVO) {
+
+	public InfomationCorrect(MainPanel mainPanel, MainFrame mainFrame,CenterPanel centerPanel, MemberVO memberVO) {
+		
+		 
 		this.centerPanel = centerPanel;
 		SettingController settingController = new SettingController();
 
@@ -187,7 +189,8 @@ public class InfomationCorrect extends JPanel {
 		next.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+			 String passwordStr="";
+			 String passwordStr2="";
 				char[] pass = text2.getPassword();
 				for(int i=0; i<pass.length; i++) {
 					passwordStr += pass[i];
@@ -215,10 +218,15 @@ public class InfomationCorrect extends JPanel {
 
 					}
 
+					
 					settingController.setInformation(memberVO,text.getText(),  passwordStr ,year,month,day,text4.getText(),
 							text5.getText(),locallist.getSelectedItem().toString(),gender);
+					
+					MainPanel newMainPanel = new MainPanel(mainFrame, memberVO);
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, newMainPanel);	 
+					
+					newMainPanel.getCenterPanel().getCardLayout().show(newMainPanel.getCenterPanel().getSettingPanel().getParent(), "setting");
 
-					centerPanel.getCardLayout().show(centerPanel.getSettingPanel().getParent(), "setting");
 
 					System.out.println(memberVO);
 				}

@@ -9,9 +9,9 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class MainPanel extends JPanel{
 
-	TopPanel topPanel;
-	CenterPanel centerPanel;
-	BottomPanel bottomPanel;
+	private TopPanel topPanel;
+	private CenterPanel centerPanel;
+	private BottomPanel bottomPanel;
 
 	
 	
@@ -21,7 +21,7 @@ public class MainPanel extends JPanel{
 		System.out.println("mainPanel in");
 		
 		// 아이콘 넣기!
-		
+	
 		// 상단/중단/하단 패널 생성
 		topPanel = new TopPanel(mainFrame,memberVO);
 		centerPanel = new CenterPanel(mainFrame, this,memberVO);
@@ -33,5 +33,43 @@ public class MainPanel extends JPanel{
 		this.add(bottomPanel, BorderLayout.SOUTH);	// 하단 패널
 		
 	}
+ 
 
+
+	public TopPanel getTopPanel() {
+		return topPanel;
+	}
+
+
+
+	public void setTopPanel(TopPanel topPanel) {
+		this.topPanel = topPanel;
+	}
+
+
+
+	public CenterPanel getCenterPanel() {
+		return centerPanel;
+	}
+
+
+
+	public void setCenterPanel(CenterPanel centerPanel) {
+		this.centerPanel = centerPanel;
+	}
+
+
+
+	public BottomPanel getBottomPanel() {
+		return bottomPanel;
+	}
+
+
+
+	public void setBottomPanel(BottomPanel bottomPanel) {
+		this.bottomPanel = bottomPanel;
+	}
+	
+	
+	
 }
