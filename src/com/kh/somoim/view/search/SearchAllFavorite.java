@@ -3,7 +3,9 @@ package com.kh.somoim.view.search;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,21 +37,15 @@ public class SearchAllFavorite extends JPanel{
 		//전체관심사 그리드레이아웃 생성 
 		AllFavoriteLabel2.setLayout(new GridLayout(6,2));//사이즈는뭘로 할지 꼭 적어줘야됨
 
-
-
-
-
-
-
 		//전체관심사 라밸 설정
 		JLabel exerciseJLabel = new JLabel();
 		exerciseJLabel.setLayout(null);
 		JLabel  travelJLabel = new JLabel();
-		 travelJLabel.setLayout(null);
+		travelJLabel.setLayout(null);
 		JLabel  petJLabel = new JLabel();
 		petJLabel.setLayout(null);
 		JLabel  gameJLabel = new JLabel();
-		 gameJLabel.setLayout(null);
+		gameJLabel.setLayout(null);
 		JLabel  craftsJLabel = new JLabel();
 		craftsJLabel.setLayout(null);
 		JLabel  societyJLabel = new JLabel();
@@ -66,53 +62,74 @@ public class SearchAllFavorite extends JPanel{
 		musicJLabel.setLayout(null);
 		JLabel  danceJLabel = new JLabel();
 		danceJLabel.setLayout(null);
-		
-		
-		
-		
+
+
+
 		//전체관심사 버튼 설정 및 사이즈 조정
-		JButton exerciseButton = new JButton();//운동.스포츠
-		exerciseButton.setBounds(10, 10, 205, 70);
-		
+		JButton exerciseButton = new JButton();
+		exerciseButton.setBounds(10, 9, 205, 45);
+
 		JButton  travelButton = new JButton();//여행.아웃도어
-		travelButton.setBounds(7, 10, 205, 70);
-		
+		travelButton.setBounds(7, 9, 205, 45);
+
 		JButton petButton = new JButton();//반려동물
-		petButton.setBounds(10, 15, 205, 75);
-		
-		JButton  gameButton = new JButton();
-		
-		JButton  craftsButton = new JButton();
-		
-		JButton  societyButton = new JButton();
-		
+		petButton.setBounds(10, 9, 205, 45);
+
+		JButton  gameButton = new JButton();//게임.오락
+		gameButton.setBounds(7, 9, 205, 45);
+
+		JButton  craftsButton = new JButton();//공예.만들기
+		craftsButton.setBounds(10, 9,205, 45);
+
+		JButton  societyButton = new JButton();//사교.인맥
+		societyButton.setBounds(7, 9, 205, 45);
+
 		JButton  parentingButton = new JButton();
-		
+		parentingButton.setBounds(10, 9,205, 45);
+
 		JButton  volunteerButton = new JButton();
-		
+		volunteerButton.setBounds(7, 9, 205, 45);
+
 		JButton  cookButton = new JButton();
-		
+		cookButton.setBounds(10, 9,205, 45);
+
 		JButton  carmotorcycleButton = new JButton();
-		
+		carmotorcycleButton.setBounds(7, 9, 205, 45);
+
 		JButton  musicButton = new JButton();
-		
+		musicButton.setBounds(10,9 ,205, 43);
+
 		JButton  danceButton = new JButton();
+		danceButton.setBounds(7, 9, 205, 43);
 
-
-		//그리드레이아웃에 설정한 라벨 add 
-		AllFavoriteLabel2.add(exerciseJLabel);
-		AllFavoriteLabel2.add(travelJLabel);
-		AllFavoriteLabel2.add(petJLabel);
-		AllFavoriteLabel.add(gameJLabel);
-		AllFavoriteLabel2.add(craftsJLabel);
-		AllFavoriteLabel2.add(societyJLabel);
-		AllFavoriteLabel2.add(parentingJLabel);
-		AllFavoriteLabel2.add(volunteerJLabel);
-		AllFavoriteLabel2.add(cookJLabel);
-		AllFavoriteLabel2.add(carmotorcycleJLabel);
-		AllFavoriteLabel2.add(musicJLabel);
-		AllFavoriteLabel2.add(danceJLabel);
 		
+		
+		
+		//전체관심사  이미지 생성  
+		Image  exerciseIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image travelIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image petIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image gameIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image craftsIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image societIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image parentingIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image volunteerIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image cookIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image carmotorcycleIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image musicIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		Image danceIcon = new ImageIcon("images/exercise.PNG").getImage().getScaledInstance(40, 40, 0);//이미지 크기
+		
+		
+		//이미지를 넣을 라벨  생성 
+		JLabel exerciseIconLabel = new JLabel(new ImageIcon(exerciseIcon));
+		
+		
+
+
+		
+		//전체관심사버튼에 이미지아이콘라벨 add
+		exerciseButton.add(exerciseIconLabel);
+
 
 
 		//전체관심사 라벨에 버튼 add
@@ -132,9 +149,24 @@ public class SearchAllFavorite extends JPanel{
 
 
 
+		//전체관심사 버튼에 이미지 삽입
+		/*	Image exerciseIcon = new ImageIcon("images/Exercise.PNG").getImage().getScaledInstance(30 30, 0);//이미지 크기
+		exerciseJLabel.add(exerciseIcon);*/
 
 
-
+		//그리드레이아웃에 설정한 라벨 add 
+		AllFavoriteLabel2.add(exerciseJLabel);
+		AllFavoriteLabel2.add(travelJLabel);
+		AllFavoriteLabel2.add(petJLabel);
+		AllFavoriteLabel2.add(gameJLabel);
+		AllFavoriteLabel2.add(craftsJLabel);
+		AllFavoriteLabel2.add(societyJLabel);
+		AllFavoriteLabel2.add(parentingJLabel);
+		AllFavoriteLabel2.add(volunteerJLabel);
+		AllFavoriteLabel2.add(cookJLabel);
+		AllFavoriteLabel2.add(carmotorcycleJLabel);
+		AllFavoriteLabel2.add(musicJLabel);
+		AllFavoriteLabel2.add(danceJLabel);
 
 
 		this.add(AllFavoriteLabel);
