@@ -19,6 +19,8 @@ public class ClubMainPanel extends JPanel{
 
 	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO) {
 		
+		System.out.println("clubVO:::::::::" + clubVO);
+		
 		mainFrame.setTitle("club");
 		this.setLayout(new BorderLayout());
 		System.out.println("club mainPanel in");
