@@ -35,7 +35,7 @@ public class SearchPanel extends JPanel {
 		searchFavorite.setBorder(new TitledBorder(new LineBorder(Color.BLACK,1)));
 
 
-		//전체관심사 위치 조정 
+		
 		
 		
 		
