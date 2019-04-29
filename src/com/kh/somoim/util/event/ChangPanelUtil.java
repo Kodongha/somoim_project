@@ -28,7 +28,7 @@ public class ChangPanelUtil {
 		mainFrame.setVisible(true);
 	}
 
-	public static void CHANGE_PANEL(MainFrame mainFrame2, ClubMainPanel clubmainPanel, JPanel oldPanel, JPanel newPanel, String Layout) {
+	public static void CHANGE_PANEL(ClubMainPanel clubmainPanel, JPanel oldPanel, JPanel newPanel, String Layout) {
 		clubmainPanel.remove(oldPanel);
 		clubmainPanel.add(newPanel, Layout);
 		clubmainPanel.revalidate();
