@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerListModel;
 
+import com.kh.somoim.signup.model.vo.SignupRequestVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
@@ -22,6 +23,7 @@ public class UserAuthentication extends JPanel {
 	private JPanel thisPanel;
 	
 	public UserAuthentication(MainFrame mainFrame) {
+		
 		this.thisPanel = this;
 		
 		//레이아웃변경
