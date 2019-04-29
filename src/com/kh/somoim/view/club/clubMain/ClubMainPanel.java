@@ -7,8 +7,12 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 
 import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.view.club.clubHome.ClubChat;
 import com.kh.somoim.view.club.clubHome.ClubHi;
 import com.kh.somoim.view.club.clubHome.ClubInfo;
+import com.kh.somoim.view.club.clubHome.clubBoard.ClubFree;
+import com.kh.somoim.view.club.clubHome.clubBoard.ClubPhoto;
+import com.kh.somoim.view.club.clubHome.clubBoard.ClubSchedule;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubMainPanel extends JPanel{
@@ -16,6 +20,7 @@ public class ClubMainPanel extends JPanel{
 	ClubTopPanel clubtopPanel;
 	ClubCenterPanel clubcenterPanel;
 	ClubInfo clubinfoPanel;
+
 	ClubHi clubHiPanel;
 
 	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO) {
@@ -27,20 +32,20 @@ public class ClubMainPanel extends JPanel{
 		this.setBackground(Color.yellow);
 		System.out.println("club mainPanel in");
 		
-		// »ó´Ü/Áß´Ü ÆĞ³Î »ı¼º
+		// ìƒë‹¨/ì¤‘ë‹¨ íŒ¨ë„ ìƒì„±
 		clubtopPanel = new ClubTopPanel();
 		clubcenterPanel = new ClubCenterPanel(mainFrame, this);
 		clubinfoPanel = new ClubInfo();	
 		clubHiPanel = new ClubHi();
 		
-		// ÆĞ³Î »çÀÌÁî Á¶Àı
+		// íŒ¨ë„ ì‚¬ì´ì¦ˆ ì¡°ì ˆ
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));
 		
-		// »ó´Ü,Áß¾Ó ÇÁ·¹ÀÓ¿¡ Ãß°¡
-		this.add(clubtopPanel, BorderLayout.NORTH);		// »ó´Ü ÆĞ³Î
-		this.add(clubcenterPanel, BorderLayout.CENTER);	// Áß¾Ó ÆĞ³Î
-		this.add(clubinfoPanel, BorderLayout.SOUTH);    // Á¤º¸ ÆĞ³Î
-	
+		// ìƒë‹¨,ì¤‘ì•™ í”„ë ˆì„ì— ì¶”ê°€
+		this.add(clubtopPanel, BorderLayout.NORTH);		// ìƒë‹¨ íŒ¨ë„
+		this.add(clubcenterPanel, BorderLayout.CENTER);	// ì¤‘ì•™ íŒ¨ë„
+		this.add(clubinfoPanel, BorderLayout.SOUTH);    // ì •ë³´ íŒ¨ë„
+
 	}
 
 	public ClubTopPanel getClubtopPanel() {
@@ -53,6 +58,7 @@ public class ClubMainPanel extends JPanel{
 
 	public ClubCenterPanel getClubcenterPanel() {
 		return clubcenterPanel;
+
 	}
 
 	public void setClubcenterPanel(ClubCenterPanel clubcenterPanel) {
@@ -74,7 +80,4 @@ public class ClubMainPanel extends JPanel{
 	public void setClubHiPanel(ClubHi clubHiPanel) {
 		this.clubHiPanel = clubHiPanel;
 	}
-	
-	
-
 }

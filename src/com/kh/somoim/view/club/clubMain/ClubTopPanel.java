@@ -9,13 +9,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import com.kh.somoim.home.model.vo.ClubVO;
+
 public class ClubTopPanel extends JPanel{
 	
 	JLabel shareLabel;
 	JLabel backLabel;
 	JLabel nameLabel;
 	
-	public ClubTopPanel() {
+	public ClubTopPanel(ClubVO clubVO) {
 		
 		this.setLayout(null);
 		this.setBackground(Color.white);
@@ -36,7 +38,7 @@ public class ClubTopPanel extends JPanel{
 		backLabel.setBounds(10, 5, 50, 50);
 		
 		// 중간에 소모임 이름 나올 부분
-		nameLabel = new JLabel("소모임 이름 ^0^");
+		nameLabel = new JLabel(clubVO.getName());
 		nameLabel.setFont(nameLabel.getFont().deriveFont(20.0f));
 		nameLabel.setBounds(180,0,380,60);
 
