@@ -1,12 +1,15 @@
 package com.kh.somoim.view.login;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
+import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ResetPassword extends JPanel {
@@ -14,7 +17,7 @@ public class ResetPassword extends JPanel {
 	private JPanel thisPanel;
 	
 	public ResetPassword(MainFrame mainFrame) {
-		this.thisPanel = thisPanel;
+		this.thisPanel = this;
 		
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
@@ -47,6 +50,15 @@ public class ResetPassword extends JPanel {
 		this.add(resetPasswordTopPanel);
 		
 		this.add(nextButton);
+		
+		nextButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
+				
+			}
+		});
 	}
 
 }
