@@ -1,6 +1,7 @@
 package com.kh.somoim.view.club.clubHome;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,7 +11,9 @@ import javax.swing.border.LineBorder;
 
 import org.omg.Messaging.SyncScopeHelper;
 
+import com.kh.somoim.club.controller.ClubInfoController;
 import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.login.model.vo.MemberVO;
 
 public class ClubInfo extends JPanel{
 	JLabel infoLabel;
@@ -20,6 +23,9 @@ public class ClubInfo extends JPanel{
 	private String membersNumberList = "";
 		
 	public ClubInfo(ClubVO clubVO) {
+		
+		ClubInfoController clubInfoController = new ClubInfoController();
+		ArrayList<MemberVO> clubMemberList = clubInfoController.getClubMemberList(clubVO);
 		
 		this.setLayout(null);
 		this.setBackground(Color.white);
@@ -45,8 +51,8 @@ public class ClubInfo extends JPanel{
 		
 		// 모임 멤버 출력용 라벨   
 		
-		for(int i = 0; i < clubVO.getMembersNumber().size(); i++) {
-			membersNumberList += Integer.toString(clubVO.getMembersNumber().get(i)) + "\r\n";
+		for(int i = 0; i < clubMemberList.size(); i++) {
+			membersNumberList += clubMemberList.get(i).getName() + "";
 		}
 		
 		memberLabel = new JLabel(membersNumberList);
