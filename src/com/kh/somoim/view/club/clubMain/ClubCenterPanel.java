@@ -1,14 +1,20 @@
 
 package com.kh.somoim.view.club.clubMain;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.kh.somoim.view.club.clubHome.ClubInfo;
+import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.club.clubHome.ClubHi;
+import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubCenterPanel extends JPanel{
 
@@ -17,7 +23,7 @@ public class ClubCenterPanel extends JPanel{
 	JLabel clubBoardLabel;
 	JLabel clubChatLabel;
 
-	public ClubCenterPanel() {
+	public ClubCenterPanel(MainFrame mainFrame, ClubMainPanel clubmainPanel) {
 
 		System.out.println("club centerpanel in");
 
@@ -50,39 +56,30 @@ public class ClubCenterPanel extends JPanel{
 		clubChatLabel = new JLabel("Ã¤ÆÃ");
 		clubChatLabel.setBounds(400, 0, 100, 50); 
 
-		categoryPanel.add(clubInfoLabel, "info");
-		categoryPanel.add(clubHiLabel, "hi");
-		categoryPanel.add(clubBoardLabel, "board");
-		categoryPanel.add(clubChatLabel, "chat");
+		categoryPanel.add(clubInfoLabel);
+		categoryPanel.add(clubHiLabel);
+		categoryPanel.add(clubBoardLabel);
+		categoryPanel.add(clubChatLabel);
 		categoryPanel.add(IconLabel);
 
 		this.add(categoryPanel);
-		
+
+		clubHiLabel.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				if(e.getSource() == clubHiLabel) {
+					
+					ClubHi clubHi = new ClubHi();
+					clubHi.setPreferredSize(new Dimension(500, 650));
+
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, clubmainPanel, clubmainPanel.getClubinfoPanel(), clubHi, BorderLayout.SOUTH);
+
+				}
+			}
+
+		});
 	}
 
-	public JLabel getClubHiLabel() {
-		return clubHiLabel;
-	}
-
-	public JLabel getClubBoardLabel() {
-		return clubBoardLabel;
-	}
-
-	public JLabel getClubChatLabel() {
-		return clubChatLabel;
-	}
-
-	public void setClubHiLabel(JLabel clubHiLabel) {
-		this.clubHiLabel = clubHiLabel;
-	}
-
-	public void setClubBoardLabel(JLabel clubBoardLabel) {
-		this.clubBoardLabel = clubBoardLabel;
-	}
-
-	public void setClubChatLabel(JLabel clubChatLabel) {
-		this.clubChatLabel = clubChatLabel;
-	} 
-	
-	
 }
