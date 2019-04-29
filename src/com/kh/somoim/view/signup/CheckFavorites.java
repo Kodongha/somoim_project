@@ -1,16 +1,20 @@
 package com.kh.somoim.view.signup;
 
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
@@ -22,8 +26,9 @@ public class CheckFavorites extends JPanel{
 	
 	private JPanel thisPanel;
 	
-	
-	
+	private Map<String, String> map = new HashMap<String, String>();
+	private Border border  = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
+	private Border border2 = BorderFactory.createBevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.GRAY);
 
 	/*private JLabel gamelabel; //게임
 	private JLabel travellabel; //여행
@@ -115,98 +120,114 @@ public class CheckFavorites extends JPanel{
 		exerciseButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				exerciseButton.setBorder(border);
-				
+				changeBorder(exerciseButton, "exerciseButton");
 			}
 		});;
 		
 		gameButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				gameButton.setBorder(border);
+				changeBorder(gameButton, "gameButton");
 			}
 		});;		
 	
 		travelButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				travelButton.setBorder(border);
+				changeBorder(travelButton, "travelButton");
 			}
 		});;		
 	
 		petButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				petButton.setBorder(border);
+				changeBorder(petButton, "petButton");
 			}
 		});;		
 	
 		craftsButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				craftsButton.setBorder(border);
+				changeBorder(craftsButton, "craftsButton") ;
 			}
 		});;		
 	
 		societyButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				societyButton.setBorder(border);
+				changeBorder(societyButton, "societyButton");
 			}
 		});;		
 	
 		parentingButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				parentingButton.setBorder(border);
+				changeBorder( parentingButton, "parentingButton" );
 			}
 		});;		
 	
 		volunteerButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				volunteerButton.setBorder(border);
+				changeBorder(volunteerButton, "volunteerButton");
 			}
 		});;		
 	
 		cookingButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				cookingButton.setBorder(border);
+				changeBorder(cookingButton, "cookingButton");
 			}
 		});;		
 	
 		carMotorcycleButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				carMotorcycleButton.setBorder(border);
+				changeBorder( carMotorcycleButton, "carMotorcycleButton" );
 			}
 		});;		
 		
 		musicButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				musicButton.setBorder(border);
+				changeBorder( musicButton, "musicButton" );
 			}
 		});;		
 		
 		danceButton.addMouseListener(new MouseAdapter() {
 			@Override
 				public void mouseClicked(MouseEvent e) {
-				Border border = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-				danceButton.setBorder(border);
+				changeBorder( danceButton, "danceButton" );
 			}
 		});;
+		
+		nextButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			if( map.size() < 2 )
+			{
+				System.out.println("부족");
+				JOptionPane.showMessageDialog( thisPanel, "2개 선택 하세요", "ERROR", JOptionPane.ERROR_MESSAGE); 
+			}
+			else
+			{
+				System.out.println("만족");
+			}
+		}
+	});;
+	}
+	
+	public void changeBorder(JButton button, String key)
+	{
+		if(map.containsKey(key)) {
+		
+			button.setBorder(border2);
+			map.remove(key);
+		
+		}else {
+			
+			button.setBorder(border);
+			map.put(key, key);
+		}
 	}
 }

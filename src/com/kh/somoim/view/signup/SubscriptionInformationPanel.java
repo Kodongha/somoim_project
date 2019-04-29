@@ -171,13 +171,28 @@ public class SubscriptionInformationPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				signupRequestVO.setEmail(text.getText()); //이메일
 				signupRequestVO.setPassword(String.valueOf(text2.getPassword())) ;//비밀번호
+				
+				String br =   String.valueOf( spinner1.getValue() )   //년
+						    + String.format("%02d", Integer.parseInt( spinner2.getValue().toString() ) )  //월
+						    + String.format("%02d", Integer.parseInt( spinner3.getValue().toString() ) ) ; //일
+				
+				signupRequestVO.setBirth(br);
+				String str = String.valueOf(text5.getText());
+
+				//signupRequestVO.setGender(String.valueOf( gender.) ;
+				
+				
+//				String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); 
+				
+//	 			signupRequestVO.setPhoneNumber(phone) ;//비밀번호
+				//signupRequestVO.setAddress(String.valueOf(animalList.getSelectedItem())) ;//비밀번호
 				//signupRequestVO.setPasswordCheck(String.valueOf(text3.getPa
 				///SimpleDateFormat birth = new SimpleDateFormat("yyyyymmdd");
 				//System.out.println(birth.format(date));
 				//signupRequestVO.setPhoneNumber(text5.getText);
 				
 				//signupRequestVO.setBirth(Integer.parseInt(spinner1.getValue()));
-				System.out.println(spinner1.getValue());
+				System.out.println(signupRequestVO.toString());
 			
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame));
 
