@@ -13,6 +13,9 @@ import com.kh.somoim.view.club.clubHome.ClubInfo;
 public class ClubCenterPanel extends JPanel{
 
 	private JLabel IconLabel;
+	JLabel clubHiLabel;
+	JLabel clubBoardLabel;
+	JLabel clubChatLabel;
 
 	public ClubCenterPanel() {
 
@@ -38,22 +41,24 @@ public class ClubCenterPanel extends JPanel{
 		IconLabel.setBounds(60, 15, 50, 50);
 
 
-		JLabel clubHiLabel = new JLabel("가입인사");
+		clubHiLabel = new JLabel("가입인사");
 		clubHiLabel.setBounds(160, 0, 100, 50); 
 
-		JLabel clubBoardLabel = new JLabel("게시판");
+		clubBoardLabel = new JLabel("게시판");
 		clubBoardLabel.setBounds(280, 0, 100, 50); 
 
-		JLabel clubChatLabel = new JLabel("채팅");
+		clubChatLabel = new JLabel("채팅");
 		clubChatLabel.setBounds(400, 0, 100, 50); 
 
-		categoryPanel.add(clubInfoLabel);
-		categoryPanel.add(clubHiLabel);
-		categoryPanel.add(clubBoardLabel);
-		categoryPanel.add(clubChatLabel);
+		categoryPanel.add(clubInfoLabel, "info");
+		categoryPanel.add(clubHiLabel, "hi");
+		categoryPanel.add(clubBoardLabel, "board");
+		categoryPanel.add(clubChatLabel, "chat");
 		categoryPanel.add(IconLabel);
 
 		this.add(categoryPanel);
 		
 	} 
+	
+	
 }
