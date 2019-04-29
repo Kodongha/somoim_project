@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
 //		this.add(new signupPage(this));
 //		MemberVO memberVO = new MemberVO();
 //		this.add(new MainPanel(this, memberVO));
-		this.add(new ClubMainPanel(this));
+//		this.add(new ClubMainPanel(this));
 		
 		// Frame ¼³Á¤
 		this.setResizable(false);
