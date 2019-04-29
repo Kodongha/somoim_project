@@ -30,16 +30,16 @@ public class ClubCenterPanel extends JPanel{
 		this.setLayout(null);
 		this.setBackground(Color.white);
 
-		//clubtopPanel ë°‘ì— ì¹´í…Œê³ ë¦¬íŒ¨ë„ ìƒì„±
+		//clubtopPanel ¹Ø¿¡ Ä«Å×°í¸®ÆĞ³Î »ı¼º
 		JPanel categoryPanel = new JPanel();
 		categoryPanel.setLayout(null);
 		categoryPanel.setBackground(Color.white);
 		categoryPanel.setSize(500, 50);
 		categoryPanel.setLocation(0, 0);
 
-		//categoryíŒ¨ë„ì•ˆì— ë„£ì„ ë¼ë²¨ë“¤ 
-		JLabel clubInfoLabel = new JLabel("ì •ë³´");
-		//        clubInfoLabel.setFont(new Font("ë‹ì›€",Font.BOLD, 14));
+		//categoryÆĞ³Î¾È¿¡ ³ÖÀ» ¶óº§µé 
+		JLabel clubInfoLabel = new JLabel("Á¤º¸");
+		//        clubInfoLabel.setFont(new Font("µ¸¿ò",Font.BOLD, 14));
 		clubInfoLabel.setBounds(70, 0, 50, 50);
 
 		Image categoryIcon = new ImageIcon("images/categoryLine.PNG").getImage().getScaledInstance(50, 20, 0);
@@ -47,13 +47,13 @@ public class ClubCenterPanel extends JPanel{
 		IconLabel.setBounds(60, 15, 50, 50);
 
 
-		clubHiLabel = new JLabel("ê°€ì…ì¸ì‚¬");
+		clubHiLabel = new JLabel("°¡ÀÔÀÎ»ç");
 		clubHiLabel.setBounds(160, 0, 100, 50); 
 
-		clubBoardLabel = new JLabel("ê²Œì‹œíŒ");
+		clubBoardLabel = new JLabel("°Ô½ÃÆÇ");
 		clubBoardLabel.setBounds(280, 0, 100, 50); 
 
-		clubChatLabel = new JLabel("ì±„íŒ…");
+		clubChatLabel = new JLabel("Ã¤ÆÃ");
 		clubChatLabel.setBounds(400, 0, 100, 50); 
 
 		categoryPanel.add(clubInfoLabel);

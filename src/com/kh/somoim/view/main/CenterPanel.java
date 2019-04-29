@@ -20,7 +20,6 @@ public class CenterPanel extends JPanel{
 	private SearchPanel searchPanel;
 	private SettingPanel settingPanel;
 	private InfomationCorrect infomationCorrect;
-	
 	 
 	public CenterPanel(MainFrame mainFrame,MainPanel mainpanel,MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
@@ -29,7 +28,7 @@ public class CenterPanel extends JPanel{
 		
 		homePanel = new HomePanel(mainFrame, mainpanel, memberVO);
 		recommendPanel = new RecommendPanel(mainFrame, mainpanel, memberVO);
-		searchPanel = new SearchPanel();
+		searchPanel = new SearchPanel(mainFrame, this, mainpanel);
 		settingPanel = new SettingPanel(mainFrame, this, mainpanel, memberVO);
 		infomationCorrect = new InfomationCorrect(mainpanel,mainFrame,this, memberVO);    
 		 
