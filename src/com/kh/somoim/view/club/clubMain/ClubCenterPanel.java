@@ -58,6 +58,30 @@ public class ClubCenterPanel extends JPanel{
 
 		this.add(categoryPanel);
 		
+	}
+
+	public JLabel getClubHiLabel() {
+		return clubHiLabel;
+	}
+
+	public JLabel getClubBoardLabel() {
+		return clubBoardLabel;
+	}
+
+	public JLabel getClubChatLabel() {
+		return clubChatLabel;
+	}
+
+	public void setClubHiLabel(JLabel clubHiLabel) {
+		this.clubHiLabel = clubHiLabel;
+	}
+
+	public void setClubBoardLabel(JLabel clubBoardLabel) {
+		this.clubBoardLabel = clubBoardLabel;
+	}
+
+	public void setClubChatLabel(JLabel clubChatLabel) {
+		this.clubChatLabel = clubChatLabel;
 	} 
 	
 	
