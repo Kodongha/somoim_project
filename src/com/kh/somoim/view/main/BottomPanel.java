@@ -39,13 +39,13 @@ public class BottomPanel extends JPanel{
 		this.add(homeLabel);
 		this.add(recommendLabel);
 		this.add(searchLabel);
-		this.add(settingLabel);
+		this.add(settingLabel); 
 		
 		// Mouse Event를 이용한 화면 전환
-		homeLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.centerPanel, "homeLabel"));
-		recommendLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.centerPanel, "recommendLabel"));
-		searchLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.centerPanel, "searchLabel"));
-		settingLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.centerPanel, "settingLabel"));
+		homeLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.getCenterPanel(), "homeLabel"));
+		recommendLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.getCenterPanel(), "recommendLabel"));
+		searchLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.getCenterPanel(), "searchLabel"));
+		settingLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.getCenterPanel(), "settingLabel"));
 	}
 
 }
