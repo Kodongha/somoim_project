@@ -2,14 +2,22 @@ package com.kh.somoim.view.search;
 //검색창
 
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.login.LoginPanel;
+import com.kh.somoim.view.main.CenterPanel;
+import com.kh.somoim.view.main.MainPanel;
+import com.kh.somoim.view.mainFrame.MainFrame;
+
 
 public class SearchEngine extends JLabel {
-	public SearchEngine () {
+	public SearchEngine (MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,SearchPanel searchPanel) {
 		//검색창 사이즈 설정 및 조정
 		this.setLayout(null);
 		this.setLocation(100, 100); //위치
@@ -29,9 +37,47 @@ public class SearchEngine extends JLabel {
 		searchText.setSize(300,40); //크기지정
 		//검색창 테두리 없애기
 		searchText.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-
+			
 		
 		
+		iconLabel.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+				
+			StringSearchClubList st= new StringSearchClubList(mainFrame, mainpanel, centerPanel,searchPanel, searchText.getText());
+			
+			
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, searchPanel, st);
+				
+				
+			}
+		});
 
 		this.add(iconLabel);
 		this.add(searchText);

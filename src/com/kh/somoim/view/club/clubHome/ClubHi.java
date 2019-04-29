@@ -21,6 +21,7 @@ public class ClubHi extends JPanel{
 	
 	public ClubHi() {
 		
+		System.out.println("HI IN::::");
 		
 		this.setLayout(null);
 		this.setBackground(Color.white);

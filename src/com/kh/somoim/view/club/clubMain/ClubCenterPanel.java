@@ -1,15 +1,20 @@
 
 package com.kh.somoim.view.club.clubMain;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.kh.somoim.home.model.vo.ClubVO;
-import com.kh.somoim.view.club.clubHome.ClubInfo;
+import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.club.clubHome.ClubHi;
+import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubCenterPanel extends JPanel{
 
@@ -18,23 +23,23 @@ public class ClubCenterPanel extends JPanel{
 	JLabel clubBoardLabel;
 	JLabel clubChatLabel;
 
-	public ClubCenterPanel() {
+	public ClubCenterPanel(MainFrame mainFrame, ClubMainPanel clubmainPanel) {
 
 		System.out.println("club centerpanel in");
 
 		this.setLayout(null);
 		this.setBackground(Color.white);
 
-		//clubtopPanel πÿø° ƒ´≈◊∞Ì∏Æ∆–≥Œ ª˝º∫
+		//clubtopPanel Î∞ëÏóê Ïπ¥ÌÖåÍ≥†Î¶¨Ìå®ÎÑê ÏÉùÏÑ±
 		JPanel categoryPanel = new JPanel();
 		categoryPanel.setLayout(null);
 		categoryPanel.setBackground(Color.white);
 		categoryPanel.setSize(500, 50);
 		categoryPanel.setLocation(0, 0);
 
-		//category∆–≥Œæ»ø° ≥÷¿ª ∂Û∫ßµÈ 
-		JLabel clubInfoLabel = new JLabel("¡§∫∏");
-		//        clubInfoLabel.setFont(new Font("µ∏øÚ",Font.BOLD, 14));
+		//categoryÌå®ÎÑêÏïàÏóê ÎÑ£ÏùÑ ÎùºÎ≤®Îì§ 
+		JLabel clubInfoLabel = new JLabel("Ï†ïÎ≥¥");
+		//        clubInfoLabel.setFont(new Font("ÎèãÏõÄ",Font.BOLD, 14));
 		clubInfoLabel.setBounds(70, 0, 50, 50);
 
 		Image categoryIcon = new ImageIcon("images/categoryLine.PNG").getImage().getScaledInstance(50, 20, 0);
@@ -42,48 +47,39 @@ public class ClubCenterPanel extends JPanel{
 		IconLabel.setBounds(60, 15, 50, 50);
 
 
-		clubHiLabel = new JLabel("∞°¿‘¿ŒªÁ");
+		clubHiLabel = new JLabel("Í∞ÄÏûÖÏù∏ÏÇ¨");
 		clubHiLabel.setBounds(160, 0, 100, 50); 
 
-		clubBoardLabel = new JLabel("∞‘Ω√∆«");
+		clubBoardLabel = new JLabel("Í≤åÏãúÌåê");
 		clubBoardLabel.setBounds(280, 0, 100, 50); 
 
-		clubChatLabel = new JLabel("√§∆√");
+		clubChatLabel = new JLabel("Ï±ÑÌåÖ");
 		clubChatLabel.setBounds(400, 0, 100, 50); 
 
-		categoryPanel.add(clubInfoLabel, "info");
-		categoryPanel.add(clubHiLabel, "hi");
-		categoryPanel.add(clubBoardLabel, "board");
-		categoryPanel.add(clubChatLabel, "chat");
+		categoryPanel.add(clubInfoLabel);
+		categoryPanel.add(clubHiLabel);
+		categoryPanel.add(clubBoardLabel);
+		categoryPanel.add(clubChatLabel);
 		categoryPanel.add(IconLabel);
 
 		this.add(categoryPanel);
-		
+
+		clubHiLabel.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				if(e.getSource() == clubHiLabel) {
+					
+					ClubHi clubHi = new ClubHi();
+					clubHi.setPreferredSize(new Dimension(500, 650));
+
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, clubmainPanel, clubmainPanel.getClubinfoPanel(), clubHi, BorderLayout.SOUTH);
+
+				}
+			}
+
+		});
 	}
 
-	public JLabel getClubHiLabel() {
-		return clubHiLabel;
-	}
-
-	public JLabel getClubBoardLabel() {
-		return clubBoardLabel;
-	}
-
-	public JLabel getClubChatLabel() {
-		return clubChatLabel;
-	}
-
-	public void setClubHiLabel(JLabel clubHiLabel) {
-		this.clubHiLabel = clubHiLabel;
-	}
-
-	public void setClubBoardLabel(JLabel clubBoardLabel) {
-		this.clubBoardLabel = clubBoardLabel;
-	}
-
-	public void setClubChatLabel(JLabel clubChatLabel) {
-		this.clubChatLabel = clubChatLabel;
-	} 
-	
-	
 }

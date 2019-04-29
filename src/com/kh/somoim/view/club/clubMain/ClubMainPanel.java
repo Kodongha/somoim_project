@@ -1,6 +1,7 @@
 package com.kh.somoim.view.club.clubMain;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
@@ -19,11 +20,8 @@ public class ClubMainPanel extends JPanel{
 	ClubTopPanel clubtopPanel;
 	ClubCenterPanel clubcenterPanel;
 	ClubInfo clubinfoPanel;
-	ClubHi clubHi;
-	ClubChat clubChat;
-	ClubPhoto clubPhoto;
-	ClubFree clubFree;
-	ClubSchedule clubSchedule;
+
+	ClubHi clubHiPanel;
 
 	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO) {
 		
@@ -31,39 +29,55 @@ public class ClubMainPanel extends JPanel{
 		
 		mainFrame.setTitle("club");
 		this.setLayout(new BorderLayout());
+		this.setBackground(Color.yellow);
 		System.out.println("club mainPanel in");
-				
-		// ªÛ¥‹/¡ﬂ¥‹ ∆–≥Œ ª˝º∫
-		clubtopPanel = new ClubTopPanel(clubVO);
-		clubcenterPanel = new ClubCenterPanel();
-		clubinfoPanel = new ClubInfo(clubVO);	
-		clubHi = new ClubHi();
-		clubChat = new ClubChat();
-		clubPhoto = new ClubPhoto();
-		clubFree = new ClubFree();
-		clubSchedule = new ClubSchedule();
 		
-		// ∆–≥Œ ªÁ¿Ã¡Ó ¡∂¿˝
+		// ÏÉÅÎã®/Ï§ëÎã® Ìå®ÎÑê ÏÉùÏÑ±
+		clubtopPanel = new ClubTopPanel();
+		clubcenterPanel = new ClubCenterPanel(mainFrame, this);
+		clubinfoPanel = new ClubInfo();	
+		clubHiPanel = new ClubHi();
+		
+		// Ìå®ÎÑê ÏÇ¨Ïù¥Ï¶à Ï°∞Ï†à
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));
-		clubHi.setPreferredSize(new Dimension(500, 650));
-		clubChat.setPreferredSize(new Dimension(500, 650));
-		clubPhoto.setPreferredSize(new Dimension(500, 650));
-		clubFree.setPreferredSize(new Dimension(500, 650));
-		clubSchedule.setPreferredSize(new Dimension(500, 650));
-						
-		// ªÛ¥‹,¡ﬂæ” «¡∑π¿”ø° √ﬂ∞°
-		this.add(clubtopPanel, BorderLayout.NORTH);		// ªÛ¥‹ ∆–≥Œ
-		this.add(clubcenterPanel, BorderLayout.CENTER);	// ¡ﬂæ” ∆–≥Œ
-		this.add(clubinfoPanel, BorderLayout.SOUTH);    // ¡§∫∏ ∆–≥Œ
-		//this.add(clubHi, BorderLayout.SOUTH);			// ∞°¿‘¿ŒªÁ ∆–≥Œ
-		//this.add(clubChat, BorderLayout.SOUTH);		// √§∆√ ∆–≥Œ 
-		//this.add(clubPhoto, BorderLayout.SOUTH);		// ¡§∏ »ƒ±‚ ∆–≥Œ 
-		//this.add(clubFree, BorderLayout.SOUTH);
-		//this.add(clubSchedule, BorderLayout.SOUTH);
 		
-		
-		
-		
+		// ÏÉÅÎã®,Ï§ëÏïô ÌîÑÎ†àÏûÑÏóê Ï∂îÍ∞Ä
+		this.add(clubtopPanel, BorderLayout.NORTH);		// ÏÉÅÎã® Ìå®ÎÑê
+		this.add(clubcenterPanel, BorderLayout.CENTER);	// Ï§ëÏïô Ìå®ÎÑê
+		this.add(clubinfoPanel, BorderLayout.SOUTH);    // Ï†ïÎ≥¥ Ìå®ÎÑê
+
 	}
 
+	public ClubTopPanel getClubtopPanel() {
+		return clubtopPanel;
+	}
+
+	public void setClubtopPanel(ClubTopPanel clubtopPanel) {
+		this.clubtopPanel = clubtopPanel;
+	}
+
+	public ClubCenterPanel getClubcenterPanel() {
+		return clubcenterPanel;
+
+	}
+
+	public void setClubcenterPanel(ClubCenterPanel clubcenterPanel) {
+		this.clubcenterPanel = clubcenterPanel;
+	}
+
+	public ClubInfo getClubinfoPanel() {
+		return clubinfoPanel;
+	}
+
+	public void setClubinfoPanel(ClubInfo clubinfoPanel) {
+		this.clubinfoPanel = clubinfoPanel;
+	}
+
+	public ClubHi getClubHiPanel() {
+		return clubHiPanel;
+	}
+
+	public void setClubHiPanel(ClubHi clubHiPanel) {
+		this.clubHiPanel = clubHiPanel;
+	}
 }
