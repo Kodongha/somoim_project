@@ -24,7 +24,7 @@ public class TermsOfServicePanel extends JPanel{
 		
 		/* 약관 동의 버튼 */	
 		JCheckBox agree1 = new JCheckBox("소확행 이용 약관 동의(필수)");
-		agree1.setLocation(100,20);
+		agree1.setLocation(85,90);
 		agree1.setSize(300,20);
 		agree1.setBackground(Color.white);
 		agree1.setFont(agree1.getFont().deriveFont(15.0f));
@@ -32,7 +32,7 @@ public class TermsOfServicePanel extends JPanel{
 		
 		/* 약관 텍스트 area */
 		JTextArea agree1Text = new JTextArea("",0,0);		
-		agree1Text.setLocation(100, 40);
+		agree1Text.setLocation(85, 110);
 		agree1Text.setSize(340,200);	
 		agree1Text.setText("제 1 장 총 칙\r\n\n" + 
 				"제 1 조 목적\r\n\n" + 
@@ -55,20 +55,20 @@ public class TermsOfServicePanel extends JPanel{
 		agree1Text.setEditable(false);	
 		agree1Text.setEnabled(true);
 		JScrollPane scroll = new JScrollPane(agree1Text);
-		scroll.setLocation(100,40);
+		scroll.setLocation(85,110);
 		scroll.setSize(340,200);
 		this.add(scroll);	
 		
 		/* 개인정보 수집 체크박스 */
 		JCheckBox agree2 = new JCheckBox("개인정보 수집 및 이용에 대한 안내(필수)");
-		agree2.setLocation(100, 270);
+		agree2.setLocation(85, 340);
 		agree2.setSize(300,20);
 		agree2.setBackground(Color.white);
 		agree2.setFont(agree2.getFont().deriveFont(15.0f));
 		this.add(agree2);		
 		
 		JTextArea agree2Text = new JTextArea();
-		agree2Text.setLocation(100, 290);
+		agree2Text.setLocation(85, 360);
 		agree2Text.setSize(340,200);		
 		agree2Text.setText("(주)JVM은 아래의 목적으로 개인정보를 수집 및 이용하며, 회원의 개인정보를 안전하게 취급하는데 최선을 다합니다.\r\n\n" + 
 				"1. 수집목적\r\n\n" + 
@@ -91,13 +91,13 @@ public class TermsOfServicePanel extends JPanel{
 		agree2Text.setLineWrap(true);
 		
 		JScrollPane scroll2 = new JScrollPane(agree2Text);
-		scroll2.setLocation(100,290);
+		scroll2.setLocation(85,360);
 		scroll2.setSize(340,200);
 		this.add(scroll2);
 		
 		/* 이벤트 관련 체크박스 */
 		JCheckBox agree3 = new JCheckBox("이벤트 등 프로모션 알림 메일 수신(선택)");
-		agree3.setLocation(100, 500);
+		agree3.setLocation(85, 570);
 		agree3.setSize(300,20);
 		agree3.setBackground(Color.white);
 		agree3.setFont(agree3.getFont().deriveFont(15.0f));
@@ -105,7 +105,7 @@ public class TermsOfServicePanel extends JPanel{
 		
 		/* 동의 버튼 */
 		agreeButton = new JButton("동의");
-		agreeButton.setLocation(260, 550);
+		agreeButton.setLocation(245, 620);
 		agreeButton.setSize(140, 60);
 		agreeButton.setBackground(Color.GRAY);
 		this.add(agreeButton);
@@ -115,11 +115,16 @@ public class TermsOfServicePanel extends JPanel{
 		
 		/* 미동의 버튼 */
 		agreeButton2 = new JButton("미동의");
-		agreeButton2.setLocation(100, 550);
+		agreeButton2.setLocation(85, 620);
 		agreeButton2.setSize(140, 60);
 		agreeButton2.setBackground(Color.gray);
 		this.add(agreeButton2);
 		
 		agreeButton2.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton2", agreeButton2));
+		
+		TermsOfServiceTopPanel termsOfServiceTopPanel = new TermsOfServiceTopPanel();
+		termsOfServiceTopPanel.setBounds(0, 0, 500, 35);
+		this.add(termsOfServiceTopPanel);
+				
 	}
 }

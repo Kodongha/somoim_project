@@ -33,7 +33,7 @@ public class AgreeBtnChangeEventUtil implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(mode.equals("agreeButton")) {
-			ChangPanelUtil.CHANGE_PANEL(mainFrame, oldPanel, new UserAuthentication());
+			ChangPanelUtil.CHANGE_PANEL(mainFrame, oldPanel, new UserAuthentication(mainFrame));
 		}
 	}
 

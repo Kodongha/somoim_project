@@ -7,7 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import com.kh.somoim.view.mainFrame.MainFrame;
+
 public class CheckFavorites extends JPanel{
+	
+	private JPanel thisPanel;
 
 	/*private JLabel gamelabel; //게임
 	private JLabel travellabel; //여행
@@ -21,16 +25,17 @@ public class CheckFavorites extends JPanel{
 	private JLabel music; //음악 
 	private JLabel dance; //  
 */	
-	public CheckFavorites() {
+	public CheckFavorites(MainFrame mainFrame) {
+		this.thisPanel = thisPanel;
 		
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
-		this.setBounds(200, 30, 500, 800);
+		this.setBounds(200, 20, 500, 800);
 		
 		JPanel imagePanel = new JPanel();
 		imagePanel.setLayout(new GridLayout(6, 2));
 		imagePanel.setBackground(Color.white);
-		imagePanel.setBounds(98,150,300,500); //x, y 가로버튼크기 / 세로버튼크기 
+		imagePanel.setBounds(98,110,300,500); //x, y 가로버튼크기 / 세로버튼크기 
 		
 		JButton exerciseButton = new JButton(new ImageIcon("images/exercise.PNG")); //운동버튼
 		exerciseButton.setSize(50, 50);
@@ -84,6 +89,16 @@ public class CheckFavorites extends JPanel{
 		danceButton.setBackground(Color.WHITE);
 	
 		this.add(imagePanel);
+		
+		CheckFavoritesTopPanel checkFavoritesTopPanel = new CheckFavoritesTopPanel();
+		checkFavoritesTopPanel.setBounds(0, 0, 500, 35);
+		this.add(checkFavoritesTopPanel);
+		
+		JButton nextButton = new JButton("다음");
+		//다음버튼 사이즈 조정 
+		nextButton.setBounds(137, 663, 230, 50);
+		nextButton.setBackground(Color.ORANGE);
+		this.add(nextButton);
 	  
 	}
 	
