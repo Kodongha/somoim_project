@@ -7,6 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import com.kh.somoim.view.main.CenterPanel;
+import com.kh.somoim.view.main.MainPanel;
+import com.kh.somoim.view.mainFrame.MainFrame;
+
 public class SearchPanel extends JPanel {
 	//SearchEngine 
 	SearchEngine searchEngine;
@@ -17,13 +21,13 @@ public class SearchPanel extends JPanel {
 	//SearchAllFavorite
 	SearchAllFavorite searchAllFavorite;
 
-	public SearchPanel() {
+	public SearchPanel(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel) {
 		//SearchPanel 위치조정 및 배경컬러 설정
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);	
 
 		//검색창 위치(SearchEngine) 조정 
-		searchEngine = new SearchEngine();
+		searchEngine = new SearchEngine( mainFrame,  centerPanel,  mainpanel,this);
 		searchEngine.setLocation(10,10);//위치
 		//검색창 검색창테두리 설정 
 		searchEngine.setBorder(new TitledBorder(new LineBorder(Color.BLACK,1)));
