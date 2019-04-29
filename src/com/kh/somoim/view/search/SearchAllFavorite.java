@@ -84,22 +84,22 @@ public class SearchAllFavorite extends JPanel{
 		JButton  societyButton = new JButton();//ªÁ±≥.¿Œ∏∆
 		societyButton.setBounds(7, 9, 205, 45);
 
-		JButton  parentingButton = new JButton();
+		JButton  parentingButton = new JButton();//∞·»•.¿∞æ∆
 		parentingButton.setBounds(10, 9,205, 45);
 
-		JButton  volunteerButton = new JButton();
+		JButton  volunteerButton = new JButton();//∫¿ªÁ»∞µø
 		volunteerButton.setBounds(7, 9, 205, 45);
 
-		JButton  cookButton = new JButton();
+		JButton  cookButton = new JButton();//ø‰∏Æ
 		cookButton.setBounds(10, 9,205, 45);
 
-		JButton  carmotorcycleButton = new JButton();
+		JButton  carmotorcycleButton = new JButton();//¬˜.ø¿≈‰πŸ¿Ã
 		carmotorcycleButton.setBounds(7, 9, 205, 45);
 
-		JButton  musicButton = new JButton();
+		JButton  musicButton = new JButton();//¿Ωæ«.æ«±‚
 		musicButton.setBounds(10,9 ,205, 43);
 
-		JButton  danceButton = new JButton();
+		JButton  danceButton = new JButton();//¥ÌΩ∫.π´øÎ
 		danceButton.setBounds(7, 9, 205, 43);
 
 		
