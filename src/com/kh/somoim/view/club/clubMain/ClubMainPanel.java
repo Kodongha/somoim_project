@@ -22,6 +22,8 @@ public class ClubMainPanel extends JPanel{
 	ClubInfo clubinfoPanel;
 
 	ClubHi clubHiPanel;
+	ClubChat clubChatPanel;
+	
 
 	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO) {
 		
@@ -37,6 +39,7 @@ public class ClubMainPanel extends JPanel{
 		clubcenterPanel = new ClubCenterPanel(mainFrame, this);
 		clubinfoPanel = new ClubInfo(clubVO);	
 		clubHiPanel = new ClubHi();
+		clubChatPanel = new ClubChat();
 		
 		// 패널 사이즈 조절
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));
@@ -80,4 +83,13 @@ public class ClubMainPanel extends JPanel{
 	public void setClubHiPanel(ClubHi clubHiPanel) {
 		this.clubHiPanel = clubHiPanel;
 	}
+
+	public ClubChat getClubChatPanel() {
+		return clubChatPanel;
+	}
+
+	public void setClubChatPanel(ClubChat clubChatPanel) {
+		this.clubChatPanel = clubChatPanel;
+	}
+	
 }

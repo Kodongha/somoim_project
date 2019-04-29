@@ -3,6 +3,7 @@ package com.kh.somoim.view.club.clubMain;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -45,8 +46,6 @@ public class ClubTopPanel extends JPanel{
 		
 		this.add(shareLabel);
 		this.add(backLabel);
-		this.add(nameLabel);
-		
-		
+		this.add(nameLabel);		
 	}
 }

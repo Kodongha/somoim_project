@@ -13,7 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.club.clubHome.ClubChat;
 import com.kh.somoim.view.club.clubHome.ClubHi;
+import com.kh.somoim.view.club.clubHome.ClubInfo;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubCenterPanel extends JPanel{
@@ -22,6 +24,11 @@ public class ClubCenterPanel extends JPanel{
 	JLabel clubHiLabel;
 	JLabel clubBoardLabel;
 	JLabel clubChatLabel;
+	
+	JPanel clubHiPanel;
+	JPanel clubBoardPanel;
+	JPanel clubChatPanel;
+	JPanel clubInfoPanel;
 
 	public ClubCenterPanel(MainFrame mainFrame, ClubMainPanel clubmainPanel) {
 
@@ -63,22 +70,47 @@ public class ClubCenterPanel extends JPanel{
 		categoryPanel.add(IconLabel);
 
 		this.add(categoryPanel);
+		
 
 		clubHiLabel.addMouseListener(new MouseAdapter() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-				if(e.getSource() == clubHiLabel) {
-					
-					ClubHi clubHi = new ClubHi();
-					clubHi.setPreferredSize(new Dimension(500, 650));
+				if(e.getSource() == clubHiLabel) { 
 
-					ChangPanelUtil.CHANGE_PANEL(mainFrame, clubmainPanel, clubmainPanel.getClubinfoPanel(), clubHi, BorderLayout.SOUTH);
+					clubHiPanel = new ClubHi();
+					clubHiPanel.setPreferredSize(new Dimension(500, 650));
+
+					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubmainPanel.getClubinfoPanel(), clubHiPanel, BorderLayout.SOUTH);
 
 				}
+				if(e.getSource() == clubHiLabel) { 
+
+					clubHiPanel = new ClubHi();
+					clubHiPanel.setPreferredSize(new Dimension(500, 650));
+
+					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubmainPanel.getClubChatPanel(), clubHiPanel, BorderLayout.SOUTH);
+
+				}				
 			}
 
+		});	
+		
+		
+		clubChatLabel.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				if(e.getSource() == clubChatLabel) {
+					
+					clubChatPanel = new ClubChat();
+					clubChatPanel.setPreferredSize(new Dimension(500, 650));
+					
+					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubmainPanel.getClubHiPanel(), clubChatPanel, BorderLayout.SOUTH);
+				}
+			}
 		});
 	}
 
