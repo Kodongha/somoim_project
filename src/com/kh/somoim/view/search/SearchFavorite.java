@@ -5,9 +5,10 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 //인기소모임
-public class SearchFavorite extends JLabel {
+public class SearchFavorite extends JPanel {
 	public SearchFavorite() {
 		this.setLayout(null);
 		this.setLocation(100, 100); //위치

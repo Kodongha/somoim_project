@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import com.kh.somoim.view.club.clubHome.clubBoard.ClubFree;
 import com.kh.somoim.view.club.clubMain.ClubMainPanel;
+import com.kh.somoim.view.main.CenterPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 import com.kh.somoim.view.search.SearchPanel;
 
@@ -18,7 +19,7 @@ public class ChangPanelUtil {
 		this.oldPanel = oldPanel;
 	}
 
-	// change Panel �ۼ�
+	// change Panel ÀÛ¼º
 	public static void CHANGE_PANEL(MainFrame mainFrame, JPanel oldPanel, JPanel newPanel) {
 		mainFrame.remove(oldPanel);
 		mainFrame.add(newPanel);
@@ -47,8 +48,7 @@ public class ChangPanelUtil {
 		clubmainPanel.revalidate();
 		clubmainPanel.repaint();
 	}
-	
-	
+
 }
 
 
