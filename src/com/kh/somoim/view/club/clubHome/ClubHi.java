@@ -19,13 +19,15 @@ public class ClubHi extends JPanel{
 	JLabel hititleLabel;
 	JLabel hicontentsLabel;
 	
+	
+	
 	public ClubHi() {
 		
 		System.out.println("HI IN::::");
 		
 		this.setLayout(null);
 		this.setBackground(Color.white);
-		
+	
 		// 패널 구분용 테두리 (완성시 삭제)
 		LineBorder labelBorder = new LineBorder(Color.black);
 		this.setBorder(labelBorder);
@@ -49,7 +51,7 @@ public class ClubHi extends JPanel{
 		noticetitleLabel.setSize(400, 50);
 		noticetitleLabel.setLocation(50, 15);
 		noticetitleLabel.setOpaque(true);
-		noticetitleLabel.setBackground(Color.LIGHT_GRAY);
+		noticetitleLabel.setBackground(Color.white);
 
 		noticeLabel.add(noticetitleLabel);	
 		
@@ -96,9 +98,5 @@ public class ClubHi extends JPanel{
 		this.add(noticeLabel);
 		this.add(hiLabel);
 		
-		
-		
-		
 	}
-
 }

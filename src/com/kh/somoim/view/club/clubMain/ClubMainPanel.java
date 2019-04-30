@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
@@ -25,6 +24,9 @@ public class ClubMainPanel extends JPanel{
 
 	ClubHi clubHiPanel;
 	ClubChat clubChatPanel;
+	ClubFree clubFreePanel;
+	ClubPhoto clubPhotoPanel;
+	ClubSchedule clubSchedulePanel;
 
 
 	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO, MemberVO memberVO) {
@@ -38,10 +40,12 @@ public class ClubMainPanel extends JPanel{
 
 		// 상단/중단 패널 생성
 		clubtopPanel = new ClubTopPanel(mainFrame, this, clubVO, memberVO);
-		clubcenterPanel = new ClubCenterPanel(mainFrame, this);
+		clubcenterPanel = new ClubCenterPanel(mainFrame, this, clubVO, memberVO);
 		clubinfoPanel = new ClubInfo(clubVO);	
 		clubHiPanel = new ClubHi();
-		clubChatPanel = new ClubChat();
+		clubChatPanel = new ClubChat(clubVO, memberVO);
+		clubFreePanel = new ClubFree(this);
+		
 
 		// 패널 사이즈 조절
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));
@@ -93,5 +97,30 @@ public class ClubMainPanel extends JPanel{
 	public void setClubChatPanel(ClubChat clubChatPanel) {
 		this.clubChatPanel = clubChatPanel;
 	}
+
+	public ClubFree getClubFreePanel() {
+		return clubFreePanel;
+	}
+
+	public void setClubFreePanel(ClubFree clubFreePanel) {
+		this.clubFreePanel = clubFreePanel;
+	}
+
+	public ClubPhoto getClubPhotoPanel() {
+		return clubPhotoPanel;
+	}
+
+	public void setClubPhotoPanel(ClubPhoto clubPhotoPanel) {
+		this.clubPhotoPanel = clubPhotoPanel;
+	}
+
+	public ClubSchedule getClubSchedulePanel() {
+		return clubSchedulePanel;
+	}
+
+	public void setClubSchedulePanel(ClubSchedule clubSchedulePanel) {
+		this.clubSchedulePanel = clubSchedulePanel;
+	}
+	
 
 }

@@ -11,9 +11,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.login.model.vo.MemberVO;
+
 public class ClubChat extends JPanel {
 
-	public ClubChat() {
+	public ClubChat(ClubVO clubVO, MemberVO memberVO) {
 		
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
