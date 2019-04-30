@@ -22,6 +22,7 @@ public class HoemPanelKeyEventUtil implements MouseListener{
 	private MemberVO memberVO;
 	
 	public HoemPanelKeyEventUtil(MainFrame mainFrame, MainPanel mainPanel, JLabel[] clubDetailLabel, int i, ClubVO clubVO, MemberVO memberVO) {
+
 		// TODO Auto-generated constructor stub
 		this.mainFrame = mainFrame;
 		this.mainPanel = mainPanel;
@@ -30,9 +31,7 @@ public class HoemPanelKeyEventUtil implements MouseListener{
 		this.clubVO = clubVO;
 		this.memberVO = memberVO;
 	}
-	
-	
-	
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
