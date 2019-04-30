@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 
 import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.view.club.clubMain.ClubMainPanel;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
@@ -18,21 +19,23 @@ public class HoemPanelKeyEventUtil implements MouseListener{
 	private MainPanel mainPanel;
 	private MainFrame mainFrame;
 	private ClubVO clubVO;
+	private MemberVO memberVO;
 	
-	
-	public HoemPanelKeyEventUtil(MainFrame mainFrame, MainPanel mainPanel, JLabel[] clubDetailLabel, int i, ClubVO clubVO) {
+	public HoemPanelKeyEventUtil(MainFrame mainFrame, MainPanel mainPanel, JLabel[] clubDetailLabel, int i, ClubVO clubVO, MemberVO memberVO) {
+
 		// TODO Auto-generated constructor stub
 		this.mainFrame = mainFrame;
 		this.mainPanel = mainPanel;
 		this.clubDetailLabel = clubDetailLabel; 
 		this.i = i;
 		this.clubVO = clubVO;
+		this.memberVO = memberVO;
 	}
-	
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, new ClubMainPanel(mainFrame, clubVO));
+		ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, new ClubMainPanel(mainFrame, clubVO, memberVO));
 	}
 
 	@Override
