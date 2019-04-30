@@ -22,7 +22,7 @@ import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class SearchAllFavorite extends JPanel{
-	public SearchAllFavorite(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel, MemberVO memberVO) {
+	public SearchAllFavorite() {
 		this.setLayout(null);
 		this.setLocation(100, 100); //위치
 		this.setSize(465,390); //크기
@@ -341,24 +341,7 @@ public class SearchAllFavorite extends JPanel{
 		this.add(AllFavoriteLabel);
 		this.add(AllFavoriteLabel2);
 
-	/*	favoriteSearchClubList = new FavoriteSearchClubList();
-		favoriteSearchClubList.setPreferredSize(new Dimension(500, 650));
 
-		exerciseJLabel.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				super.mouseClicked(e);
-				if(e.getSource() == exerciseJLabel) { 
-
-
-					ChangPanelUtil.CHANGE_PANEL(mainFrame,centerPanel,mainpanel,favoriteSearchClubList,favorite, memberVO));
-
-				}            
-			}
-
-		});   
-*/
 
 
 	}

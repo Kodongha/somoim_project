@@ -1,26 +1,33 @@
 package com.kh.somoim.view.search;
 //검색창
 
+import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
-import com.kh.somoim.view.login.LoginPanel;
 import com.kh.somoim.view.main.CenterPanel;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 
-public class SearchEngine extends JLabel {
-	public SearchEngine (MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,SearchPanel searchPanel, MemberVO memberVO) {
+public class SearchEngine extends JPanel {
+
+	public SearchEngine (MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,
+			SearchPanel searchPanel,wholePanel wholepanel, MemberVO memberVO) {
 		//검색창 사이즈 설정 및 조정
 		this.setLayout(null);
+		this.setBackground(Color.pink);
 		this.setLocation(100, 100); //위치
 		this.setSize(465,50); //크기
 		//검색이미지 생성  및 사이즈 조절 
@@ -30,7 +37,7 @@ public class SearchEngine extends JLabel {
 		//이미지라벨사이즈조정 
 		iconLabel.setLocation(6,5); // 이미지의 위치 
 		iconLabel.setSize(50,40);   //크기지정 
-		
+
 		//검색창 텍스트필드 설정 
 		JTextField searchText= new JTextField(40);
 		//검색창 텍스트필드 사이즈 설정
@@ -38,50 +45,44 @@ public class SearchEngine extends JLabel {
 		searchText.setSize(300,40); //크기지정
 		//검색창 테두리 없애기
 		searchText.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-			
-		
-		
-		iconLabel.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			
-			StringSearchClubList st= new StringSearchClubList(mainFrame, mainpanel, centerPanel,searchPanel, searchText.getText(), memberVO);
-			
-			
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, searchPanel, st);
-				
-				
-			}
-		});
 
 		this.add(iconLabel);
 		this.add(searchText);
 
+		
+		iconLabel.addMouseListener(new MouseAdapter() {
 
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				System.out.println("click!!");
+				
+				StringSearchClubList stringSearchClubList = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
+			System.out.println("계세요?");
+				ChangPanelUtil.CHANGE_PANEL(  searchPanel, wholepanel, stringSearchClubList);
+			}
+		});
+		
+		
+		iconLabel.addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				super.keyReleased(e);
+
+System.out.println("click!!");
+				
+				StringSearchClubList stringSearchClubList = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
+			System.out.println("계세요?");
+				ChangPanelUtil.CHANGE_PANEL(  searchPanel, wholepanel, stringSearchClubList);
+			}
+			
+			
+			
+			
+		});
+		
 	}
 }
