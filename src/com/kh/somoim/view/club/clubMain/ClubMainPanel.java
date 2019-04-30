@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.view.club.clubHome.ClubChat;

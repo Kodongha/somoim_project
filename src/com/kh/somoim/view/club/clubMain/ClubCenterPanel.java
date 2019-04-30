@@ -24,11 +24,13 @@ public class ClubCenterPanel extends JPanel{
 	JLabel clubHiLabel;
 	JLabel clubBoardLabel;
 	JLabel clubChatLabel;
-	
+	JLabel clubInfoLabel;
+
 	JPanel clubHiPanel;
 	JPanel clubBoardPanel;
 	JPanel clubChatPanel;
 	JPanel clubInfoPanel;
+
 
 	public ClubCenterPanel(MainFrame mainFrame, ClubMainPanel clubmainPanel) {
 
@@ -45,7 +47,7 @@ public class ClubCenterPanel extends JPanel{
 		categoryPanel.setLocation(0, 0);
 
 		//category패널안에 넣을 라벨들 
-		JLabel clubInfoLabel = new JLabel("정보");
+		clubInfoLabel = new JLabel("정보");
 		//        clubInfoLabel.setFont(new Font("돋움",Font.BOLD, 14));
 		clubInfoLabel.setBounds(70, 0, 50, 50);
 
@@ -70,7 +72,14 @@ public class ClubCenterPanel extends JPanel{
 		categoryPanel.add(IconLabel);
 
 		this.add(categoryPanel);
-		
+
+
+		clubHiPanel = new ClubHi();
+		clubHiPanel.setPreferredSize(new Dimension(500, 650));
+
+		clubChatPanel = new ClubChat();
+		clubChatPanel.setPreferredSize(new Dimension(100, 650));
+
 
 		clubHiLabel.addMouseListener(new MouseAdapter() {
 
@@ -79,39 +88,56 @@ public class ClubCenterPanel extends JPanel{
 				super.mouseClicked(e);
 				if(e.getSource() == clubHiLabel) { 
 
-					clubHiPanel = new ClubHi();
-					clubHiPanel.setPreferredSize(new Dimension(500, 650));
 
-					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubmainPanel.getClubinfoPanel(), clubHiPanel, BorderLayout.SOUTH);
+					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubmainPanel.clubinfoPanel, clubHiPanel, BorderLayout.SOUTH);
 
 				}
 				if(e.getSource() == clubHiLabel) { 
 
-					clubHiPanel = new ClubHi();
-					clubHiPanel.setPreferredSize(new Dimension(500, 650));
 
-					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubmainPanel.getClubChatPanel(), clubHiPanel, BorderLayout.SOUTH);
+					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubChatPanel, clubHiPanel, BorderLayout.SOUTH);
 
 				}				
 			}
 
 		});	
-		
-		
+
 		clubChatLabel.addMouseListener(new MouseAdapter() {
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-				if(e.getSource() == clubChatLabel) {
-					
-					clubChatPanel = new ClubChat();
-					clubChatPanel.setPreferredSize(new Dimension(500, 650));
-					
-					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubmainPanel.getClubHiPanel(), clubChatPanel, BorderLayout.SOUTH);
+				if(e.getSource() == clubChatLabel) { 
+
+
+					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubmainPanel.clubinfoPanel, clubChatPanel, BorderLayout.SOUTH);
+
+				}
+				if(e.getSource() == clubChatLabel) { 
+
+
+					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubHiPanel, clubChatPanel, BorderLayout.SOUTH);
+
+				}				
+			}
+		});
+
+		clubInfoLabel.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				if(e.getSource() == clubInfoLabel) {
+
+					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubHiPanel, clubmainPanel.clubinfoPanel, BorderLayout.SOUTH);
+
+				}
+				if(e.getSource() == clubInfoLabel) {
+
+					ChangPanelUtil.CHANGE_PANEL(clubmainPanel, clubChatPanel, clubmainPanel.clubinfoPanel, BorderLayout.SOUTH);
+
 				}
 			}
 		});
 	}
-
 }

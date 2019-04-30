@@ -21,28 +21,27 @@ public class ClubChat extends JPanel {
 		//채팅창 스크롤바 
 		JTextArea chatArea = new JTextArea();
 		chatArea.setEditable(false);
-		
+				
 		JScrollPane scrollPane = new JScrollPane(chatArea);
 		scrollPane.setLocation(0, 0);
 		scrollPane.setSize(500, 575);
 		this.add(scrollPane);	
 		
 		JTextField chatInput = new JTextField();
-	//	채팅입력창 크기 확인용 
-	//	chatInput.setBackground(Color.black);
+		
 	//  테투리 없애기 
-		LineBorder chatInputBorder = new LineBorder(Color.WHITE);
+		LineBorder chatInputBorder = new LineBorder(Color.black);
 		chatInput.setBorder(chatInputBorder);
-		chatInput.setLocation(0, 560);
-		chatInput.setSize(440, 95);
+		chatInput.setLocation(0, 570);
+		chatInput.setSize(450, 80);
 		
 		this.add(chatInput);
 		
 	//  채팅 입력 버튼 	
 		JButton chatInputButton = new JButton("입력 ");
-		LineBorder chatInputButtonBorder = new LineBorder(Color.WHITE);
+		LineBorder chatInputButtonBorder = new LineBorder(Color.black);
 		chatInputButton.setBorder(chatInputButtonBorder);
-		chatInputButton.setSize(50, 75);
+		chatInputButton.setSize(50, 80);
 		chatInputButton.setLocation(450, 570);
 		this.add(chatInputButton);
 		
