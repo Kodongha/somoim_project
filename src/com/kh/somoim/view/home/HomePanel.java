@@ -133,7 +133,7 @@ public class HomePanel extends JPanel {
 		
 		/* 라벨 이벤트 */
 		for(int i=0; i<clubDetailLabel.length; i++) {
-			clubDetailLabel[i].addMouseListener(new HoemPanelKeyEventUtil(mainFrame, mainpanel, clubDetailLabel, i, myClubList.get(i)));
+			clubDetailLabel[i].addMouseListener(new HoemPanelKeyEventUtil(mainFrame, mainpanel, clubDetailLabel, i, myClubList.get(i), memberVO));
 		}
 	}
 
