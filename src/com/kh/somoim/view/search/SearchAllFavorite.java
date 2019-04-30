@@ -1,5 +1,6 @@
 package com.kh.somoim.view.search;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -14,12 +15,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.club.clubHome.ClubChat;
 import com.kh.somoim.view.main.CenterPanel;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class SearchAllFavorite extends JPanel{
-	public SearchAllFavorite(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel) {
+	public SearchAllFavorite(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel, String favorite) {
 		this.setLayout(null);
 		this.setLocation(100, 100); //위치
 		this.setSize(465,390); //크기
@@ -107,7 +109,7 @@ public class SearchAllFavorite extends JPanel{
 		craftsButton.setBackground(Color.WHITE);
 		craftsButton.setBorderPainted(false);
 
-		
+
 
 		JButton  societyButton = new JButton();//사교.인맥
 		societyButton.setLayout(null);
@@ -135,7 +137,7 @@ public class SearchAllFavorite extends JPanel{
 		cookingButton.setBounds(10, 9,205, 45);
 		cookingButton.setBackground(Color.WHITE);
 		cookingButton.setBorderPainted(false);
-		
+
 		JButton  carmotorcycleButton = new JButton();//차.오토바이
 		carmotorcycleButton.setLayout(null);
 		carmotorcycleButton.setBounds(7, 9, 205, 45);
@@ -264,7 +266,7 @@ public class SearchAllFavorite extends JPanel{
 		JLabel  cookingNameJLabel = new JLabel("요리");
 		cookingNameJLabel.setBounds(60, 3, 205, 45);
 		cookingNameJLabel.setFont(new Font("나눔고딕",Font.PLAIN, 17)); 
-		
+
 		JLabel  carmotorcycleNameJLabel = new JLabel("차/오토바이");
 		carmotorcycleNameJLabel.setBounds(60, 3, 205, 45);
 		carmotorcycleNameJLabel.setFont(new Font("나눔고딕",Font.PLAIN, 17)); 
@@ -338,22 +340,61 @@ public class SearchAllFavorite extends JPanel{
 		this.add(AllFavoriteLabel);
 		this.add(AllFavoriteLabel2);
 
-	/*	exerciseJLabel.addMouseListener(new MouseAdapter() {
+	/*	favoriteSearchClubList = new FavoriteSearchClubList();
+		favoriteSearchClubList.setPreferredSize(new Dimension(500, 650));
+
+		exerciseJLabel.addMouseListener(new MouseAdapter() {
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-				if(e.getSource() == exerciseJLabel) {
+				if(e.getSource() == exerciseJLabel) { 
 
-					FavoriteSearchClubList favoriteSearchClubPanel = new FavoriteSearchClubList(mainFrame, centerPanel, mainpanel, "");
-					favoriteSearchClubPanel.setPreferredSize(new Dimension(500, 650));
 
-					1ChangPanelUtil.CHANGE_PANEL(mainFrame, centerPanel, mainpanel, favorite);
+					ChangPanelUtil.CHANGE_PANEL(mainFrame,centerPanel,mainpanel,favoriteSearchClubList,favorite));
 
-				}
+				}            
 			}
 
-		});*/
-	}
+		});   
+*/
 
+
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
