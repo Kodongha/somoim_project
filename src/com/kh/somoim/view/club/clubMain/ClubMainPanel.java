@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
@@ -25,6 +24,9 @@ public class ClubMainPanel extends JPanel{
 
 	ClubHi clubHiPanel;
 	ClubChat clubChatPanel;
+	ClubFree clubFreePanel;
+	ClubPhoto clubPhotoPanel;
+	ClubSchedule clubSchedulePanel;
 
 
 	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO, MemberVO memberVO) {
@@ -36,20 +38,23 @@ public class ClubMainPanel extends JPanel{
 		this.setBackground(Color.yellow);
 		System.out.println("club mainPanel in");
 
-		// ªÛ¥‹/¡ﬂ¥‹ ∆–≥Œ ª˝º∫
+		// ÏÉÅÎã®/Ï§ëÎã® Ìå®ÎÑê ÏÉùÏÑ±
 		clubtopPanel = new ClubTopPanel(mainFrame, this, clubVO, memberVO);
-		clubcenterPanel = new ClubCenterPanel(mainFrame, this);
+		clubcenterPanel = new ClubCenterPanel(mainFrame, this, clubVO, memberVO);
 		clubinfoPanel = new ClubInfo(clubVO);	
 		clubHiPanel = new ClubHi();
-		clubChatPanel = new ClubChat();
 
-		// ∆–≥Œ ªÁ¿Ã¡Ó ¡∂¿˝
+		clubChatPanel = new ClubChat(clubVO, memberVO);
+		clubFreePanel = new ClubFree(this);
+
+
+		// Ìå®ÎÑê ÏÇ¨Ïù¥Ï¶à Ï°∞Ï†à
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));
 
-		// ªÛ¥‹,¡ﬂæ” «¡∑π¿”ø° √ﬂ∞°
-		this.add(clubtopPanel, BorderLayout.NORTH);		// ªÛ¥‹ ∆–≥Œ
-		this.add(clubcenterPanel, BorderLayout.CENTER);	// ¡ﬂæ” ∆–≥Œ
-		this.add(clubinfoPanel, BorderLayout.SOUTH);    // ¡§∫∏ ∆–≥Œ
+		// ÏÉÅÎã®,Ï§ëÏïô ÌîÑÎ†àÏûÑÏóê Ï∂îÍ∞Ä
+		this.add(clubtopPanel, BorderLayout.NORTH);		// ÏÉÅÎã® Ìå®ÎÑê
+		this.add(clubcenterPanel, BorderLayout.CENTER);	// Ï§ëÏïô Ìå®ÎÑê
+		this.add(clubinfoPanel, BorderLayout.SOUTH);    // Ï†ïÎ≥¥ Ìå®ÎÑê
 
 	}
 
@@ -93,5 +98,30 @@ public class ClubMainPanel extends JPanel{
 	public void setClubChatPanel(ClubChat clubChatPanel) {
 		this.clubChatPanel = clubChatPanel;
 	}
+
+	public ClubFree getClubFreePanel() {
+		return clubFreePanel;
+	}
+
+	public void setClubFreePanel(ClubFree clubFreePanel) {
+		this.clubFreePanel = clubFreePanel;
+	}
+
+	public ClubPhoto getClubPhotoPanel() {
+		return clubPhotoPanel;
+	}
+
+	public void setClubPhotoPanel(ClubPhoto clubPhotoPanel) {
+		this.clubPhotoPanel = clubPhotoPanel;
+	}
+
+	public ClubSchedule getClubSchedulePanel() {
+		return clubSchedulePanel;
+	}
+
+	public void setClubSchedulePanel(ClubSchedule clubSchedulePanel) {
+		this.clubSchedulePanel = clubSchedulePanel;
+	}
+	
 
 }
