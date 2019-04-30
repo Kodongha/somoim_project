@@ -14,7 +14,7 @@ public class CheckFavoritesTopPanel extends JPanel {
 		this.setBackground(Color.orange);
 		this.setPreferredSize(new Dimension(500, 60)); //상단 패널조절
 		
-		JLabel CheckFavoritesPanel = new JLabel(" < 관심사 선택(최소 2개 선택)");
+		JLabel CheckFavoritesPanel = new JLabel(" < 관심사 선택(2개 선택하세요)");
 		CheckFavoritesPanel.setForeground(Color.WHITE); //라벨 글씨색변경
 		CheckFavoritesPanel.setFont(CheckFavoritesPanel  //라벨 글씨 크기 조절
 				.getFont().deriveFont(15.0f));

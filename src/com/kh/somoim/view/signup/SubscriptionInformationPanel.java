@@ -22,10 +22,11 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class SubscriptionInformationPanel extends JPanel {
 	private JPanel thisPanel;
-	SignupRequestVO signupRequestVO = new SignupRequestVO();
+	SignupRequestVO signupRequestVO;
 
-	public SubscriptionInformationPanel(MainFrame mainFrame) {
+	public SubscriptionInformationPanel(MainFrame mainFrame, SignupRequestVO signupRequestVO) {
 		this.thisPanel = this;
+		this.signupRequestVO = signupRequestVO;
 
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
@@ -76,24 +77,47 @@ public class SubscriptionInformationPanel extends JPanel {
 		name.setSize(100, 100);
 		result.add(new JLabel("                이름:"));
 		JTextField text4 = new JTextField(15);
-		text.setLocation(20, 900);
-		text.setSize(100, 100);
-
+		text4.setLocation(20, 900);
+		text4.setSize(100, 100);
+		text4.setText(signupRequestVO.getName());
+		text4.setEditable(false);
+		
 		result.add(text4);
 
 		JLabel birth = new JLabel();
 		birth.setLocation(10, 80);
 		birth.setSize(100, 100);
 		result.add(new JLabel("                생년월일:"));
+		
 
+		
 		SpinnerNumberModel numberModel1 = new SpinnerNumberModel(1990, 1930, 2019, 1); // 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner1 = new JSpinner(numberModel1);
+	
+		String year = signupRequestVO.getBirth().substring(0, 4);
+		spinner1.setValue(Integer.parseInt(year));
+		spinner1.setEnabled(false);
+		
+	
+		
+		
+		
+		
 
 		SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1, 1, 12, 1); // 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner2 = new JSpinner(numberModel2);
+		
+		String month = signupRequestVO.getBirth().substring(4, 6);
+		spinner2.setValue(Integer.parseInt(month));
+		spinner2.setEnabled(false);
+		//System.out.println("month:::"+month);
 
 		SpinnerNumberModel numberModel3 = new SpinnerNumberModel(1, 1, 31, 1); // 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner3 = new JSpinner(numberModel3);
+		
+		String day = signupRequestVO.getBirth().substring(6, 8);
+		spinner3.setValue(Integer.parseInt(day));
+		spinner3.setEnabled(false);
 
 		JPanel groupPanel2 = new JPanel();
 		groupPanel2.add(spinner1);
@@ -101,7 +125,10 @@ public class SubscriptionInformationPanel extends JPanel {
 		groupPanel2.add(spinner3);
 		groupPanel2.setBackground(Color.WHITE);
 		result.add(groupPanel2);
-
+		
+	
+		System.out.println();
+		
 		JLabel gender = new JLabel("                성별");
 		gender.setLocation(10, 80);
 		gender.setSize(100, 100);
@@ -129,8 +156,11 @@ public class SubscriptionInformationPanel extends JPanel {
 		result.add(new JLabel("                핸드폰 번호:"));
 
 		JTextField text5 = new JTextField(15);
-		text.setLocation(20, 900);
-		text.setSize(100, 100);
+		text5.setLocation(20, 900);
+		text5.setSize(100, 100);
+		
+		text5.setText(signupRequestVO.getPhoneNumber());
+		text5.setEditable(false);
 
 		result.add(text5);
 
@@ -176,8 +206,9 @@ public class SubscriptionInformationPanel extends JPanel {
 				signupRequestVO.setBirth(br);
 
 				String str = String.valueOf(text5.getText()); // 폰
-				String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // 폰
+				String phone = str.substring(0, 3) +   str.substring(3, 8) +  str.substring(8, 13); // 폰
 				signupRequestVO.setPhoneNumber(phone);
+				
 				signupRequestVO.setAddress(String.valueOf(animalList.getSelectedItem()));
 				signupRequestVO.setName(text4.getText());
 				if(man.isSelected()) {
@@ -197,7 +228,7 @@ public class SubscriptionInformationPanel extends JPanel {
 				// signupRequestVO.setBirth(Integer.parseInt(spinner1.getValue()));
 				System.out.println(signupRequestVO.toString());
 
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame));
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame, signupRequestVO ));
 
 			}
 		});

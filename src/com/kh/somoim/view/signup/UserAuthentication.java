@@ -22,11 +22,10 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class UserAuthentication extends JPanel {
 	private JPanel thisPanel;
-	
 	SignupRequestVO signupRequestVO = new SignupRequestVO();
 	
+	
 	public UserAuthentication(MainFrame mainFrame) {
-		
 		this.thisPanel = this;
 		
 		//레이아웃변경
@@ -46,7 +45,7 @@ public class UserAuthentication extends JPanel {
 		//이름입력 라벨 사이즈 설정
 		nametext.setLocation(170, 80);
 		nametext.setSize(200,50);
-
+		
 		//생년월일 라벨 설정
 		JLabel birth = new JLabel("생년월일");
 		//생년월일라벨 사이즈 설정
@@ -203,6 +202,7 @@ public class UserAuthentication extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(nametext.getText());
 				signupRequestVO.setName(nametext.getText()); //이름
 				
 				String br = String.valueOf(spinner1.getValue()) // 년
@@ -210,14 +210,14 @@ public class UserAuthentication extends JPanel {
 						+ String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // 일
 				signupRequestVO.setBirth(br);
 				
-				String str = String.valueOf(authenticationbutton.getText()); // 폰
+				String str = String.valueOf(numbertext.getText()); // 폰
 				String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // 폰
-				
+				signupRequestVO.setPhoneNumber(phone);
 				
 				
 				System.out.println(signupRequestVO.toString());
 				
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SubscriptionInformationPanel(mainFrame));
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SubscriptionInformationPanel(mainFrame, signupRequestVO));
 			}
 		});
 	}
