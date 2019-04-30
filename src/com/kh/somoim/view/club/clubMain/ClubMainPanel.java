@@ -38,7 +38,7 @@ public class ClubMainPanel extends JPanel{
 		this.setBackground(Color.yellow);
 		System.out.println("club mainPanel in");
 
-		// ìƒë‹¨/ì¤‘ë‹¨ íŒ¨ë„ ìƒì„±
+		// »ó´Ü/Áß´Ü ÆĞ³Î »ı¼º
 		clubtopPanel = new ClubTopPanel(mainFrame, this, clubVO, memberVO);
 		clubcenterPanel = new ClubCenterPanel(mainFrame, this, clubVO, memberVO);
 		clubinfoPanel = new ClubInfo(clubVO);	
@@ -48,13 +48,13 @@ public class ClubMainPanel extends JPanel{
 		clubFreePanel = new ClubFree(this);
 
 
-		// íŒ¨ë„ ì‚¬ì´ì¦ˆ ì¡°ì ˆ
+		// ÆĞ³Î »çÀÌÁî Á¶Àı
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));
 
-		// ìƒë‹¨,ì¤‘ì•™ í”„ë ˆì„ì— ì¶”ê°€
-		this.add(clubtopPanel, BorderLayout.NORTH);		// ìƒë‹¨ íŒ¨ë„
-		this.add(clubcenterPanel, BorderLayout.CENTER);	// ì¤‘ì•™ íŒ¨ë„
-		this.add(clubinfoPanel, BorderLayout.SOUTH);    // ì •ë³´ íŒ¨ë„
+		// »ó´Ü,Áß¾Ó ÇÁ·¹ÀÓ¿¡ Ãß°¡
+		this.add(clubtopPanel, BorderLayout.NORTH);		// »ó´Ü ÆĞ³Î
+		this.add(clubcenterPanel, BorderLayout.CENTER);	// Áß¾Ó ÆĞ³Î
+		this.add(clubinfoPanel, BorderLayout.SOUTH);    // Á¤º¸ ÆĞ³Î
 
 	}
 
