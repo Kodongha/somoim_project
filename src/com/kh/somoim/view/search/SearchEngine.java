@@ -23,6 +23,10 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class SearchEngine extends JPanel {
 
+	int a=1;
+	StringSearchClubList stringSearchClubList;
+	StringSearchClubList stringSearchClubList2;
+	StringSearchClubList stringSearchClubList3;
 	public SearchEngine (MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,
 			SearchPanel searchPanel,wholePanel wholepanel, MemberVO memberVO) {
 		//검색창 사이즈 설정 및 조정
@@ -56,33 +60,85 @@ public class SearchEngine extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				super.mouseClicked(e);
-				System.out.println("click!!");
+
 				
-				StringSearchClubList stringSearchClubList = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
-			System.out.println("계세요?");
-				ChangPanelUtil.CHANGE_PANEL(  searchPanel, wholepanel, stringSearchClubList);
+
+				if(a==1) {
+					stringSearchClubList = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
+					ChangPanelUtil.CHANGE_PANEL(  searchPanel, wholepanel, stringSearchClubList);
+					System.out.println("가셨나요?");
+					a=2;
+				} 
+				else if(a==2){
+					stringSearchClubList2 = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
+					System.out.println("계십니까ㅠㅠㅠㅠㅠㅠ");
+					ChangPanelUtil.CHANGE_PANEL(  searchPanel, stringSearchClubList, stringSearchClubList2);
+					a=3;
+				}
+				else if(a==3) {
+					stringSearchClubList3 = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
+					System.out.println("계십니까ㅠㅠㅠㅠㅠㅠ");
+					ChangPanelUtil.CHANGE_PANEL(  searchPanel, stringSearchClubList2, stringSearchClubList3);
+					a=2;
+					stringSearchClubList=stringSearchClubList3;
+					
+				}
+			
+				
+			
+				
+
 			}
+			
+			
 		});
 		
 		
-		iconLabel.addKeyListener(new KeyAdapter() {
+		
+		
+		searchText.addKeyListener(new KeyAdapter() {
+			
+			
 			
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyTyped(KeyEvent  e) {
 				
-				super.keyReleased(e);
+		//super.mouseClicked(e);
 
-System.out.println("click!!");
 				
-				StringSearchClubList stringSearchClubList = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
-			System.out.println("계세요?");
-				ChangPanelUtil.CHANGE_PANEL(  searchPanel, wholepanel, stringSearchClubList);
+
+				if(a==1) {
+					stringSearchClubList = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
+					ChangPanelUtil.CHANGE_PANEL(  searchPanel, wholepanel, stringSearchClubList);
+					System.out.println("가셨나요?");
+					a=2;
+				} 
+				else if(a==2){
+					stringSearchClubList2 = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
+					System.out.println("계십니까ㅠㅠㅠㅠㅠㅠ");
+					ChangPanelUtil.CHANGE_PANEL(  searchPanel, stringSearchClubList, stringSearchClubList2);
+					a=3;
+				}
+				else if(a==3) {
+					stringSearchClubList3 = new StringSearchClubList(mainFrame, mainpanel, centerPanel, searchPanel, searchText.getText(), memberVO);
+					System.out.println("계십니까ㅠㅠㅠㅠㅠㅠ");
+					ChangPanelUtil.CHANGE_PANEL(  searchPanel, stringSearchClubList2, stringSearchClubList3);
+					a=2;
+					stringSearchClubList=stringSearchClubList3;
+					
+				}
+			
+				
+				
+				
 			}
 			
 			
-			
-			
 		});
+		
+		
+		
+		
 		
 	}
 }
