@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.search.controller.SearchController;
 import com.kh.somoim.util.event.HoemPanelKeyEventUtil;
 import com.kh.somoim.view.main.CenterPanel;
@@ -28,7 +29,7 @@ public class StringSearchClubList extends JPanel  {
 	
 	JLabel[] clubDetailLabel = null;
 
-	public  StringSearchClubList(MainFrame mainFrame, MainPanel mainpanel,CenterPanel centerPanel,SearchPanel searchPanel,String searchString) {
+	public  StringSearchClubList(MainFrame mainFrame, MainPanel mainpanel,CenterPanel centerPanel,SearchPanel searchPanel,String searchString, MemberVO memberVO) {
 		
 		SearchController searchController = new SearchController();
 		ArrayList<ClubVO> searchClubList = searchController.getStringSearchClubList( searchString);
@@ -131,7 +132,7 @@ public class StringSearchClubList extends JPanel  {
 		
 		/* 라벨 이벤트 */
 		for(int i=0; i<clubDetailLabel.length; i++) {
-			clubDetailLabel[i].addMouseListener(new HoemPanelKeyEventUtil(mainFrame, mainpanel, clubDetailLabel, i, searchClubList.get(i)));
+			clubDetailLabel[i].addMouseListener(new HoemPanelKeyEventUtil(mainFrame, mainpanel, clubDetailLabel, i, searchClubList.get(i), memberVO));
 		}
 	}
 	

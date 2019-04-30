@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.login.LoginPanel;
 import com.kh.somoim.view.main.CenterPanel;
@@ -17,7 +18,7 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 
 
 public class SearchEngine extends JLabel {
-	public SearchEngine (MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,SearchPanel searchPanel) {
+	public SearchEngine (MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,SearchPanel searchPanel, MemberVO memberVO) {
 		//검색창 사이즈 설정 및 조정
 		this.setLayout(null);
 		this.setLocation(100, 100); //위치
@@ -69,8 +70,7 @@ public class SearchEngine extends JLabel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			
-				
-			StringSearchClubList st= new StringSearchClubList(mainFrame, mainpanel, centerPanel,searchPanel, searchText.getText());
+			StringSearchClubList st= new StringSearchClubList(mainFrame, mainpanel, centerPanel,searchPanel, searchText.getText(), memberVO);
 			
 			
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, searchPanel, st);

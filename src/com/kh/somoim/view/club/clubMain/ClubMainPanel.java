@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.view.club.clubHome.ClubChat;
 import com.kh.somoim.view.club.clubHome.ClubHi;
 import com.kh.somoim.view.club.clubHome.ClubInfo;
@@ -17,34 +18,34 @@ import com.kh.somoim.view.club.clubHome.clubBoard.ClubSchedule;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubMainPanel extends JPanel{
-	
+
 	ClubTopPanel clubtopPanel;
 	ClubCenterPanel clubcenterPanel;
 	ClubInfo clubinfoPanel;
 
 	ClubHi clubHiPanel;
 	ClubChat clubChatPanel;
-	
 
-	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO) {
-		
+
+	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO, MemberVO memberVO) {
+
 		System.out.println("clubVO:::::::::" + clubVO);
-		
+
 		mainFrame.setTitle("club");
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.yellow);
 		System.out.println("club mainPanel in");
-		
+
 		// 상단/중단 패널 생성
-		clubtopPanel = new ClubTopPanel(clubVO);
+		clubtopPanel = new ClubTopPanel(mainFrame, this, clubVO, memberVO);
 		clubcenterPanel = new ClubCenterPanel(mainFrame, this);
 		clubinfoPanel = new ClubInfo(clubVO);	
 		clubHiPanel = new ClubHi();
 		clubChatPanel = new ClubChat();
-		
+
 		// 패널 사이즈 조절
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));
-		
+
 		// 상단,중앙 프레임에 추가
 		this.add(clubtopPanel, BorderLayout.NORTH);		// 상단 패널
 		this.add(clubcenterPanel, BorderLayout.CENTER);	// 중앙 패널
@@ -92,5 +93,5 @@ public class ClubMainPanel extends JPanel{
 	public void setClubChatPanel(ClubChat clubChatPanel) {
 		this.clubChatPanel = clubChatPanel;
 	}
-	
+
 }

@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.club.clubHome.ClubChat;
 import com.kh.somoim.view.main.CenterPanel;
@@ -21,7 +22,7 @@ import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class SearchAllFavorite extends JPanel{
-	public SearchAllFavorite(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel, String favorite) {
+	public SearchAllFavorite(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel, MemberVO memberVO) {
 		this.setLayout(null);
 		this.setLocation(100, 100); //위치
 		this.setSize(465,390); //크기
@@ -351,7 +352,7 @@ public class SearchAllFavorite extends JPanel{
 				if(e.getSource() == exerciseJLabel) { 
 
 
-					ChangPanelUtil.CHANGE_PANEL(mainFrame,centerPanel,mainpanel,favoriteSearchClubList,favorite));
+					ChangPanelUtil.CHANGE_PANEL(mainFrame,centerPanel,mainpanel,favoriteSearchClubList,favorite, memberVO));
 
 				}            
 			}
@@ -362,39 +363,3 @@ public class SearchAllFavorite extends JPanel{
 
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -28,7 +28,7 @@ public class CenterPanel extends JPanel{
 		
 		homePanel = new HomePanel(mainFrame, mainpanel, memberVO);
 		recommendPanel = new RecommendPanel(mainFrame, mainpanel, memberVO);
-		searchPanel = new SearchPanel(mainFrame, this, mainpanel);
+		searchPanel = new SearchPanel(mainFrame, this, mainpanel, memberVO);
 		settingPanel = new SettingPanel(mainFrame, this, mainpanel, memberVO);
 		infomationCorrect = new InfomationCorrect(mainpanel,mainFrame,this, memberVO);    
 		 

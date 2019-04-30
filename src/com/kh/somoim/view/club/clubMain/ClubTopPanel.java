@@ -5,13 +5,17 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.login.model.vo.MemberVO;
+import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.main.MainPanel;
+import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubTopPanel extends JPanel{
 
@@ -20,7 +24,7 @@ public class ClubTopPanel extends JPanel{
 	JLabel nameLabel;
 	JLabel nameLabelGetName;
 
-	public ClubTopPanel(ClubVO clubVO) {
+	public ClubTopPanel(MainFrame mainFrame, JPanel clubMainPanel, ClubVO clubVO, MemberVO memberVO) {
 
 		this.setLayout(null);
 		this.setBackground(Color.white);
@@ -53,5 +57,16 @@ public class ClubTopPanel extends JPanel{
 		this.add(shareLabel);
 		this.add(backLabel);
 		this.add(nameLabel);		
+
+		backLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, clubMainPanel, new MainPanel(mainFrame, memberVO));
+
+			}
+
+		});
 	}
 }
