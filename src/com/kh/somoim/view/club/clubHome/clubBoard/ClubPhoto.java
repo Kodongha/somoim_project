@@ -12,6 +12,8 @@ public class ClubPhoto extends JPanel {
 	
 	public ClubPhoto() {
 		
+		System.out.println("photo in :::");
+		
 		this.setLayout(new GridLayout(3,3));
 		
 		Set set = new LinkedHashSet();
