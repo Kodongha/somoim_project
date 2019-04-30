@@ -1,19 +1,16 @@
 package com.kh.somoim.util.event;
 
-import java.awt.Dimension;
-
 import javax.swing.JPanel;
 
-import com.kh.somoim.view.club.clubHome.ClubHi;
-import com.kh.somoim.view.club.clubHome.ClubInfo;
 import com.kh.somoim.view.club.clubMain.ClubMainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
+import com.kh.somoim.view.search.SearchPanel;
 
 public class ChangPanelUtil {
-	
+
 	private MainFrame mainFrame;
 	private JPanel oldPanel;
-	
+
 	public ChangPanelUtil(MainFrame mainFrame, JPanel oldPanel) {
 		super();
 		this.mainFrame = mainFrame;
@@ -34,4 +31,19 @@ public class ChangPanelUtil {
 		clubmainPanel.revalidate();
 		clubmainPanel.repaint();
 	}
+
+	public static void CHANGE_PANEL(SearchPanel searchpanel, JPanel op, JPanel np) {
+		searchpanel.remove(op);
+		searchpanel.add(np);
+		searchpanel.revalidate();
+		searchpanel.repaint();
+
+	
+	
+	}
 }
+
+
+
+
+
