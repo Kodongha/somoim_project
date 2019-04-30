@@ -43,7 +43,7 @@ public class FavoriteSearchClubList extends JPanel {
 		int y = 0;
 		FavoriteSearchClubList = new JLabel[searchClubList.size()];
 
-		for(int i = 0; i<searchClubList.size(); i++) {
+		for(int i = 0; i<searchClubList.size(); i++) {   
 			FavoriteSearchClubList[i] = new JLabel();
 			FavoriteSearchClubList[i].setBounds(x, y, 500, 100);
 			FavoriteSearchClubList[i].setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
