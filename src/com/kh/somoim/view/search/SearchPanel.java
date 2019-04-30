@@ -1,6 +1,4 @@
 package com.kh.somoim.view.search;
-//검색창 메인 
-import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JPanel;
@@ -46,7 +44,7 @@ public class SearchPanel extends JPanel {
 		
 		
 		//전체 관심사(SearchAllFavorite) 위치조정 
-		searchAllFavorite = new SearchAllFavorite(); 
+		searchAllFavorite = new SearchAllFavorite(mainFrame, centerPanel, mainpanel); 
 		searchAllFavorite.setLocation(10,250);//위치
 		//전체 관심사(SearchAllFavorite) 검색창테두리 설정 
 		searchAllFavorite.setBorder(new TitledBorder(new LineBorder(Color.BLACK,1)));
