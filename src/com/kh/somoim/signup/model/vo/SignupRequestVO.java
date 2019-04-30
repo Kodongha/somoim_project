@@ -225,4 +225,6 @@ public class SignupRequestVO implements Serializable{
 				+ "]";
 	}
 
+	
+
 }
