@@ -14,6 +14,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerListModel;
+import javax.swing.SpinnerNumberModel;
 
 import com.kh.somoim.signup.model.vo.SignupRequestVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
@@ -21,6 +22,8 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class UserAuthentication extends JPanel {
 	private JPanel thisPanel;
+	
+	SignupRequestVO signupRequestVO = new SignupRequestVO();
 	
 	public UserAuthentication(MainFrame mainFrame) {
 		
@@ -52,7 +55,7 @@ public class UserAuthentication extends JPanel {
 		//생년월일 폰트 설정 
 		birth.setFont(new Font("나눔고딕",Font.BOLD,17));//폰트변경 및 굴게 사이즈조정
 	
-		//생년월일의 년도리스트
+		/*//생년월일의 년도리스트
 		Calendar yearcalendar = Calendar.getInstance();
 		Date value = yearcalendar.getTime(); //현재날짜저장 
 		yearcalendar.add(yearcalendar.YEAR, -50); //현재값보다 -50년증가
@@ -64,10 +67,28 @@ public class UserAuthentication extends JPanel {
 		spinner3.setEditor(new JSpinner.DateEditor(spinner3, "yyyy")); 
 		//생년월일 년도 리스트 사이즈 조정
 		spinner3.setLocation(170,150);
+		spinner3.setSize(80,50);*/
+		
+		SpinnerNumberModel numberModel1 = new SpinnerNumberModel(1990, 1930, 2019, 1); // 시작할 값, 최소값, 최대값, 증가값
+		JSpinner spinner1 = new JSpinner(numberModel1);
+		spinner1.setLocation(170,150);
+		spinner1.setSize(80,50);
+		this.add(spinner1);
+		
+
+		SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1, 1, 12, 1); // 시작할 값, 최소값, 최대값, 증가값
+		JSpinner spinner2 = new JSpinner(numberModel2);
+		spinner2.setLocation(260, 150);
+		spinner2.setSize(80,50);
+		this.add(spinner2);
+
+		SpinnerNumberModel numberModel3 = new SpinnerNumberModel(1, 1, 31, 1); // 시작할 값, 최소값, 최대값, 증가값
+		JSpinner spinner3 = new JSpinner(numberModel3);
+		spinner3.setLocation(350,150);
 		spinner3.setSize(80,50);
+		this.add(spinner3);
 
-
-		//생년월일의 월 리스트
+		/*//생년월일의 월 리스트
 		Calendar monthcalendar = Calendar.getInstance();
 		Date value1 = monthcalendar.getTime(); //현재날짜저장 
 		monthcalendar.add(monthcalendar.MONTH,1); 
@@ -79,9 +100,9 @@ public class UserAuthentication extends JPanel {
 		spinner4.setEditor(new JSpinner.DateEditor(spinner4, "mm")); 
 		//생년월일 월 리스트 사이즈 조정
 		spinner4.setLocation(260,150);
-		spinner4.setSize(80,50);
+		spinner4.setSize(80,50);*/
 
-		//생년월일의 일 리스트
+		/*//생년월일의 일 리스트
 		Calendar daycalendar = Calendar.getInstance();
 		Date value2 = daycalendar.getTime(); //현재날짜저장 
 		daycalendar.add(daycalendar.DAY_OF_MONTH, -1); 
@@ -94,7 +115,7 @@ public class UserAuthentication extends JPanel {
 		//생년월일 일 리스트 사이즈 조정
 		spinner5.setLocation(350,150);
 		spinner5.setSize(80,50);
-
+*/
 		//휴대폰번호 라벨 설정
 		JLabel phonenumber = new JLabel("휴대폰 번호");
 		phonenumber.setLocation(60,195);
@@ -166,9 +187,9 @@ public class UserAuthentication extends JPanel {
 		this.add(name);
 		this.add(nametext);
 		this.add(birth);
-		this.add(spinner3);
+		/*this.add(spinner3);
 		this.add(spinner4);
-		this.add(spinner5);
+		this.add(spinner5);*/
 		this.add(phonenumber);
 		this.add(tong);
 		this.add(numbertext);
@@ -182,6 +203,20 @@ public class UserAuthentication extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				signupRequestVO.setName(nametext.getText()); //이름
+				
+				String br = String.valueOf(spinner1.getValue()) // 년
+						+ String.format("%02d", Integer.parseInt(spinner2.getValue().toString())) // 월
+						+ String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // 일
+				signupRequestVO.setBirth(br);
+				
+				String str = String.valueOf(authenticationbutton.getText()); // 폰
+				String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // 폰
+				
+				
+				
+				System.out.println(signupRequestVO.toString());
+				
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SubscriptionInformationPanel(mainFrame));
 			}
 		});
