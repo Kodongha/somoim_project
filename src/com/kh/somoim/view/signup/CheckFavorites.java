@@ -19,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
+import com.kh.somoim.signup.model.vo.SignupRequestVO;
+import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.mainFrame.MainFrame;
 import com.kh.somoim.view.signup.SignupPage.MyMounseAdapter;
 
@@ -42,7 +44,7 @@ public class CheckFavorites extends JPanel{
 	private JLabel music; //음악 
 	private JLabel dance; //  
 */	
-	public CheckFavorites(MainFrame mainFrame) {
+	public CheckFavorites(MainFrame mainFrame, SignupRequestVO signupRequestVO) {
 		this.thisPanel = thisPanel;
 		
 		this.setLayout(null);
@@ -204,17 +206,26 @@ public class CheckFavorites extends JPanel{
 		nextButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			if( map.size() < 2 )
-			{
-				System.out.println("부족");
-				JOptionPane.showMessageDialog( thisPanel, "2개 선택 하세요", "ERROR", JOptionPane.ERROR_MESSAGE); 
-			}
-			else
-			{
+			if( map.size() == 2 ) {
 				System.out.println("만족");
+				//signupRequestVO.setFavorite(favorite);
 			}
+			else {
+				JOptionPane.showMessageDialog( thisPanel, "2개 선택 하세요", "ERROR", JOptionPane.ERROR_MESSAGE); 
+				System.out.println("부족");
+			}
+			
 		}
 	});;
+	
+		/*nextButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SignUpFinish(mainFrame));
+				
+			}
+		});*/
 	}
 	
 	public void changeBorder(JButton button, String key)
