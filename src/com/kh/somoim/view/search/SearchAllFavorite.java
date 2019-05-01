@@ -354,17 +354,136 @@ public class SearchAllFavorite extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				super.mouseClicked(e);
-				
+
 				System.out.println("클릭");
-				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "운동", memberVO);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "운동/스포츠", memberVO);
 				System.out.println("클릭클릭");
 				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
 				System.out.println("클릭클릭클릭");
 			}
 		});
 
+		travelButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "아웃도어/여행", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+
+			}
+
+		});
+	
+		petButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "반려동물", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
+
+		gameButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "게임/오락", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
+
+		craftsButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "공예/만들기", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
+
+		societyButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "사교/인맥", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
+
+		parentingButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "  결혼/육아", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
+
+
+		volunteerButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "  봉사활동", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
+
+		cookingButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "  요리", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
+
+		carmotorcycleButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "  차/오토바이", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
+
+		musicButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "  음악/악기", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
+		danceButton.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "  댄스/무용", memberVO);
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+			}
+		});
 	}
-
-
 }
-
