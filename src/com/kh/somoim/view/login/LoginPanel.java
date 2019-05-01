@@ -13,6 +13,7 @@ import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -30,7 +31,6 @@ public class LoginPanel extends JPanel {
 	public LoginPanel(MainFrame mainFrame) {
 		LoginController loginController = new LoginController();
 		this.thisPanel = this; 
-
 		this.setLayout(new BorderLayout());
 
 		JPanel loginPanel = new JPanel();

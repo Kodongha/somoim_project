@@ -1,13 +1,9 @@
 package com.kh.somoim.view.signup;
 
 import java.awt.Color;
-import java.awt.Dialog;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,10 +18,11 @@ import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 
+import com.kh.somoim.signup.controller.SignupController;
 import com.kh.somoim.signup.model.vo.SignupRequestVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.login.LoginPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
-import com.kh.somoim.view.signup.SignupPage.MyMounseAdapter;
 
 public class CheckFavorites extends JPanel{
 
@@ -48,7 +45,8 @@ public class CheckFavorites extends JPanel{
 	private JLabel dance; //  
 	 */	
 	public CheckFavorites(MainFrame mainFrame, SignupRequestVO signupRequestVO) {
-		this.thisPanel = thisPanel;
+		SignupController signupController = new SignupController();
+		this.thisPanel = this;
 
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
@@ -214,7 +212,6 @@ public class CheckFavorites extends JPanel{
 
 				if( map.size() == 2 ) {
 					System.out.println("만족");
-					JOptionPane.showMessageDialog( thisPanel, "선택완료", "선텍완료", JOptionPane.ERROR_MESSAGE);
 					Set keys = map.keySet();
 					Iterator it = keys.iterator();
 					ArrayList<String> favoriteList = new ArrayList<String>();
@@ -283,8 +280,11 @@ public class CheckFavorites extends JPanel{
 						}
 						System.out.println("모임" + favorite);
 						signupRequestVO.setFavorite(favoriteList);
-						
 					}
+					
+					signupController.setSignup(signupRequestVO);
+					JOptionPane.showMessageDialog( thisPanel, "가입이 완료되었습니다.", "가입 완료", JOptionPane.PLAIN_MESSAGE);
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
 				}
 				else {
 					JOptionPane.showMessageDialog( thisPanel, "2개 선택 하세요", "ERROR", JOptionPane.ERROR_MESSAGE); 
