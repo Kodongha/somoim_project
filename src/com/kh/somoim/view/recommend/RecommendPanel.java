@@ -49,7 +49,7 @@ public class RecommendPanel extends JPanel {
 			clubDetailLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
 			/* 소모임 타이틀 이미지 */
-			Image originTitleImage = new ImageIcon(recommendClubList.get(i).getTitleImagePath()).getImage().getScaledInstance(50, 50, 0);
+			Image originTitleImage = new ImageIcon(recommendClubList.get(i).getTitleImagePath()).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 			Image resizeTitleImage = originTitleImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
 
 			JLabel titleImageLabel = new JLabel(new ImageIcon(resizeTitleImage));
