@@ -1,6 +1,8 @@
 package com.kh.somoim.view.club.clubHome;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.DataInputStream;
@@ -39,16 +41,16 @@ public class ClubChat extends JPanel {
 				
 		scrollPane = new JScrollPane(chatArea);
 		scrollPane.setLocation(0, 0);
-		scrollPane.setSize(500, 575);
-		this.add(scrollPane);	
+		scrollPane.setSize(500, 580);
+		this.add(scrollPane);
 		
 		chatInput = new JTextField();
 		
 	//  테투리 없애기 
 		LineBorder chatInputBorder = new LineBorder(Color.black);
 		chatInput.setBorder(chatInputBorder);
-		chatInput.setLocation(0, 590);
-		chatInput.setSize(450, 40);
+		chatInput.setLocation(0, 580);
+		chatInput.setSize(450, 70);
 		
 		this.add(chatInput);
 		
@@ -56,8 +58,8 @@ public class ClubChat extends JPanel {
 		JButton chatInputButton = new JButton("입력 ");
 		LineBorder chatInputButtonBorder = new LineBorder(Color.black);
 		chatInputButton.setBorder(chatInputButtonBorder);
-		chatInputButton.setSize(50, 80);
-		chatInputButton.setLocation(450, 570);
+		chatInputButton.setLocation(450, 580);
+		chatInputButton.setSize(50, 70);
 		this.add(chatInputButton);
 		
 		try {
@@ -72,6 +74,7 @@ public class ClubChat extends JPanel {
 		} 
 		
 		
+		/* Ente */
 		chatInput.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
@@ -80,12 +83,24 @@ public class ClubChat extends JPanel {
 				if(arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 					if(chatInput.getText().trim().length() > 0) {
 						sendMessage(chatInput.getText().trim());
-//						chatArea.append(chatInput.getText().trim() + "\n");
 						chatInput.setText("");
 					}
 				}
 			}
 		});
+		
+		chatInputButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(chatInput.getText().trim().length() > 0) {
+					sendMessage(chatInput.getText().trim());
+					chatInput.setText("");
+				}
+			}
+		});
+		
 		new ClientReceiver(socket).start();
 	}
 	
