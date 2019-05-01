@@ -23,9 +23,9 @@ public class MainPanel extends JPanel{
 		// 아이콘 넣기!
 	
 		// 상단/중단/하단 패널 생성
-		topPanel = new TopPanel(mainFrame,memberVO);
 		centerPanel = new CenterPanel(mainFrame, this,memberVO);
 		bottomPanel = new BottomPanel(this);
+		topPanel = new TopPanel(mainFrame, this, memberVO);
 
 		// 상단,중앙,하단 프레임에 추가
 		this.add(topPanel, BorderLayout.NORTH);		// 상단 패널
@@ -33,43 +33,29 @@ public class MainPanel extends JPanel{
 		this.add(bottomPanel, BorderLayout.SOUTH);	// 하단 패널
 		
 	}
- 
-
 
 	public TopPanel getTopPanel() {
 		return topPanel;
 	}
 
-
-
 	public void setTopPanel(TopPanel topPanel) {
 		this.topPanel = topPanel;
 	}
-
-
 
 	public CenterPanel getCenterPanel() {
 		return centerPanel;
 	}
 
-
-
 	public void setCenterPanel(CenterPanel centerPanel) {
 		this.centerPanel = centerPanel;
 	}
-
-
 
 	public BottomPanel getBottomPanel() {
 		return bottomPanel;
 	}
 
-
-
 	public void setBottomPanel(BottomPanel bottomPanel) {
 		this.bottomPanel = bottomPanel;
 	}
-	
-	
 	
 }

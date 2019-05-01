@@ -3,6 +3,8 @@ package com.kh.somoim.view.main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,6 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import com.kh.somoim.login.model.vo.MemberVO;
+import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class TopPanel extends JPanel {
@@ -22,7 +25,7 @@ public class TopPanel extends JPanel {
 	private JLabel profilePointLabel;
 	private JLabel messengerLabel;
 	
-	public TopPanel(MainFrame mainFrame, MemberVO memberVO) {
+	public TopPanel(MainFrame mainFrame, JPanel mainPanel, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
 		
 		System.out.println(memberVO);
@@ -63,6 +66,15 @@ public class TopPanel extends JPanel {
 		this.add(profilePointLabel);
 		this.add(messengerLabel);
 		this.add(button);
+		
+		logoLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, new MainPanel(mainFrame, memberVO));
+			}
+		});
 		
 	}
 	

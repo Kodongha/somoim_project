@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -36,8 +35,8 @@ public class HomePanel extends JPanel {
 		ArrayList<ClubVO> myClubList = homeController.getMyClubList(memberVO);
 
 		this.setBackground(Color.WHITE);
-		this.setLayout(new BorderLayout());
-
+		this.setLayout(null);
+		
 		JPanel myClubListPanel = new JPanel();
 		myClubListPanel.setLayout(null);
 		myClubListPanel.setPreferredSize(new Dimension(500,100 * myClubList.size()));
@@ -127,14 +126,31 @@ public class HomePanel extends JPanel {
 
 		myClubListPanel.setBackground(Color.WHITE);
 		JScrollPane clubDetailListScroll = new JScrollPane(myClubListPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		clubDetailListScroll.getVerticalScrollBar().setUnitIncrement(16);
-		clubDetailListScroll.setPreferredSize(new Dimension(500,100));
+		clubDetailListScroll.getVerticalScrollBar().setUnitIncrement(16);	// 스크롤 속도 지정
+		clubDetailListScroll.setLocation(0,0);
+		clubDetailListScroll.setSize(495,600);
+		
 		this.add(clubDetailListScroll);
+		
+//		Image createClubImage = new ImageIcon("images/createClubButton.png").getImage().getScaledInstance(495, 80, Image.SCALE_SMOOTH);
+//		JLabel createClubLabel = new JLabel(new ImageIcon(createClubImage));
+		JLabel createClubLabel = new JLabel("소모임 만들기");
+		createClubLabel.setHorizontalAlignment(JLabel.CENTER);
+		createClubLabel.setBackground(Color.gray);
+		createClubLabel.setOpaque(true);
+		
+		createClubLabel.setBounds(0,600,495,50);
+		this.add(createClubLabel);
 		
 		/* 라벨 이벤트 */
 		for(int i=0; i<clubDetailLabel.length; i++) {
 			clubDetailLabel[i].addMouseListener(new HoemPanelKeyEventUtil(mainFrame, mainpanel, clubDetailLabel, i, myClubList.get(i), memberVO));
 		}
+		
+		createClubLabel.addMouseListener(new MouseAdapter() {
+			
+		});
+		
 	}
 
 }
