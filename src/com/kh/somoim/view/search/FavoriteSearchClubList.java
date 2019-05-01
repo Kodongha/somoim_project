@@ -25,16 +25,13 @@ import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class FavoriteSearchClubList extends JPanel {
-		
-	
-	
 
-	JLabel [] FavoriteSearchClubList = null;
+	JLabel [] clubDetailLabel  = null;
 
 	public FavoriteSearchClubList(MainFrame mainFrame, CenterPanel centerpanel, SearchPanel searchPanle, MainPanel mainpanel, String favorite, MemberVO memberVO) {
 		SearchController searchController = new SearchController();
 		ArrayList<ClubVO> searchClubList = searchController.getFavoriteSearchClubList(favorite);
-
+		System.out.println("1111");
 		this.setLayout(null);
 		this.setLocation(22, 80); //위치
 		this.setSize(450,550); //크기
@@ -48,49 +45,51 @@ public class FavoriteSearchClubList extends JPanel {
 
 		int x = -1;
 		int y = 0;
-		FavoriteSearchClubList = new JLabel[searchClubList.size()];
+		clubDetailLabel = new JLabel[searchClubList.size()];
+		System.out.println("22222");
 
-		for(int i = 0; i<searchClubList.size(); i++) {   
-			FavoriteSearchClubList[i] = new JLabel();
-			FavoriteSearchClubList[i].setBounds(x, y, 500, 100);
-			FavoriteSearchClubList[i].setBorder(BorderFactory.createLineBorder(Color.BLACK,1));
-			//소모임 타이틀 이미지 
+		for(int i=0; i<searchClubList.size(); i++) {
+			clubDetailLabel[i] = new JLabel();
+			clubDetailLabel[i].setBounds(x, y, 500, 100);
+			clubDetailLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+
+			// 소모임 타이틀 이미지 
 			Image originTitleImage = new ImageIcon(searchClubList.get(i).getTitleImagePath()).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 			Image resizeTitleImage = originTitleImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
 
 			JLabel titleImageLabel = new JLabel(new ImageIcon(resizeTitleImage));
 			titleImageLabel.setBounds(15,5,90,90);
 
-			//카테고리 이미지 
+			// 카테고리 이미지 
 			JLabel categoryImageLabel = new JLabel(new ImageIcon(resizeTitleImage));
 			categoryImageLabel.setBounds(120,10,20,20);
 
-			//소모임 이름 
+			// 소모임 이름 
 			JLabel clubNameLabel = new JLabel();
 			clubNameLabel.setText(searchClubList.get(i).getName());
 			clubNameLabel.setBounds(120,35,250,30);
 			clubNameLabel.setFont(clubNameLabel.getFont().deriveFont(18.0f));
 
-			//소모임 정모 정보 
+		//	 소모임 정모 정보 
 			JLabel clubMeetingDayLabel = new JLabel();
 			clubMeetingDayLabel.setBounds(120,70,150,20);
 
 			Date meetingDay = searchClubList.get(i).getMeetingDay();
 			Calendar nowDay = Calendar.getInstance();
 
-			//오늘 00:00:00 으로 세팅하기 위해 Year Month Date 설정 
+		//	 오늘 00:00:00 으로 세팅하기 위해 Year Month Date 설정 
 			int year = nowDay.get(Calendar.YEAR);
 			int month = nowDay.get(Calendar.MONTH);
 			int date = nowDay.get(Calendar.DATE);
 			Date nowDate = new Date(new GregorianCalendar(year, month, date).getTimeInMillis());
 
-			// 미팅 날짜가 미래일 경우 라벨 추가  
+			// 미팅 날짜가 미래일 경우 라벨 추가 로직 
 			if(meetingDay.getTime() >= nowDate.getTime()) {
 				String meetingString = "다음 정모 : ";
 				long diffDate = meetingDay.getTime() - nowDate.getTime();
 				int day = (int) (diffDate / 1000 / 60 / 60 / 24);
 
-				/* 오늘, 내일, 모레를 제외한 날짜는 날짜로 표시  */
+			//	 오늘, 내일, 모레를 제외한 날짜는 날짜로 표시  
 				switch (day) {
 				case 0:
 					meetingString += "오늘";
@@ -108,23 +107,23 @@ public class FavoriteSearchClubList extends JPanel {
 					break;
 				}
 				clubMeetingDayLabel.setText(meetingString);
-				FavoriteSearchClubList[i].add(clubMeetingDayLabel);
+				clubDetailLabel[i].add(clubMeetingDayLabel);
 			}
 
-			//소모임 인원 수
+			// 소모임 인원 수 
 			JLabel clubMemberCountLabel = new JLabel();
 			clubMemberCountLabel.setText(searchClubList.get(i).getMembersNumber().size() + "명");
 			clubMemberCountLabel.setBounds(420,25,50,50);
 			clubMemberCountLabel.setFont(clubMemberCountLabel.getFont().deriveFont(15.0f));
 
-			FavoriteSearchClubList[i].add(titleImageLabel);
-			FavoriteSearchClubList[i].add(categoryImageLabel);
-			FavoriteSearchClubList[i].add(clubNameLabel);
-			FavoriteSearchClubList[i].add(clubMemberCountLabel);
+			clubDetailLabel[i].add(titleImageLabel);
+			clubDetailLabel[i].add(categoryImageLabel);
+			clubDetailLabel[i].add(clubNameLabel);
+			clubDetailLabel[i].add(clubMemberCountLabel);
 
-			favoriteSearchClubPanel.add(FavoriteSearchClubList[i]);
+			favoriteSearchClubPanel.add(clubDetailLabel[i]);
 
-			//세로 좌표 위치지정
+		//	 세로 좌표 위치지정 
 			y += 100;
 		}
 
@@ -133,10 +132,11 @@ public class FavoriteSearchClubList extends JPanel {
 		clubDetailListScroll.getVerticalScrollBar().setUnitIncrement(16);
 		clubDetailListScroll.setPreferredSize(new Dimension(500,100));
 		this.add(clubDetailListScroll);
-
+		System.out.println("6666");
 		//라벨 이벤트 
-		for(int i=0; i<FavoriteSearchClubList.length; i++) {
-			FavoriteSearchClubList[i].addMouseListener(new HoemPanelKeyEventUtil(mainFrame, mainpanel, FavoriteSearchClubList, i, searchClubList.get(i), memberVO));
+		for(int i=0; i<clubDetailLabel .length; i++) {
+			clubDetailLabel [i].addMouseListener(new HoemPanelKeyEventUtil(mainFrame, mainpanel, clubDetailLabel, i, searchClubList.get(i), memberVO));
+			System.out.println("7777");
 		}
 	}
 }
