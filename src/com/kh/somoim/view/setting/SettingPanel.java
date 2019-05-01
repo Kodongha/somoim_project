@@ -5,12 +5,23 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.setting.controller.SettingController;
@@ -23,6 +34,7 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 public class SettingPanel extends JPanel {
 
 	private JPanel thisPanel;
+
 
 	public SettingPanel(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,MemberVO memberVO) {
 		SettingController settingController = new SettingController();
@@ -38,7 +50,7 @@ public class SettingPanel extends JPanel {
 
 		info.setLayout(new GridLayout(1,2));
 
-		Image profilepic = new ImageIcon("images/으누profile.PNG").getImage().getScaledInstance(150, 150, 0);
+		Image profilepic = new ImageIcon("images/userprofile.PNG").getImage().getScaledInstance(160, 160, 0);
 		JLabel profile = new JLabel(new ImageIcon(profilepic));
 
 		JLabel labelgroup= new JLabel();
@@ -113,10 +125,56 @@ public class SettingPanel extends JPanel {
 		this.add(info);
 		this.add(list);
 		this.add(out);
+
+
+
+		JFrame window = new JFrame();
+		JFileChooser fileChooser = new JFileChooser();
+		//기본 Path의 경로 설정 (바탕화면)
+		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + "//" + "Desktop"));
+		//필터링될 확장자
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("jpg 파일", "jpg");
+
+		//필터링될 확장자 추가
+		fileChooser.addChoosableFileFilter(filter);		
+
+
+
+		profile.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				if(e.getSource() == profile) {
+					int result = fileChooser.showOpenDialog(window); 
+					System.out.println(result); 
+					if (result == JFileChooser.APPROVE_OPTION) { 
+						//선택한 파일의 경로 반환 
+						File selectedFile = fileChooser.getSelectedFile();
+						System.out.println("selectedFile.getPath().split(\".\")[1].toLowerCase()" + selectedFile.getPath().split("[.]")[1].toLowerCase());
+						//선택한 파일의 경로 
+						if(selectedFile.getPath().split("[.]")[1].toLowerCase().equals("png") 
+								|| selectedFile.getPath().split("[.]")[1].toLowerCase().equals("jpeg")
+								|| selectedFile.getPath().split("[.]")[1].toLowerCase().equals("jpg")) {
+
+						} else {
+							JOptionPane.showMessageDialog(null, "png/jpg/jpeg 확장자만 선택하세요."," ",JOptionPane.WARNING_MESSAGE);
+						}
+
+					}else {
+						JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다"," ",JOptionPane.WARNING_MESSAGE);
+						return;
+					}
+				}
+			}
+		});
 	}
-
-
-
-
-
 }
+
+
+
+
+
+
+
