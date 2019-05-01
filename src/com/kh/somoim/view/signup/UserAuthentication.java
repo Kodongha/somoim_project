@@ -2,6 +2,7 @@ package com.kh.somoim.view.signup;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
@@ -9,6 +10,7 @@ import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -198,27 +200,41 @@ public class UserAuthentication extends JPanel {
 		this.add(nextbutton);
 		this.add(internationalnumber);
 		
+		
 		nextbutton.addActionListener(new ActionListener() {
-			
+//			nametext
+//			numbertext
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(nametext.getText());
-				signupRequestVO.setName(nametext.getText()); //이름
-				
-				String br = String.valueOf(spinner1.getValue()) // 년
-						+ String.format("%02d", Integer.parseInt(spinner2.getValue().toString())) // 월
-						+ String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // 일
-				signupRequestVO.setBirth(br);
-				
-				String str = String.valueOf(numbertext.getText()); // 폰
-				String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // 폰
-				signupRequestVO.setPhoneNumber(phone);
-				
-				
-				System.out.println(signupRequestVO.toString());
-				
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SubscriptionInformationPanel(mainFrame, signupRequestVO));
-			}
+				//System.out.println(nametext.getText());
+				//if(nametext ) {
+					signupRequestVO.setName(nametext.getText()); //이름
+					
+					String br = String.valueOf(spinner1.getValue()) // 년
+							+ String.format("%02d", Integer.parseInt(spinner2.getValue().toString())) // 월
+							+ String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // 일
+					signupRequestVO.setBirth(br);
+					
+					String str = String.valueOf(numbertext.getText()); // 폰
+					if(str.length() == 11){
+						String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // 폰
+						signupRequestVO.setPhoneNumber(phone);
+					}else {
+						JOptionPane.showMessageDialog( thisPanel, "빈칸채우세요", "빈칸채우세요", JOptionPane.ERROR_MESSAGE);
+					}
+					
+					
+					
+					System.out.println(signupRequestVO.toString());
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SubscriptionInformationPanel(mainFrame, signupRequestVO));
+					
+					
+
+					
+				//}else {
+					//System.out.println("빈칸 채워주세요");
+									}
+							//}
 		});
 	}
 }
