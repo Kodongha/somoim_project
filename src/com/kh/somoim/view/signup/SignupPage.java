@@ -17,11 +17,11 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 public class SignupPage extends JPanel{
 	
 	private JPanel thisPanel;
-	private MainFrame mainFrame;
+	//private MainFrame mainFrame;
 	
 	public SignupPage(MainFrame mainFrame) {
 		this.thisPanel = this;
-		this.mainFrame = mainFrame;
+		//this.mainFrame = mainFrame;
 		
 		//컬러 화이트로 변경 
 		this.setBackground(Color.WHITE);
@@ -72,25 +72,24 @@ public class SignupPage extends JPanel{
 		this.add(so2);//소확행 하단 문구
 		this.add(nextbutton);//다음버튼
 
-		nextbutton.addActionListener(new MyMounseAdapter());
 		
-		SignupPageTopPanel signupPageTopPanel = new SignupPageTopPanel();
+		SignupPageTopPanel signupPageTopPanel = new SignupPageTopPanel(mainFrame);
 		signupPageTopPanel.setBounds(0, 0, 500, 35);
 		this.add(signupPageTopPanel);
 
-/*
+
 		nextbutton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new userAuthentication());
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new TermsOfServicePanel(mainFrame));
 			}
 		});
-*/
+
 
 	}
-	class MyMounseAdapter implements ActionListener{
+	/*class MyMounseAdapter implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -99,4 +98,6 @@ public class SignupPage extends JPanel{
 		}
 		
 	}
+*/	
+	
 }

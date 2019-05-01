@@ -142,7 +142,8 @@ public class SubscriptionInformationPanel extends JPanel {
 		ButtonGroup group = new ButtonGroup();
 		group.add(man);
 		group.add(woman);
-
+		man.setSelected(true);
+		
 		JPanel groupPanel = new JPanel();
 		groupPanel.add(man);
 		groupPanel.add(woman);

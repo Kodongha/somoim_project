@@ -2,6 +2,7 @@ package com.kh.somoim.view.signup;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,6 +23,8 @@ public class SignUpFinishTopPanel extends JPanel {
 		
 		createLabel.setSize(100, 20);
 		this.add(createLabel);
+		
+		
 	}
 	
 	
