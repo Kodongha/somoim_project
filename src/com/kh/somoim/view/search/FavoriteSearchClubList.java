@@ -25,14 +25,21 @@ import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class FavoriteSearchClubList extends JPanel {
+		
+	
+	
 
 	JLabel [] FavoriteSearchClubList = null;
 
-	public FavoriteSearchClubList(MainFrame mainFrame, CenterPanel centerpanel, MainPanel mainpanel, String favorite, MemberVO memberVO) {
+	public FavoriteSearchClubList(MainFrame mainFrame, CenterPanel centerpanel, SearchPanel searchPanle, MainPanel mainpanel, String favorite, MemberVO memberVO) {
 		SearchController searchController = new SearchController();
 		ArrayList<ClubVO> searchClubList = searchController.getFavoriteSearchClubList(favorite);
 
-		this.setBackground(Color.WHITE);
+		this.setLayout(null);
+		this.setLocation(22, 80); //위치
+		this.setSize(450,550); //크기
+		this.setBackground(Color.BLUE);
+		
 		this.setLayout(new BorderLayout());
 
 		JPanel favoriteSearchClubPanel = new JPanel();

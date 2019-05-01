@@ -22,7 +22,11 @@ import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class SearchAllFavorite extends JPanel{
-	public SearchAllFavorite() {
+
+	FavoriteSearchClubList favoriteSearchClubList;
+
+	public SearchAllFavorite(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,
+			SearchPanel searchPanel,wholePanel wholepanel, MemberVO memberVO) {
 		this.setLayout(null);
 		this.setLocation(100, 100); //위치
 		this.setSize(465,390); //크기
@@ -50,6 +54,7 @@ public class SearchAllFavorite extends JPanel{
 
 		//전체관심사 라밸 설정
 		JLabel exerciseJLabel = new JLabel();
+
 		exerciseJLabel.setLayout(null);
 		JLabel  travelJLabel = new JLabel();
 		travelJLabel.setLayout(null);
@@ -174,6 +179,7 @@ public class SearchAllFavorite extends JPanel{
 
 		//이미지를 넣을 라벨  생성 및 사이즈 조정
 		JLabel exerciseIconLabel = new JLabel(new ImageIcon(exerciseIcon));
+
 		exerciseIconLabel.setLayout(null);
 		exerciseIconLabel.setBounds(10,3, 40, 40);
 
@@ -342,7 +348,23 @@ public class SearchAllFavorite extends JPanel{
 		this.add(AllFavoriteLabel2);
 
 
+		exerciseButton.addMouseListener(new MouseAdapter() {
 
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				
+				System.out.println("클릭");
+				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "운동", memberVO);
+				System.out.println("클릭클릭");
+				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
+				System.out.println("클릭클릭클릭");
+			}
+		});
 
 	}
+
+
 }
+

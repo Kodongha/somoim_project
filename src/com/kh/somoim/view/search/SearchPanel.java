@@ -36,8 +36,7 @@ public class SearchPanel extends JPanel {
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);	
 
-
-		wholepanel=new wholePanel();
+		wholepanel=new wholePanel(mainFrame, centerPanel, mainpanel, this, memberVO);
 		wholepanel.setBounds(10, 70, 450, 600);
 		
 		
