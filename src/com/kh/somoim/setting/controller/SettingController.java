@@ -1,11 +1,18 @@
 package com.kh.somoim.setting.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.setting.model.dao.SettingDAO;
 
 public class SettingController {
-
-	SettingDAO settingDAO = new SettingDAO(); 
+	
+	public final int DEFAULT_BUFFER_SIZE = 10000;
+	private SettingDAO settingDAO = new SettingDAO(); 
 
 	/**
 	 * 로그인 유저 정보 수정
@@ -63,8 +70,34 @@ public class SettingController {
 		System.out.println("SettingController.setInformation in"); 
 		
 		settingDAO.removeMember(memberVO);
+	}
 
 
+	public boolean setProfilePhoto(MemberVO memberVO, String selectedFilePath, String extension) {
+		// TODO Auto-generated method stub
+		
+		boolean reuslt = false;
+		File file = new File(selectedFilePath);
+		BufferedImage bufferedImage = null;
+		
+		if(!file.exists()) {
+			System.out.println("File not Exist.");
+		} else {
+			System.out.println("File Exist.");
+			try {
+				bufferedImage = ImageIO.read(file);
+				System.out.println(file.getName());
+				
+				ImageIO.write(bufferedImage, extension, new File("C:\\Users\\ko\\git\\somoim_project_client\\images\\member\\" + memberVO.getUserNumber() + "." + extension));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			memberVO.setProfilePhotoPath("images/member/" + memberVO.getUserNumber() + "." + extension);
+			settingDAO.setProfilePhoto(memberVO);
+		}
+		
+		return reuslt;
 	}
 
 }

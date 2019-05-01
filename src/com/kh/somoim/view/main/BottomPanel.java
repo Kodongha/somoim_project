@@ -24,10 +24,10 @@ public class BottomPanel extends JPanel{
 		this.setBackground(Color.WHITE);
 		
 		// 이미지 생성 
-		Image homeIcon = new ImageIcon("images/Home.PNG").getImage().getScaledInstance(50, 50, 0);
-		Image recommendIcon = new ImageIcon("images/Recommend.PNG").getImage().getScaledInstance(50, 50, 0);
-		Image searchIcon = new ImageIcon("images/Search.PNG").getImage().getScaledInstance(50, 50, 0);
-		Image settingIcon = new ImageIcon("images/Setting.PNG").getImage().getScaledInstance(50, 50, 0);
+		Image homeIcon = new ImageIcon("images/Home.PNG").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		Image recommendIcon = new ImageIcon("images/Recommend.PNG").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		Image searchIcon = new ImageIcon("images/Search.PNG").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		Image settingIcon = new ImageIcon("images/Setting.PNG").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 
 		// 라벨에 이미지 넣기
 		homeLabel = new JLabel(new ImageIcon(homeIcon));

@@ -24,4 +24,11 @@ public class SettingDAO {
 		System.out.println("SettingDAO.removeMember in");
 		new ClientConnector().sendServer("SettingDAO.removeMember", memberVO);
 	}
+
+	public void setProfilePhoto(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("SettingDAO.setProfilePhoto in");
+		new ClientConnector().sendServer("SettingDAO.setProfilePhoto", memberVO);
+	}
 }

@@ -71,11 +71,6 @@ public class SearchFavorite extends JPanel {
 		//게임.오락 폰트 설정 
 		gameLabel.setFont(new Font("나눔고딕",Font.PLAIN, 17)); //폰트변경 및 굵게,사이즈조정 
 
-
-
-
-
-
 		this.add(favoriteLabel);
 		this.add(iconLabel);
 		this.add(exerciseLabel);
@@ -83,8 +78,6 @@ public class SearchFavorite extends JPanel {
 		this.add(societyLabel);
 		this.add(travelLabel);
 		this.add(gameLabel);
-
-
 
 	}
 

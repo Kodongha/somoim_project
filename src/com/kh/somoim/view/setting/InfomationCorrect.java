@@ -17,6 +17,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.LineBorder;
 
 import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.setting.controller.SettingController;
@@ -35,6 +36,7 @@ private MainFrame mainFrame;
 		
 		 
 		this.centerPanel = centerPanel;
+		centerPanel.setBorder(new LineBorder(Color.GRAY,1));
 		SettingController settingController = new SettingController();
 
 		this.setLayout(null);
@@ -51,10 +53,10 @@ private MainFrame mainFrame;
 		email.setLocation(10,50);
 		email.setSize(200,100);
 
-		result.add(new JLabel("                이메일: "));
+		result.add(new JLabel("                ID / 이메일: "));
 
 		JTextField text = new JTextField(15);
-
+		text.setEditable(false);
 		text.setText(memberVO.getEmail());
 
 		result.add(text);
@@ -101,26 +103,28 @@ private MainFrame mainFrame;
 
 		SpinnerNumberModel numberModel1 = new SpinnerNumberModel(year1, 1930, 2010, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner1 = new JSpinner(numberModel1);
+		spinner1.setEnabled(false);
 
 		String month= memberVO.getBirth().substring(4, 6);
 		int month1=Integer.parseInt(month);
 
 		SpinnerNumberModel numberModel2 = new SpinnerNumberModel(month1, 1, 12, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner2 = new JSpinner(numberModel2);
-
+		spinner2.setEnabled(false);
+		
 		String day= memberVO.getBirth().substring(6, 8);
 		int day1=Integer.parseInt(day);
 
 		SpinnerNumberModel numberModel3 = new SpinnerNumberModel(day1, 1, 31, 1);	// 시작할 값, 최소값, 최대값, 증가값
 		JSpinner spinner3 = new JSpinner(numberModel3);
-
+		spinner3.setEnabled(false);
+		
 		JPanel groupPanel2 = new JPanel();
 		groupPanel2.add(spinner1);
 		groupPanel2.add(spinner2);
 		groupPanel2.add(spinner3);
 		groupPanel2.setBackground(Color.WHITE);
 		result.add(groupPanel2);
-
 
 		JLabel gender= new JLabel("                성별");
 		gender.setLocation(10,80);
@@ -201,39 +205,44 @@ private MainFrame mainFrame;
 					passwordStr2 += pass2[i];
 				}
 
-				if(passwordStr.equals(passwordStr2)) {
+				if(passwordStr == null || passwordStr.trim().equals("")) {
+					JOptionPane.showMessageDialog(null, "패스워드를 입력해주세요.");
+					
+				} else {
+					if(passwordStr.equals(passwordStr2)) {
 
-					int year=(int)numberModel1.getValue();
-					int month=(int)numberModel2.getValue();
-					int day=(int)numberModel3.getValue();
+						int year=(int)numberModel1.getValue();
+						int month=(int)numberModel2.getValue();
+						int day=(int)numberModel3.getValue();
 
-					String gender = null;
+						String gender = null;
 
-					if(man.isSelected()){
-						gender=man.getText();
+						if(man.isSelected()){
+							gender=man.getText();
+						}
+						if(woman.isSelected()) {
+
+							gender=woman.getText();
+							
+						}
+						
+						settingController.setInformation(memberVO,text.getText(),  passwordStr ,year,month,day,text4.getText(),
+								text5.getText(),locallist.getSelectedItem().toString(),gender);
+						
+						MainPanel newMainPanel = new MainPanel(mainFrame, memberVO);
+						ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, newMainPanel);	 
+						
+						newMainPanel.getCenterPanel().getCardLayout().show(newMainPanel.getCenterPanel().getSettingPanel().getParent(), "setting");
+
+
+						System.out.println(memberVO);
+					} 
+					else {
+						String nono= "비밀번호와 비밀번호 확인이 일치하지 않습니다 \n 다시 입력해주세요";
+						JOptionPane.showMessageDialog(null, nono);
 					}
-					if(woman.isSelected()) {
-
-						gender=woman.getText();
-
-					}
-
-					
-					settingController.setInformation(memberVO,text.getText(),  passwordStr ,year,month,day,text4.getText(),
-							text5.getText(),locallist.getSelectedItem().toString(),gender);
-					
-					MainPanel newMainPanel = new MainPanel(mainFrame, memberVO);
-					ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, newMainPanel);	 
-					
-					newMainPanel.getCenterPanel().getCardLayout().show(newMainPanel.getCenterPanel().getSettingPanel().getParent(), "setting");
-
-
-					System.out.println(memberVO);
 				}
-				else {
-					String nono= "비밀번호와 비밀번호 확인이 일치하지 않습니다 \n 다시 입력해주세요";
-					JOptionPane.showMessageDialog(null, nono);
-				}
+				
 			}
 		});
 

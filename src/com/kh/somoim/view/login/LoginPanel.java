@@ -148,7 +148,6 @@ public class LoginPanel extends JPanel {
 			public void keyReleased(KeyEvent e) {
 				super.keyReleased(e);
 				
-				System.out.println("idTextField.getText().length():::" + idTextField.getText().length());
 				if(idTextField.getText().length() > 0) {
 					idLabel.setText("");
 				} else {

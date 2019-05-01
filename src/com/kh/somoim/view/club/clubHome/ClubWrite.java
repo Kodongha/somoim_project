@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,23 +14,27 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-import com.kh.somoim.util.event.ChangPanelUtil;
-import com.kh.somoim.view.login.LoginPanel;
+import com.kh.somoim.club.controller.ClubController;
+import com.kh.somoim.club.model.vo.BoardVO;
+import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.login.model.vo.MemberVO;
 
 public class ClubWrite extends JPanel {
 	
 	JLabel writeTopLabel;
 	JButton writeRegistration;
-	JTextArea writeTitle;
+	JTextField writeTitle;
 	JTextArea writeArea;
 	JButton button;
+	JPanel thisPanel;
 	
-	
-	public ClubWrite() {
+	public ClubWrite(ClubVO clubVO, MemberVO memberVO) {
+		this.thisPanel = thisPanel;
+		ClubController clubController = new ClubController();
 		
 		this.setLayout(null);
 		this.setBackground(Color.white);
@@ -57,9 +64,8 @@ public class ClubWrite extends JPanel {
 		button.setBounds(420, 11, 30, 30);
 		writeTopLabel.add(button);
 		
-		
 		// 게시판 선택 
-		String[] boardList = {"게시판 선택 ", "가입 인사  ", "자유게시판 ", "정모 후기 ", "정모 일정 "};
+		String[] boardList = {"게시판 선택", "가입 인사", "자유게시판", "정모 후기", "정모 일정"};
 		
 		JComboBox boardselect = new JComboBox(boardList);
 		boardselect.setLocation(150, 10);
@@ -67,8 +73,9 @@ public class ClubWrite extends JPanel {
 		writeTopLabel.add(boardselect);
 		
 		// 글 제목 
-		writeTitle = new JTextArea();
-		writeTitle.setBounds(60, 68, 500, 36);
+		writeTitle = new JTextField();
+		writeTitle.setBounds(60, 60, 500, 36);
+		writeTitle.setBorder(new LineBorder(Color.white));
 		this.add(writeTitle);
 		
 		JLabel writeTitleLabel = new JLabel("제목 ");
@@ -93,6 +100,9 @@ public class ClubWrite extends JPanel {
 		writeAreaLabel.setLocation(10, 110);
 		this.add(writeAreaLabel);
 		
+		this.add(jlabel);
+		this.add(writeTopLabel);
+		
 		button.addActionListener(new  ActionListener() {
 
 			@Override
@@ -104,10 +114,42 @@ public class ClubWrite extends JPanel {
 			}
 		});
 		
-		this.add(jlabel);
-		this.add(writeTopLabel);
-		
+		writeIconLabel.addMouseListener(new MouseAdapter() {
 			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				
+				if(boardselect.getSelectedItem().equals("게시판 선택")) {
+					JOptionPane.showMessageDialog(thisPanel, "약관동의 체크 해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
+				} else {
+					
+					BoardVO boardVO = new BoardVO();
+					boardVO.setClubNumber(clubVO.getClubNumber());
+					boardVO.setTitle(writeTitle.getText());
+					// 줄바꿈을 구분자를 둬서 한 줄로 저장
+					String contents = writeArea.getText().replace("\n", "††");
+					boardVO.setContent(contents);
+					boardVO.setWriter(memberVO.getUserNumber());
+					boardVO.setWriteDay(new Date());
+					boardVO.setBoardSelect(boardselect.getSelectedItem().toString());
+					boardVO.setImagePath("");
+					
+					clubController.insertBoard(boardVO);
+					
+					writeTitle.setText("");
+					writeArea.setText("");
+				}
+				
+				
+				
+				
+			}
+			
+		});
+		
+		
 	}
 
 }

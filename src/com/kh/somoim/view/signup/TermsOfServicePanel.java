@@ -14,21 +14,21 @@ import javax.swing.JTextArea;
 
 import com.kh.somoim.util.event.AgreeBtnChangeEventUtil;
 import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.login.LoginPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class TermsOfServicePanel extends JPanel{
 	private JPanel thisPanel;
-	
+
 	private JButton agreeButton;
 	private JButton agreeButton2;
-	
+
 	public TermsOfServicePanel(MainFrame mainFrame) {
 		this.thisPanel = this;
-		
+
 		this.setBackground(Color.white);
 		this.setLayout(null);
-				
-		
+
 		/* 약관 동의 버튼 */	
 		JCheckBox agree1 = new JCheckBox("소확행 이용 약관 동의(필수)");
 		agree1.setLocation(85,90);
@@ -36,7 +36,7 @@ public class TermsOfServicePanel extends JPanel{
 		agree1.setBackground(Color.white);
 		agree1.setFont(agree1.getFont().deriveFont(15.0f));
 		this.add(agree1);
-			
+
 		/* 개인정보 수집 체크박스 */
 		JCheckBox agree2 = new JCheckBox("개인정보 수집 및 이용에 대한 안내(필수)");
 		agree2.setLocation(85, 340);
@@ -44,11 +44,11 @@ public class TermsOfServicePanel extends JPanel{
 		agree2.setBackground(Color.white);
 		agree2.setFont(agree2.getFont().deriveFont(15.0f));
 		this.add(agree2);
-		
+
 		/*ButtonGroup group = new ButtonGroup();
 		group.add(agree1);
 		group.add(agree2);
-		*/
+		 */
 		/* 약관 텍스트 area */
 		JTextArea agree1Text = new JTextArea("",0,0);		
 		agree1Text.setLocation(85, 110);
@@ -74,12 +74,11 @@ public class TermsOfServicePanel extends JPanel{
 		agree1Text.setEditable(false);	
 		agree1Text.setEnabled(true);
 		JScrollPane scroll = new JScrollPane(agree1Text);
+		scroll.getVerticalScrollBar().setValue(0);
 		scroll.setLocation(85,110);
 		scroll.setSize(340,200);
 		this.add(scroll);	
-		
-				
-		
+
 		JTextArea agree2Text = new JTextArea();
 		agree2Text.setLocation(85, 360);
 		agree2Text.setSize(340,200);		
@@ -102,12 +101,12 @@ public class TermsOfServicePanel extends JPanel{
 		agree2Text.setEnabled(true);
 		agree2Text.setFont(agree1Text.getFont().deriveFont(15.0f));
 		agree2Text.setLineWrap(true);
-		
+
 		JScrollPane scroll2 = new JScrollPane(agree2Text);
 		scroll2.setLocation(85,360);
 		scroll2.setSize(340,200);
 		this.add(scroll2);
-		
+
 		/* 이벤트 관련 체크박스 
 		JCheckBox agree3 = new JCheckBox("이벤트 등 프로모션 알림 메일 수신(선택)");
 		agree3.setLocation(85, 570);
@@ -115,31 +114,27 @@ public class TermsOfServicePanel extends JPanel{
 		agree3.setBackground(Color.white);
 		agree3.setFont(agree3.getFont().deriveFont(15.0f));
 		this.add(agree3)*/
-		
+
 		/* 동의 버튼 */
 		agreeButton = new JButton("동의");
 		agreeButton.setLocation(245, 620);
 		agreeButton.setSize(140, 60);
 		agreeButton.setBackground(Color.GRAY);
 		this.add(agreeButton);
-		
+
 		/* 미동의 버튼 */
 		agreeButton2 = new JButton("미동의");
 		agreeButton2.setLocation(85, 620);
 		agreeButton2.setSize(140, 60);
 		agreeButton2.setBackground(Color.gray);
 		this.add(agreeButton2);
-		
-		
-		
-		
-		
+
 		TermsOfServiceTopPanel termsOfServiceTopPanel = new TermsOfServiceTopPanel();
 		termsOfServiceTopPanel.setBounds(0, 0, 500, 35);
 		this.add(termsOfServiceTopPanel);
-		
+
 		agreeButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(agree1.isSelected() && agree2.isSelected()) {
@@ -148,21 +143,47 @@ public class TermsOfServicePanel extends JPanel{
 				} else {
 					JOptionPane.showMessageDialog( thisPanel, "약관동의 체크 해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
 				}
-				
-				
-				
-				
-				
+			}
+		});
+
+		agree1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(agree1.isSelected() && agree2.isSelected()) {
+					agreeButton.setBackground(Color.orange);
+				} else {
+					agreeButton.setBackground(Color.GRAY);
+				}
 			}
 		});
 		
+		agree2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(agree1.isSelected() && agree2.isSelected()) {
+					agreeButton.setBackground(Color.orange);
+				} else {
+					agreeButton.setBackground(Color.GRAY);
+				}
+			}
+		});
 		
-		
-//		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton, mainFrame, this));
-//		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton));
-		
-		
-//		agreeButton2.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton2", agreeButton2));
-		
+		/* 비동의 - 로그인 폼으로 이동 */
+		agreeButton2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
+			}
+		});
+
+		//		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton, mainFrame, this));
+		//		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton));
+		//		agreeButton2.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton2", agreeButton2));
+
 	}
 }

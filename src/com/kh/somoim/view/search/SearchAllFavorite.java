@@ -328,7 +328,6 @@ public class SearchAllFavorite extends JPanel{
 		musicButton.add(musicNameJLabel);
 		danceButton.add(danceNmaeJLabel);
 
-
 		//그리드레이아웃에 설정한 라벨 add 
 		AllFavoriteLabel2.add(exerciseJLabel);
 		AllFavoriteLabel2.add(travelJLabel);
@@ -343,10 +342,8 @@ public class SearchAllFavorite extends JPanel{
 		AllFavoriteLabel2.add(musicJLabel);
 		AllFavoriteLabel2.add(danceJLabel);
 
-
 		this.add(AllFavoriteLabel);
 		this.add(AllFavoriteLabel2);
-
 
 		exerciseButton.addMouseListener(new MouseAdapter() {
 
@@ -354,12 +351,8 @@ public class SearchAllFavorite extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				super.mouseClicked(e);
-
-				System.out.println("클릭");
 				favoriteSearchClubList = new FavoriteSearchClubList(mainFrame, centerPanel, searchPanel, mainpanel, "운동/스포츠", memberVO);
-				System.out.println("클릭클릭");
 				ChangPanelUtil.CHANGE_PANEL( searchPanel, wholepanel, favoriteSearchClubList);
-				System.out.println("클릭클릭클릭");
 			}
 		});
 

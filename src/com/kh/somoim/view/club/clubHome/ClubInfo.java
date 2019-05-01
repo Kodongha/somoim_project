@@ -11,7 +11,7 @@ import javax.swing.border.LineBorder;
 
 import org.omg.Messaging.SyncScopeHelper;
 
-import com.kh.somoim.club.controller.ClubInfoController;
+import com.kh.somoim.club.controller.ClubController;
 import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
 
@@ -24,7 +24,7 @@ public class ClubInfo extends JPanel{
 		
 	public ClubInfo(ClubVO clubVO) {
 		
-		ClubInfoController clubInfoController = new ClubInfoController();
+		ClubController clubInfoController = new ClubController();
 		ArrayList<MemberVO> clubMemberList = clubInfoController.getClubMemberList(clubVO);
 		
 		this.setLayout(null);

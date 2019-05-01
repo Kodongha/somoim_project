@@ -2,11 +2,17 @@ package com.kh.somoim.view.club.clubHome;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
+import com.kh.somoim.club.controller.ClubController;
+import com.kh.somoim.club.model.vo.BoardResponseVO;
+import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.login.model.vo.MemberVO;
 
 public class ClubHi extends JPanel{
 	
@@ -19,11 +25,13 @@ public class ClubHi extends JPanel{
 	JLabel hititleLabel;
 	JLabel hicontentsLabel;
 	
-	
-	
-	public ClubHi() {
+	public ClubHi(ClubVO clubVO, MemberVO memberVO) {
 		
-		System.out.println("HI IN::::");
+		ClubController clubController = new ClubController();
+		ArrayList<BoardResponseVO> boardResponseVOList = clubController.getFirstGreeting(clubVO, memberVO);
+		
+		System.out.println("boardResponseVOList!!!!!" + boardResponseVOList);
+		System.out.println("boardResponseVOList.size()!!!!" + boardResponseVOList.size());
 		
 		this.setLayout(null);
 		this.setBackground(Color.white);

@@ -7,12 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -36,7 +31,7 @@ public class SettingPanel extends JPanel {
 	private JPanel thisPanel;
 
 
-	public SettingPanel(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainpanel,MemberVO memberVO) {
+	public SettingPanel(MainFrame mainFrame, CenterPanel centerPanel, MainPanel mainPanel,MemberVO memberVO) {
 		SettingController settingController = new SettingController();
 		this.thisPanel = this;
 
@@ -50,7 +45,7 @@ public class SettingPanel extends JPanel {
 
 		info.setLayout(new GridLayout(1,2));
 
-		Image profilepic = new ImageIcon("images/userprofile.PNG").getImage().getScaledInstance(160, 160, 0);
+		Image profilepic = new ImageIcon(memberVO.getProfilePhotoPath()).getImage().getScaledInstance(160, 160, 0);
 		JLabel profile = new JLabel(new ImageIcon(profilepic));
 
 		JLabel labelgroup= new JLabel();
@@ -94,7 +89,7 @@ public class SettingPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String result = JOptionPane.showInputDialog(null, memberVO.getEmail() +  "\n비밀번호 입력", "개인정보 수정",JOptionPane.INFORMATION_MESSAGE);
-				if(result.equals(memberVO.getPassword())) {
+				if(result != null && result.equals(memberVO.getPassword())) {
 					centerPanel.getCardLayout().show(centerPanel.getInfomationCorrect().getParent(), "infomationCorrect");
 				}
 			}
@@ -110,7 +105,7 @@ public class SettingPanel extends JPanel {
 
 				if(result==JOptionPane.YES_OPTION) {
 					settingController.removeMember(memberVO);
-					ChangPanelUtil.CHANGE_PANEL(mainFrame, mainpanel,new LoginPanel(mainFrame) );
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel,new LoginPanel(mainFrame) );
 				}
 			}
 		});
@@ -152,23 +147,31 @@ public class SettingPanel extends JPanel {
 					if (result == JFileChooser.APPROVE_OPTION) { 
 						//선택한 파일의 경로 반환 
 						File selectedFile = fileChooser.getSelectedFile();
-						System.out.println("selectedFile.getPath().split(\".\")[1].toLowerCase()" + selectedFile.getPath().split("[.]")[1].toLowerCase());
+						String selectedFilePath = selectedFile.getPath();
+						String[] extension = selectedFilePath.split("[.]");
 						//선택한 파일의 경로 
-						if(selectedFile.getPath().split("[.]")[1].toLowerCase().equals("png") 
-								|| selectedFile.getPath().split("[.]")[1].toLowerCase().equals("jpeg")
-								|| selectedFile.getPath().split("[.]")[1].toLowerCase().equals("jpg")) {
-
+						if(extension[1].toLowerCase().equals("png") 
+							|| extension[1].toLowerCase().equals("jpeg")
+							|| extension[1].toLowerCase().equals("jpg")) {
+							settingController.setProfilePhoto(memberVO, selectedFilePath, extension[1]);
+							JOptionPane.showMessageDialog(null, "프로필 변경이 완료되었습니다.","안내",JOptionPane.PLAIN_MESSAGE);
+							
+							MainPanel newMainPanel = new MainPanel(mainFrame, memberVO);
+							ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, newMainPanel);	 
+							
+							newMainPanel.getCenterPanel().getCardLayout().show(newMainPanel.getCenterPanel().getSettingPanel().getParent(), "setting");
+							
 						} else {
-							JOptionPane.showMessageDialog(null, "png/jpg/jpeg 확장자만 선택하세요."," ",JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "png/jpg/jpeg 확장자만 선택하세요.","경고",JOptionPane.WARNING_MESSAGE);
 						}
 
 					}else {
-						JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다"," ",JOptionPane.WARNING_MESSAGE);
 						return;
 					}
-				}
-			}
-		});
+				} // end if
+			} // end mouseClicked
+		}); // end MouseAdapter
+		
 	}
 }
 

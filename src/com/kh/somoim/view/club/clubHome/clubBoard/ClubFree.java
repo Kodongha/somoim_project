@@ -47,7 +47,7 @@ public class ClubFree extends JPanel {
 		String[] boardList = {"자유게시판", "정모 후기", "정모 일정"};
 
 		JComboBox boardListBox = new JComboBox(boardList);
-		boardListBox.setBounds(0, 0, 500, 40);
+		boardListBox.setBounds(0, 0, 495, 40);
 		boardListBox.setBackground(Color.white);
 
 		listPanel.add(boardListBox);

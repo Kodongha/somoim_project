@@ -83,7 +83,7 @@ public class ClubCenterPanel extends JPanel{
 		this.add(categoryPanel);
 
 
-		clubHiPanel = new ClubHi();
+		clubHiPanel = new ClubHi(clubVO, memberVO);
 		clubHiPanel.setPreferredSize(new Dimension(500, 650));
 
 		clubChatPanel = new ClubChat(clubVO, memberVO);
@@ -92,7 +92,7 @@ public class ClubCenterPanel extends JPanel{
 		clubFreePanel = new ClubFree(clubmainPanel);
 		clubFreePanel.setPreferredSize(new Dimension(500, 650));
 		
-		clubWritePanel = new ClubWrite();
+		clubWritePanel = new ClubWrite(clubVO, memberVO);
 		clubWritePanel.setPreferredSize(new Dimension(500, 650));
 		
 		

@@ -31,12 +31,11 @@ public class FavoriteSearchClubList extends JPanel {
 	public FavoriteSearchClubList(MainFrame mainFrame, CenterPanel centerpanel, SearchPanel searchPanle, MainPanel mainpanel, String favorite, MemberVO memberVO) {
 		SearchController searchController = new SearchController();
 		ArrayList<ClubVO> searchClubList = searchController.getFavoriteSearchClubList(favorite);
-		System.out.println("1111");
 		this.setLayout(null);
 		this.setLocation(22, 80); //위치
-		this.setSize(450,550); //크기
+		this.setSize(450,580); //크기
 		this.setBackground(Color.BLUE);
-		
+
 		this.setLayout(new BorderLayout());
 
 		JPanel favoriteSearchClubPanel = new JPanel();
@@ -46,7 +45,6 @@ public class FavoriteSearchClubList extends JPanel {
 		int x = -1;
 		int y = 0;
 		clubDetailLabel = new JLabel[searchClubList.size()];
-		System.out.println("22222");
 
 		for(int i=0; i<searchClubList.size(); i++) {
 			clubDetailLabel[i] = new JLabel();
@@ -70,14 +68,14 @@ public class FavoriteSearchClubList extends JPanel {
 			clubNameLabel.setBounds(120,35,250,30);
 			clubNameLabel.setFont(clubNameLabel.getFont().deriveFont(18.0f));
 
-		//	 소모임 정모 정보 
+			//	 소모임 정모 정보 
 			JLabel clubMeetingDayLabel = new JLabel();
 			clubMeetingDayLabel.setBounds(120,70,150,20);
 
 			Date meetingDay = searchClubList.get(i).getMeetingDay();
 			Calendar nowDay = Calendar.getInstance();
 
-		//	 오늘 00:00:00 으로 세팅하기 위해 Year Month Date 설정 
+			//	 오늘 00:00:00 으로 세팅하기 위해 Year Month Date 설정 
 			int year = nowDay.get(Calendar.YEAR);
 			int month = nowDay.get(Calendar.MONTH);
 			int date = nowDay.get(Calendar.DATE);
@@ -89,7 +87,7 @@ public class FavoriteSearchClubList extends JPanel {
 				long diffDate = meetingDay.getTime() - nowDate.getTime();
 				int day = (int) (diffDate / 1000 / 60 / 60 / 24);
 
-			//	 오늘, 내일, 모레를 제외한 날짜는 날짜로 표시  
+				//	 오늘, 내일, 모레를 제외한 날짜는 날짜로 표시  
 				switch (day) {
 				case 0:
 					meetingString += "오늘";
@@ -113,7 +111,7 @@ public class FavoriteSearchClubList extends JPanel {
 			// 소모임 인원 수 
 			JLabel clubMemberCountLabel = new JLabel();
 			clubMemberCountLabel.setText(searchClubList.get(i).getMembersNumber().size() + "명");
-			clubMemberCountLabel.setBounds(420,25,50,50);
+			clubMemberCountLabel.setBounds(390,25,50,50);
 			clubMemberCountLabel.setFont(clubMemberCountLabel.getFont().deriveFont(15.0f));
 
 			clubDetailLabel[i].add(titleImageLabel);
@@ -123,7 +121,7 @@ public class FavoriteSearchClubList extends JPanel {
 
 			favoriteSearchClubPanel.add(clubDetailLabel[i]);
 
-		//	 세로 좌표 위치지정 
+			// 세로 좌표 위치지정 
 			y += 100;
 		}
 
@@ -132,11 +130,9 @@ public class FavoriteSearchClubList extends JPanel {
 		clubDetailListScroll.getVerticalScrollBar().setUnitIncrement(16);
 		clubDetailListScroll.setPreferredSize(new Dimension(500,100));
 		this.add(clubDetailListScroll);
-		System.out.println("6666");
 		//라벨 이벤트 
 		for(int i=0; i<clubDetailLabel .length; i++) {
 			clubDetailLabel [i].addMouseListener(new HoemPanelKeyEventUtil(mainFrame, mainpanel, clubDetailLabel, i, searchClubList.get(i), memberVO));
-			System.out.println("7777");
 		}
 	}
 }
