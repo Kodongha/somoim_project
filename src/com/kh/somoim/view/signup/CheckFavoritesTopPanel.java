@@ -20,7 +20,7 @@ public class CheckFavoritesTopPanel extends JPanel {
 				.getFont().deriveFont(15.0f));
 		CheckFavoritesPanel.setLocation(10, 6); 
 		
-		CheckFavoritesPanel.setSize(200, 20);
+		CheckFavoritesPanel.setSize(250, 20);
 		this.add(CheckFavoritesPanel);
 	}
 }
