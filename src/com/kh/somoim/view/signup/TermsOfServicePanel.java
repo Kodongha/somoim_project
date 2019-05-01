@@ -1,22 +1,29 @@
 package com.kh.somoim.view.signup;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import com.kh.somoim.util.event.AgreeBtnChangeEventUtil;
+import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class TermsOfServicePanel extends JPanel{
+	private JPanel thisPanel;
 	
 	private JButton agreeButton;
 	private JButton agreeButton2;
 	
 	public TermsOfServicePanel(MainFrame mainFrame) {
+		this.thisPanel = this;
 		
 		this.setBackground(Color.white);
 		this.setLayout(null);
@@ -28,8 +35,20 @@ public class TermsOfServicePanel extends JPanel{
 		agree1.setSize(300,20);
 		agree1.setBackground(Color.white);
 		agree1.setFont(agree1.getFont().deriveFont(15.0f));
-		this.add(agree1);		
+		this.add(agree1);
+			
+		/* 개인정보 수집 체크박스 */
+		JCheckBox agree2 = new JCheckBox("개인정보 수집 및 이용에 대한 안내(필수)");
+		agree2.setLocation(85, 340);
+		agree2.setSize(300,20);
+		agree2.setBackground(Color.white);
+		agree2.setFont(agree2.getFont().deriveFont(15.0f));
+		this.add(agree2);
 		
+		/*ButtonGroup group = new ButtonGroup();
+		group.add(agree1);
+		group.add(agree2);
+		*/
 		/* 약관 텍스트 area */
 		JTextArea agree1Text = new JTextArea("",0,0);		
 		agree1Text.setLocation(85, 110);
@@ -59,13 +78,7 @@ public class TermsOfServicePanel extends JPanel{
 		scroll.setSize(340,200);
 		this.add(scroll);	
 		
-		/* 개인정보 수집 체크박스 */
-		JCheckBox agree2 = new JCheckBox("개인정보 수집 및 이용에 대한 안내(필수)");
-		agree2.setLocation(85, 340);
-		agree2.setSize(300,20);
-		agree2.setBackground(Color.white);
-		agree2.setFont(agree2.getFont().deriveFont(15.0f));
-		this.add(agree2);		
+				
 		
 		JTextArea agree2Text = new JTextArea();
 		agree2Text.setLocation(85, 360);
@@ -95,13 +108,13 @@ public class TermsOfServicePanel extends JPanel{
 		scroll2.setSize(340,200);
 		this.add(scroll2);
 		
-		/* 이벤트 관련 체크박스 */
+		/* 이벤트 관련 체크박스 
 		JCheckBox agree3 = new JCheckBox("이벤트 등 프로모션 알림 메일 수신(선택)");
 		agree3.setLocation(85, 570);
 		agree3.setSize(300,20);
 		agree3.setBackground(Color.white);
 		agree3.setFont(agree3.getFont().deriveFont(15.0f));
-		this.add(agree3);
+		this.add(agree3)*/
 		
 		/* 동의 버튼 */
 		agreeButton = new JButton("동의");
@@ -110,9 +123,6 @@ public class TermsOfServicePanel extends JPanel{
 		agreeButton.setBackground(Color.GRAY);
 		this.add(agreeButton);
 		
-		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton, mainFrame, this));
-//		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton));
-		
 		/* 미동의 버튼 */
 		agreeButton2 = new JButton("미동의");
 		agreeButton2.setLocation(85, 620);
@@ -120,11 +130,39 @@ public class TermsOfServicePanel extends JPanel{
 		agreeButton2.setBackground(Color.gray);
 		this.add(agreeButton2);
 		
-		agreeButton2.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton2", agreeButton2));
+		
+		
+		
 		
 		TermsOfServiceTopPanel termsOfServiceTopPanel = new TermsOfServiceTopPanel();
 		termsOfServiceTopPanel.setBounds(0, 0, 500, 35);
 		this.add(termsOfServiceTopPanel);
+		
+		agreeButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(agree1.isSelected() && agree2.isSelected()) {
+					
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new UserAuthentication(mainFrame));
+				} else {
+					JOptionPane.showMessageDialog( thisPanel, "약관동의 체크 해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
+				}
 				
+				
+				
+				
+				
+			}
+		});
+		
+		
+		
+//		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton, mainFrame, this));
+//		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton));
+		
+		
+//		agreeButton2.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton2", agreeButton2));
+		
 	}
 }

@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -142,7 +143,7 @@ public class UserAuthentication extends JPanel {
 		internationalnumber.setSize(80,50);
 
 		//인증번호 텍스트 설정 
-		JTextField numbertext = new JTextField(20);
+		JTextField numbertext = new JTextField(11);
 		numbertext.setLocation(170,300);
 		numbertext.setSize(230, 50);
 
@@ -207,7 +208,6 @@ public class UserAuthentication extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println(nametext.getText());
-				//if(nametext ) {
 					signupRequestVO.setName(nametext.getText()); //이름
 					
 					String br = String.valueOf(spinner1.getValue()) // 년
@@ -219,22 +219,45 @@ public class UserAuthentication extends JPanel {
 					if(str.length() == 11){
 						String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // 폰
 						signupRequestVO.setPhoneNumber(phone);
+						System.out.println(signupRequestVO.toString());
+						ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SubscriptionInformationPanel(mainFrame, signupRequestVO));
 					}else {
 						JOptionPane.showMessageDialog( thisPanel, "빈칸채우세요", "빈칸채우세요", JOptionPane.ERROR_MESSAGE);
+					}	
+				
+									}
+							
+		});
+		
+		authenticationbutton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String str = String.valueOf(numbertext.getText());
+				//String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // 폰
+				//signupRequestVO.setPhoneNumber(phone);
+				if(str.length() == 11) {
+					JOptionPane.showMessageDialog( thisPanel, "인증번호를 발송했습니다.인증번호가 오지 않\n으면 입력하신 정보가 회원정보와 알치하는지\n 확인해 주세요", "핸드폰번호 인증", JOptionPane.ERROR_MESSAGE);
+					
+					for(int i = 0; i < 5; i++) {
+						int random = (int) (Math.random() * 10); 
+						
+						System.out.print(random + " ");
 					}
 					
 					
-					
-					System.out.println(signupRequestVO.toString());
-					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SubscriptionInformationPanel(mainFrame, signupRequestVO));
-					
-					
+		
+				} else {
+					JOptionPane.showMessageDialog( thisPanel, "핸드폰 번호 11자리 입력해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
+				}
+				
+	             
 
-					
-				//}else {
-					//System.out.println("빈칸 채워주세요");
-									}
-							//}
+
+			
+			}
 		});
+		
+		
 	}
 }
