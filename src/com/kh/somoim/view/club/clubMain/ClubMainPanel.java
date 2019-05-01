@@ -50,6 +50,7 @@ public class ClubMainPanel extends JPanel{
 
 		// 패널 사이즈 조절
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));
+		clubFreePanel.setPreferredSize(new Dimension(500, 650));
 
 		// 상단,중앙 프레임에 추가
 		this.add(clubtopPanel, BorderLayout.NORTH);		// 상단 패널

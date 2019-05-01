@@ -18,6 +18,8 @@ public class ClubSchedule extends JPanel{
 	
 	public ClubSchedule() {
 		
+		System.out.println("Schedule in ::::");
+		
 		this.setLayout(null);
 		this.setBackground(Color.white);
 		
@@ -35,12 +37,12 @@ public class ClubSchedule extends JPanel{
 		noticeLabel.add(iconLabel);
 		
 		// 공지사항 제목 라벨
-		noticetitleLabel = new JLabel("정모 일정 게시판입니  ");
+		noticetitleLabel = new JLabel("정모 일정 게시판입니다.");
 		noticetitleLabel.setFont(noticetitleLabel.getFont().deriveFont(20.0f));
 		noticetitleLabel.setSize(450, 50);
 		noticetitleLabel.setLocation(50, 15);
 		noticetitleLabel.setOpaque(true);
-		noticetitleLabel.setBackground(Color.LIGHT_GRAY);
+		noticetitleLabel.setBackground(Color.white);
 
 		noticeLabel.add(noticetitleLabel);	
 		

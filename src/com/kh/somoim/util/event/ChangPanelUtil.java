@@ -13,13 +13,16 @@ public class ChangPanelUtil {
 	private MainFrame mainFrame;
 	private JPanel oldPanel;
 
+	
+
+
 	public ChangPanelUtil(MainFrame mainFrame, JPanel oldPanel) {
 		super();
 		this.mainFrame = mainFrame;
 		this.oldPanel = oldPanel;
 	}
 
-	// change Panel ÀÛ¼º
+	
 	public static void CHANGE_PANEL(MainFrame mainFrame, JPanel oldPanel, JPanel newPanel) {
 		mainFrame.remove(oldPanel);
 		mainFrame.add(newPanel);
@@ -48,6 +51,14 @@ public class ChangPanelUtil {
 		clubmainPanel.revalidate();
 		clubmainPanel.repaint();
 	}
+	
+	public static void CHANGE_PANEL2(JPanel clubmainPanel, JPanel oldPanel, JPanel newPanel, String Layout) {
+		clubmainPanel.remove(oldPanel);
+		clubmainPanel.add(newPanel, Layout);
+		clubmainPanel.revalidate();
+		clubmainPanel.repaint();
+	}
+	
 
 }
 

@@ -4,8 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -25,43 +25,45 @@ public class ClubFree extends JPanel {
 	JLabel freetitleLabel;
 
 	JPanel listPanel;
-	JPanel clubFreePanel;
 	JPanel clubPhotoPanel;
 	JPanel clubSchedulePanel;
+	JPanel clubFreePanel;
+	private JPanel thisPanel;
 
 	public ClubFree(ClubMainPanel clubmainPanel) {
-
-		this.setLayout(null);
+		this.thisPanel = this;
+		this.setLayout(new BorderLayout());
 		this.setBackground(Color.white);
-		
+
 		// 게시판 선택 패널
 		listPanel = new JPanel();
 		listPanel.setLocation(0,0);
-		listPanel.setSize(500, 40);
+		listPanel.setPreferredSize(new Dimension(500, 40));
 		listPanel.setBackground(Color.white);
-		this.add(listPanel);
-				
+		listPanel.setLayout(null);
+		this.add(listPanel, BorderLayout.NORTH);
+
 		// 게시판 선택 
 		String[] boardList = {"자유게시판", "정모 후기", "정모 일정"};
 
 		JComboBox boardListBox = new JComboBox(boardList);
 		boardListBox.setBounds(0, 0, 500, 40);
 		boardListBox.setBackground(Color.white);
-		
+
 		listPanel.add(boardListBox);
-		
+
 		//게시판 전체 패널
 		clubFreePanel = new JPanel();
-		clubFreePanel.setBounds(0, 0, 500, 650);
+		clubFreePanel.setBounds(0, 40, 500, 650);
 		clubFreePanel.setBackground(Color.white);
-		this.add(clubFreePanel);
-		
+		clubFreePanel.setLayout(null);
+		this.add(clubFreePanel, BorderLayout.CENTER);
+
 		// 공지사항 라벨
 		noticeLabel = new JLabel();
-		/*noticeLabel.setSize(500, 80);
-		noticeLabel.setLocation(0, 0);*/
-		noticeLabel.setBounds(0, 0, 500, 80);
+
 		noticeLabel.setOpaque(true);
+		noticeLabel.setBounds(0, 0, 500, 80);
 		noticeLabel.setBackground(Color.white);
 
 		// 공지사항 로고
@@ -82,8 +84,7 @@ public class ClubFree extends JPanel {
 
 		// 자유게시글 출력 라벨
 		freeLabel = new JLabel();
-		freeLabel.setSize(500, 60);
-		freeLabel.setLocation(0, 120);
+		freeLabel.setBounds(0, 80, 500, 60);
 		freeLabel.setOpaque(true);
 		freeLabel.setBackground(Color.white);
 
@@ -121,7 +122,41 @@ public class ClubFree extends JPanel {
 		freeLabel.add(freecontentsLabel);	
 
 		clubFreePanel.add(noticeLabel);
-		clubFreePanel.add(freeLabel);
-		
+		clubFreePanel.add(freeLabel);	
+
+		ClubPhoto clubPhotoPanel = new ClubPhoto();
+		clubPhotoPanel.setPreferredSize(new Dimension(500, 600));
+
+		ClubSchedule clubSchedulePanel = new ClubSchedule();
+		clubSchedulePanel.setPreferredSize(new Dimension(500, 600));
+
+
+		boardListBox.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JComboBox bb = (JComboBox) e.getSource();
+				String boardName = (String) bb.getSelectedItem();
+
+				if(boardName.equals("정모 후기")) {
+					
+					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubFreePanel, clubPhotoPanel, BorderLayout.CENTER);
+					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubSchedulePanel, clubPhotoPanel, BorderLayout.CENTER);
+					
+				}else if(boardName.equals("정모 일정")) {
+					
+					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubFreePanel, clubSchedulePanel, BorderLayout.CENTER);
+					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubPhotoPanel, clubSchedulePanel, BorderLayout.CENTER);
+
+				}else if(boardName.equals("자유게시판")) {
+					
+					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubSchedulePanel, clubFreePanel, BorderLayout.CENTER);
+					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubPhotoPanel, clubFreePanel, BorderLayout.CENTER);
+					
+				}
+			}
+
+		});
+
 	}
 }
