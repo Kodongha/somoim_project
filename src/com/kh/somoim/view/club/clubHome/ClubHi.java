@@ -1,12 +1,15 @@
 package com.kh.somoim.view.club.clubHome;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
 
 import com.kh.somoim.club.controller.ClubController;
@@ -15,44 +18,48 @@ import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
 
 public class ClubHi extends JPanel{
-	
+
 	JLabel noticeLabel;	
 	LineBorder noticeBorder;
 	JLabel noticeiconLabel;
 	JLabel noticetitleLabel;
-	
-	JLabel hiLabel;
+
+	JLabel[] hiLabel = null;
 	JLabel hititleLabel;
 	JLabel hicontentsLabel;
-	
+	JLabel hiiconLabel;
+
+
 	public ClubHi(ClubVO clubVO, MemberVO memberVO) {
-		
+
 		ClubController clubController = new ClubController();
 		ArrayList<BoardResponseVO> boardResponseVOList = clubController.getFirstGreeting(clubVO, memberVO);
-		
+
 		System.out.println("boardResponseVOList!!!!!" + boardResponseVOList);
 		System.out.println("boardResponseVOList.size()!!!!" + boardResponseVOList.size());
-		
+
 		this.setLayout(null);
 		this.setBackground(Color.white);
-	
-		// 패널 구분용 테두리 (완성시 삭제)
-		LineBorder labelBorder = new LineBorder(Color.black);
-		this.setBorder(labelBorder);
-		
-		// 공지사항 라벨
+
+		JPanel hiListPanel = new JPanel();
+		hiListPanel.setLayout(null);
+		hiListPanel.setPreferredSize(new Dimension(500, boardResponseVOList.size() * 80));
+
+		this.add(hiListPanel);	
+
+		/*// 공지사항 라벨
 		noticeLabel = new JLabel();
 		noticeLabel.setSize(500, 80);
 		noticeLabel.setLocation(0, 0);
 		noticeLabel.setOpaque(true);
 		noticeLabel.setBackground(Color.white);
-		
+
 		// 공지사항 로고
 		Image noticeIcon = new ImageIcon("images/noticeicon.PNG").getImage().getScaledInstance(50, 50, 0);
 		JLabel iconLabel = new JLabel(new ImageIcon(noticeIcon));
 		iconLabel.setBounds(5, 20, 40, 40);
 		noticeLabel.add(iconLabel);
-		
+
 		// 공지사항 제목 라벨
 		noticetitleLabel = new JLabel("ㅎㅇㅎㅇ");
 		noticetitleLabel.setFont(noticetitleLabel.getFont().deriveFont(20.0f));
@@ -62,49 +69,53 @@ public class ClubHi extends JPanel{
 		noticetitleLabel.setBackground(Color.white);
 
 		noticeLabel.add(noticetitleLabel);	
-		
-		// 소개글 출력 라벨
-		hiLabel = new JLabel();
-		hiLabel.setSize(500, 60);
-		hiLabel.setLocation(0, 80);
-		hiLabel.setOpaque(true);
-		hiLabel.setBackground(Color.white);
-		
-		LineBorder hiBorder = new LineBorder(Color.black);
-		hiLabel.setBorder(hiBorder);
-		
-		// 소개글 사진 라벨
-		Image hiIcon = new ImageIcon("images/hi_test.PNG").getImage().getScaledInstance(80, 100, 0);
-		JLabel hiiconLabel = new JLabel(new ImageIcon(hiIcon));
-		hiiconLabel.setBounds(0, 0, 60, 60);
-		hiLabel.add(hiiconLabel);
-		
-		LineBorder hiiconBorder = new LineBorder(Color.black);
-		hiiconLabel.setBorder(hiiconBorder);
-		
-		
-		// 이름 라벨
-		hititleLabel = new JLabel("댕댕이");
-		hititleLabel.setFont(hititleLabel.getFont().deriveFont(17.0f));
-		hititleLabel.setSize(100, 15);
-		hititleLabel.setLocation(68, 10);
-		hititleLabel.setOpaque(true);
-		hititleLabel.setBackground(Color.white);
-		
-		hiLabel.add(hititleLabel);
-		
-		// 이름 상메 라벨
-		hicontentsLabel = new JLabel("귀여운 댕댕이");
-		hicontentsLabel.setFont(hicontentsLabel.getFont().deriveFont(13.0f));
-		hicontentsLabel.setSize(200,15);
-		hicontentsLabel.setLocation(70, 35);
-		hicontentsLabel.setOpaque(true);
-		hicontentsLabel.setBackground(Color.white);
-		
-		hiLabel.add(hicontentsLabel);	
-		
-		this.add(noticeLabel);
-		this.add(hiLabel);
-		
+
+		this.add(noticeLabel);*/
+
+		int x = -1;
+		int y = 0;
+		hiLabel = new JLabel[boardResponseVOList.size()];
+
+
+		for(int i = 0; i < boardResponseVOList.size(); i++) {
+			hiLabel[i] = new JLabel();
+			hiLabel[i].setBounds(x, y, 500, 80);
+			hiLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+
+			Image hiIcon = new ImageIcon(boardResponseVOList.get(i).getImagePath()).getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+			hiiconLabel = new JLabel(new ImageIcon(hiIcon));
+			hiiconLabel.setBounds(0, 0, 80, 80);
+
+			LineBorder hiiconBorder = new LineBorder(Color.black);
+			hiiconLabel.setBorder(hiiconBorder);
+
+			hititleLabel = new JLabel();
+			
+			hititleLabel.setText(boardResponseVOList.get(i).getWriter());
+			hititleLabel.setBounds(90, 10, 100, 20);
+			hititleLabel.setFont(hititleLabel.getFont().deriveFont(18.0f));
+
+			hicontentsLabel = new JLabel();
+			hicontentsLabel.setText(boardResponseVOList.get(i).getTitle());
+			hicontentsLabel.setBounds(93, 45, 200, 15);
+			hicontentsLabel.setFont(hicontentsLabel.getFont().deriveFont(15.0f));
+
+			hiLabel[i].add(hiiconLabel);
+			hiLabel[i].add(hititleLabel);
+			hiLabel[i].add(hicontentsLabel);
+
+			hiListPanel.add(hiLabel[i]);
+
+			y += 80;				
+
+		}
+
+		hiListPanel.setBackground(Color.white);
+		JScrollPane thisPanelScroll = new JScrollPane(hiListPanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		thisPanelScroll.getVerticalScrollBar().setUnitIncrement(16);
+		thisPanelScroll.setLocation(0, 0);
+		thisPanelScroll.setSize(495, 500);
+
+		this.add(thisPanelScroll);
 	}
 }
