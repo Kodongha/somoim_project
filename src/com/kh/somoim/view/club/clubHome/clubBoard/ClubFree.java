@@ -6,23 +6,37 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTabbedPane;
 import javax.swing.border.LineBorder;
 
+import com.kh.somoim.club.controller.ClubController;
+import com.kh.somoim.club.model.vo.BoardResponseVO;
+import com.kh.somoim.home.model.vo.ClubVO;
+import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.club.clubMain.ClubMainPanel;
 
 public class ClubFree extends JPanel {
 
-	JLabel noticeLabel;
-	JLabel noticetitleLabel;
-	JLabel freeLabel;
-	JLabel freecontentsLabel;
+	private final String CATEGORY = "자유게시판";
+
+	JLabel[] freeLabel = null;;
+	JLabel freephotoLabel;
 	JLabel freetitleLabel;
+	JLabel freecontentLabel;
+	JLabel freewriterLabel;
+	JLabel freetimeLabel;
+	JLabel freeimageLabel;
 
 	JPanel listPanel;
 	JPanel clubPhotoPanel;
@@ -30,7 +44,18 @@ public class ClubFree extends JPanel {
 	JPanel clubFreePanel;
 	private JPanel thisPanel;
 
-	public ClubFree(ClubMainPanel clubmainPanel) {
+	public ClubFree(ClubMainPanel clubmainPanel, ClubVO clubVO, MemberVO memberVO) {
+
+		ClubController clubController = new ClubController();
+		ArrayList<BoardResponseVO> boardResponseVOList = clubController.getFirstGreeting(clubVO, memberVO, CATEGORY);
+
+		ClubController clubInfoController = new ClubController();
+		ArrayList<MemberVO> clubMemberList = clubInfoController.getClubMemberList(clubVO);
+
+		System.out.println("boardResponseVOList!!!!!" + boardResponseVOList);
+		System.out.println("boardResponseVOList.size()!!!!" + boardResponseVOList.size());
+
+
 		this.thisPanel = this;
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.white);
@@ -52,84 +77,93 @@ public class ClubFree extends JPanel {
 
 		listPanel.add(boardListBox);
 
-		//게시판 전체 패널
 		clubFreePanel = new JPanel();
-		clubFreePanel.setBounds(0, 40, 500, 650);
-		clubFreePanel.setBackground(Color.white);
 		clubFreePanel.setLayout(null);
+		clubFreePanel.setPreferredSize(new Dimension(500, boardResponseVOList.size() * 80));
+		clubFreePanel.setBackground(Color.WHITE);
 		this.add(clubFreePanel, BorderLayout.CENTER);
 
-		// 공지사항 라벨
-		noticeLabel = new JLabel();
+		int x = -1;
+		int y = 0;
+		
+		freeLabel = new JLabel[boardResponseVOList.size()];	
+		
+		String photoPath = "";
+		
+		for(int i = 0; i < boardResponseVOList.size(); i++) {
+			freeLabel[i] = new JLabel();
+			freeLabel[i].setBounds(x, y, 500, 120);
+			freeLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+			
+			for(MemberVO vo : clubMemberList) {
+				if(vo.getName().equals(boardResponseVOList.get(i).getWriter())) {
+					photoPath = vo.getProfilePhotoPath();
+				}
+			}
+			Image freeImage = new ImageIcon(photoPath).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+			freephotoLabel = new JLabel(new ImageIcon(freeImage));
+			freephotoLabel.setBounds(10, 5, 50, 50);
 
-		noticeLabel.setOpaque(true);
-		noticeLabel.setBounds(0, 0, 500, 80);
-		noticeLabel.setBackground(Color.white);
+			LineBorder freeiconBorder = new LineBorder(Color.black);
+			freephotoLabel.setBorder(freeiconBorder);		
+			
+			freewriterLabel = new JLabel();
+			freewriterLabel.setText(boardResponseVOList.get(i).getWriter());
+			freewriterLabel.setBounds(70, 15, 50, 20);
+			freewriterLabel.setFont(freewriterLabel.getFont().deriveFont(14.0f));
+			
+			freetimeLabel = new JLabel();		
+			
+			SimpleDateFormat tFormat = new SimpleDateFormat("hh:mm:ss");
+			String date = tFormat.format(boardResponseVOList.get(i).getWriteDay());	
+			
+			freetimeLabel.setText(date);
+			freetimeLabel.setBounds(70, 35, 100, 20);
+			freetimeLabel.setForeground(Color.LIGHT_GRAY);
+			
+			freetitleLabel = new JLabel();
+			freetitleLabel.setText(boardResponseVOList.get(i).getTitle());
+			freetitleLabel.setBounds(10, 70, 300, 18);
+			freetitleLabel.setFont(freetitleLabel.getFont().deriveFont(18.0f));
 
-		// 공지사항 로고
-		Image noticeIcon = new ImageIcon("images/noticeicon.PNG").getImage().getScaledInstance(50, 50, 0);
-		JLabel iconLabel = new JLabel(new ImageIcon(noticeIcon));
-		iconLabel.setBounds(5, 20, 40, 40);
-		noticeLabel.add(iconLabel);
+			freecontentLabel = new JLabel();
+			freecontentLabel.setText(boardResponseVOList.get(i).getContent());
+			freecontentLabel.setBounds(10, 100, 400, 15);
+			freecontentLabel.setFont(freecontentLabel.getFont().deriveFont(14.0f));
+			freecontentLabel.setForeground(Color.LIGHT_GRAY);
+			
+			Image freePhoto = new ImageIcon(boardResponseVOList.get(i).getImagePath()).getImage().getScaledInstance(115, 80, Image.SCALE_SMOOTH);
+			freeimageLabel = new JLabel(new ImageIcon(freePhoto));
+			freeimageLabel.setBounds(350, 10, 115, 80);			
+			
+			freeLabel[i].add(freephotoLabel);
+			freeLabel[i].add(freetitleLabel);
+			freeLabel[i].add(freewriterLabel);
+			freeLabel[i].add(freetimeLabel);
+			freeLabel[i].add(freecontentLabel);
+			freeLabel[i].add(freeimageLabel);
 
-		// 공지사항 제목 라벨
-		noticetitleLabel = new JLabel("집 가 고 싶 다  ");
-		noticetitleLabel.setFont(noticetitleLabel.getFont().deriveFont(20.0f));
-		noticetitleLabel.setSize(450, 50);
-		noticetitleLabel.setLocation(50, 15);
-		noticetitleLabel.setOpaque(true);
-		noticetitleLabel.setBackground(Color.white);
+			clubFreePanel.add(freeLabel[i]);	
 
-		noticeLabel.add(noticetitleLabel);	
-
-		// 자유게시글 출력 라벨
-		freeLabel = new JLabel();
-		freeLabel.setBounds(0, 80, 500, 60);
-		freeLabel.setOpaque(true);
-		freeLabel.setBackground(Color.white);
-
-		LineBorder hiBorder = new LineBorder(Color.black);
-		freeLabel.setBorder(hiBorder);
-
-		// 자유게시판 글 사진 라벨
-		Image freeIcon = new ImageIcon("images/hi_test.PNG").getImage().getScaledInstance(80, 100, 0);
-		JLabel freeIconLabel = new JLabel(new ImageIcon(freeIcon));
-		freeIconLabel.setBounds(0, 0, 60, 60);
-		freeLabel.add(freeIconLabel);
-
-		LineBorder freeIconBorder = new LineBorder(Color.black);
-		freeIconLabel.setBorder(freeIconBorder);
+			y += 120;
+		}		
 
 
-		// 자유게시판 제목  라벨
-		freetitleLabel = new JLabel("안녕하셈 ");
-		freetitleLabel.setFont(freetitleLabel.getFont().deriveFont(17.0f));
-		freetitleLabel.setSize(100, 15);
-		freetitleLabel.setLocation(68, 10);
-		freetitleLabel.setOpaque(true);
-		freetitleLabel.setBackground(Color.white);
 
-		freeLabel.add(freetitleLabel);
+		JScrollPane thisPanelScroll = new JScrollPane(clubFreePanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		thisPanelScroll.getVerticalScrollBar().setUnitIncrement(16);
+		thisPanelScroll.setLocation(0, 0);
+		thisPanelScroll.setSize(495, 650);
 
-		// 자유게시판 내용 라벨
-		freecontentsLabel = new JLabel("오늘 가입했어요 ");
-		freecontentsLabel.setFont(freecontentsLabel.getFont().deriveFont(13.0f));
-		freecontentsLabel.setSize(200,15);
-		freecontentsLabel.setLocation(70, 35);
-		freecontentsLabel.setOpaque(true);
-		freecontentsLabel.setBackground(Color.white);
+		this.add(thisPanelScroll);		
 
-		freeLabel.add(freecontentsLabel);	
-
-		clubFreePanel.add(noticeLabel);
-		clubFreePanel.add(freeLabel);	
-
-		ClubPhoto clubPhotoPanel = new ClubPhoto();
+		clubPhotoPanel = new ClubPhoto();
 		clubPhotoPanel.setPreferredSize(new Dimension(500, 600));
 
-		ClubSchedule clubSchedulePanel = new ClubSchedule();
+		clubSchedulePanel = new ClubSchedule();
 		clubSchedulePanel.setPreferredSize(new Dimension(500, 600));
-
+		
+		JTabbedPane jtab = new JTabbedPane();
 
 		boardListBox.addActionListener(new ActionListener() {
 
@@ -139,21 +173,21 @@ public class ClubFree extends JPanel {
 				String boardName = (String) bb.getSelectedItem();
 
 				if(boardName.equals("정모 후기")) {
-					
+
 					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubFreePanel, clubPhotoPanel, BorderLayout.CENTER);
 					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubSchedulePanel, clubPhotoPanel, BorderLayout.CENTER);
-					
+
 				}else if(boardName.equals("정모 일정")) {
-					
+
 					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubFreePanel, clubSchedulePanel, BorderLayout.CENTER);
 					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubPhotoPanel, clubSchedulePanel, BorderLayout.CENTER);
 
 				}else if(boardName.equals("자유게시판")) {
-					
+
 					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubSchedulePanel, clubFreePanel, BorderLayout.CENTER);
 					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubPhotoPanel, clubFreePanel, BorderLayout.CENTER);
-					
-				}
+
+				}				
 			}
 
 		});

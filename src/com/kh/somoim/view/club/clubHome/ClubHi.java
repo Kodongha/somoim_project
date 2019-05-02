@@ -84,8 +84,8 @@ public class ClubHi extends JPanel{
 						
 			hitimeLabel = new JLabel();	
 			
-			SimpleDateFormat yearFormat = new SimpleDateFormat("hh:mm:ss");
-			String date = yearFormat.format(boardResponseVOList.get(i).getWriteDay());
+			SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
+			String date = timeFormat.format(boardResponseVOList.get(i).getWriteDay());
 						
 			hitimeLabel.setText(date);
 			hitimeLabel.setBounds(430, 10, 100, 20);

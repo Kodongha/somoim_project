@@ -21,6 +21,7 @@ public class ClubMainPanel extends JPanel{
 	ClubTopPanel clubtopPanel;
 	ClubCenterPanel clubcenterPanel;
 	ClubInfo clubinfoPanel;
+	public ClubFree clubFreePanel;
 
 	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO, MemberVO memberVO) {
 
