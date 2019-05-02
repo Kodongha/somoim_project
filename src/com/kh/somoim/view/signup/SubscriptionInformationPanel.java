@@ -49,7 +49,7 @@ public class SubscriptionInformationPanel extends JPanel {
       email.setLocation(10, 50);
       email.setSize(200, 100);
 
-      result.add(new JLabel("                ì´ë©”ì¼: "));
+      result.add(new JLabel("                ÀÌ¸ŞÀÏ: "));
 
       JTextField text = new JTextField(15);
       text.setLocation(20, 70);
@@ -57,7 +57,7 @@ public class SubscriptionInformationPanel extends JPanel {
 
       result.add(text);
       
-      JButton check= new JButton("ì¤‘ë³µí™•ì¸");
+      JButton check= new JButton("Áßº¹È®ÀÎ");
       check.setBackground(Color.ORANGE);
       check.setBounds(370, 100, 100, 50);
       check.addActionListener(new ActionListener() {
@@ -66,10 +66,10 @@ public class SubscriptionInformationPanel extends JPanel {
          public void actionPerformed(ActionEvent e) {
             
             if(signupController.checkId(text.getText())) {
-					JOptionPane.showMessageDialog(null, "ê°€ì… ê°€ëŠ¥í•œ ì´ë©”ì¼ì…ë‹ˆë‹¤. íšŒì›ê°€ì…ì„ ì§„í–‰í•´ì£¼ì„¸ìš”", "í™•ì¸", JOptionPane.NO_OPTION);
+					JOptionPane.showMessageDialog(null, "°¡ÀÔ °¡´ÉÇÑ ÀÌ¸ŞÀÏÀÔ´Ï´Ù. È¸¿ø°¡ÀÔÀ» ÁøÇàÇØÁÖ¼¼¿ä", "È®ÀÎ", JOptionPane.NO_OPTION);
 					flag=true;
 				} else {
-					JOptionPane.showMessageDialog(null, "ì´ë¯¸ ê°€ì…ëœ ì´ë©”ì¼ ë²ˆí˜¸ì…ë‹ˆë‹¤ ë‹¤ì‹œ ì…ë ¥í•˜ì„¸ìš”", "ì¤‘ë³µ", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ÀÌ¹Ì °¡ÀÔµÈ ÀÌ¸ŞÀÏ ¹øÈ£ÀÔ´Ï´Ù ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä", "Áßº¹", JOptionPane.ERROR_MESSAGE);
 				}
          }
       });
@@ -78,7 +78,7 @@ public class SubscriptionInformationPanel extends JPanel {
       JLabel password = new JLabel();
       password.setLocation(10, 80);
       password.setSize(100, 100);
-      result.add(new JLabel("                ë¹„ë°€ë²ˆí˜¸:"));
+      result.add(new JLabel("                ºñ¹Ğ¹øÈ£:"));
 
       JPasswordField text2 = new JPasswordField(15);
 
@@ -88,7 +88,7 @@ public class SubscriptionInformationPanel extends JPanel {
       JLabel passwordcheck = new JLabel();
       passwordcheck.setLocation(10, 80);
       passwordcheck.setSize(100, 100);
-      result.add(new JLabel("                ë¹„ë°€ë²ˆí˜¸ í™•ì¸:"));
+      result.add(new JLabel("                ºñ¹Ğ¹øÈ£ È®ÀÎ:"));
 
       JPasswordField text3 = new JPasswordField(15);
       text3.setLocation(20, 900);
@@ -99,7 +99,7 @@ public class SubscriptionInformationPanel extends JPanel {
       JLabel name = new JLabel();
       name.setLocation(10, 80);
       name.setSize(100, 100);
-      result.add(new JLabel("                ì´ë¦„:"));
+      result.add(new JLabel("                ÀÌ¸§:"));
       JTextField text4 = new JTextField(15);
       text4.setLocation(20, 900);
       text4.setSize(100, 100);
@@ -111,25 +111,25 @@ public class SubscriptionInformationPanel extends JPanel {
       JLabel birth = new JLabel();
       birth.setLocation(10, 80);
       birth.setSize(100, 100);
-      result.add(new JLabel("                ìƒë…„ì›”ì¼:"));
+      result.add(new JLabel("                »ı³â¿ùÀÏ:"));
       
-      JLabel SubscriptionInformationLanbel = new JLabel(" < ê°€ì… ì •ë³´ ì…ë ¥");
-      SubscriptionInformationLanbel.setForeground(Color.WHITE); //ë¼ë²¨ ê¸€ì”¨ìƒ‰ë³€ê²½
-      SubscriptionInformationLanbel.setFont(SubscriptionInformationLanbel  //ë¼ë²¨ ê¸€ì”¨ í¬ê¸° ì¡°ì ˆ
+      JLabel SubscriptionInformationLanbel = new JLabel(" < °¡ÀÔ Á¤º¸ ÀÔ·Â");
+      SubscriptionInformationLanbel.setForeground(Color.WHITE); //¶óº§ ±Û¾¾»öº¯°æ
+      SubscriptionInformationLanbel.setFont(SubscriptionInformationLanbel  //¶óº§ ±Û¾¾ Å©±â Á¶Àı
                                  .getFont().deriveFont(15.0f));
       SubscriptionInformationLanbel.setLocation(10, 6);
       
       SubscriptionInformationLanbel.setSize(120, 20);
       this.add(SubscriptionInformationLanbel);
       
-      SpinnerNumberModel numberModel1 = new SpinnerNumberModel(1990, 1930, 2019, 1); // ì‹œì‘í•  ê°’, ìµœì†Œê°’, ìµœëŒ€ê°’, ì¦ê°€ê°’
+      SpinnerNumberModel numberModel1 = new SpinnerNumberModel(1990, 1930, 2019, 1); // ½ÃÀÛÇÒ °ª, ÃÖ¼Ò°ª, ÃÖ´ë°ª, Áõ°¡°ª
       JSpinner spinner1 = new JSpinner(numberModel1);
    
       String year = signupRequestVO.getBirth().substring(0, 4);
       spinner1.setValue(Integer.parseInt(year));
       spinner1.setEnabled(false);
 
-      SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1, 1, 12, 1); // ì‹œì‘í•  ê°’, ìµœì†Œê°’, ìµœëŒ€ê°’, ì¦ê°€ê°’
+      SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1, 1, 12, 1); // ½ÃÀÛÇÒ °ª, ÃÖ¼Ò°ª, ÃÖ´ë°ª, Áõ°¡°ª
       JSpinner spinner2 = new JSpinner(numberModel2);
       
       String month = signupRequestVO.getBirth().substring(4, 6);
@@ -137,7 +137,7 @@ public class SubscriptionInformationPanel extends JPanel {
       spinner2.setEnabled(false);
       //System.out.println("month:::"+month);
 
-      SpinnerNumberModel numberModel3 = new SpinnerNumberModel(1, 1, 31, 1); // ì‹œì‘í•  ê°’, ìµœì†Œê°’, ìµœëŒ€ê°’, ì¦ê°€ê°’
+      SpinnerNumberModel numberModel3 = new SpinnerNumberModel(1, 1, 31, 1); // ½ÃÀÛÇÒ °ª, ÃÖ¼Ò°ª, ÃÖ´ë°ª, Áõ°¡°ª
       JSpinner spinner3 = new JSpinner(numberModel3);
       
       String day = signupRequestVO.getBirth().substring(6, 8);
@@ -154,15 +154,15 @@ public class SubscriptionInformationPanel extends JPanel {
    
       System.out.println();
       
-      JLabel gender = new JLabel("                ì„±ë³„");
+      JLabel gender = new JLabel("                ¼ºº°");
       gender.setLocation(10, 80);
       gender.setSize(100, 100);
 
       result.add(gender);
 
-      JRadioButton man = new JRadioButton("ë‚¨");
+      JRadioButton man = new JRadioButton("³²");
       man.setBackground(Color.WHITE);
-      JRadioButton woman = new JRadioButton("ì—¬");
+      JRadioButton woman = new JRadioButton("¿©");
       woman.setBackground(Color.WHITE);
       ButtonGroup group = new ButtonGroup();
       group.add(man);
@@ -179,7 +179,7 @@ public class SubscriptionInformationPanel extends JPanel {
       JLabel phonenumber = new JLabel();
       passwordcheck.setLocation(10, 80);
       passwordcheck.setSize(100, 100);
-      result.add(new JLabel("                í•¸ë“œí° ë²ˆí˜¸:"));
+      result.add(new JLabel("                ÇÚµåÆù ¹øÈ£:"));
 
       JTextField text5 = new JTextField(15);
       text5.setLocation(20, 900);
@@ -193,16 +193,16 @@ public class SubscriptionInformationPanel extends JPanel {
       JLabel city = new JLabel();
       birth.setLocation(10, 80);
       birth.setSize(100, 100);
-      result.add(new JLabel("                ì§€ì—­:"));
+      result.add(new JLabel("                Áö¿ª:"));
 
-      String[] cities = { "ì„œìš¸", "ëŒ€ì „", "ëŒ€êµ¬", "ë¶€ì‚°", "ê²½ê¸°", "ê°•ì›", "ì¸ì²œ", "ì œì£¼" };
+      String[] cities = { "¼­¿ï", "´ëÀü", "´ë±¸", "ºÎ»ê", "°æ±â", "°­¿ø", "ÀÎÃµ", "Á¦ÁÖ" };
 
       JComboBox animalList = new JComboBox<>(cities);
 
       animalList.setBackground(Color.white);
       result.add(animalList);
 
-      JButton next = new JButton("ë‹¤ìŒ");
+      JButton next = new JButton("´ÙÀ½");
       next.setBounds(137, 600, 230, 50);
       next.setBackground(Color.ORANGE);
       this.add(next);
@@ -225,20 +225,20 @@ public class SubscriptionInformationPanel extends JPanel {
             
             if(text.getText().equals("") ||text2.getPassword().length==0||text3.getPassword().length==0) {
                
-               JOptionPane.showMessageDialog(thisPanel, "ë¹ˆì¹¸ì„ ì±„ì›Œì£¼ì„¸ìš”", "ë¹ˆì¹¸ì„ ì±„ì›Œì£¼ì„¸ìš”", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(thisPanel, "ºóÄ­À» Ã¤¿öÁÖ¼¼¿ä", "ºóÄ­À» Ã¤¿öÁÖ¼¼¿ä", JOptionPane.ERROR_MESSAGE);
                
                }else {
                   signupRequestVO.setId(text.getText());
-                  signupRequestVO.setEmail(text.getText()); // ì´ë©”ì¼
-                  signupRequestVO.setPassword(String.valueOf(text2.getPassword()));// ë¹„ë°€ë²ˆí˜¸
+                  signupRequestVO.setEmail(text.getText()); // ÀÌ¸ŞÀÏ
+                  signupRequestVO.setPassword(String.valueOf(text2.getPassword()));// ºñ¹Ğ¹øÈ£
 
-                  String br = String.valueOf(spinner1.getValue()) // ë…„
-                        + String.format("%02d", Integer.parseInt(spinner2.getValue().toString())) // ì›”
-                        + String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // ì¼
+                  String br = String.valueOf(spinner1.getValue()) // ³â
+                        + String.format("%02d", Integer.parseInt(spinner2.getValue().toString())) // ¿ù
+                        + String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // ÀÏ
                   signupRequestVO.setBirth(br);
 
-                  String str = String.valueOf(text5.getText()); // í°
-                  String phone = str.substring(0, 3) +   str.substring(3, 8) +  str.substring(8, 13); // í°
+                  String str = String.valueOf(text5.getText()); // Æù
+                  String phone = str.substring(0, 3) +   str.substring(3, 8) +  str.substring(8, 13); // Æù
                   signupRequestVO.setPhoneNumber(phone);
                   
                   signupRequestVO.setAddress(String.valueOf(animalList.getSelectedItem()));
@@ -247,9 +247,9 @@ public class SubscriptionInformationPanel extends JPanel {
                   
                   
                   if(man.isSelected()) {
-                     signupRequestVO.setGender("ë‚¨");
+                     signupRequestVO.setGender("³²");
                   } else {
-                     signupRequestVO.setGender("ì—¬");
+                     signupRequestVO.setGender("¿©");
                   }
                   
                   //ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame, signupRequestVO ));
@@ -261,7 +261,7 @@ public class SubscriptionInformationPanel extends JPanel {
             ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame, signupRequestVO ));
             }
             else {
-               JOptionPane.showMessageDialog(null, "ì´ë©”ì¼ ì¤‘ë³µí™•ì¸ì„ í•´ì£¼ì„¸ìš”", "ERROR", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "ÀÌ¸ŞÀÏ Áßº¹È®ÀÎÀ» ÇØÁÖ¼¼¿ä", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
          }
       });
