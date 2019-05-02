@@ -280,7 +280,7 @@ public class SubscriptionInformationPanel extends JPanel {
 			}
 		});
 		SubscriptionInformationLanbel.addMouseListener(new MouseAdapter() {
-	
+	         //
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new UserAuthentication(mainFrame));

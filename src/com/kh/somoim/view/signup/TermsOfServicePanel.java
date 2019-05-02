@@ -159,7 +159,7 @@ public class TermsOfServicePanel extends JPanel{
 					JOptionPane.showMessageDialog( thisPanel, "약관동의 체크 해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
 				}
 			}
-		});
+		}); //
 
 		agree1.addActionListener(new ActionListener() {
 			
@@ -186,7 +186,7 @@ public class TermsOfServicePanel extends JPanel{
 				}
 			}
 		});
-		
+		//
 		/* 비동의 - 로그인 폼으로 이동 */
 		agreeButton2.addActionListener(new ActionListener() {
 			@Override

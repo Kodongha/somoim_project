@@ -294,7 +294,7 @@ for(int j=0;j<5;j++) {
 					}
 					
 					else {
-						
+						   //
 						
 						JOptionPane.showMessageDialog(null, "실명인증을 완료해주세요", "WARNING", JOptionPane.ERROR_MESSAGE);
 						
