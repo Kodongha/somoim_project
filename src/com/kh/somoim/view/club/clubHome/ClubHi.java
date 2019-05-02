@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 
 import javax.swing.BorderFactory;
@@ -34,6 +35,7 @@ public class ClubHi extends JPanel{
 	JLabel hicontentsLabel;
 	JLabel hiiconLabel;
 	JLabel hitimeLabel;
+	
 
 
 	public ClubHi(ClubVO clubVO, MemberVO memberVO) {
@@ -81,20 +83,23 @@ public class ClubHi extends JPanel{
 			hicontentsLabel.setFont(hicontentsLabel.getFont().deriveFont(15.0f));
 						
 			hitimeLabel = new JLabel();	
-			/*hitimeLabel.setText();*/
-			hitimeLabel.setBounds(300, 10, 100, 20);
+			
+			SimpleDateFormat yearFormat = new SimpleDateFormat("hh:mm:ss");
+			String date = yearFormat.format(boardResponseVOList.get(i).getWriteDay());
+						
+			hitimeLabel.setText(date);
+			hitimeLabel.setBounds(430, 10, 100, 20);
 			hitimeLabel.setFont(hicontentsLabel.getFont().deriveFont(15.0f));			
-
+			
 			hiLabel[i].add(hiiconLabel);
 			hiLabel[i].add(hititleLabel);
 			hiLabel[i].add(hicontentsLabel);
 			hiLabel[i].add(hitimeLabel);
-
+			
 			hiListPanel.add(hiLabel[i]);
 
-			y += 80;		
-			
-			
+			y += 80;	
+					
 		}
 
 		hiListPanel.setBackground(Color.white);
