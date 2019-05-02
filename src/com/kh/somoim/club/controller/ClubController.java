@@ -35,14 +35,16 @@ public class ClubController {
 	 * 가입 인사 리스트 출력
 	 * @param clubVO
 	 * @param memberVO
+	 * @param category 
 	 * @return
 	 */
-	public ArrayList<BoardResponseVO> getFirstGreeting(ClubVO clubVO, MemberVO memberVO) {
+	public ArrayList<BoardResponseVO> getFirstGreeting(ClubVO clubVO, MemberVO memberVO, String category) {
 		// TODO Auto-generated method stub
 		System.out.println("getClubMemberList.insertBoard in");
 		MemberInClubVO memberInClubVO = new MemberInClubVO();
 		memberInClubVO.setClubVO(clubVO);
 		memberInClubVO.setMemberVO(memberVO);
+		memberInClubVO.setSelectedCategory(category);
 		
 		ArrayList<BoardResponseVO> boardResponseVOList = null;
 		boardResponseVOList = clubInfoDAO.getFirstGreeting(memberInClubVO);
