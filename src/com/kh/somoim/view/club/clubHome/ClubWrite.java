@@ -1,6 +1,7 @@
 package com.kh.somoim.view.club.clubHome;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -93,11 +95,18 @@ public class ClubWrite extends JPanel {
 		// 글 내용  
 		writeArea = new JTextArea();
 		writeArea.setBounds(60, 127, 500, 400);
+		
+		
+		JScrollPane scroller = new JScrollPane(writeArea);
+		/*scroller.setPreferredSize(new Dimension(200, 100));
+		writeArea.add(scroller);*/
 		this.add(writeArea);
+		
 		
 		JLabel writeAreaLabel = new JLabel("내용  ");
 		writeAreaLabel.setSize(50, 50);
 		writeAreaLabel.setLocation(10, 110);
+
 		this.add(writeAreaLabel);
 		
 		this.add(jlabel);

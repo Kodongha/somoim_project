@@ -26,7 +26,7 @@ public class InformationFindPasswordPanel extends JPanel {
 		JLabel passwordLabel = new JLabel("비밀번호를 찾고자 하는 아이디를 입력해 주세요");
 		passwordLabel.setBounds(110,60, 350, 50);
 		
-		JPasswordField informationEmailTextField = new JPasswordField(15);
+		JTextField informationEmailTextField = new JTextField(15);
 		informationEmailTextField.setBounds(110, 110, 300, 45);
 		
 		JButton nextButton = new JButton("확인");
