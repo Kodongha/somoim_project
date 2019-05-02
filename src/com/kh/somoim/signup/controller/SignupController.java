@@ -15,4 +15,11 @@ public class SignupController {
 		
 	}
 
+	public boolean checkId(String email) {
+		// TODO Auto-generated method stub
+		System.out.println("SignupController.checkId in");
+		boolean result = signupDAO.checkId(email);
+		return result;
+	}
+	
 }
