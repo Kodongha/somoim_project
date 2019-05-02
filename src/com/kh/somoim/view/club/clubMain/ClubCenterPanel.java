@@ -89,13 +89,13 @@ public class ClubCenterPanel extends JPanel{
 		clubChatPanel = new ClubChat(clubVO, memberVO);
 		clubChatPanel.setPreferredSize(new Dimension(100, 650));
 		
-		clubFreePanel = new ClubFree(clubmainPanel);
+		clubFreePanel = new ClubFree(clubmainPanel, clubVO, memberVO);
 		clubFreePanel.setPreferredSize(new Dimension(500, 650));
 		
 		clubWritePanel = new ClubWrite(clubVO, memberVO);
 		clubWritePanel.setPreferredSize(new Dimension(500, 650));
 		
-		
+	
 		
 		// 마우스 클릭 이벤트(화면 전환)
 		clubInfoLabel.addMouseListener(new MouseAdapter() {
