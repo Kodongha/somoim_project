@@ -23,6 +23,7 @@ import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 import com.kh.somoim.view.signup.SignupPage;
+import com.kh.somoim.view.signup.SignupPageTopPanel;
 
 public class LoginPanel extends JPanel {
 

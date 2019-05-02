@@ -13,7 +13,7 @@ public class TermsOfServiceTopPanel extends JPanel {
 		this.setLayout(null);
 		this.setBackground(Color.orange);
 		this.setPreferredSize(new Dimension(500, 60)); //상단 패널조절
-		
+		/*
 		JLabel createLabel = new JLabel(" < 약관 동의");
 		createLabel.setForeground(Color.WHITE); //라벨 글씨색변경
 		createLabel.setFont(createLabel  //라벨 글씨 크기 조절
@@ -21,7 +21,7 @@ public class TermsOfServiceTopPanel extends JPanel {
 		createLabel.setLocation(10, 6);
 		createLabel.setSize(100, 20);
 		
-		this.add(createLabel);
+		this.add(createLabel);*/
 	}
 }
 	

@@ -3,10 +3,13 @@ package com.kh.somoim.view.signup;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -106,6 +109,16 @@ public class TermsOfServicePanel extends JPanel{
 		scroll2.setLocation(85,360);
 		scroll2.setSize(340,200);
 		this.add(scroll2);
+		
+
+		JLabel createLabel = new JLabel(" < 약관 동의");
+		createLabel.setForeground(Color.WHITE); //라벨 글씨색변경
+		createLabel.setFont(createLabel  //라벨 글씨 크기 조절
+											.getFont().deriveFont(15.0f));
+		createLabel.setLocation(10, 6);
+		createLabel.setSize(100, 20);
+		
+		this.add(createLabel);
 
 		/* 이벤트 관련 체크박스 
 		JCheckBox agree3 = new JCheckBox("이벤트 등 프로모션 알림 메일 수신(선택)");
@@ -180,6 +193,18 @@ public class TermsOfServicePanel extends JPanel{
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
 			}
 		});
+		
+		createLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SignupPage(mainFrame));
+				
+			}
+		});
+			
+		
 
 		//		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton, mainFrame, this));
 		//		agreeButton.addMouseListener(new AgreeBtnChangeEventUtil("agreeButton", agreeButton));

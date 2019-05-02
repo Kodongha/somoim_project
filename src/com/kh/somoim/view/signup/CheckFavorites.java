@@ -13,6 +13,7 @@ import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
@@ -45,13 +46,15 @@ public class CheckFavorites extends JPanel{
 	private JLabel dance; //  
 	 */	
 	public CheckFavorites(MainFrame mainFrame, SignupRequestVO signupRequestVO) {
-		SignupController signupController = new SignupController();
 		this.thisPanel = this;
+		SignupController signupController = new SignupController();
 
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
 		this.setBounds(200, 20, 500, 800);
 
+		
+		
 		JPanel imagePanel = new JPanel();
 		imagePanel.setLayout(new GridLayout(6, 2));
 		imagePanel.setBackground(Color.white);
@@ -62,6 +65,14 @@ public class CheckFavorites extends JPanel{
 		imagePanel.add(exerciseButton);
 		exerciseButton.setBackground(Color.WHITE);
 		//exercisebutton.setBorderPainted(true);
+		JLabel CheckFavoritesPanel = new JLabel(" < 관심사 선택(2개 선택하세요)");
+		CheckFavoritesPanel.setForeground(Color.WHITE); //라벨 글씨색변경
+		CheckFavoritesPanel.setFont(CheckFavoritesPanel  //라벨 글씨 크기 조절
+				.getFont().deriveFont(15.0f));
+		CheckFavoritesPanel.setLocation(10, 6); 
+		
+		CheckFavoritesPanel.setSize(250, 20);
+		this.add(CheckFavoritesPanel);
 
 		JButton gameButton = new JButton(new ImageIcon("images/game.PNG")); //게임 버튼
 		imagePanel.add(gameButton);
@@ -119,6 +130,18 @@ public class CheckFavorites extends JPanel{
 		nextButton.setBounds(137, 663, 230, 50);
 		nextButton.setBackground(Color.ORANGE);
 		this.add(nextButton);
+		
+		
+		
+		CheckFavoritesPanel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new SubscriptionInformationPanel(mainFrame, signupRequestVO));
+				
+			}
+		});
 
 		exerciseButton.addMouseListener(new MouseAdapter() {
 			@Override

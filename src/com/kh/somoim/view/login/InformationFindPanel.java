@@ -3,6 +3,8 @@ package com.kh.somoim.view.login;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,6 +13,7 @@ import javax.swing.JPanel;
 
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.mainFrame.MainFrame;
+import com.kh.somoim.view.signup.SubscriptionInformationPanel;
 
 
 
@@ -63,10 +66,33 @@ public class InformationFindPanel extends JPanel {
 		this.add(idImage);
 		this.add(passwordImage);
 		
+		JLabel informationFindTopPanelLabel = new JLabel(" < 정보 찾기");
+		informationFindTopPanelLabel.setForeground(Color.WHITE); //라벨 글씨색변경
+		informationFindTopPanelLabel.setFont(informationFindTopPanelLabel  //라벨 글씨 크기 조절
+											.getFont().deriveFont(15.0f));
+		informationFindTopPanelLabel.setLocation(10, 6);
+		
+		informationFindTopPanelLabel.setSize(100, 20);
+		this.add(informationFindTopPanelLabel);
+		
 		InformationFindTopPanel  informationFindTopPanel = new InformationFindTopPanel();
 		informationFindTopPanel.setBounds(0, 0, 500, 35);
 		//informationFindTopPanel.setPreferredSize(new Dimension(500, 60)); //상단 패널조절
+		
+		
 		this.add(informationFindTopPanel);
+		
+		
+		informationFindTopPanelLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
+				
+			}
+			
+		});
 		
 		passwordInformationFindPanelButton.addActionListener(new ActionListener() {
 				
