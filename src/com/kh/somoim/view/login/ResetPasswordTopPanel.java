@@ -14,12 +14,12 @@ public class ResetPasswordTopPanel extends JPanel {
 		this.setBackground(Color.orange);
 		this.setPreferredSize(new Dimension(500, 60)); //상단 패널조절
 		
-		JLabel ResetPasswordTopLabel = new JLabel(" < 비밀번호 찾기");
+		/*JLabel ResetPasswordTopLabel = new JLabel(" < 비밀번호 찾기");
 		ResetPasswordTopLabel.setForeground(Color.WHITE); //라벨 글씨색변경
 		ResetPasswordTopLabel.setFont(ResetPasswordTopLabel  //라벨 글씨 크기 조절
 											.getFont().deriveFont(15.0f));
 		ResetPasswordTopLabel.setLocation(10, 6);
 		ResetPasswordTopLabel.setSize(200, 20);
-		this.add(ResetPasswordTopLabel);	
+		this.add(ResetPasswordTopLabel);	*/
 	}
 }

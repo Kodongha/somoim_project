@@ -12,6 +12,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -26,6 +27,7 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 public class SubscriptionInformationPanel extends JPanel {
 	private JPanel thisPanel;
 	SignupRequestVO signupRequestVO;
+	
 
 	public SubscriptionInformationPanel(MainFrame mainFrame, SignupRequestVO signupRequestVO) {
 		this.thisPanel = this;
@@ -59,10 +61,9 @@ public class SubscriptionInformationPanel extends JPanel {
 		result.add(new JLabel("                비밀번호:"));
 
 		JPasswordField text2 = new JPasswordField(15);
-		text.setLocation(20, 900);
-		text.setSize(100, 100);
 
 		result.add(text2);
+
 
 		JLabel passwordcheck = new JLabel();
 		passwordcheck.setLocation(10, 80);
@@ -211,40 +212,54 @@ public class SubscriptionInformationPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				signupRequestVO.setId(text.getText());
-				signupRequestVO.setEmail(text.getText()); // 이메일
-				signupRequestVO.setPassword(String.valueOf(text2.getPassword()));// 비밀번호
-
-				String br = String.valueOf(spinner1.getValue()) // 년
-						+ String.format("%02d", Integer.parseInt(spinner2.getValue().toString())) // 월
-						+ String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // 일
-				signupRequestVO.setBirth(br);
-
-				String str = String.valueOf(text5.getText()); // 폰
-				String phone = str.substring(0, 3) +   str.substring(3, 8) +  str.substring(8, 13); // 폰
-				signupRequestVO.setPhoneNumber(phone);
 				
-				signupRequestVO.setAddress(String.valueOf(animalList.getSelectedItem()));
-				signupRequestVO.setName(text4.getText());
-				if(man.isSelected()) {
-					signupRequestVO.setGender("남");
-				} else {
-					signupRequestVO.setGender("여");
-				}
+				if(text.getText().equals("") ||text2.getPassword().length==0||text3.getPassword().length==0) {
+					
+					JOptionPane.showMessageDialog(thisPanel, "빈칸을 채워주세요", "빈칸을 채워주세요", JOptionPane.ERROR_MESSAGE);
+					
+					}else {
+						signupRequestVO.setId(text.getText());
+						signupRequestVO.setEmail(text.getText()); // 이메일
+						signupRequestVO.setPassword(String.valueOf(text2.getPassword()));// 비밀번호
+
+						String br = String.valueOf(spinner1.getValue()) // 년
+								+ String.format("%02d", Integer.parseInt(spinner2.getValue().toString())) // 월
+								+ String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // 일
+						signupRequestVO.setBirth(br);
+
+						String str = String.valueOf(text5.getText()); // 폰
+						String phone = str.substring(0, 3) +   str.substring(3, 8) +  str.substring(8, 13); // 폰
+						signupRequestVO.setPhoneNumber(phone);
+						
+						signupRequestVO.setAddress(String.valueOf(animalList.getSelectedItem()));
+						signupRequestVO.setName(text4.getText());
+						
+						
+						
+						if(man.isSelected()) {
+							signupRequestVO.setGender("남");
+						} else {
+							signupRequestVO.setGender("여");
+						}
+						System.out.println(signupRequestVO.toString());
+						ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame, signupRequestVO ));
+						
+					}
 				
-				// signupRequestVO.setAddress(animalList.getItemCount());
+					
+					// signupRequestVO.setAddress(animalList.getItemCount());
 
-				// signupRequestVO.setGender(String.valueOf( gender.) ;
-				// signupRequestVO.setPasswordCheck(String.valueOf(text3.getPa`
-				/// SimpleDateFormat birth = new SimpleDateFormat("yyyyymmdd");
-				// System.out.println(birth.format(date));
-				// signupRequestVO.setPhoneNumber(text5.getText);
+					// signupRequestVO.setGender(String.valueOf( gender.) ;
+					// signupRequestVO.setPasswordCheck(String.valueOf(text3.getPa`
+					/// SimpleDateFormat birth = new SimpleDateFormat("yyyyymmdd");
+					// System.out.println(birth.format(date));
+					// signupRequestVO.setPhoneNumber(text5.getText);
 
-				// signupRequestVO.setBirth(Integer.parseInt(spinner1.getValue()));
-				System.out.println(signupRequestVO.toString());
-
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame, signupRequestVO ));
-
+					// signupRequestVO.setBirth(Integer.parseInt(spinner1.getValue()));
+				
+					
+				
+				
 			}
 		});
 		SubscriptionInformationLanbel.addMouseListener(new MouseAdapter() {

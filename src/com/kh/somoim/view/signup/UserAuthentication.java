@@ -219,7 +219,7 @@ public class UserAuthentication extends JPanel {
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel,
 							new SubscriptionInformationPanel(mainFrame, signupRequestVO));
 				} else {
-					JOptionPane.showMessageDialog(thisPanel, "빈칸채우세요", "빈칸채우세요", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(thisPanel, "빈칸을 채워주세요", "빈칸을 채워주세요", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
@@ -237,7 +237,7 @@ public class UserAuthentication extends JPanel {
 				if (str.length() == 11) {
 					JOptionPane.showMessageDialog(thisPanel,
 							"인증번호를 발송했습니다.인증번호가 오지 않\n으면 입력하신 정보가 회원정보와 알치하는지\n 확인해 주세요", "핸드폰번호 인증",
-							JOptionPane.ERROR_MESSAGE);
+							JOptionPane.PLAIN_MESSAGE);
 
 					for (int i = 0; i < 5; i++) {
 						int random = (int) (Math.random() * 10);

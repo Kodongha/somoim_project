@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -114,11 +115,22 @@ public class FindIdPanel extends JPanel {
 		button2.setSize(70, 40);
 		button2.setBackground(Color.LIGHT_GRAY);
 		this.add(button2);
+		
+		JLabel FindIdLabel = new JLabel(" < 아이디 찾기");
+		FindIdLabel.setForeground(Color.WHITE); //라벨 글씨색변경
+		FindIdLabel.setFont(FindIdLabel  //라벨 글씨 크기 조절
+											.getFont().deriveFont(15.0f));
+		FindIdLabel.setLocation(10, 6);
+		
+		FindIdLabel.setSize(100, 20);
+		this.add(FindIdLabel);
+
 
 		FindIdTopPanel findIdTopPanel = new FindIdTopPanel();
 		findIdTopPanel.setBounds(0, 0, 500, 35);
 		this.add(findIdTopPanel);
-
+		
+		
 		button1.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -142,6 +154,15 @@ public class FindIdPanel extends JPanel {
 
 			}
 		});
+		
+		FindIdLabel.addMouseListener(new MouseAdapter() {		
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new InformationFindPanel(mainFrame));
+			}
+		});
+		
 	}
 }
 

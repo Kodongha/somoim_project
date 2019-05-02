@@ -44,6 +44,14 @@ public class ResetPassword extends JPanel {
 		nextButton.setBounds(137, 600, 230, 50);
 
 		nextButton.setBackground(Color.orange);
+		
+		JLabel ResetPasswordTopLabel = new JLabel(" < 비밀번호 찾기");
+		ResetPasswordTopLabel.setForeground(Color.WHITE); //라벨 글씨색변경
+		ResetPasswordTopLabel.setFont(ResetPasswordTopLabel  //라벨 글씨 크기 조절
+											.getFont().deriveFont(15.0f));
+		ResetPasswordTopLabel.setLocation(10, 6);
+		ResetPasswordTopLabel.setSize(200, 20);
+		this.add(ResetPasswordTopLabel);	
 
 		ResetPasswordTopPanel resetPasswordTopPanel = new ResetPasswordTopPanel();
 		resetPasswordTopPanel.setBounds(0, 0, 500, 35);
@@ -65,6 +73,16 @@ public class ResetPassword extends JPanel {
 				JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다", "웹 페이지 메세지", JOptionPane.PLAIN_MESSAGE);
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
 				
+			}
+		});
+		
+		ResetPasswordTopLabel.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new InformationFindPasswordPanel(mainFrame));
+			
 			}
 		});
 	}
