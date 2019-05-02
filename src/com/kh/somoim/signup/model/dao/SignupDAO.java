@@ -12,5 +12,13 @@ public class SignupDAO {
 		new ClientConnector().sendServer("SignupDAO.setSignup", signupRequestVO);
 		
 	}
+
+	public boolean checkId(String email) {
+		// TODO Auto-generated method stub
+		boolean result = (boolean)new ClientConnector().sendServer("SignupDAO.checkId", email);
+		
+		System.out.println("result:::"+result);
+		return result;
+	}
  
 }
