@@ -22,7 +22,7 @@ public class ClubController {
 	}
 	
 	/**
-	 * ¼Ò¸ğÀÓ »ı¼º
+	 * ì†Œëª¨ì„ ìƒì„±
 	 * @param clubDAO
 	 */
 	public void createClub(ClubVO ClubVO) {
@@ -32,7 +32,7 @@ public class ClubController {
 	}
 	
 	/**
-	 * ±Û ¾²±â
+	 * ê¸€ ì“°ê¸°
 	 * @param boardVO
 	 */
 	public void insertBoard(BoardVO boardVO) {
@@ -42,18 +42,20 @@ public class ClubController {
 	}
 
 	/**
-	 * °¡ÀÔ ÀÎ»ç ¸®½ºÆ® Ãâ·Â
+	 * ê°€ì… ì¸ì‚¬ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
 	 * @param clubVO
 	 * @param memberVO
+	 * @param category 
 	 * @return
 	 */
-	public ArrayList<BoardResponseVO> getFirstGreeting(ClubVO clubVO, MemberVO memberVO, String boardSelect) {
+	public ArrayList<BoardResponseVO> getFirstGreeting(ClubVO clubVO, MemberVO memberVO, String category) {
 		// TODO Auto-generated method stub
 		System.out.println("getClubMemberList.insertBoard in");
 		MemberInClubVO memberInClubVO = new MemberInClubVO();
 		memberInClubVO.setClubVO(clubVO);
 		memberInClubVO.setMemberVO(memberVO);
-		memberInClubVO.setSelectedCategory(boardSelect);
+
+		memberInClubVO.setSelectedCategory(category);
 		
 		ArrayList<BoardResponseVO> boardResponseVOList = null;
 		boardResponseVOList = clubInfoDAO.getFirstGreeting(memberInClubVO);
