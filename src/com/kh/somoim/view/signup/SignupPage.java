@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,15 +14,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.login.LoginPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class SignupPage extends JPanel{
 	
 	private JPanel thisPanel;
+	//private JPanel SignupPageTopPanel;
 	//private MainFrame mainFrame;
 	
 	public SignupPage(MainFrame mainFrame) {
 		this.thisPanel = this;
+		//this.SignupPageTopPanel = signupPageTopPanel;
 		//this.mainFrame = mainFrame;
 		
 		//컬러 화이트로 변경 
@@ -65,17 +70,30 @@ public class SignupPage extends JPanel{
 		nextbutton.setBackground(Color.ORANGE);
 		//버튼 외곽선 없애기
 		nextbutton.setBorderPainted(false);
+		
+		JLabel createLabel = new JLabel(" < 계정 만들기");
+		createLabel.setForeground(Color.WHITE); //라벨 글씨색변경
+		createLabel.setFont(createLabel  //라벨 글씨 크기 조절
+											.getFont().deriveFont(15.0f));
+		createLabel.setLocation(10, 6);
+		
+		createLabel.setSize(100, 20);
+		this.add(createLabel);
 
 		//라벨을 팬넬에 넣음 
 		this.add(signuppagelabel); //이미지
 		this.add(so); //소확행문구
 		this.add(so2);//소확행 하단 문구
 		this.add(nextbutton);//다음버튼
+		
+		//signupPageTopPanel.add(this);
 
 		
 		SignupPageTopPanel signupPageTopPanel = new SignupPageTopPanel(mainFrame);
 		signupPageTopPanel.setBounds(0, 0, 500, 35);
 		this.add(signupPageTopPanel);
+		
+		
 
 
 		nextbutton.addActionListener(new ActionListener() {
@@ -86,6 +104,16 @@ public class SignupPage extends JPanel{
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new TermsOfServicePanel(mainFrame));
 			}
 		});
+		
+		createLabel.addMouseListener(new MouseAdapter() {	
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			super.mouseClicked(e);
+			
+			ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
+			
+		}
+	});
 
 
 	}

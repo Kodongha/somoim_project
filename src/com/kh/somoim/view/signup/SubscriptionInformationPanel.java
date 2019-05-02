@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -88,6 +91,17 @@ public class SubscriptionInformationPanel extends JPanel {
 		birth.setLocation(10, 80);
 		birth.setSize(100, 100);
 		result.add(new JLabel("                생년월일:"));
+		
+		JLabel SubscriptionInformationLanbel = new JLabel(" < 가입 정보 입력");
+		SubscriptionInformationLanbel.setForeground(Color.WHITE); //라벨 글씨색변경
+		SubscriptionInformationLanbel.setFont(SubscriptionInformationLanbel  //라벨 글씨 크기 조절
+											.getFont().deriveFont(15.0f));
+		SubscriptionInformationLanbel.setLocation(10, 6);
+		
+		SubscriptionInformationLanbel.setSize(120, 20);
+		this.add(SubscriptionInformationLanbel);
+		
+		
 		
 
 		
@@ -231,6 +245,14 @@ public class SubscriptionInformationPanel extends JPanel {
 
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame, signupRequestVO ));
 
+			}
+		});
+		SubscriptionInformationLanbel.addMouseListener(new MouseAdapter() {
+	
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new UserAuthentication(mainFrame));
+				
 			}
 		});
 
