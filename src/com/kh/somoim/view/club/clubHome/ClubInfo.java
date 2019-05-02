@@ -22,6 +22,7 @@ public class ClubInfo extends JPanel{
 	JLabel[] memberLabel;
 	JButton joinButton;
 	JScrollPane infoScroll;
+	JLabel clubMasterLabel;
 	private JScrollPane scrollPane;
 	private String membersNumberList = "";
 
@@ -41,7 +42,7 @@ public class ClubInfo extends JPanel{
 		infoLabel = new JLabel(clubVO.getInformation());
 		infoLabel.setEnabled(false);
 		infoLabel.setText("<html>이렇게 넣으라고?<br> 되는건가 <br>" + "aoa <br>단발머리<br> 듣고올게요<br>" + "짧은 <br>치마를 <br>입어볼까 <br>이것저것<br> 고민하다 <br>시간만 가 <br>" + "오늘따라 <br>머리가 <br>마음에<br> 안들어~~ <br>" + "단발머리를 <br>하고 그대를<br> 만나러 <br></html> ");
-		infoLabel.setBackground(Color.gray);
+		infoLabel.setBackground(Color.WHITE);
 		infoLabel.setBounds(25, 20, 220, 280);
 
 		//모임 정보 스크롤바  
@@ -67,35 +68,37 @@ public class ClubInfo extends JPanel{
 		int y = 0;
 		
 		JPanel memberListPanel = new JPanel();
-	//s	memberListPanel.setLayout(null);
+		memberListPanel.setLayout(null);
 		memberLabel = new JLabel[clubMemberList.size()];
 		
-		//for(int i = 0; i < clubMemberList.size(); i++) {			
-		//	memberLabel[i] = new JLabel();
-		//	memberLabel[i].setBounds(x, y, 440, 70);
+		for(int i = 0; i < clubMemberList.size(); i++) {			
+			memberLabel[i] = new JLabel();
+			memberLabel[i].setBounds(x, y, 500, 70);
 			
-		//	Image profileImage = new ImageIcon(clubMemberList.get(i).getProfilePhotoPath()).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-		//	JLabel memberProfileLabel= new JLabel(new ImageIcon(profileImage));
-		//	memberProfileLabel.setBounds(0, 0, 60, 60);
+			Image profileImage = new ImageIcon(clubMemberList.get(i).getProfilePhotoPath()).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+			JLabel memberProfileLabel= new JLabel(new ImageIcon(profileImage));
+			memberProfileLabel.setBounds(0, 0, 60, 60);
 			
-		//	JLabel memberNameLabel = new JLabel(clubMemberList.get(i).getName());
-		//	memberNameLabel.setBounds(70, 15, 50, 50);
+			JLabel memberNameLabel = new JLabel(clubMemberList.get(i).getName());
+			memberNameLabel.setBounds(70, 0, 50, 50);
 			
-		//	JLabel clubMasterLabel = new JLabel(clubVO.getClupMasterNumber());
+			int j = clubVO.getClupMasterNumber();
+			System.out.println("clubVO.getClupMasterNumber()::::"+clubVO.getClupMasterNumber());
+			System.out.println("clubMemberList.get(i).getUserNumber():::"+clubMemberList.get(i).getUserNumber());
+			if(j == clubMemberList.get(i).getUserNumber()) {
+				clubMasterLabel = new JLabel("모임장 ");
+				clubMasterLabel.setBounds(350, 0, 50, 50);
+				memberLabel[i].add(clubMasterLabel);
+			}
 			
-					
+			memberLabel[i].add(memberProfileLabel);
+			memberLabel[i].add(memberNameLabel);
 			
-		//	memberLabel[i].add(memberProfileLabel);
-		//	memberLabel[i].add(memberNameLabel);
-			
-		//	memberListPanel.add(memberLabel[i]);
-		//	y += 40;
-	//	}	
-	//	memberListPanel.setBackground(Color.white);
-	//	memberListPanel.setBounds(25, 310, 440, 280);
-		
-		
-		
+			memberListPanel.add(memberLabel[i]);
+			y += 60;
+		}	
+		memberListPanel.setBackground(Color.white);
+		memberListPanel.setBounds(25, 310, 500, 280);	
 
 		// 소모임 타이틀 이미지 
 		Image titleImagePathImage = new ImageIcon(clubVO.getTitleImagePath()).getImage().getScaledInstance(200, 280, Image.SCALE_SMOOTH);
