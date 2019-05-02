@@ -22,7 +22,17 @@ public class ClubController {
 	}
 	
 	/**
-	 * ±Û ¾²±â
+	 * ì†Œëª¨ì„ ìƒì„±
+	 * @param clubDAO
+	 */
+	public void createClub(ClubVO ClubVO) {
+		
+		
+		
+	}
+	
+	/**
+	 * ê¸€ ì“°ê¸°
 	 * @param boardVO
 	 */
 	public void insertBoard(BoardVO boardVO) {
@@ -32,7 +42,7 @@ public class ClubController {
 	}
 
 	/**
-	 * °¡ÀÔ ÀÎ»ç ¸®½ºÆ® Ãâ·Â
+	 * ê°€ì… ì¸ì‚¬ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
 	 * @param clubVO
 	 * @param memberVO
 	 * @param category 
@@ -44,6 +54,7 @@ public class ClubController {
 		MemberInClubVO memberInClubVO = new MemberInClubVO();
 		memberInClubVO.setClubVO(clubVO);
 		memberInClubVO.setMemberVO(memberVO);
+
 		memberInClubVO.setSelectedCategory(category);
 		
 		ArrayList<BoardResponseVO> boardResponseVOList = null;
