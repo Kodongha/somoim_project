@@ -280,7 +280,7 @@ public class UserAuthentication extends JPanel {
 				if (str.length() == 11) {
 					String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // 폰
 					signupRequestVO.setPhoneNumber(phone);
-					System.out.println(signupRequestVO.toString());
+					//System.out.println(signupRequestVO.toString());
 
 					if(flag==true) {
 
@@ -315,14 +315,14 @@ public class UserAuthentication extends JPanel {
 							"인증번호를 발송했습니다.인증번호가 오지 않\n으면 입력하신 정보가 회원정보와 알치하는지\n 확인해 주세요", "핸드폰번호 인증",
 							JOptionPane.PLAIN_MESSAGE);
 
-					for (int i = 0; i < 5; i++) {
+					/*for (int i = 0; i < 5; i++) {
 						int random = (int) (Math.random() * 10);
 
 						System.out.print(random + " ");
 					}
-
+*/
 				} else {
-					JOptionPane.showMessageDialog(thisPanel, "핸드폰 번호 11자리 입력해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
+					//JOptionPane.showMessageDialog(thisPanel, "핸드폰 번호 11자리 입력해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}

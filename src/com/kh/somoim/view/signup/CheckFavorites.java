@@ -25,14 +25,17 @@ import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.login.LoginPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
-public class CheckFavorites extends JPanel{
-
+public class CheckFavorites extends JPanel {
+	
 	private JPanel thisPanel;
+	
+
+	
 
 	private Map<String, String> map = new HashMap<String, String>();
 	private Border border  = BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
 	private Border border2 = BorderFactory.createBevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.GRAY);
-
+	boolean flag;
 	/*private JLabel gamelabel; //게임
 	private JLabel travellabel; //여행
 	private JLabel petlabel; // 반려동물
@@ -46,7 +49,8 @@ public class CheckFavorites extends JPanel{
 	private JLabel dance; //  
 	 */	
 	public CheckFavorites(MainFrame mainFrame, SignupRequestVO signupRequestVO) {
-		this.thisPanel = this;
+		this.thisPanel = this; 
+		
 		SignupController signupController = new SignupController();
 
 		this.setLayout(null);
@@ -232,12 +236,12 @@ public class CheckFavorites extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
+				ArrayList<String> favoriteList = new ArrayList<String>();
 
 				if( map.size() == 2 ) {
 					System.out.println("만족");
 					Set keys = map.keySet();
 					Iterator it = keys.iterator();
-					ArrayList<String> favoriteList = new ArrayList<String>();
 					while(it.hasNext()) {
 						
 						String favorite = it.next().toString();
@@ -301,11 +305,13 @@ public class CheckFavorites extends JPanel{
 							favoriteList.add("운동/스포츠");
 							break;
 						}
-						System.out.println("모임" + favorite);
+						//System.out.println("모임" + favorite);
 						signupRequestVO.setFavorite(favoriteList);
 					}
 					
 					signupController.setSignup(signupRequestVO);
+				
+					
 					JOptionPane.showMessageDialog( thisPanel, "가입이 완료되었습니다.", "가입 완료", JOptionPane.PLAIN_MESSAGE);
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
 				}
