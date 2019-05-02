@@ -5,26 +5,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.kh.somoim.login.controller.LoginController;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.mainFrame.MainFrame;
-import com.kh.somoim.view.search.FavoriteSearchClubList;
 
 public class FindIdPanel extends JPanel {
 	private JTextField textName;
 	private JPanel thisPanel;
 
 	public FindIdPanel(MainFrame mainFrame) {
+		LoginController loginController = new LoginController();
+		
+		
 		this.thisPanel = this;
 
 		this.setLayout(null);
@@ -42,9 +42,6 @@ public class FindIdPanel extends JPanel {
 		this.add(name);
 
 		textName = new JTextField(20);
-		textName.setText("이름");
-
-		//textName.addMouseListener(new Event("tf", textName));
 
 		textName.setLocation(140, 250);
 		textName.setSize(270, 40);	
@@ -74,7 +71,7 @@ public class FindIdPanel extends JPanel {
 
 		this.add(countryCodeList);*/
 
-		String[] tongsinsa = {" ", "SK", "KT", "LG"}; 
+		String[] tongsinsa = {"SK", "KT", "LG"}; 
 
 		JComboBox tongsinsaList = new JComboBox(tongsinsa);
 		tongsinsaList.setLocation(139, 314); //232, 314
@@ -82,27 +79,11 @@ public class FindIdPanel extends JPanel {
 		tongsinsaList.setBackground(Color.WHITE);
 		this.add(tongsinsaList);	
 
-		JRadioButton email1 = new JRadioButton("회원정보에 등록한 휴대전화로 인증 ");
-		email1.setLocation(42, 115);
-		email1.setSize(300, 40);	
-		email1.setBackground(Color.WHITE);
-
 		JTextField phoneNober = new JTextField(20);
 		phoneNober.setSize(180, 40);
 		phoneNober.setLocation(230,315);
 		this.add(phoneNober);
 
-		/*JRadioButton email2 = new JRadioButton("본인확인 이메일로 인증 ");
-		email2.setLocation(42, 530);
-		email2.setSize(300, 50);
-		email2.setBackground(Color.WHITE);*/
-
-		ButtonGroup emailList = new ButtonGroup();
-		emailList.add(email1);
-		///emailList.add(email2);
-
-		this.add(email1);
-		//this.add(email2);
 
 		JButton button1 = new JButton("인증 ");
 		button1.setLocation(341, 380);
@@ -140,7 +121,6 @@ public class FindIdPanel extends JPanel {
 				if(e.getSource() == button1) {
 					JOptionPane.showMessageDialog(null, "<html>인증번호를 발송했습니다. <br>인증번호가 오지 않으면 입력하신 정보가 회원정보와 일치하는지 확인해주세요 <br></html> ","웹 페이지 메세지",JOptionPane.PLAIN_MESSAGE);
 				}
-				
 			}
 		});
 
@@ -148,10 +128,9 @@ public class FindIdPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new informationFindIdPanel(mainFrame) );
-
-
-
+				
+				String myId = loginController.getMyId(textName.getText(), phoneNober.getText());
+				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new informationFindIdPanel(mainFrame, myId));
 			}
 		});
 		

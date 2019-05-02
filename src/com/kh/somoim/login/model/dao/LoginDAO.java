@@ -11,5 +11,27 @@ public class LoginDAO {
 		
 		return responseMemberVO; 
 	}
+
+	public String getMyId(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		System.out.println("LoginDAO.getMyId in!");
+		String myId = (String)new ClientConnector().sendServer("LoginDAO.getMyId", memberVO);
+		
+		return myId;
+	}
+
+	public boolean getMyidForPassword(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		System.out.println("LoginDAO.getMyidForPassword in!");
+		boolean result = (boolean)new ClientConnector().sendServer("LoginDAO.getMyidForPassword", memberVO);
+		
+		return result;
+	}
+
+	public void updatePassword(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		System.out.println("LoginDAO.getMyidForPassword in!");
+		new ClientConnector().sendServer("LoginDAO.updatePassword", memberVO);
+	}
 	
 }

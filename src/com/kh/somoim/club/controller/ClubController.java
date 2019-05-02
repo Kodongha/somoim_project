@@ -1,7 +1,12 @@
 package com.kh.somoim.club.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
+
+import javax.imageio.ImageIO;
 
 import com.kh.somoim.club.model.dao.ClubDAO;
 import com.kh.somoim.club.model.vo.BoardResponseVO;
@@ -26,8 +31,32 @@ public class ClubController {
 	 * 소모임 생성
 	 * @param clubDAO
 	 */
-	public void createClub(ClubVO ClubVO) {
+	public void createClub(ClubVO clubVO) {
+		System.out.println("getClubMemberList.createClub in");
 		
+		File file = new File(clubVO.getTitleImagePath());
+		BufferedImage bufferedImage = null;
+		
+		if(!file.exists()) {
+			System.out.println("File not Exist.");
+		} else {
+			System.out.println("File Exist.");
+			try {
+				bufferedImage = ImageIO.read(file);
+				System.out.println(file.getName());
+				
+				int maxNumber = clubInfoDAO.getMaxNumber(clubVO);
+				clubVO.setClubNumber(maxNumber);
+				String extension = file.getName().split("[.]")[1];
+				
+				ImageIO.write(bufferedImage, extension, new File("C:\\Users\\ko\\git\\somoim_project_client\\images\\club\\" + clubVO.getClubNumber() + "." + extension));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		clubInfoDAO.createClub(clubVO);
 	}
 	
 	/**

@@ -19,4 +19,44 @@ public class LoginController {
 		return responseMemberVO;
 	}
 
+	/**
+	 * id Ã£±â
+	 * @param name
+	 * @param phoneNumber
+	 * @return
+	 */
+	public String getMyId(String name, String phoneNumber) {
+		// TODO Auto-generated method stub
+		System.out.println("LoginController.getMyId in!");
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO.setName(name);
+		memberVO.setPhoneNumber(phoneNumber);
+		
+		String myId = loginDAO.getMyId(memberVO);
+		
+		return myId;
+	}
+
+	public boolean getMyidForPassword(String id) {
+		// TODO Auto-generated method stub
+		System.out.println("LoginController.getMyidForPassword in!");
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId(id);
+		
+		boolean result = loginDAO.getMyidForPassword(memberVO);
+		
+		return result;
+	}
+
+	public void updatePassword(String id, String firstPassword) {
+		// TODO Auto-generated method stub
+		System.out.println("LoginController.updatePassword in!");
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId(id);
+		memberVO.setPassword(firstPassword);
+		loginDAO.updatePassword(memberVO);
+		
+	}
+
 }

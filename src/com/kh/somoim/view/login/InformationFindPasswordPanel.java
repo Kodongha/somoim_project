@@ -8,10 +8,12 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.kh.somoim.login.controller.LoginController;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
@@ -19,7 +21,10 @@ public class InformationFindPasswordPanel extends JPanel {
 	
 	private JPanel thisPanel;
 	
+	
 	public InformationFindPasswordPanel (MainFrame mainFrame) {
+		LoginController loginController = new LoginController();
+		
 		this.thisPanel = this;
 	
 		this.setLayout(null);
@@ -57,7 +62,14 @@ public class InformationFindPasswordPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new ResetPassword(mainFrame));
+				
+				boolean result = loginController.getMyidForPassword(informationEmailTextField.getText());
+				if(result) {
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new ResetPassword(mainFrame, informationEmailTextField.getText()));
+				} else {
+					JOptionPane.showMessageDialog(thisPanel, "등록된 아이디가 없습니다.", "경고", JOptionPane.ERROR_MESSAGE);
+				}
+				
 			}
 		});
 		

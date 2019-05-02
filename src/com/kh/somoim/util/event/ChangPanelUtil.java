@@ -32,22 +32,14 @@ public class ChangPanelUtil {
 		mainFrame.setVisible(true);
 	}
 
-	public static void CHANGE_PANEL(ClubMainPanel clubmainPanel, JPanel oldPanel, JPanel newPanel, String Layout) {
+	public static void CHANGE_PANEL(JPanel clubmainPanel, JPanel oldPanel, JPanel newPanel, String Layout) {
 		clubmainPanel.remove(oldPanel);
 		clubmainPanel.add(newPanel, Layout);
 		clubmainPanel.revalidate();
 		clubmainPanel.repaint();
 	}
-
-	public static void CHANGE_PANEL(SearchPanel searchpanel, JPanel op, JPanel np) {
-		searchpanel.remove(op);
-		searchpanel.add(np);
-		searchpanel.revalidate();
-		searchpanel.repaint();
-		
-	}	
 	
-	public static void CHANGE_PANEL(ClubMainPanel clubmainPanel, JPanel oldPanel, JPanel newPanel) {
+	public static void CHANGE_PANEL(JPanel clubmainPanel, JPanel oldPanel, JPanel newPanel) {
 		clubmainPanel.remove(oldPanel);
 		clubmainPanel.add(newPanel);
 		clubmainPanel.revalidate();
@@ -60,16 +52,6 @@ public class ChangPanelUtil {
 		clubmainPanel.revalidate();
 		clubmainPanel.repaint();
 	}
-
-
-	public static void CHANGE_PANEL(MainPanel mainpanel, JPanel oldPanel, CreateClubPanel newPanel) {
-		// TODO Auto-generated method stub
-		mainpanel.remove(oldPanel);
-		mainpanel.add(newPanel);
-		mainpanel.revalidate();
-		mainpanel.repaint();
-	}
-	
 
 }
 

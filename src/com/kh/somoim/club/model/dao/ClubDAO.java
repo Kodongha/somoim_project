@@ -45,4 +45,23 @@ public class ClubDAO {
 		return boardResponseVOList;
 	}
 
+	/**
+	 * 소모임 만들기
+	 * @param clubVO
+	 */
+	public void createClub(ClubVO clubVO) {
+		// TODO Auto-generated method stub
+		System.out.println("ClubDAO.createClub in");
+
+		new ClientConnector().sendServer("ClubDAO.createClub", clubVO);
+	}
+
+	public int getMaxNumber(ClubVO clubVO) {
+		// TODO Auto-generated method stub
+		
+		int maxNumber = (Integer)new ClientConnector().sendServer("ClubDAO.getMaxNumber", clubVO);
+		
+		return maxNumber;
+	}
+
 }

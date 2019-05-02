@@ -154,6 +154,7 @@ public class SettingPanel extends JPanel {
 						if(extension[1].toLowerCase().equals("png") 
 							|| extension[1].toLowerCase().equals("gif")
 							|| extension[1].toLowerCase().equals("jpg")) {
+							
 							settingController.setProfilePhoto(memberVO, selectedFilePath, extension[1]);
 							JOptionPane.showMessageDialog(null, "프로필 변경이 완료되었습니다.","안내",JOptionPane.PLAIN_MESSAGE);
 							

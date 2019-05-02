@@ -79,7 +79,6 @@ public class TopPanel extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				super.mouseClicked(e);
-				System.out.println("aaaa");
 				mainPanel.getCenterPanel().getCardLayout().show(mainPanel.getCenterPanel(), "setting");
 			}
 		});

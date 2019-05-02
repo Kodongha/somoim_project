@@ -19,17 +19,27 @@ public class informationFindIdPanel extends JPanel {
 
 	private JPanel thisPanel;
 
-	public informationFindIdPanel(MainFrame mainFrame) {
+	public informationFindIdPanel(MainFrame mainFrame, String myId) {
 		this.thisPanel = this;
 
 		this.setLayout(null);
 		this.setBackground(Color.white);
+		
+		if(myId.equals("") || myId.length() == 0) {
+			JLabel idLabel = new JLabel("회원님의 정보와 일치하는 아이디가 없습니다.");
+			idLabel.setBounds(110, 60, 350, 50);
+			this.add(idLabel);
+		} else {
+			JLabel idLabel = new JLabel("회원님의 정보와 일치하는 아이디 입니다");
+			idLabel.setBounds(110, 60, 350, 50);
+			this.add(idLabel);
 
-		JLabel idLabel = new JLabel("회원님의 정보와 일치하는 아이디 입니다");
-		idLabel.setBounds(110, 60, 350, 50);
-
-		JTextField informationEmailTextField = new JTextField(15);
-		informationEmailTextField.setBounds(110, 110, 300, 45);
+			JTextField informationEmailTextField = new JTextField(myId);
+			informationEmailTextField.setBounds(110, 110, 300, 45);
+			informationEmailTextField.setEnabled(false);
+			this.add(informationEmailTextField);
+		}
+		
 
 		JButton nextButton = new JButton("확인");
 		nextButton.setBounds(137, 600, 230, 50);
@@ -45,8 +55,6 @@ public class informationFindIdPanel extends JPanel {
 		FindIdLabel.setSize(100, 20);
 		this.add(FindIdLabel);
 
-		this.add(idLabel);
-		this.add(informationEmailTextField);
 		this.add(nextButton);
 
 		FindIdTopPanel findIdTopPanel = new FindIdTopPanel();

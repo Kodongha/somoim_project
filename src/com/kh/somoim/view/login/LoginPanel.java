@@ -54,7 +54,6 @@ public class LoginPanel extends JPanel {
 		idTextField.setBorder(null);
 		idLabel.add(idTextField); //텍스트 필드
 		
-		
 		JLabel pwdLabel = new JLabel("  비 밀 번 호");
 		pwdLabel.setBorder(new LineBorder(Color.GRAY,1));
 		pwdLabel.setLocation(125, 480); // 라벨 위치조정
@@ -71,6 +70,12 @@ public class LoginPanel extends JPanel {
 		pwdTextField.setBorder(null);
 		pwdLabel.add(pwdTextField);
 
+		JLabel alertLabel = new JLabel("입력하신 정보가 일치하지 않습니다.");
+		alertLabel.setLocation(125, 515); // 라벨 위치조정
+		alertLabel.setSize(250, 50);
+		alertLabel.setHorizontalAlignment(idLabel.CENTER);
+		alertLabel.setForeground(Color.RED);
+		alertLabel.setVisible(false);
 
 		JButton loginButton = new JButton("로그인"); //로그인 버튼
 		//loginbutton.setBounds(160, 80, 100, 25);
@@ -100,7 +105,8 @@ public class LoginPanel extends JPanel {
 
 		this.add(idLabel); //라벨
 		this.add(pwdLabel);
-
+		this.add(alertLabel);
+		
 		this.add(loginButton);
 		this.add(newCreateButton);
 		this.add(findIdPassword);
@@ -119,11 +125,25 @@ public class LoginPanel extends JPanel {
 				for(int i=0; i<passwordChar.length; i++) {
 					passwordStr += passwordChar[i];
 				}
-						
+				
+				if(idTextField.getText().equals("") || idTextField.getText().length() == 0) {
+					idLabel.setBorder(new LineBorder(Color.RED,2));
+				} else {
+					idLabel.setBorder(new LineBorder(Color.GRAY,1));
+				}
+				
+				if(passwordStr.equals("") || passwordStr.length() == 0) {
+					pwdLabel.setBorder(new LineBorder(Color.RED,2));
+				} else {
+					pwdLabel.setBorder(new LineBorder(Color.GRAY,1));
+				}
+				
 				MemberVO memberVO = loginController.checkAccount(idTextField.getText(), passwordStr);
 				if(memberVO != null) {
+					alertLabel.setVisible(false);
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new MainPanel(mainFrame, memberVO));
 				} else {
+					alertLabel.setVisible(true);
 					System.out.println("로그인 실패");
 				}
 			}
@@ -161,11 +181,25 @@ public class LoginPanel extends JPanel {
 					for(int i=0; i<passwordChar.length; i++) {
 						passwordStr += passwordChar[i];
 					}
+					
+					if(idTextField.getText().equals("") || idTextField.getText().length() == 0) {
+						idLabel.setBorder(new LineBorder(Color.RED,2));
+					} else {
+						idLabel.setBorder(new LineBorder(Color.GRAY,1));
+					}
+					
+					if(passwordStr.equals("") || passwordStr.length() == 0) {
+						pwdLabel.setBorder(new LineBorder(Color.RED,2));
+					} else {
+						pwdLabel.setBorder(new LineBorder(Color.GRAY,1));
+					}
+					
 					MemberVO memberVO = loginController.checkAccount(idTextField.getText(), passwordStr);
 					if(memberVO != null) {
+						alertLabel.setVisible(false);
 						ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new MainPanel(mainFrame, memberVO));
-						
 					} else {
+						alertLabel.setVisible(true);
 						System.out.println("로그인 실패");
 					}
 				}
@@ -191,10 +225,25 @@ public class LoginPanel extends JPanel {
 					for(int i=0; i<passwordChar.length; i++) {
 						passwordStr += passwordChar[i];
 					}
+					
+					if(idTextField.getText().equals("") || idTextField.getText().length() == 0) {
+						idLabel.setBorder(new LineBorder(Color.RED,2));
+					} else {
+						idLabel.setBorder(new LineBorder(Color.GRAY,1));
+					}
+					
+					if(passwordStr.equals("") || passwordStr.length() == 0) {
+						pwdLabel.setBorder(new LineBorder(Color.RED,2));
+					} else {
+						pwdLabel.setBorder(new LineBorder(Color.GRAY,1));
+					}
+					
 					MemberVO memberVO = loginController.checkAccount(idTextField.getText(), passwordStr);
 					if(memberVO != null) {
+						alertLabel.setVisible(false);
 						ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new MainPanel(mainFrame, memberVO));
 					} else {
+						alertLabel.setVisible(true);
 						System.out.println("로그인 실패");
 					}
 				}

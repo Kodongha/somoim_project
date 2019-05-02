@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
+import com.kh.somoim.login.controller.LoginController;
 import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
@@ -19,9 +20,11 @@ public class ResetPassword extends JPanel {
 
 	private JPanel thisPanel;
 
-	public ResetPassword(MainFrame mainFrame) {
+	public ResetPassword(MainFrame mainFrame, String id) {
 		this.thisPanel = this;
+		LoginController loginController = new LoginController();
 
+		
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
 
@@ -70,8 +73,26 @@ public class ResetPassword extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {		
-				JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다", "웹 페이지 메세지", JOptionPane.PLAIN_MESSAGE);
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
+				
+				String firstPassword = "";
+				for(char c : passwordTextField.getPassword()) {
+					firstPassword += c;
+				}
+				
+				String secondPassword = "";
+				for(char c : resetPasswordTextField.getPassword()) {
+					secondPassword += c;
+				}
+				
+				if(firstPassword.length() == 0) {
+					JOptionPane.showMessageDialog(thisPanel, "패스워드를 입력해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
+				} else if(!firstPassword.equals(secondPassword)) {
+					JOptionPane.showMessageDialog(thisPanel, "두 개의 패스워드가 다릅니다.", "경고", JOptionPane.ERROR_MESSAGE);
+				} else {
+					loginController.updatePassword(id, firstPassword);
+					JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다", "웹 페이지 메세지", JOptionPane.PLAIN_MESSAGE);
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new LoginPanel(mainFrame));
+				}
 				
 			}
 		});
