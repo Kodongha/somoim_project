@@ -13,6 +13,7 @@ import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -42,8 +43,24 @@ public class CreateClubPanel extends JPanel{
 		this.setLayout(null);
 		this.setBackground(Color.white);
 		System.out.println("mainPanel in");
-
+		
+		
+		/*모임을 만들어보세요*/
+		JLabel moimNotice = new JLabel("모임을 만들어 보세요!");
+		moimNotice.setLocation(80, 10); // 라벨 위치조정
+		moimNotice.setSize(500, 100);
+		moimNotice.setFont(new Font("나눔고딕",Font.BOLD, 33)); //폰트변경 및 굵게,사이즈조정 
+		this.add(moimNotice);
+		
 		/* 카테고리 */
+		String [] category = {"게임/오락", "결혼/육아" ,"공예/만들기","댄스/무용","반려동물","봉사활동","사교/인맥","아웃도어/여행","요리","운동/스포츠","음악/악기","차/오토바이"};
+		JComboBox categoryList = new JComboBox<>(category);
+		categoryList.setLocation(75, 100); // 라벨 위치조정
+		categoryList.setSize(330, 50);
+		categoryList.setBackground(Color.WHITE);
+		categoryList.setForeground(Color.GRAY);
+		this.add(categoryList);
+		
 		
 		/* 소모임 이름 */
 		JLabel clubNameLabel = new JLabel("  모임 이름을 작성하세요!");
