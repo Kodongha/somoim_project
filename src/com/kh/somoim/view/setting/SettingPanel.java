@@ -91,7 +91,7 @@ public class SettingPanel extends JPanel {
 				String result = JOptionPane.showInputDialog(null, memberVO.getEmail() +  "\n비밀번호 입력", "개인정보 수정",JOptionPane.INFORMATION_MESSAGE);
 				if(result != null && result.equals(memberVO.getPassword())) {
 					centerPanel.getCardLayout().show(centerPanel.getInfomationCorrect().getParent(), "infomationCorrect");
-				}
+				}  
 			}
 		});
 
@@ -127,12 +127,13 @@ public class SettingPanel extends JPanel {
 		JFileChooser fileChooser = new JFileChooser();
 		//기본 Path의 경로 설정 (바탕화면)
 		fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + "//" + "Desktop"));
+		/*
 		//필터링될 확장자
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("jpg 파일", "jpg");
 
 		//필터링될 확장자 추가
 		fileChooser.addChoosableFileFilter(filter);		
-
+		 */
 
 
 		profile.addMouseListener(new MouseAdapter() {
@@ -151,7 +152,7 @@ public class SettingPanel extends JPanel {
 						String[] extension = selectedFilePath.split("[.]");
 						//선택한 파일의 경로 
 						if(extension[1].toLowerCase().equals("png") 
-							|| extension[1].toLowerCase().equals("jpeg")
+							|| extension[1].toLowerCase().equals("gif")
 							|| extension[1].toLowerCase().equals("jpg")) {
 							settingController.setProfilePhoto(memberVO, selectedFilePath, extension[1]);
 							JOptionPane.showMessageDialog(null, "프로필 변경이 완료되었습니다.","안내",JOptionPane.PLAIN_MESSAGE);
@@ -162,7 +163,7 @@ public class SettingPanel extends JPanel {
 							newMainPanel.getCenterPanel().getCardLayout().show(newMainPanel.getCenterPanel().getSettingPanel().getParent(), "setting");
 							
 						} else {
-							JOptionPane.showMessageDialog(null, "png/jpg/jpeg 확장자만 선택하세요.","경고",JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "png/gif/jpg 확장자만 선택하세요.","경고",JOptionPane.WARNING_MESSAGE);
 						}
 
 					}else {
@@ -174,10 +175,6 @@ public class SettingPanel extends JPanel {
 		
 	}
 }
-
-
-
-
 
 
 

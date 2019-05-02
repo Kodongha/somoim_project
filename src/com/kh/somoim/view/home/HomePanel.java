@@ -1,10 +1,10 @@
 package com.kh.somoim.view.home;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,17 +20,21 @@ import javax.swing.JScrollPane;
 import com.kh.somoim.home.controller.HomeController;
 import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
+import com.kh.somoim.util.event.ChangPanelUtil;
 import com.kh.somoim.util.event.HoemPanelKeyEventUtil;
+import com.kh.somoim.view.main.CenterPanel;
 import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class HomePanel extends JPanel {
 
-	JLabel[] clubDetailLabel = null;
-
-	public HomePanel(MainFrame mainFrame, MainPanel mainpanel, MemberVO memberVO) {
+	private JLabel[] clubDetailLabel = null;
+	private JPanel thisPanel;
+	
+	public HomePanel(MainFrame mainFrame, MainPanel mainpanel, CenterPanel centerPanel, MemberVO memberVO) {
 		// TODO Auto-generated constructor stub
-
+		this.thisPanel = this;
+		
 		HomeController homeController = new HomeController();
 		ArrayList<ClubVO> myClubList = homeController.getMyClubList(memberVO);
 
@@ -139,7 +143,7 @@ public class HomePanel extends JPanel {
 		createClubLabel.setBackground(Color.gray);
 		createClubLabel.setOpaque(true);
 		
-		createClubLabel.setBounds(0,600,495,50);
+		createClubLabel.setBounds(0,600,494,58);
 		this.add(createClubLabel);
 		
 		/* 라벨 이벤트 */
@@ -149,7 +153,44 @@ public class HomePanel extends JPanel {
 		
 		createClubLabel.addMouseListener(new MouseAdapter() {
 			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseEntered(e);
+				createClubLabel.setBackground(new Color(242,203,97));
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseExited(e);
+				createClubLabel.setBackground(Color.gray);
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mousePressed(e);
+				createClubLabel.setBackground(new Color(242,150,97));
+			}
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseReleased(e);
+				createClubLabel.setBackground(new Color(242,203,97));
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				super.mouseClicked(e);
+				ChangPanelUtil.CHANGE_PANEL(mainpanel, centerPanel, new CreateClubPanel(mainFrame, mainpanel, memberVO));
+			}
+			
 		});
+		
+		
 		
 	}
 
