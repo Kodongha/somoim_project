@@ -12,6 +12,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -26,7 +27,7 @@ import com.kh.somoim.view.mainFrame.MainFrame;
 public class SubscriptionInformationPanel extends JPanel {
 	private JPanel thisPanel;
 	SignupRequestVO signupRequestVO;
-
+	boolean flag;
 	public SubscriptionInformationPanel(MainFrame mainFrame, SignupRequestVO signupRequestVO) {
 		this.thisPanel = this;
 		this.signupRequestVO = signupRequestVO;
@@ -38,7 +39,7 @@ public class SubscriptionInformationPanel extends JPanel {
 
 		JPanel result = new JPanel();
 		result.setLayout(new GridLayout(8, 2));
-		result.setBounds(50, 100, 350, 400);
+		result.setBounds(20, 100, 350, 400);
 		result.setBackground(Color.WHITE);
 
 		JLabel email = new JLabel();
@@ -52,6 +53,31 @@ public class SubscriptionInformationPanel extends JPanel {
 		text.setSize(100, 100);
 
 		result.add(text);
+		
+		JButton check= new JButton("중복확인");
+		check.setBackground(Color.ORANGE);
+		check.setBounds(370, 100, 100, 50);
+		check.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				if(text.getText().equals(signupRequestVO.getEmail())) {
+					
+					JOptionPane.showMessageDialog(null, "이미 가입된 이메일 번호입니다 다시 입력하세요", "중복", JOptionPane.ERROR_MESSAGE);
+					
+					} else {
+						JOptionPane.showMessageDialog(null, "가입 가능한 이메일입니다. 회원가입을 진행해주세요", "확인", JOptionPane.NO_OPTION);
+						flag=true;
+					}
+					
+					
+			
+				
+				
+			}
+		});
+		this.add(check);
 
 		JLabel password = new JLabel();
 		password.setLocation(10, 80);
@@ -242,13 +268,19 @@ public class SubscriptionInformationPanel extends JPanel {
 
 				// signupRequestVO.setBirth(Integer.parseInt(spinner1.getValue()));
 				System.out.println(signupRequestVO.toString());
-
+				if(flag=true) {
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame, signupRequestVO ));
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "이메일 중복확인을 해주세요", "ERROR", JOptionPane.ERROR_MESSAGE);
+					
+					
+				}
 
 			}
 		});
 		SubscriptionInformationLanbel.addMouseListener(new MouseAdapter() {
-	
+	         //
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new UserAuthentication(mainFrame));

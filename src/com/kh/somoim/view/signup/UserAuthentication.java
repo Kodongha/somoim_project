@@ -24,7 +24,25 @@ public class UserAuthentication extends JPanel {
 	private JPanel thisPanel;
 	SignupRequestVO signupRequestVO = new SignupRequestVO();
 
+	int random;
+	String random2="";
+	
+	boolean flag;
+	
 	public UserAuthentication(MainFrame mainFrame) {
+		
+		
+for(int j=0;j<5;j++) {
+		for (int i = 0; i < 5; i++) {
+			 random = (int) (Math.random() * 10);
+			 
+
+		}
+		
+		random2 += String.valueOf(random);
+}
+		
+		
 		this.thisPanel = this;
 
 		// 레이아웃변경
@@ -198,6 +216,58 @@ public class UserAuthentication extends JPanel {
 		this.add(nextbutton);
 		this.add(internationalnumber);
 
+		
+		
+		
+		
+		authenticationbutton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String str = String.valueOf(numbertext.getText());
+				// String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" +
+				// str.substring(7, 11); // 폰
+				// signupRequestVO.setPhoneNumber(phone);
+				if (str.length() == 11) {
+					JOptionPane.showMessageDialog(null,
+					"인증번호는 "+random2+" 입니다"	, "인증번호",
+							JOptionPane.NO_OPTION);
+
+
+				} else {
+					JOptionPane.showMessageDialog(thisPanel, "핸드폰 번호 11자리 입력해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
+				}
+
+			}
+		});
+		
+		resultbutton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+			
+				
+				if(resulttext.getText().equals(random2)) {
+					
+					
+					JOptionPane.showMessageDialog(null, "인증되었습니다", "인증확인", JOptionPane.NO_OPTION);
+					flag=true;
+					
+				}
+				else {
+					
+					JOptionPane.showMessageDialog(null, "인증번호가 일지하지 않습니다. 다시 입력해주세요", "ERROR", JOptionPane.ERROR_MESSAGE);
+					
+				}
+				
+				
+			}
+		});
+		
+		
+		
+		
+		
 		nextbutton.addActionListener(new ActionListener() {
 			// nametext
 			// numbertext
@@ -216,8 +286,19 @@ public class UserAuthentication extends JPanel {
 					String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // 폰
 					signupRequestVO.setPhoneNumber(phone);
 					System.out.println(signupRequestVO.toString());
+					
+					if(flag==true) {
+					
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel,
 							new SubscriptionInformationPanel(mainFrame, signupRequestVO));
+					}
+					
+					else {
+						   //
+						
+						JOptionPane.showMessageDialog(null, "실명인증을 완료해주세요", "WARNING", JOptionPane.ERROR_MESSAGE);
+						
+					}
 				} else {
 					JOptionPane.showMessageDialog(thisPanel, "빈칸채우세요", "빈칸채우세요", JOptionPane.ERROR_MESSAGE);
 				}
@@ -226,31 +307,7 @@ public class UserAuthentication extends JPanel {
 
 		});
 
-		authenticationbutton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String str = String.valueOf(numbertext.getText());
-				// String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" +
-				// str.substring(7, 11); // 폰
-				// signupRequestVO.setPhoneNumber(phone);
-				if (str.length() == 11) {
-					JOptionPane.showMessageDialog(thisPanel,
-							"인증번호를 발송했습니다.인증번호가 오지 않\n으면 입력하신 정보가 회원정보와 알치하는지\n 확인해 주세요", "핸드폰번호 인증",
-							JOptionPane.ERROR_MESSAGE);
-
-					for (int i = 0; i < 5; i++) {
-						int random = (int) (Math.random() * 10);
-
-						System.out.print(random + " ");
-					}
-
-				} else {
-					JOptionPane.showMessageDialog(thisPanel, "핸드폰 번호 11자리 입력해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
-				}
-
-			}
-		});
+		
 		UserAuthenticationLabel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
