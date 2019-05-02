@@ -76,10 +76,12 @@ public class TermsOfServicePanel extends JPanel{
 		agree1Text.setLineWrap(true);
 		agree1Text.setEditable(false);	
 		agree1Text.setEnabled(true);
+		agree1Text.setCaretPosition(getHeight());
 		JScrollPane scroll = new JScrollPane(agree1Text);
 		scroll.getVerticalScrollBar().setValue(0);
 		scroll.setLocation(85,110);
 		scroll.setSize(340,200);
+		
 		this.add(scroll);	
 
 		JTextArea agree2Text = new JTextArea();
@@ -104,7 +106,7 @@ public class TermsOfServicePanel extends JPanel{
 		agree2Text.setEnabled(true);
 		agree2Text.setFont(agree1Text.getFont().deriveFont(15.0f));
 		agree2Text.setLineWrap(true);
-
+		agree2Text.setCaretPosition(getHeight());
 		JScrollPane scroll2 = new JScrollPane(agree2Text);
 		scroll2.setLocation(85,360);
 		scroll2.setSize(340,200);
@@ -157,7 +159,7 @@ public class TermsOfServicePanel extends JPanel{
 					JOptionPane.showMessageDialog( thisPanel, "약관동의 체크 해주세요.", "경고", JOptionPane.ERROR_MESSAGE);
 				}
 			}
-		});
+		}); //
 
 		agree1.addActionListener(new ActionListener() {
 			
@@ -184,7 +186,7 @@ public class TermsOfServicePanel extends JPanel{
 				}
 			}
 		});
-		
+		//
 		/* 비동의 - 로그인 폼으로 이동 */
 		agreeButton2.addActionListener(new ActionListener() {
 			@Override

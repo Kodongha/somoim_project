@@ -24,157 +24,175 @@ public class UserAuthentication extends JPanel {
 	private JPanel thisPanel;
 	SignupRequestVO signupRequestVO = new SignupRequestVO();
 
+	int random;
+	String random2="";
+	
+	boolean flag;
+	
 	public UserAuthentication(MainFrame mainFrame) {
+		
+		
+for(int j=0;j<5;j++) {
+		for (int i = 0; i < 5; i++) {
+			 random = (int) (Math.random() * 10);
+			 
+
+		}
+		
+		random2 += String.valueOf(random);
+}
+		
+		
 		this.thisPanel = this;
 
-		// ·¹ÀÌ¾Æ¿ôº¯°æ
+		// ë ˆì´ì•„ì›ƒë³€ê²½
 		this.setLayout(null);
-		// ÄÃ·¯ È­ÀÌÆ®·Î º¯°æ
+		// ì»¬ëŸ¬ í™”ì´íŠ¸ë¡œ ë³€ê²½
 		this.setBackground(Color.WHITE);
 
-		// ÀÌ¸§ ¶óº§ ¼³Á¤
-		JLabel name = new JLabel("ÀÌ¸§");
-		// ÀÌ¸§¶óº§ »çÀÌÁî ¼³Á¤
-		name.setLocation(60, 60);// À§Ä¡¼³Á¤
-		name.setSize(100, 100);// Å©±â ¼³Á¤
-		// ÀÌ¸§¶óº§ ÆùÆ® ¼³Á¤
-		name.setFont(new Font("³ª´®°íµñ", Font.BOLD, 17)); // ÆùÆ®º¯°æ ¹× ±½°Ô,»çÀÌÁîÁ¶Á¤
-		// ÀÌ¸§ÀÔ·Â ¶óº§ ¼³Á¤
+		// ì´ë¦„ ë¼ë²¨ ì„¤ì •
+		JLabel name = new JLabel("ì´ë¦„");
+		// ì´ë¦„ë¼ë²¨ ì‚¬ì´ì¦ˆ ì„¤ì •
+		name.setLocation(60, 60);// ìœ„ì¹˜ì„¤ì •
+		name.setSize(100, 100);// í¬ê¸° ì„¤ì •
+		// ì´ë¦„ë¼ë²¨ í°íŠ¸ ì„¤ì •
+		name.setFont(new Font("ë‚˜ëˆ”ê³ ë”•", Font.BOLD, 17)); // í°íŠ¸ë³€ê²½ ë° êµµê²Œ,ì‚¬ì´ì¦ˆì¡°ì •
+		// ì´ë¦„ìž…ë ¥ ë¼ë²¨ ì„¤ì •
 		JTextField nametext = new JTextField(30);
-		// ÀÌ¸§ÀÔ·Â ¶óº§ »çÀÌÁî ¼³Á¤
+		// ì´ë¦„ìž…ë ¥ ë¼ë²¨ ì‚¬ì´ì¦ˆ ì„¤ì •
 		nametext.setLocation(170, 80);
 		nametext.setSize(200, 50);
 
-		// »ý³â¿ùÀÏ ¶óº§ ¼³Á¤
-		JLabel birth = new JLabel("»ý³â¿ùÀÏ");
-		// »ý³â¿ùÀÏ¶óº§ »çÀÌÁî ¼³Á¤
+		// ìƒë…„ì›”ì¼ ë¼ë²¨ ì„¤ì •
+		JLabel birth = new JLabel("ìƒë…„ì›”ì¼");
+		// ìƒë…„ì›”ì¼ë¼ë²¨ ì‚¬ì´ì¦ˆ ì„¤ì •
 		birth.setLocation(60, 125);
 		birth.setSize(100, 100);
-		// »ý³â¿ùÀÏ ÆùÆ® ¼³Á¤
-		birth.setFont(new Font("³ª´®°íµñ", Font.BOLD, 17));// ÆùÆ®º¯°æ ¹× ±¼°Ô »çÀÌÁîÁ¶Á¤
+		// ìƒë…„ì›”ì¼ í°íŠ¸ ì„¤ì •
+		birth.setFont(new Font("ë‚˜ëˆ”ê³ ë”•", Font.BOLD, 17));// í°íŠ¸ë³€ê²½ ë° êµ´ê²Œ ì‚¬ì´ì¦ˆì¡°ì •
 
 		/*
-		 * //»ý³â¿ùÀÏÀÇ ³âµµ¸®½ºÆ® Calendar yearcalendar = Calendar.getInstance(); Date value =
-		 * yearcalendar.getTime(); //ÇöÀç³¯Â¥ÀúÀå yearcalendar.add(yearcalendar.YEAR, -50);
-		 * //ÇöÀç°ªº¸´Ù -50³âÁõ°¡ Date start =yearcalendar.getTime();
-		 * yearcalendar.add(yearcalendar.YEAR, 100);//ÇöÀç½Ã°£º¸´Ù 50³â Áõ°¡ Date end =
+		 * //ìƒë…„ì›”ì¼ì˜ ë…„ë„ë¦¬ìŠ¤íŠ¸ Calendar yearcalendar = Calendar.getInstance(); Date value =
+		 * yearcalendar.getTime(); //í˜„ìž¬ë‚ ì§œì €ìž¥ yearcalendar.add(yearcalendar.YEAR, -50);
+		 * //í˜„ìž¬ê°’ë³´ë‹¤ -50ë…„ì¦ê°€ Date start =yearcalendar.getTime();
+		 * yearcalendar.add(yearcalendar.YEAR, 100);//í˜„ìž¬ì‹œê°„ë³´ë‹¤ 50ë…„ ì¦ê°€ Date end =
 		 * yearcalendar.getTime(); SpinnerDateModel dateModel = new
 		 * SpinnerDateModel(value, start, end, yearcalendar.YEAR); JSpinner spinner3 =
 		 * new JSpinner(dateModel); spinner3.setEditor(new JSpinner.DateEditor(spinner3,
-		 * "yyyy")); //»ý³â¿ùÀÏ ³âµµ ¸®½ºÆ® »çÀÌÁî Á¶Á¤ spinner3.setLocation(170,150);
+		 * "yyyy")); //ìƒë…„ì›”ì¼ ë…„ë„ ë¦¬ìŠ¤íŠ¸ ì‚¬ì´ì¦ˆ ì¡°ì • spinner3.setLocation(170,150);
 		 * spinner3.setSize(80,50);
 		 */
 
-		SpinnerNumberModel numberModel1 = new SpinnerNumberModel(1990, 1930, 2019, 1); // ½ÃÀÛÇÒ °ª, ÃÖ¼Ò°ª, ÃÖ´ë°ª, Áõ°¡°ª
+		SpinnerNumberModel numberModel1 = new SpinnerNumberModel(1990, 1930, 2019, 1); // ì‹œìž‘í•  ê°’, ìµœì†Œê°’, ìµœëŒ€ê°’, ì¦ê°€ê°’
 		JSpinner spinner1 = new JSpinner(numberModel1);
 		spinner1.setLocation(170, 150);
 		spinner1.setSize(80, 50);
 		this.add(spinner1);
 
-		SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1, 1, 12, 1); // ½ÃÀÛÇÒ °ª, ÃÖ¼Ò°ª, ÃÖ´ë°ª, Áõ°¡°ª
+		SpinnerNumberModel numberModel2 = new SpinnerNumberModel(1, 1, 12, 1); // ì‹œìž‘í•  ê°’, ìµœì†Œê°’, ìµœëŒ€ê°’, ì¦ê°€ê°’
 		JSpinner spinner2 = new JSpinner(numberModel2);
 		spinner2.setLocation(260, 150);
 		spinner2.setSize(80, 50);
 		this.add(spinner2);
 
-		SpinnerNumberModel numberModel3 = new SpinnerNumberModel(1, 1, 31, 1); // ½ÃÀÛÇÒ °ª, ÃÖ¼Ò°ª, ÃÖ´ë°ª, Áõ°¡°ª
+		SpinnerNumberModel numberModel3 = new SpinnerNumberModel(1, 1, 31, 1); // ì‹œìž‘í•  ê°’, ìµœì†Œê°’, ìµœëŒ€ê°’, ì¦ê°€ê°’
 		JSpinner spinner3 = new JSpinner(numberModel3);
 		spinner3.setLocation(350, 150);
 		spinner3.setSize(80, 50);
 		this.add(spinner3);
 
 		/*
-		 * //»ý³â¿ùÀÏÀÇ ¿ù ¸®½ºÆ® Calendar monthcalendar = Calendar.getInstance(); Date value1 =
-		 * monthcalendar.getTime(); //ÇöÀç³¯Â¥ÀúÀå monthcalendar.add(monthcalendar.MONTH,1);
+		 * //ìƒë…„ì›”ì¼ì˜ ì›” ë¦¬ìŠ¤íŠ¸ Calendar monthcalendar = Calendar.getInstance(); Date value1 =
+		 * monthcalendar.getTime(); //í˜„ìž¬ë‚ ì§œì €ìž¥ monthcalendar.add(monthcalendar.MONTH,1);
 		 * Date start1 =monthcalendar.getTime();
 		 * monthcalendar.add(monthcalendar.MONTH,10 ); Date end1 =
 		 * monthcalendar.getTime(); SpinnerDateModel dateModel1 = new
 		 * SpinnerDateModel(value1, start, end, yearcalendar.MONTH); JSpinner spinner4 =
 		 * new JSpinner(dateModel1); spinner4.setEditor(new
-		 * JSpinner.DateEditor(spinner4, "mm")); //»ý³â¿ùÀÏ ¿ù ¸®½ºÆ® »çÀÌÁî Á¶Á¤
+		 * JSpinner.DateEditor(spinner4, "mm")); //ìƒë…„ì›”ì¼ ì›” ë¦¬ìŠ¤íŠ¸ ì‚¬ì´ì¦ˆ ì¡°ì •
 		 * spinner4.setLocation(260,150); spinner4.setSize(80,50);
 		 */
 
 		/*
-		 * //»ý³â¿ùÀÏÀÇ ÀÏ ¸®½ºÆ® Calendar daycalendar = Calendar.getInstance(); Date value2 =
-		 * daycalendar.getTime(); //ÇöÀç³¯Â¥ÀúÀå daycalendar.add(daycalendar.DAY_OF_MONTH,
+		 * //ìƒë…„ì›”ì¼ì˜ ì¼ ë¦¬ìŠ¤íŠ¸ Calendar daycalendar = Calendar.getInstance(); Date value2 =
+		 * daycalendar.getTime(); //í˜„ìž¬ë‚ ì§œì €ìž¥ daycalendar.add(daycalendar.DAY_OF_MONTH,
 		 * -1); Date start2 =daycalendar.getTime();
 		 * daycalendar.add(yearcalendar.DAY_OF_MONTH, 100); Date end2 =
 		 * monthcalendar.getTime(); SpinnerDateModel dateModel2 = new
 		 * SpinnerDateModel(value2, start, end, daycalendar.DAY_OF_MONTH); JSpinner
 		 * spinner5 = new JSpinner(dateModel2); spinner4.setEditor(new
-		 * JSpinner.DateEditor(spinner4, "dd")); //»ý³â¿ùÀÏ ÀÏ ¸®½ºÆ® »çÀÌÁî Á¶Á¤
+		 * JSpinner.DateEditor(spinner4, "dd")); //ìƒë…„ì›”ì¼ ì¼ ë¦¬ìŠ¤íŠ¸ ì‚¬ì´ì¦ˆ ì¡°ì •
 		 * spinner5.setLocation(350,150); spinner5.setSize(80,50);
 		 */
-		// ÈÞ´ëÆù¹øÈ£ ¶óº§ ¼³Á¤
-		JLabel phonenumber = new JLabel("ÈÞ´ëÆù ¹øÈ£");
+		// íœ´ëŒ€í°ë²ˆí˜¸ ë¼ë²¨ ì„¤ì •
+		JLabel phonenumber = new JLabel("íœ´ëŒ€í° ë²ˆí˜¸");
 		phonenumber.setLocation(60, 195);
 		phonenumber.setSize(100, 100);
-		// ÈÞ´ëÆù¹øÈ£ ÆùÆ® ¼³Á¤
-		phonenumber.setFont(new Font("³ª´®°íµñ", Font.BOLD, 17));// ÆùÆ®º¯°æ ¹× ±¼°Ô »çÀÌÁîÁ¶Á¤
+		// íœ´ëŒ€í°ë²ˆí˜¸ í°íŠ¸ ì„¤ì •
+		phonenumber.setFont(new Font("ë‚˜ëˆ”ê³ ë”•", Font.BOLD, 17));// í°íŠ¸ë³€ê²½ ë° êµ´ê²Œ ì‚¬ì´ì¦ˆì¡°ì •
 
-		// Åë½Å»ç ¼³Á¤
-		String[] items = { "SK", "KT", "LG", "º°Á¤Åë½Å»ç" };
+		// í†µì‹ ì‚¬ ì„¤ì •
+		String[] items = { "SK", "KT", "LG", "ë³„ì •í†µì‹ ì‚¬" };
 		SpinnerListModel listModel = new SpinnerListModel(items);
 		JSpinner tong = new JSpinner(listModel);
-		// Åë½Å»ç »çÀÌÁî ¼³Á¤
+		// í†µì‹ ì‚¬ ì‚¬ì´ì¦ˆ ì„¤ì •
 		tong.setLocation(260, 220);
 		tong.setSize(80, 50);
 
-		// ±¹Á¦ÀüÈ­ ¼³Á¤
+		// êµ­ì œì „í™” ì„¤ì •
 		String[] item = { "+82", "+1", "+86", "+44" };
 
 		SpinnerListModel listModel1 = new SpinnerListModel(item);
 		JSpinner internationalnumber = new JSpinner(listModel1);
-		// ±¹Á¦ÀüÈ­ »çÀÌÁî ¼³Á¤
+		// êµ­ì œì „í™” ì‚¬ì´ì¦ˆ ì„¤ì •
 		internationalnumber.setLocation(170, 220);
 		internationalnumber.setSize(80, 50);
 
-		// ÀÎÁõ¹øÈ£ ÅØ½ºÆ® ¼³Á¤
+		// ì¸ì¦ë²ˆí˜¸ í…ìŠ¤íŠ¸ ì„¤ì •
 		JTextField numbertext = new JTextField(11);
 		numbertext.setLocation(170, 300);
 		numbertext.setSize(230, 50);
 
-		// ÀÎÁõ¹öÆ° ¼³Á¤
-		JButton authenticationbutton = new JButton("ÀÎÁõ");
-		// ÀÎÁõ¹öÆ° »çÀÌÁî ¼³Á¤
+		// ì¸ì¦ë²„íŠ¼ ì„¤ì •
+		JButton authenticationbutton = new JButton("ì¸ì¦");
+		// ì¸ì¦ë²„íŠ¼ ì‚¬ì´ì¦ˆ ì„¤ì •
 		authenticationbutton.setLocation(410, 300);
 		authenticationbutton.setSize(60, 50);
-		// ÀÎÁõ¹öÆ° ÄÃ·¯ º¯°æ
+		// ì¸ì¦ë²„íŠ¼ ì»¬ëŸ¬ ë³€ê²½
 		authenticationbutton.setBackground(Color.ORANGE);
-		// ÀÎÁõ¹öÆ° ¿Ü°û¼± ¾ø¾Ö±â
+		// ì¸ì¦ë²„íŠ¼ ì™¸ê³½ì„  ì—†ì• ê¸°
 		authenticationbutton.setBorderPainted(false);
 
-		// ÀÎÁõ¹øÈ£È®ÀÎ ÅØ½ºÆ® ¼³Á¤
+		// ì¸ì¦ë²ˆí˜¸í™•ì¸ í…ìŠ¤íŠ¸ ì„¤ì •
 		JTextField resulttext = new JTextField(20);
 		resulttext.setLocation(170, 352);
 		resulttext.setSize(230, 50);
-		// ÀÎÁõ¹øÈ£ÇÐÀÎ ¼³Á¤
-		JButton resultbutton = new JButton("È®ÀÎ");
-		// ÀÎÁõ¹øÈ£È®ÀÎ¹öÆ° »çÀÌÁî ¼³Á¤
+		// ì¸ì¦ë²ˆí˜¸í•™ì¸ ì„¤ì •
+		JButton resultbutton = new JButton("í™•ì¸");
+		// ì¸ì¦ë²ˆí˜¸í™•ì¸ë²„íŠ¼ ì‚¬ì´ì¦ˆ ì„¤ì •
 		resultbutton.setLocation(410, 352);
 		resultbutton.setSize(60, 50);
-		// È®ÀÎ¹öÆ° ÄÃ·¯ º¯°æ
+		// í™•ì¸ë²„íŠ¼ ì»¬ëŸ¬ ë³€ê²½
 		resultbutton.setBackground(Color.ORANGE);
-		// È®ÀÎ¹öÆ° ¿Ü°û¼± ¾ø¾Ö±â
+		// í™•ì¸ë²„íŠ¼ ì™¸ê³½ì„  ì—†ì• ê¸°
 		resultbutton.setBorderPainted(false);
 
-		// ´ÙÀ½ ¹öÆ° ¸¸µé±â
-		JButton nextbutton = new JButton("´ÙÀ½");
-		// ´ÙÀ½¹öÆ° »çÀÌÁî Á¶Á¤
-		nextbutton.setLocation(136, 600); // À§Ä¡ÁöÁ¤
-		nextbutton.setSize(230, 50); // Å©±âÁöÁ¤
-		// ¹öÆ° ÄÃ·¯ º¯°æ
+		// ë‹¤ìŒ ë²„íŠ¼ ë§Œë“¤ê¸°
+		JButton nextbutton = new JButton("ë‹¤ìŒ");
+		// ë‹¤ìŒë²„íŠ¼ ì‚¬ì´ì¦ˆ ì¡°ì •
+		nextbutton.setLocation(136, 600); // ìœ„ì¹˜ì§€ì •
+		nextbutton.setSize(230, 50); // í¬ê¸°ì§€ì •
+		// ë²„íŠ¼ ì»¬ëŸ¬ ë³€ê²½
 		nextbutton.setBackground(Color.ORANGE);
-		// ¹öÆ° ¿Ü°û¼± ¾ø¾Ö±â
+		// ë²„íŠ¼ ì™¸ê³½ì„  ì—†ì• ê¸°
 		nextbutton.setBorderPainted(false);
 
 		UserAuthenticationTopPanel userAuthenticationTopPanel = new UserAuthenticationTopPanel();
 		userAuthenticationTopPanel.setBounds(0, 0, 500, 35);
 		
-		JLabel UserAuthenticationLabel = new JLabel(" < ½Ç¸í ÀÎÁõ");
-		UserAuthenticationLabel.setForeground(Color.WHITE); // ¶óº§ ±Û¾¾»öº¯°æ
-		UserAuthenticationLabel.setFont(UserAuthenticationLabel // ¶óº§ ±Û¾¾ Å©±â Á¶Àý
+		JLabel UserAuthenticationLabel = new JLabel(" < ì‹¤ëª… ì¸ì¦");
+		UserAuthenticationLabel.setForeground(Color.WHITE); // ë¼ë²¨ ê¸€ì”¨ìƒ‰ë³€ê²½
+		UserAuthenticationLabel.setFont(UserAuthenticationLabel // ë¼ë²¨ ê¸€ì”¨ í¬ê¸° ì¡°ì ˆ
 				.getFont().deriveFont(15.0f));
 		UserAuthenticationLabel.setLocation(10, 6);
 		
@@ -198,28 +216,91 @@ public class UserAuthentication extends JPanel {
 		this.add(nextbutton);
 		this.add(internationalnumber);
 
+		
+		
+		
+		
+		authenticationbutton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String str = String.valueOf(numbertext.getText());
+				// String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" +
+				// str.substring(7, 11); // í°
+				// signupRequestVO.setPhoneNumber(phone);
+				if (str.length() == 11) {
+					JOptionPane.showMessageDialog(null,
+					"ì¸ì¦ë²ˆí˜¸ëŠ” "+random2+" ìž…ë‹ˆë‹¤"	, "ì¸ì¦ë²ˆí˜¸",
+							JOptionPane.NO_OPTION);
+
+
+				} else {
+					JOptionPane.showMessageDialog(thisPanel, "í•¸ë“œí° ë²ˆí˜¸ 11ìžë¦¬ ìž…ë ¥í•´ì£¼ì„¸ìš”.", "ê²½ê³ ", JOptionPane.ERROR_MESSAGE);
+				}
+
+			}
+		});
+		
+		resultbutton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+			
+				
+				if(resulttext.getText().equals(random2)) {
+					
+					
+					JOptionPane.showMessageDialog(null, "ì¸ì¦ë˜ì—ˆìŠµë‹ˆë‹¤", "ì¸ì¦í™•ì¸", JOptionPane.NO_OPTION);
+					flag=true;
+					
+				}
+				else {
+					
+					JOptionPane.showMessageDialog(null, "ì¸ì¦ë²ˆí˜¸ê°€ ì¼ì§€í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ë‹¤ì‹œ ìž…ë ¥í•´ì£¼ì„¸ìš”", "ERROR", JOptionPane.ERROR_MESSAGE);
+					
+				}
+				
+				
+			}
+		});
+		
+		
+		
+		
+		
 		nextbutton.addActionListener(new ActionListener() {
 			// nametext
 			// numbertext
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// System.out.println(nametext.getText());
-				signupRequestVO.setName(nametext.getText()); // ÀÌ¸§
+				signupRequestVO.setName(nametext.getText()); // ì´ë¦„
 
-				String br = String.valueOf(spinner1.getValue()) // ³â
-						+ String.format("%02d", Integer.parseInt(spinner2.getValue().toString())) // ¿ù
-						+ String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // ÀÏ
+				String br = String.valueOf(spinner1.getValue()) // ë…„
+						+ String.format("%02d", Integer.parseInt(spinner2.getValue().toString())) // ì›”
+						+ String.format("%02d", Integer.parseInt(spinner3.getValue().toString())); // ì¼
 				signupRequestVO.setBirth(br);
 
-				String str = String.valueOf(numbertext.getText()); // Æù
+				String str = String.valueOf(numbertext.getText()); // í°
 				if (str.length() == 11) {
-					String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // Æù
+					String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" + str.substring(7, 11); // í°
 					signupRequestVO.setPhoneNumber(phone);
 					System.out.println(signupRequestVO.toString());
+					
+					if(flag==true) {
+					
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel,
 							new SubscriptionInformationPanel(mainFrame, signupRequestVO));
+					}
+					
+					else {
+						   //
+						
+						JOptionPane.showMessageDialog(null, "ì‹¤ëª…ì¸ì¦ì„ ì™„ë£Œí•´ì£¼ì„¸ìš”", "WARNING", JOptionPane.ERROR_MESSAGE);
+						
+					}
 				} else {
-					JOptionPane.showMessageDialog(thisPanel, "ºóÄ­À» Ã¤¿öÁÖ¼¼¿ä", "ºóÄ­À» Ã¤¿öÁÖ¼¼¿ä", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(thisPanel, "ë¹ˆì¹¸ì„ ì±„ì›Œì£¼ì„¸ìš”", "ë¹ˆì¹¸ì„ ì±„ì›Œì£¼ì„¸ìš”", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
@@ -232,11 +313,11 @@ public class UserAuthentication extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String str = String.valueOf(numbertext.getText());
 				// String phone = str.substring(0, 3) + "-" + str.substring(3, 7) + "-" +
-				// str.substring(7, 11); // Æù
+				// str.substring(7, 11); // í°
 				// signupRequestVO.setPhoneNumber(phone);
 				if (str.length() == 11) {
 					JOptionPane.showMessageDialog(thisPanel,
-							"ÀÎÁõ¹øÈ£¸¦ ¹ß¼ÛÇß½À´Ï´Ù.ÀÎÁõ¹øÈ£°¡ ¿ÀÁö ¾Ê\nÀ¸¸é ÀÔ·ÂÇÏ½Å Á¤º¸°¡ È¸¿øÁ¤º¸¿Í ¾ËÄ¡ÇÏ´ÂÁö\n È®ÀÎÇØ ÁÖ¼¼¿ä", "ÇÚµåÆù¹øÈ£ ÀÎÁõ",
+							"ì¸ì¦ë²ˆí˜¸ë¥¼ ë°œì†¡í–ˆìŠµë‹ˆë‹¤.ì¸ì¦ë²ˆí˜¸ê°€ ì˜¤ì§€ ì•Š\nìœ¼ë©´ ìž…ë ¥í•˜ì‹  ì •ë³´ê°€ íšŒì›ì •ë³´ì™€ ì•Œì¹˜í•˜ëŠ”ì§€\n í™•ì¸í•´ ì£¼ì„¸ìš”", "í•¸ë“œí°ë²ˆí˜¸ ì¸ì¦",
 							JOptionPane.PLAIN_MESSAGE);
 
 					for (int i = 0; i < 5; i++) {
@@ -246,21 +327,11 @@ public class UserAuthentication extends JPanel {
 					}
 
 				} else {
-					JOptionPane.showMessageDialog(thisPanel, "ÇÚµåÆù ¹øÈ£ 11ÀÚ¸® ÀÔ·ÂÇØÁÖ¼¼¿ä.", "°æ°í", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(thisPanel, "í•¸ë“œí° ë²ˆí˜¸ 11ìžë¦¬ ìž…ë ¥í•´ì£¼ì„¸ìš”.", "ê²½ê³ ", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
 		});
-		UserAuthenticationLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				super.mouseClicked(e);
 
-				ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new TermsOfServicePanel(mainFrame));
-
-			}
-
-		});
-		
 	}
 }
