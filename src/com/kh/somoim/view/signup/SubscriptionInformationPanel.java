@@ -251,8 +251,8 @@ public class SubscriptionInformationPanel extends JPanel {
 						} else {
 							signupRequestVO.setGender("¿©");
 						}
-						System.out.println(signupRequestVO.toString());
-						ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame, signupRequestVO ));
+						
+						//ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new CheckFavorites(mainFrame, signupRequestVO ));
 						
 					}
 
