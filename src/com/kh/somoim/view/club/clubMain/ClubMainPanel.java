@@ -34,7 +34,7 @@ public class ClubMainPanel extends JPanel{
 		// 상단/중단 패널 생성
 		clubtopPanel = new ClubTopPanel(mainFrame, this, clubVO, memberVO);
 		clubcenterPanel = new ClubCenterPanel(mainFrame, this, clubVO, memberVO);
-		clubinfoPanel = new ClubInfo(clubVO);	
+		clubinfoPanel = new ClubInfo(clubVO, memberVO);	
 
 		// 패널 사이즈 조절
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));
