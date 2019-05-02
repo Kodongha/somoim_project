@@ -22,6 +22,16 @@ public class ClubController {
 	}
 	
 	/**
+	 * 소모임 생성
+	 * @param clubDAO
+	 */
+	public void createClub(ClubVO ClubVO) {
+		
+		
+		
+	}
+	
+	/**
 	 * 글 쓰기
 	 * @param boardVO
 	 */
@@ -37,12 +47,13 @@ public class ClubController {
 	 * @param memberVO
 	 * @return
 	 */
-	public ArrayList<BoardResponseVO> getFirstGreeting(ClubVO clubVO, MemberVO memberVO) {
+	public ArrayList<BoardResponseVO> getFirstGreeting(ClubVO clubVO, MemberVO memberVO, String boardSelect) {
 		// TODO Auto-generated method stub
 		System.out.println("getClubMemberList.insertBoard in");
 		MemberInClubVO memberInClubVO = new MemberInClubVO();
 		memberInClubVO.setClubVO(clubVO);
 		memberInClubVO.setMemberVO(memberVO);
+		memberInClubVO.setSelectedCategory(boardSelect);
 		
 		ArrayList<BoardResponseVO> boardResponseVOList = null;
 		boardResponseVOList = clubInfoDAO.getFirstGreeting(memberInClubVO);
