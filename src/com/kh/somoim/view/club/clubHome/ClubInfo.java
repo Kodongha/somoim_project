@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -19,6 +20,10 @@ import com.kh.somoim.club.controller.ClubController;
 import com.kh.somoim.club.model.vo.MemberInClubVO;
 import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
+import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.club.clubMain.ClubMainPanel;
+import com.kh.somoim.view.main.MainPanel;
+import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubInfo extends JPanel{
 	JTextArea infotextArea;
@@ -30,7 +35,7 @@ public class ClubInfo extends JPanel{
 	JScrollPane scrollPane;
 	private String membersNumberList = "";
 
-	public ClubInfo(ClubVO clubVO, MemberVO memberVO) {
+	public ClubInfo(MainFrame mainFrame, MainPanel mainPanel, JPanel clubMainPanel, ClubVO clubVO, MemberVO memberVO) {
 
 		ClubController clubInfoController = new ClubController();
 		ArrayList<MemberVO> clubMemberList = clubInfoController.getClubMemberList(clubVO);
@@ -175,10 +180,24 @@ public class ClubInfo extends JPanel{
 					
 					clubInfoController.leaveClub(memberInClubVO);
 					
-				} else {
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, clubMainPanel, new MainPanel(mainFrame, memberVO));
 					
+				} else {
+					MemberInClubVO memberInClubVO = new MemberInClubVO();
+					memberInClubVO.setClubVO(clubVO);
+					memberInClubVO.setMemberVO(memberVO);
+					
+					clubInfoController.signupClub(memberInClubVO);
+					
+					JOptionPane.showMessageDialog(null, "[" + clubVO.getName() + "]의 가입을 환영합니다.", "가입 완료", JOptionPane.NO_OPTION);
+					
+					/* 소모임 정보 새로 세팅 */
+					ArrayList<Integer> memberList = clubVO.getMembersNumber();
+					memberList.add(memberVO.getUserNumber());
+					clubVO.setMembersNumber(memberList);
+					
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, clubMainPanel, new ClubMainPanel(mainFrame, mainPanel, clubVO, memberVO));
 				}
-				
 			}
 		});
 		

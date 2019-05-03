@@ -14,6 +14,7 @@ import com.kh.somoim.view.club.clubHome.ClubInfo;
 import com.kh.somoim.view.club.clubHome.clubBoard.ClubFree;
 import com.kh.somoim.view.club.clubHome.clubBoard.ClubPhoto;
 import com.kh.somoim.view.club.clubHome.clubBoard.ClubSchedule;
+import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubMainPanel extends JPanel{
@@ -23,7 +24,7 @@ public class ClubMainPanel extends JPanel{
 	ClubInfo clubinfoPanel;
 	public ClubFree clubFreePanel;
 
-	public ClubMainPanel(MainFrame mainFrame, ClubVO clubVO, MemberVO memberVO) {
+	public ClubMainPanel(MainFrame mainFrame, MainPanel mainPanel, ClubVO clubVO, MemberVO memberVO) {
 
 		System.out.println("clubVO:::::::::" + clubVO);
 
@@ -35,7 +36,7 @@ public class ClubMainPanel extends JPanel{
 		// 상단/중단 패널 생성
 		clubtopPanel = new ClubTopPanel(mainFrame, this, clubVO, memberVO);
 		clubcenterPanel = new ClubCenterPanel(mainFrame, this, clubVO, memberVO);
-		clubinfoPanel = new ClubInfo(clubVO, memberVO);	
+		clubinfoPanel = new ClubInfo(mainFrame, mainPanel, this, clubVO, memberVO);	
 
 		// 패널 사이즈 조절
 		clubinfoPanel.setPreferredSize(new Dimension(500, 650));

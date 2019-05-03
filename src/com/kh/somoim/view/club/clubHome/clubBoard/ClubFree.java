@@ -42,10 +42,12 @@ public class ClubFree extends JPanel {
 	JPanel clubPhotoPanel;
 	JPanel clubSchedulePanel;
 	JPanel clubFreePanel;
+	String nowPanel = "clubFreePanel";
+	JScrollPane thisPanelScroll;
 	private JPanel thisPanel;
 
 	public ClubFree(ClubMainPanel clubmainPanel, ClubVO clubVO, MemberVO memberVO) {
-
+		
 		ClubController clubController = new ClubController();
 		ArrayList<BoardResponseVO> boardResponseVOList = clubController.getFirstGreeting(clubVO, memberVO, CATEGORY);
 
@@ -55,7 +57,7 @@ public class ClubFree extends JPanel {
 		System.out.println("boardResponseVOList!!!!!" + boardResponseVOList);
 		System.out.println("boardResponseVOList.size()!!!!" + boardResponseVOList.size());
 
-
+		
 		this.thisPanel = this;
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.white);
@@ -148,46 +150,50 @@ public class ClubFree extends JPanel {
 			y += 120;
 		}		
 
-
-
-		JScrollPane thisPanelScroll = new JScrollPane(clubFreePanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		thisPanelScroll = new JScrollPane(clubFreePanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		thisPanelScroll.getVerticalScrollBar().setUnitIncrement(16);
 		thisPanelScroll.setLocation(0, 0);
 		thisPanelScroll.setSize(495, 650);
-
-		this.add(thisPanelScroll);		
-
-		clubPhotoPanel = new ClubPhoto();
-		clubPhotoPanel.setPreferredSize(new Dimension(500, 600));
-
-		clubSchedulePanel = new ClubSchedule();
-		clubSchedulePanel.setPreferredSize(new Dimension(500, 600));
 		
-		JTabbedPane jtab = new JTabbedPane();
-
+		this.add(thisPanelScroll);
+		
 		boardListBox.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox bb = (JComboBox) e.getSource();
 				String boardName = (String) bb.getSelectedItem();
-
+				System.out.println("inininininininininininininin");
 				if(boardName.equals("정모 후기")) {
-
-					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubFreePanel, clubPhotoPanel, BorderLayout.CENTER);
-					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubSchedulePanel, clubPhotoPanel, BorderLayout.CENTER);
-
+					
+					if(nowPanel.equals("clubFreePanel")) {
+						clubPhotoPanel = new ClubPhoto();
+						clubPhotoPanel.setPreferredSize(new Dimension(500, 600));
+						System.out.println("clubFreePanel");
+						ChangPanelUtil.CHANGE_PANEL2(thisPanel, thisPanelScroll, clubPhotoPanel);
+					} else {
+						clubSchedulePanel = new ClubSchedule();
+						clubSchedulePanel.setPreferredSize(new Dimension(500, 600));
+						ChangPanelUtil.CHANGE_PANEL2(thisPanel, thisPanelScroll, clubSchedulePanel);
+//						ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubSchedulePanel, clubPhotoPanel, BorderLayout.CENTER);
+					}
+					nowPanel = "clubPhotoPanel";
+					
+					
 				}else if(boardName.equals("정모 일정")) {
-
-					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubFreePanel, clubSchedulePanel, BorderLayout.CENTER);
-					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubPhotoPanel, clubSchedulePanel, BorderLayout.CENTER);
+					
+					if(nowPanel.equals("clubPhotoPanel")) {
+						ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubPhotoPanel, clubSchedulePanel, BorderLayout.CENTER);
+					} else {
+						ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubFreePanel, clubSchedulePanel, BorderLayout.CENTER);
+					}
 
 				}else if(boardName.equals("자유게시판")) {
 
 					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubSchedulePanel, clubFreePanel, BorderLayout.CENTER);
 					ChangPanelUtil.CHANGE_PANEL2(thisPanel, clubPhotoPanel, clubFreePanel, BorderLayout.CENTER);
 
-				}				
+				}			
 			}
 
 		});

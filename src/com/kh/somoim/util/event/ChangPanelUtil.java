@@ -1,6 +1,7 @@
 package com.kh.somoim.util.event;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import com.kh.somoim.view.club.clubHome.clubBoard.ClubFree;
 import com.kh.somoim.view.club.clubMain.ClubMainPanel;
@@ -51,6 +52,15 @@ public class ChangPanelUtil {
 		clubmainPanel.add(newPanel, Layout);
 		clubmainPanel.revalidate();
 		clubmainPanel.repaint();
+	}
+
+
+	public static void CHANGE_PANEL2(JPanel thisPanel, JScrollPane oldScroll, JPanel newPanel) {
+		// TODO Auto-generated method stub
+		thisPanel.remove(oldScroll);
+		thisPanel.add(newPanel);
+		thisPanel.repaint();
+		thisPanel.revalidate();
 	}
 
 }

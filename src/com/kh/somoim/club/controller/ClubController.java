@@ -136,12 +136,13 @@ public class ClubController {
 		// TODO Auto-generated method stub
 		System.out.println("getClubMemberList.leaveClub in");
 		
-		System.out.println("memberInClubVO:::"+memberInClubVO);
-		
 		clubInfoDAO.leaveClub(memberInClubVO);
+	}
+
+	public void signupClub(MemberInClubVO memberInClubVO) {
+		// TODO Auto-generated method stub
 		
-		
-		
+		clubInfoDAO.signupClub(memberInClubVO);
 	}
 
 }

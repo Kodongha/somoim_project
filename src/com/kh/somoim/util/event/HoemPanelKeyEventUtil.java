@@ -35,7 +35,7 @@ public class HoemPanelKeyEventUtil implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, new ClubMainPanel(mainFrame, clubVO, memberVO));
+		ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, new ClubMainPanel(mainFrame, mainPanel, clubVO, memberVO));
 	}
 
 	@Override

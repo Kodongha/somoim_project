@@ -82,4 +82,11 @@ public class ClubDAO {
 		
 	}
 
+	public void signupClub(MemberInClubVO memberInClubVO) {
+		// TODO Auto-generated method stub
+		System.out.println("ClubDAO.signupClub in");
+		
+		new ClientConnector().sendServer("ClubDAO.signupClub", memberInClubVO);
+	}
+
 }

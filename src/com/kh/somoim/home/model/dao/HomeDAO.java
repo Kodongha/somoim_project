@@ -13,7 +13,7 @@ public class HomeDAO {
 		System.out.println("HomeDAO.getMyClubList in!");
 		
 		ArrayList<ClubVO> myClubList = (ArrayList<ClubVO>) new ClientConnector().sendServer("HomeDAO.getMyClubList", memberVO);
-		System.out.println(myClubList);
+		System.out.println("myClubList::"+myClubList);
 		
 		return myClubList;
 	}

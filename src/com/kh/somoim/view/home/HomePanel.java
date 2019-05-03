@@ -43,6 +43,8 @@ public class HomePanel extends JPanel {
 		
 		JPanel myClubListPanel = new JPanel();
 		myClubListPanel.setLayout(null);
+		
+		
 		myClubListPanel.setPreferredSize(new Dimension(500,100 * myClubList.size()));
 
 		int x = -1;

@@ -6,11 +6,13 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.kh.somoim.club.controller.ClubController;
 import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
 import com.kh.somoim.util.event.ChangPanelUtil;
@@ -40,7 +42,7 @@ public class ClubCenterPanel extends JPanel{
 	public ClubCenterPanel(MainFrame mainFrame, ClubMainPanel clubmainPanel, ClubVO clubVO, MemberVO memberVO) {
 
 		System.out.println("club centerpanel in");
-
+		
 		this.setLayout(null);
 		this.setBackground(Color.white);
 
@@ -60,9 +62,8 @@ public class ClubCenterPanel extends JPanel{
 		IconLabel = new JLabel(new ImageIcon(categoryIcon));
 		IconLabel.setBounds(30, 15, 50, 50);
 
-
 		clubHiLabel = new JLabel("가입인사");
-		clubHiLabel.setBounds(130, 0, 100, 50); 
+		clubHiLabel.setBounds(130, 0, 100, 50);
 
 		clubBoardLabel = new JLabel("게시판");
 		clubBoardLabel.setBounds(235, 0, 100, 50); 
@@ -82,7 +83,6 @@ public class ClubCenterPanel extends JPanel{
 
 		this.add(categoryPanel);
 
-
 		clubHiPanel = new ClubHi(clubVO, memberVO);
 		clubHiPanel.setPreferredSize(new Dimension(500, 650));
 
@@ -95,7 +95,29 @@ public class ClubCenterPanel extends JPanel{
 		clubWritePanel = new ClubWrite(clubVO, memberVO);
 		clubWritePanel.setPreferredSize(new Dimension(500, 650));
 		
-	
+		/* 가입 여부에 및 포인트에 따른 화면 출력 설정 */
+		boolean flag = false;
+		for(int i=0; i<clubVO.getMembersNumber().size(); i++) {
+			System.out.println("clubVO.getMembersNumber().get(i)::::"+clubVO.getMembersNumber().get(i));
+			
+			/* 가입되어 있는 소모임인지 확인 */
+			if(memberVO.getUserNumber() == clubVO.getMembersNumber().get(i)) {
+				flag = true;
+				break;
+			} 
+		}
+
+		System.out.println("flag:::::" + flag);
+		if(!flag) {
+			clubHiLabel.setVisible(false);
+			clubBoardLabel.setVisible(false);
+			clubChatLabel.setVisible(false);
+			clubWriteLabel.setVisible(false);
+			
+		} else if(memberVO.getPoint() < 200) {
+			clubBoardLabel.setVisible(false);
+			clubChatLabel.setVisible(false);
+		}	
 		
 		// 마우스 클릭 이벤트(화면 전환)
 		clubInfoLabel.addMouseListener(new MouseAdapter() {
