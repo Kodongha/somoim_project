@@ -35,20 +35,20 @@ public class TopPanel extends JPanel {
 		this.setBackground(Color.ORANGE);
 		this.setPreferredSize(new Dimension(500,60));
 		
-		Image logo = new ImageIcon("images/logo.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		Image logo = new ImageIcon("images/club/default.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		logoLabel = new JLabel(new ImageIcon(logo));
 		logoLabel.setBounds(5, 5, 50, 50);
 		
 		
 		Image profilePhoto = new ImageIcon(memberVO.getProfilePhotoPath()).getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		profileLabel = new JLabel(new ImageIcon(profilePhoto));
-		profileLabel.setBounds(340, 5, 50, 50);
+		profileLabel.setBounds(320, 5, 50, 50);
 		
 		profileNameLabel = new JLabel("이름 : " + memberVO.getName());
-		profileNameLabel.setBounds(400, 15, 70, 15);
+		profileNameLabel.setBounds(380, 15, 100, 15);
 		
 		profilePointLabel = new JLabel("포인트 : " + String.valueOf(memberVO.getPoint()));
-		profilePointLabel.setBounds(400, 35, 70, 15);
+		profilePointLabel.setBounds(380, 35, 100, 15);
 		/*
 		messengerLabel = new JLabel("쪽지함");
 		messengerLabel.setBounds(360, 40, 50, 18);

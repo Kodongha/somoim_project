@@ -3,6 +3,7 @@ package com.kh.somoim.view.login;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -31,14 +32,20 @@ public class LoginPanel extends JPanel {
 
 	public LoginPanel(MainFrame mainFrame) {
 		LoginController loginController = new LoginController();
+		this.setBackground(Color.white);
 		this.thisPanel = this; 
-		this.setLayout(new BorderLayout());
-
-		JPanel loginPanel = new JPanel();
-
-		JLabel backgroundImage = new JLabel(new ImageIcon(new ImageIcon("images/backgroundImage.PNG").getImage().getScaledInstance(500, 800, 0)));
-		backgroundImage.setBounds(0, 0, 500, 800);
-
+		this.setLayout(null);
+//		JPanel loginPanel = new JPanel();
+//		loginPanel.setBackground(Color.WHITE);
+//		JLabel backgroundImage = new JLabel(new ImageIcon(new ImageIcon("images/backgroundImage.PNG").getImage().getScaledInstance(500, 800, 0)));
+//		backgroundImage.setBounds(0, 0, 500, 800);
+		
+		Image logo = new ImageIcon("images/mainLogo.jpg").getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+		JLabel mainImageLabel = new JLabel(new ImageIcon(logo));
+		mainImageLabel.setSize(300,300);
+		mainImageLabel.setLocation(100,50);
+		
+		
 		JLabel idLabel = new JLabel("  아 이 디");
 		idLabel.setBorder(new LineBorder(Color.GRAY,1));
 		idLabel.setLocation(125, 400); // 라벨 위치조정
@@ -111,11 +118,10 @@ public class LoginPanel extends JPanel {
 		this.add(newCreateButton);
 		this.add(findIdPassword);
 
-		mainFrame.add(this);
-
-		this.add(loginPanel, "Center");
-		this.add(backgroundImage);
-
+//		this.add(loginPanel, "Center");
+//		this.add(backgroundImage);
+		this.add(mainImageLabel);
+		
 		loginButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
