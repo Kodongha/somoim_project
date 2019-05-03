@@ -3,6 +3,8 @@ package com.kh.somoim.view.club.clubHome;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -10,14 +12,16 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import com.kh.somoim.club.controller.ClubController;
+import com.kh.somoim.club.model.vo.MemberInClubVO;
 import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
 
 public class ClubInfo extends JPanel{
-	JLabel infoLabel;
+	JTextArea infotextArea;
 	JLabel[] memberLabel;
 	JButton joinButton;
 	JScrollPane infoScroll;
@@ -39,14 +43,15 @@ public class ClubInfo extends JPanel{
 		this.setBorder(labelBorder);
 
 		// 모임 정보 출력용 라벨
-		infoLabel = new JLabel(clubVO.getInformation());
-		infoLabel.setEnabled(false);
-		infoLabel.setText("<html>이렇게 넣으라고?<br> 되는건가 <br>" + "aoa <br>단발머리<br> 듣고올게요<br>" + "짧은 <br>치마를 <br>입어볼까 <br>이것저것<br> 고민하다 <br>시간만 가 <br>" + "오늘따라 <br>머리가 <br>마음에<br> 안들어~~ <br>" + "단발머리를 <br>하고 그대를<br> 만나러 <br></html> ");
-		infoLabel.setBackground(Color.WHITE);
-		infoLabel.setBounds(250, 20, 233, 280);
-
-		//모임 정보 스크롤바  
-		scrollPane = new JScrollPane(infoLabel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		infotextArea = new JTextArea(clubVO.getInformation());
+		infotextArea.setEnabled(false);
+		infotextArea.setText(clubVO.getInformation().replace("††", "\n"));
+		infotextArea.setBackground(Color.WHITE);
+		infotextArea.setOpaque(true);
+		infotextArea.setBounds(250, 20, 233, 280);
+		
+		//모임 정보 스크롤바
+		scrollPane = new JScrollPane(infotextArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setLocation(250, 20);
 
 		LineBorder scrollBorder = new LineBorder(Color.WHITE);
@@ -109,8 +114,6 @@ public class ClubInfo extends JPanel{
 			memberNameLabel.setBounds(70, 0, 50, 50);
 
 			int j = clubVO.getClupMasterNumber();
-			System.out.println("clubVO.getClupMasterNumber()::::"+clubVO.getClupMasterNumber());
-			System.out.println("clubMemberList.get(i).getUserNumber():::"+clubMemberList.get(i).getUserNumber());
 
 			// 모임장 출력 
 			if(j == clubMemberList.get(i).getUserNumber()) {
@@ -127,6 +130,7 @@ public class ClubInfo extends JPanel{
 		}	
 		memberListLabel.setEnabled(false);
 		memberListLabel.setBackground(Color.white);
+		memberListLabel.setOpaque(true);
 		memberListLabel.setBounds(14, 310, 470, 280);	
 
 		//멤버 목록 스크롤바 
@@ -158,6 +162,26 @@ public class ClubInfo extends JPanel{
 
 		//		this.add(memberListPanel);
 
-
+		joinButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(joinButton.getText().equals("탈퇴하기  ")) {
+					MemberInClubVO memberInClubVO = new MemberInClubVO();
+					memberInClubVO.setClubVO(clubVO);
+					memberInClubVO.setMemberVO(memberVO);
+					
+					clubInfoController.leaveClub(memberInClubVO);
+					
+				} else {
+					
+				}
+				
+			}
+		});
+		
+		
 	}
 }

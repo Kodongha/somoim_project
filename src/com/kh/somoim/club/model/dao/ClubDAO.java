@@ -58,10 +58,28 @@ public class ClubDAO {
 
 	public int getMaxNumber(ClubVO clubVO) {
 		// TODO Auto-generated method stub
+		System.out.println("ClubDAO.getMaxNumber in");
 		
-		int maxNumber = (Integer)new ClientConnector().sendServer("ClubDAO.getMaxNumber", clubVO);
+		int maxNumber = (Integer) new ClientConnector().sendServer("ClubDAO.getMaxNumber", clubVO);
 		
 		return maxNumber;
+	}
+
+	public boolean checkClubName(String clubName) {
+		// TODO Auto-generated method stub
+		System.out.println("ClubDAO.checkClubName in");
+		
+		boolean result = (boolean) new ClientConnector().sendServer("ClubDAO.checkClubName", clubName);
+		
+		return result;
+	}
+
+	public void leaveClub(MemberInClubVO memberInClubVO) {
+		// TODO Auto-generated method stub
+		System.out.println("ClubDAO.leaveClub in");
+		
+		new ClientConnector().sendServer("ClubDAO.leaveClub", memberInClubVO);
+		
 	}
 
 }

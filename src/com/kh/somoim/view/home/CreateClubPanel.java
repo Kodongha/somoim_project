@@ -50,7 +50,7 @@ public class CreateClubPanel extends JPanel{
 		System.out.println("mainPanel in");
 		
 		
-		/*모임을 만들어보세요*/
+		/* 모임을 만들어보세요 */
 		JLabel moimNotice = new JLabel("모임을 만들어 보세요!");
 		moimNotice.setLocation(80, 10); // 라벨 위치조정
 		moimNotice.setSize(500, 100);
@@ -196,8 +196,8 @@ public class CreateClubPanel extends JPanel{
 				super.mouseClicked(e);
 				
 				if(clubIntroduceTextArea.getText().equals(" 모임 소개 글을 작성하세요!")) {
-					clubIntroduceTextArea.setEditable(true);
 					clubIntroduceTextArea.setText("");
+					clubIntroduceTextArea.setEditable(true);
 				} 
 			}
 		});
@@ -208,7 +208,6 @@ public class CreateClubPanel extends JPanel{
 				// TODO Auto-generated method stub
 				super.mousePressed(e);
 				if(clubIntroduceTextArea.getText().trim().length() == 0) {
-					clubIntroduceTextArea.setEditable(false);
 					clubIntroduceTextArea.setText(" 모임 소개 글을 작성하세요!");
 					clubIntroduceTextArea.setFocusable(false);
 				}
@@ -222,11 +221,10 @@ public class CreateClubPanel extends JPanel{
 				// TODO Auto-generated method stub
 				super.keyReleased(e);
 				
-				if(clubIntroduceTextArea.getText().trim().length() == 0) {
-					clubIntroduceTextArea.setEditable(false);
-					clubIntroduceTextArea.setText(" 모임 소개 글을 작성하세요!");
-				}
-				
+				if(clubIntroduceTextArea.getText().equals(" 모임 소개 글을 작성하세요!")) {
+					clubIntroduceTextArea.setText("");
+					clubIntroduceTextArea.setEditable(true);
+				} 
 			}
 		});
 		
@@ -236,24 +234,32 @@ public class CreateClubPanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				
+				
+				
 				if(clubNameTextField.getText().trim().length() == 0) {
 					JOptionPane.showMessageDialog(null, "소모임 이름이 입력되지 않았습니다.","경고",JOptionPane.WARNING_MESSAGE);
 				} else if(clubIntroduceTextArea.getText().equals(" 모임 소개 글을 작성하세요!")) {
 					JOptionPane.showMessageDialog(null, "소모임 소개 글이 입력되지 않았습니다.","경고",JOptionPane.WARNING_MESSAGE);
 				} else {
+					
+//					clubController.checkClubName(clubNameTextField.getText());
+					
 					ClubVO clubVO = new ClubVO();
 					
 					clubVO.setCategory(categoryList.getSelectedItem().toString());
 					clubVO.setName(clubNameTextField.getText());
 					clubVO.setClupMasterNumber(memberVO.getUserNumber());
 					clubVO.setMeetingDay(new Date(new GregorianCalendar(1990,1,1).getTimeInMillis()));
+					
 					if(titlePhotoTextField.getText().trim().length() == 0) {
 						clubVO.setTitleImagePath("images/default.png");
 					} else {
 						clubVO.setTitleImagePath(titlePhotoTextField.getText());
 					}
+					
 					String areaStr = clubIntroduceTextArea.getText().replace("\n", "††");
 					clubVO.setInformation(areaStr);
+					
 					clubController.createClub(clubVO);
 					JOptionPane.showMessageDialog(null, "소모임이 생성되었습니다.", "안내", JOptionPane.PLAIN_MESSAGE);
 					ChangPanelUtil.CHANGE_PANEL(mainFrame, mainPanel, new MainPanel(mainFrame, memberVO));

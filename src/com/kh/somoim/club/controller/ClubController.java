@@ -45,8 +45,6 @@ public class ClubController {
 				bufferedImage = ImageIO.read(file);
 				System.out.println(file.getName());
 				
-				int maxNumber = clubInfoDAO.getMaxNumber(clubVO);
-				clubVO.setClubNumber(maxNumber);
 				String extension = file.getName().split("[.]")[1];
 				
 				ImageIO.write(bufferedImage, extension, new File("C:\\Users\\ko\\git\\somoim_project_client\\images\\club\\" + clubVO.getClubNumber() + "." + extension));
@@ -56,8 +54,25 @@ public class ClubController {
 			}
 		}
 		
+		int maxNumber = clubInfoDAO.getMaxNumber(clubVO);
+		maxNumber += 1;
+		clubVO.setClubNumber(maxNumber);
+		
 		clubInfoDAO.createClub(clubVO);
 	}
+	
+	/**
+	 * 소모임 이름 중복 체크
+	 * @param text
+	 */
+	public void checkClubName(String clubName) {
+		// TODO Auto-generated method stub
+		System.out.println("getClubMemberList.checkClubName in");
+		
+		clubInfoDAO.checkClubName(clubName);
+		
+	}
+	
 	
 	/**
 	 * 글 쓰기
@@ -112,5 +127,21 @@ public class ClubController {
 		
 		return boardResponseVOList;
 	}
-	
+
+	/**
+	 * 소모임 탈퇴 
+	 * @param memberInClubVO
+	 */
+	public void leaveClub(MemberInClubVO memberInClubVO) {
+		// TODO Auto-generated method stub
+		System.out.println("getClubMemberList.leaveClub in");
+		
+		System.out.println("memberInClubVO:::"+memberInClubVO);
+		
+		clubInfoDAO.leaveClub(memberInClubVO);
+		
+		
+		
+	}
+
 }
