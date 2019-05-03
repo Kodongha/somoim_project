@@ -96,6 +96,8 @@ public class ClubInfo extends JPanel{
 			
 			memberListPanel.add(memberLabel[i]);
 			y += 60;
+			
+			
 		}	
 		memberListPanel.setBackground(Color.white);
 		memberListPanel.setBounds(25, 310, 500, 280);	
@@ -108,20 +110,14 @@ public class ClubInfo extends JPanel{
 		titleImageLabel.setBounds(160,-90,400,500);
 		this.add(titleImageLabel);
 
-		// 모임 멤버 패널 테두리
-	//	LineBorder memberBorder = new LineBorder(Color.BLACK);
-	//	memberLabel .setBorder(memberBorder);
-
-		// 가입하기 버튼
+		
+		/*// 가입하기 버튼
 		joinButton = new JButton("가입하기♡");
 		joinButton.setLocation(190, 600);
 		joinButton.setSize(100, 40);
 		joinButton.setBackground(Color.ORANGE);
-		joinButton.setForeground(Color.WHITE);		
+		joinButton.setForeground(Color.WHITE);*/		
 
-		// 각 패널 스크롤바
-		/*infoScroll = new JScrollBar();
-		infoScroll.setBounds(40, 280, 30, 500);*/
 
 		this.add(memberListPanel);
 		this.add(joinButton);
