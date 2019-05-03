@@ -1,5 +1,5 @@
 package com.kh.somoim.view.club.clubHome.clubBoard;
-
+ 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

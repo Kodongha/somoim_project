@@ -70,7 +70,7 @@ public class ClubInfo extends JPanel{
 		JPanel memberListPanel = new JPanel();
 		memberListPanel.setLayout(null);
 		memberLabel = new JLabel[clubMemberList.size()];
-		
+		 
 		for(int i = 0; i < clubMemberList.size(); i++) {			
 			memberLabel[i] = new JLabel();
 			memberLabel[i].setBounds(x, y, 500, 70);
