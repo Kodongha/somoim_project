@@ -54,14 +54,10 @@ public class ClubFree extends JPanel {
 		ClubController clubInfoController = new ClubController();
 		ArrayList<MemberVO> clubMemberList = clubInfoController.getClubMemberList(clubVO);
 
-		System.out.println("boardResponseVOList!!!!!" + boardResponseVOList);
-		System.out.println("boardResponseVOList.size()!!!!" + boardResponseVOList.size());
-
-		
 		this.thisPanel = this;
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.white);
-
+		/*
 		// 게시판 선택 패널
 		listPanel = new JPanel();
 		listPanel.setLocation(0,0);
@@ -69,7 +65,8 @@ public class ClubFree extends JPanel {
 		listPanel.setBackground(Color.white);
 		listPanel.setLayout(null);
 		this.add(listPanel, BorderLayout.NORTH);
-
+		*/
+		/*
 		// 게시판 선택 
 		String[] boardList = {"자유게시판", "정모 후기", "정모 일정"};
 
@@ -78,13 +75,13 @@ public class ClubFree extends JPanel {
 		boardListBox.setBackground(Color.white);
 
 		listPanel.add(boardListBox);
-
+		*/
 		clubFreePanel = new JPanel();
 		clubFreePanel.setLayout(null);
 		clubFreePanel.setPreferredSize(new Dimension(500, boardResponseVOList.size() * 80));
 		clubFreePanel.setBackground(Color.WHITE);
-		this.add(clubFreePanel, BorderLayout.CENTER);
-
+		this.add(clubFreePanel);
+		
 		int x = -1;
 		int y = 0;
 		
@@ -156,7 +153,7 @@ public class ClubFree extends JPanel {
 		thisPanelScroll.setSize(495, 650);
 		
 		this.add(thisPanelScroll);
-		
+		/*
 		boardListBox.addActionListener(new ActionListener() {
 
 			@Override
@@ -196,7 +193,7 @@ public class ClubFree extends JPanel {
 				}			
 			}
 
-		});
+		});*/
 
 	}
 }

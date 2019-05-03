@@ -59,7 +59,28 @@ public class FavoriteSearchClubList extends JPanel {
 			titleImageLabel.setBounds(15,5,90,90);
 
 			// 카테고리 이미지 
-			JLabel categoryImageLabel = new JLabel(new ImageIcon(resizeTitleImage));
+			String Category = searchClubList.get(i).getCategory();
+			String dir = "";
+			
+			switch (Category) {
+			case "게임/오락":
+				dir = "images/game.png"; break;
+			case "결혼/육아": dir = "images/parenting.png"; break;
+			case "공예/만들기": dir = "images/crafts.png"; break;
+			case "댄스/무용": dir = "images/dance.png"; break;
+			case "반려동물": dir = "images/pet.png"; break;
+			case "봉사활동": dir = "images/volunteer.png"; break;
+			case "사교/인맥": dir = "images/society.png"; break;
+			case "아웃도어/여행": dir = "images/travel.png"; break;
+			case "요리": dir = "images/cooking.png"; break;
+			case "운동/스포츠": dir = "images/exercise.PNG"; break;
+			case "음악/악기": dir = "images/music.png"; break;
+			case "차/오토바이": dir = "images/carmotorcycle.png"; break;
+			}
+			
+			Image originCategoryImage = new ImageIcon(dir).getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+			Image resizeCategoryImage = originCategoryImage.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+			JLabel categoryImageLabel = new JLabel(new ImageIcon(resizeCategoryImage));
 			categoryImageLabel.setBounds(120,10,20,20);
 
 			// 소모임 이름 
