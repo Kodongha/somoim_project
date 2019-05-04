@@ -51,7 +51,7 @@ public class ClubController {
 				
 				String extension = file.getName().split("[.]")[1];
 				
-				ImageIO.write(bufferedImage, extension, new File("C:\\Users\\ko\\git\\somoim_project_client\\images\\club\\" + clubVO.getClubNumber() + "." + extension));
+				ImageIO.write(bufferedImage, extension, new File(System.getProperty("user.dir") + "\\images\\club\\" + clubVO.getClubNumber() + "." + extension));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

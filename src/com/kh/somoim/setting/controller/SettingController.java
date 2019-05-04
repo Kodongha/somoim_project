@@ -88,7 +88,7 @@ public class SettingController {
 				bufferedImage = ImageIO.read(file);
 				System.out.println(file.getName());
 				
-				ImageIO.write(bufferedImage, extension, new File("C:\\Users\\ko\\git\\somoim_project_client\\images\\member\\" + memberVO.getUserNumber() + "." + extension));
+				ImageIO.write(bufferedImage, extension, new File(System.getProperty("user.dir") + "\\images\\member\\" + memberVO.getUserNumber() + "." + extension));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
