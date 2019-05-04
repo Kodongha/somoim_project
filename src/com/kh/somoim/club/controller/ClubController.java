@@ -36,6 +36,10 @@ public class ClubController {
 		
 		File file = new File(clubVO.getTitleImagePath());
 		BufferedImage bufferedImage = null;
+
+		int maxNumber = clubInfoDAO.getMaxNumber(clubVO);
+		maxNumber += 1;
+		clubVO.setClubNumber(maxNumber);
 		
 		if(!file.exists()) {
 			System.out.println("File not Exist.");
@@ -53,10 +57,6 @@ public class ClubController {
 				e.printStackTrace();
 			}
 		}
-		
-		int maxNumber = clubInfoDAO.getMaxNumber(clubVO);
-		maxNumber += 1;
-		clubVO.setClubNumber(maxNumber);
 		
 		clubInfoDAO.createClub(clubVO);
 	}

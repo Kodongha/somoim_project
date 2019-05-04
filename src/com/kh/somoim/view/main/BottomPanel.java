@@ -7,6 +7,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import com.kh.somoim.util.event.CenterPanelChangeEventUtil;
 
@@ -46,6 +47,6 @@ public class BottomPanel extends JPanel{
 		recommendLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.getCenterPanel(), "recommendLabel"));
 		searchLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.getCenterPanel(), "searchLabel"));
 		settingLabel.addMouseListener(new CenterPanelChangeEventUtil(mainPanel.getCenterPanel(), "settingLabel"));
+		
 	}
-
 }

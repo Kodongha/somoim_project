@@ -20,6 +20,7 @@ import com.kh.somoim.view.club.clubHome.ClubChat;
 import com.kh.somoim.view.club.clubHome.ClubHi;
 import com.kh.somoim.view.club.clubHome.ClubWrite;
 import com.kh.somoim.view.club.clubHome.clubBoard.ClubFree;
+import com.kh.somoim.view.main.MainPanel;
 import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubCenterPanel extends JPanel{
@@ -39,7 +40,7 @@ public class ClubCenterPanel extends JPanel{
 	JPanel clubWritePanel;
 
 
-	public ClubCenterPanel(MainFrame mainFrame, ClubMainPanel clubmainPanel, ClubVO clubVO, MemberVO memberVO) {
+	public ClubCenterPanel(MainFrame mainFrame, ClubMainPanel clubmainPanel, MainPanel mainPanel, ClubVO clubVO, MemberVO memberVO) {
 
 		System.out.println("club centerpanel in");
 		
@@ -92,7 +93,7 @@ public class ClubCenterPanel extends JPanel{
 		clubFreePanel = new ClubFree(clubmainPanel, clubVO, memberVO);
 		clubFreePanel.setPreferredSize(new Dimension(500, 650));
 		
-		clubWritePanel = new ClubWrite(clubVO, memberVO);
+		clubWritePanel = new ClubWrite(mainFrame, clubmainPanel, mainPanel, clubVO, memberVO);
 		clubWritePanel.setPreferredSize(new Dimension(500, 650));
 		
 		/* 가입 여부에 및 포인트에 따른 화면 출력 설정 */

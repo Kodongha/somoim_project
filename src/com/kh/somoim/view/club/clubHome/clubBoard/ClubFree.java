@@ -113,11 +113,11 @@ public class ClubFree extends JPanel {
 			
 			freetimeLabel = new JLabel();		
 			
-			SimpleDateFormat tFormat = new SimpleDateFormat("hh:mm:ss");
+			SimpleDateFormat tFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
 			String date = tFormat.format(boardResponseVOList.get(i).getWriteDay());	
 			
 			freetimeLabel.setText(date);
-			freetimeLabel.setBounds(70, 35, 100, 20);
+			freetimeLabel.setBounds(70, 35, 200, 20);
 			freetimeLabel.setForeground(Color.LIGHT_GRAY);
 			
 			freetitleLabel = new JLabel();

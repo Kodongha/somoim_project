@@ -39,7 +39,7 @@ public class ClubInfo extends JPanel{
 
 		ClubController clubInfoController = new ClubController();
 		ArrayList<MemberVO> clubMemberList = clubInfoController.getClubMemberList(clubVO);
-
+		
 		this.setLayout(null);
 		this.setBackground(Color.WHITE);
 
@@ -54,6 +54,7 @@ public class ClubInfo extends JPanel{
 		infotextArea.setBackground(Color.WHITE);
 		infotextArea.setOpaque(true);
 		infotextArea.setBounds(250, 20, 233, 280);
+		infotextArea.setForeground(Color.BLACK);
 		
 		//모임 정보 스크롤바
 		scrollPane = new JScrollPane(infotextArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -108,6 +109,7 @@ public class ClubInfo extends JPanel{
 		memberLabel = new JLabel[clubMemberList.size()];
 
 		for(int i = 0; i < clubMemberList.size(); i++) {			
+			
 			memberLabel[i] = new JLabel();
 			memberLabel[i].setBounds(x, y, 500, 70);
 
@@ -145,6 +147,7 @@ public class ClubInfo extends JPanel{
 
 		LineBorder memberListScrollBorder = new LineBorder(Color.WHITE);
 		memberListScrollPane.setBorder(memberListScrollBorder);
+		memberListScrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
 		memberListScrollPane.setSize(470, 280);
 		this.add(memberListScrollPane);

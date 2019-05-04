@@ -1,7 +1,6 @@
 package com.kh.somoim.view.club.clubHome;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,25 +8,25 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Date;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.ScrollPaneConstants;
 import javax.swing.border.LineBorder;
 
 import com.kh.somoim.club.controller.ClubController;
 import com.kh.somoim.club.model.vo.BoardVO;
 import com.kh.somoim.home.model.vo.ClubVO;
 import com.kh.somoim.login.model.vo.MemberVO;
+import com.kh.somoim.util.event.ChangPanelUtil;
+import com.kh.somoim.view.club.clubMain.ClubMainPanel;
+import com.kh.somoim.view.main.MainPanel;
+import com.kh.somoim.view.mainFrame.MainFrame;
 
 public class ClubWrite extends JPanel {
 
@@ -38,8 +37,8 @@ public class ClubWrite extends JPanel {
 	JButton button;
 	JPanel thisPanel;
 
-	public ClubWrite(ClubVO clubVO, MemberVO memberVO) {
-		this.thisPanel = thisPanel;
+	public ClubWrite(MainFrame mainFrame, ClubMainPanel clubmainPanel, MainPanel mainPanel, ClubVO clubVO, MemberVO memberVO) {
+		this.thisPanel = this;
 		ClubController clubController = new ClubController();
 
 		this.setLayout(null);
@@ -71,7 +70,7 @@ public class ClubWrite extends JPanel {
 		writeTopLabel.add(button);
 
 		// 게시판 선택 
-		String[] boardList = {"게시판 선택", "가입 인사", "자유게시판", "정모 후기", "정모 일정"};
+		String[] boardList = {"게시판 선택", "가입 인사", "자유게시판"};
 
 		JComboBox boardselect = new JComboBox(boardList);
 		boardselect.setLocation(150, 10);
@@ -125,8 +124,8 @@ public class ClubWrite extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				String str= "사진 추가 어떻게 해야하나요 정말 모르겠습니다. 이 기능 필요한가요...";
-				int result=	JOptionPane.showConfirmDialog(null, str, "정모 사진 추가 ", JOptionPane.YES_NO_OPTION);
+				String str= "사진 추가 어떻게 해야하나요 정말 모르겠습니다. 이 기능 필요한가요...(그냥 쓰지 마세요..)";
+				JOptionPane.showMessageDialog(null, str,"경고",JOptionPane.PLAIN_MESSAGE);
 
 			}
 		});
@@ -159,6 +158,7 @@ public class ClubWrite extends JPanel {
 					writeTitle.setText("");
 					writeArea.setText("");
 					JOptionPane.showMessageDialog(thisPanel, "게시글이 등록되었습니다.", "", JOptionPane.PLAIN_MESSAGE);
+					ChangPanelUtil.CHANGE_PANEL(mainFrame, clubmainPanel, new ClubMainPanel(mainFrame, mainPanel, clubVO, memberVO));
 				}
 			}
 		});

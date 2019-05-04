@@ -254,6 +254,7 @@ public class CreateClubPanel extends JPanel{
 					if(titlePhotoTextField.getText().trim().length() == 0) {
 						clubVO.setTitleImagePath("images/default.png");
 					} else {
+						System.out.println("in¿Ã¥Ÿ!!!!!!!!!!");
 						clubVO.setTitleImagePath(titlePhotoTextField.getText());
 					}
 					

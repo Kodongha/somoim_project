@@ -34,7 +34,9 @@ public class ClubHi extends JPanel{
 	JLabel hititleLabel;
 	JLabel hicontentsLabel;
 	JLabel hiiconLabel;
+	JLabel hidateLabel;
 	JLabel hitimeLabel;
+	
 	
 
 
@@ -42,7 +44,7 @@ public class ClubHi extends JPanel{
 
 		ClubController clubController = new ClubController();
 		ArrayList<BoardResponseVO> boardResponseVOList = clubController.getFirstGreeting(clubVO, memberVO, CATEGORY);
-
+		ArrayList<MemberVO> clubMemberList = clubController.getClubMemberList(clubVO);
 		System.out.println("boardResponseVOList!!!!!" + boardResponseVOList);
 		System.out.println("boardResponseVOList.size()!!!!" + boardResponseVOList.size());
 
@@ -59,13 +61,20 @@ public class ClubHi extends JPanel{
 		int y = 0;
 		hiLabel = new JLabel[boardResponseVOList.size()];	
 		
+		String photoPath = "";
 		
 		for(int i = 0; i < boardResponseVOList.size(); i++) {
 			hiLabel[i] = new JLabel();
 			hiLabel[i].setBounds(x, y, 500, 80);
 			hiLabel[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
-			Image hiIcon = new ImageIcon(boardResponseVOList.get(i).getImagePath()).getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+			for(MemberVO vo : clubMemberList) {
+				if(vo.getName().equals(boardResponseVOList.get(i).getWriter())) {
+					photoPath = vo.getProfilePhotoPath();
+				}
+			}
+			
+			Image hiIcon = new ImageIcon(photoPath).getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
 			hiiconLabel = new JLabel(new ImageIcon(hiIcon));
 			hiiconLabel.setBounds(0, 0, 80, 80);
 
@@ -82,18 +91,28 @@ public class ClubHi extends JPanel{
 			hicontentsLabel.setBounds(93, 45, 200, 15);
 			hicontentsLabel.setFont(hicontentsLabel.getFont().deriveFont(15.0f));
 						
-			hitimeLabel = new JLabel();	
 			
+			hidateLabel = new JLabel();	
+			SimpleDateFormat timeFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+			String date1 = timeFormat1.format(boardResponseVOList.get(i).getWriteDay());
+						
+			hidateLabel.setText(date1);
+			hidateLabel.setBounds(395, 5, 100, 20);
+			hidateLabel.setFont(hicontentsLabel.getFont().deriveFont(15.0f));	
+			
+			
+			hitimeLabel = new JLabel();	
 			SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
 			String date = timeFormat.format(boardResponseVOList.get(i).getWriteDay());
 						
 			hitimeLabel.setText(date);
-			hitimeLabel.setBounds(430, 10, 100, 20);
+			hitimeLabel.setBounds(413, 18, 100, 20);
 			hitimeLabel.setFont(hicontentsLabel.getFont().deriveFont(15.0f));			
 			
 			hiLabel[i].add(hiiconLabel);
 			hiLabel[i].add(hititleLabel);
 			hiLabel[i].add(hicontentsLabel);
+			hiLabel[i].add(hidateLabel);
 			hiLabel[i].add(hitimeLabel);
 			
 			hiListPanel.add(hiLabel[i]);
