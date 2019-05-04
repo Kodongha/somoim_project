@@ -78,7 +78,7 @@ public class ClubFree extends JPanel {
 		*/
 		clubFreePanel = new JPanel();
 		clubFreePanel.setLayout(null);
-		clubFreePanel.setPreferredSize(new Dimension(500, boardResponseVOList.size() * 80));
+		clubFreePanel.setPreferredSize(new Dimension(500, boardResponseVOList.size() * 120));
 		clubFreePanel.setBackground(Color.WHITE);
 		this.add(clubFreePanel);
 		
