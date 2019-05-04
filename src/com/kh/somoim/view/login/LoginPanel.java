@@ -31,7 +31,7 @@ public class LoginPanel extends JPanel {
 	private JPanel thisPanel;
 
 	public LoginPanel(MainFrame mainFrame) {
-		LoginController loginController = new LoginController();
+		LoginController loginController = new LoginController(); 
 		this.setBackground(Color.white);
 		this.thisPanel = this; 
 		this.setLayout(null);
