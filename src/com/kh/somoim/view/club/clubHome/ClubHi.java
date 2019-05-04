@@ -97,7 +97,7 @@ public class ClubHi extends JPanel{
 			String date1 = timeFormat1.format(boardResponseVOList.get(i).getWriteDay());
 						
 			hidateLabel.setText(date1);
-			hidateLabel.setBounds(395, 5, 100, 20);
+			hidateLabel.setBounds(395, 20, 100, 20);
 			hidateLabel.setFont(hicontentsLabel.getFont().deriveFont(15.0f));	
 			
 			
@@ -106,7 +106,7 @@ public class ClubHi extends JPanel{
 			String date = timeFormat.format(boardResponseVOList.get(i).getWriteDay());
 						
 			hitimeLabel.setText(date);
-			hitimeLabel.setBounds(413, 18, 100, 20);
+			hitimeLabel.setBounds(413, 33, 100, 20);
 			hitimeLabel.setFont(hicontentsLabel.getFont().deriveFont(15.0f));			
 			
 			hiLabel[i].add(hiiconLabel);
