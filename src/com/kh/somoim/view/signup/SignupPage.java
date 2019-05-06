@@ -39,10 +39,13 @@ public class SignupPage extends JPanel{
 
 		//이미지를 넣을 라벨  생성 
 		JLabel signuppagelabel = new JLabel(new ImageIcon(icon));
-
+		
+		this.add(signuppagelabel);
+		
 		//이미지라벨사이즈조정 
-		signuppagelabel .setLocation(60, 50); // 이미지의 위치 
-		signuppagelabel .setSize(400,400);   //크기지정 
+		signuppagelabel .setLocation(100, 38); // 이미지의 위치 
+		signuppagelabel .setSize(300,300);   //크기지정 
+		
 
 		//소확행문구 라벨생성
 		JLabel so= new JLabel("소확행 가입하기");		  

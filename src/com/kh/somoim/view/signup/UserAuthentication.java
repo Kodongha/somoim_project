@@ -2,11 +2,13 @@ package com.kh.somoim.view.signup;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -44,6 +46,8 @@ public class UserAuthentication extends JPanel {
 		this.setLayout(null);
 		// 컬러 화이트로 변경
 		this.setBackground(Color.WHITE);
+		
+		
 
 		// 이름 라벨 설정
 		JLabel name = new JLabel("이름");
@@ -53,6 +57,10 @@ public class UserAuthentication extends JPanel {
 		// 이름라벨 폰트 설정
 		name.setFont(new Font("나눔고딕", Font.BOLD, 17)); // 폰트변경 및 굵게,사이즈조정
 		// 이름입력 라벨 설정
+		
+		
+
+		
 		JTextField nametext = new JTextField(30);
 		// 이름입력 라벨 사이즈 설정
 		nametext.setLocation(170, 80);
@@ -212,8 +220,16 @@ public class UserAuthentication extends JPanel {
 		this.add(internationalnumber);
 
 
-
-
+	
+		
+		UserAuthenticationLabel.addMouseListener(new MouseAdapter() {
+	            //
+	         @Override
+	         public void mouseClicked(MouseEvent e) {
+	            ChangPanelUtil.CHANGE_PANEL(mainFrame, thisPanel, new TermsOfServicePanel(mainFrame));
+	            
+	         }
+	      });
 
 		authenticationbutton.addActionListener(new ActionListener() {
 
@@ -301,6 +317,8 @@ public class UserAuthentication extends JPanel {
 			}
 
 		});
+		
+		
 
 		authenticationbutton.addActionListener(new ActionListener() {
 
